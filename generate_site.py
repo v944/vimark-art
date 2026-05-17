@@ -9,7 +9,7 @@ import re
 from pathlib import Path
 
 ROOT = Path("d:/Concept_work/Vimark_art")
-WEBSITE = ROOT / "website"
+WEBSITE = ROOT
 
 def collect_images_from_path(rel_path):
     """Collect image files from a relative path recursively, sorted."""
@@ -133,8 +133,8 @@ def build():
       <a href="https://www.facebook.com/maks.vimark/" aria-label="Facebook"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
       <a href="https://www.linkedin.com/in/maxim-mitenkov-06192940/" aria-label="LinkedIn"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
       <a href="https://www.instagram.com/vimark_art/" aria-label="Instagram"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
-      <a href="https://www.behance.net/vimark" aria-label="Behance"><img src="../behance.png" alt="Behance" class="social-icon"></a>
-      <a href="https://www.deviantart.com/vimark" aria-label="DeviantArt"><img src="../deviantart.png" alt="DeviantArt" class="social-icon"></a>
+      <a href="https://www.behance.net/vimark" aria-label="Behance"><img src="behance.png" alt="Behance" class="social-icon"></a>
+      <a href="https://www.deviantart.com/vimark" aria-label="DeviantArt"><img src="deviantart.png" alt="DeviantArt" class="social-icon"></a>
     </div>'''
 
     html_content = f"""<!DOCTYPE html>
@@ -144,15 +144,15 @@ def build():
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Max Mitenkov · Illustrator · Concept Artist</title>
 <link rel="stylesheet" href="style.css">
-<link rel="icon" type="image/png" href="../vimark_logo.png">
+<link rel="icon" type="image/png" href="vimark_logo.png">
 </head>
 <body>
   <div id="canvasWrapper">
     <aside id="sidebar">
-      <img src="../Max Mitenkov.png" alt="Max Mitenkov" style="width: 100%; margin-bottom: 24px; opacity: 0.9;">
+      <img src="Max Mitenkov.png" alt="Max Mitenkov" style="width: 100%; margin-bottom: 24px; opacity: 0.9;">
       {"\n      ".join(nav_lines)}
       {social_html}
-      <img src="../vimark_logo.png" alt="Logo" style="width: 60px; margin-top: auto; margin-bottom: 100px; opacity: 0.9; align-self: center;">
+      <img src="vimark_logo.png" alt="Logo" style="width: 60px; margin-top: auto; margin-bottom: 100px; opacity: 0.9; align-self: center;">
     </aside>
 
     <button class="mobile-toggle">Menu</button>
