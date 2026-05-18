@@ -38,6 +38,7 @@
           </li>
           <li><a href="#" data-category="single">Single</a></li>
           <li><a href="#" data-view="about">About</a></li>
+          <li><a href="#" data-view="contact">Contact</a></li>
         </ul>
       </nav>
       <div class="social-links">
@@ -559,6 +560,35 @@
               <p class="about-closing">I'm open to remote work, one-time commissions, and long-term collaboration. Feel free to reach out — let's create visual content for your book, game, animation, or advertising campaign.</p>
             </div>
           </div>
+        </div>
+      </section>
+
+      <section id="contact" class="hidden">
+        <div class="contact-container">
+          <h1>Contact</h1>
+          <form action="https://formsubmit.co/hello@vimark.art" method="POST" class="contact-form">
+            <input type="hidden" name="_subject" value="New message from vimark.art">
+            <input type="hidden" name="_next" value="https://vimark.art/thanks.html">
+            <div class="form-group">
+              <label for="email">Email <span class="required">(required)</span></label>
+              <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="first-name">First Name <span class="required">(required)</span></label>
+                <input type="text" id="first-name" name="first-name" required>
+              </div>
+              <div class="form-group">
+                <label for="last-name">Last Name <span class="required">(required)</span></label>
+                <input type="text" id="last-name" name="last-name" required>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" rows="6" required></textarea>
+            </div>
+            <button type="submit" class="submit-btn">Submit</button>
+          </form>
         </div>
       </section>
     </main>

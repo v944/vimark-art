@@ -352,12 +352,14 @@ img {
 
 }
 
-/* About Section */
-#about {
+/* About & Contact Sections */
+#about,
+#contact {
   display: none;
 }
 
-#about:not(.hidden) {
+#about:not(.hidden),
+#contact:not(.hidden) {
   display: block;
 }
 
@@ -497,6 +499,95 @@ img {
   background: #ccc;
   color: #000;
   opacity: 1;
+}
+
+/* Contact Form */
+.contact-container {
+  max-width: 700px;
+}
+
+.contact-container h1 {
+  font-size: 1.1rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #eee;
+  margin-bottom: 32px;
+}
+
+.contact-form .form-group {
+  margin-bottom: 20px;
+}
+
+.contact-form .form-row {
+  display: flex;
+  gap: 16px;
+}
+
+.contact-form .form-row .form-group {
+  flex: 1;
+}
+
+.contact-form label {
+  display: block;
+  font-size: 0.9rem;
+  color: #ccc;
+  margin-bottom: 6px;
+}
+
+.contact-form .required {
+  color: #777;
+  font-size: 0.75rem;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 14px 16px;
+  background: #1a1a1a;
+  border: 1px solid #333;
+  color: #eee;
+  font-size: 0.9rem;
+  font-family: inherit;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border-color: #666;
+}
+
+.contact-form textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.submit-btn {
+  display: block;
+  margin: 32px auto 0;
+  padding: 16px 48px;
+  background: transparent;
+  color: #eee;
+  border: 2px solid #eee;
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.submit-btn:hover {
+  background: #eee;
+  color: #111;
+}
+
+@media (max-width: 800px) {
+  .contact-form .form-row {
+    flex-direction: column;
+    gap: 0;
+  }
 }
 
 /* Hide/show categories */
