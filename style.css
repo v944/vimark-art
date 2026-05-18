@@ -630,6 +630,82 @@ img {
   display: none;
 }
 
+/* Project pages */
+.project-header {
+  margin-bottom: 32px;
+  max-width: 900px;
+}
+
+.project-header .back-link {
+  display: inline-block;
+  font-size: 0.8rem;
+  color: #888;
+  margin-bottom: 16px;
+  text-decoration: none;
+  letter-spacing: 0.04em;
+  transition: color 0.2s ease;
+}
+
+.project-header .back-link:hover {
+  color: #eee;
+}
+
+.project-header h1 {
+  font-size: 1.4rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #eee;
+  margin-bottom: 8px;
+}
+
+.project-meta {
+  font-size: 0.8rem;
+  color: #777;
+  margin-bottom: 12px;
+  letter-spacing: 0.04em;
+}
+
+.project-desc {
+  font-size: 0.9rem;
+  color: #aaa;
+  line-height: 1.7;
+  max-width: 700px;
+}
+
+.main-nav .project-link {
+  font-size: 0.7rem;
+  color: #555;
+  margin-left: 4px;
+  display: inline;
+  text-decoration: none;
+}
+
+.main-nav .project-link:hover {
+  color: #eee;
+}
+
+.lang-switch {
+  margin-top: 16px;
+  font-size: 0.75rem;
+  color: #666;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.lang-switch a {
+  color: #888;
+  text-decoration: none;
+  letter-spacing: 0.08em;
+  transition: color 0.2s ease;
+}
+
+.lang-switch a.active,
+.lang-switch a:hover {
+  color: #eee;
+}
+
 @media (max-width: 800px) {
   .about-container {
     flex-direction: column;
