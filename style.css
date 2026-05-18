@@ -673,6 +673,10 @@ img {
   max-width: 700px;
 }
 
+.main-nav li {
+  white-space: nowrap;
+}
+
 .main-nav .project-link {
   font-size: 0.7rem;
   color: #555;

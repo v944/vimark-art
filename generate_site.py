@@ -119,8 +119,9 @@ def clean_name(stem):
 def ensure_thumbnail(original_path):
     """Generate a JPEG thumbnail if it doesn't exist or is outdated."""
     rel = os.path.relpath(original_path, WEBSITE).replace("\\", "/")
+    thumb_rel = os.path.relpath(THUMBS_DIR / rel, WEBSITE).replace("\\", "/")
     if not HAS_PILLOW:
-        return rel, "", ""
+        return thumb_rel, "", ""
 
     thumb_path = THUMBS_DIR / rel
     thumb_path.parent.mkdir(parents=True, exist_ok=True)
@@ -130,7 +131,7 @@ def ensure_thumbnail(original_path):
         try:
             with Image.open(thumb_path) as im:
                 w, h = im.size
-            return rel, str(w), str(h)
+            return thumb_rel, str(w), str(h)
         except Exception:
             pass  # regenerate if corrupted
 
@@ -144,11 +145,10 @@ def ensure_thumbnail(original_path):
             im_rgb.thumbnail(THUMB_SIZE, Image.LANCZOS)
             im_rgb.save(thumb_path, "JPEG", quality=THUMB_QUALITY, optimize=True)
             w, h = im_rgb.size
-        thumb_rel = os.path.relpath(thumb_path, WEBSITE).replace("\\", "/")
         return thumb_rel, str(w), str(h)
     except Exception as e:
         print(f"  Warning: could not thumbnail {rel}: {e}")
-        return rel, "", ""
+        return thumb_rel, "", ""
 
 
 def load_projects():
@@ -206,6 +206,8 @@ def build_lang(lang='en'):
     t = locale.get(lang, {})
     out_dir = WEBSITE if lang == 'en' else WEBSITE / "ru"
     out_dir.mkdir(exist_ok=True)
+    base_index = "" if lang == 'en' else "../"
+    base_project = "../" if lang == 'en' else "../../"
     categories = {}
     for entry in sorted(ROOT.iterdir()):
         if not entry.is_dir():
@@ -282,11 +284,11 @@ def build_lang(lang='en'):
     select_items = []
     select_set = set()
 
-    def gallery_html(items):
+    def gallery_html(items, base=""):
         lines = ['<div class="gallery-grid">']
         for img in items:
-            src = html.escape(img["src"], quote=True)
-            thumb = html.escape(img.get("thumb", img["src"]), quote=True)
+            src = html.escape(base + img["src"], quote=True)
+            thumb = html.escape(base + img.get("thumb", img["src"]), quote=True)
             alt = html.escape(captions.get(img["src"], img["name"]), quote=True)
             cat = html.escape(img["category"], quote=True)
             sub = html.escape(img.get("subcategory", ""), quote=True)
@@ -299,11 +301,11 @@ def build_lang(lang='en'):
         lines.append('</div>')
         return "\n".join(lines)
 
-    def project_gallery_html(items):
+    def project_gallery_html(items, base=""):
         lines = ['<div class="gallery-grid">']
         for img in items:
-            src = html.escape(img["src"], quote=True)
-            thumb = html.escape(img.get("thumb", img["src"]), quote=True)
+            src = html.escape(base + img["src"], quote=True)
+            thumb = html.escape(base + img.get("thumb", img["src"]), quote=True)
             alt = html.escape(captions.get(img["src"], img["name"]), quote=True)
             w = img.get("width", "")
             h = img.get("height", "")
@@ -314,7 +316,7 @@ def build_lang(lang='en'):
         lines.append('</div>')
         return "\n".join(lines)
 
-    def build_project_page(sub_key, proj, items):
+    def build_project_page(sub_key, proj, items, base="../"):
         title = html.escape(proj.get("title", sub_key))
         year = html.escape(proj.get("year", ""))
         client = html.escape(proj.get("client", ""))
@@ -325,7 +327,7 @@ def build_lang(lang='en'):
         meta_html = f'<p class="project-meta">{" · ".join(meta_parts)}</p>' if meta_parts else ''
         desc_html = f'<p class="project-desc">{description}</p>' if description else ''
 
-        social_html_project = social_html.replace('src="behance.png"', 'src="../behance.png"').replace('src="deviantart.png"', 'src="../deviantart.png"')
+        social_html_project = social_html.replace('src="behance.png"', f'src="{base}behance.png"').replace('src="deviantart.png"', f'src="{base}deviantart.png"')
 
         page_content = f"""<!DOCTYPE html>
 <html lang="en">
@@ -337,8 +339,8 @@ def build_lang(lang='en'):
 <link rel="canonical" href="https://vimark.art/project/{sub_key}.html">
 <link rel="preconnect" href="https://www.googletagmanager.com">
 <link rel="preconnect" href="https://mc.yandex.ru">
-<link rel="stylesheet" href="../style.css">
-<link rel="icon" type="image/png" href="../vimark_logo.png">
+<link rel="stylesheet" href="{base}style.css">
+<link rel="icon" type="image/png" href="{base}vimark_logo.png">
 
 <!-- Open Graph -->
 <meta property="og:type" content="website">
@@ -378,32 +380,32 @@ def build_lang(lang='en'):
 <body>
   <div id="canvasWrapper">
     <aside id="sidebar">
-      <img src="../Max Mitenkov.png" alt="Max Mitenkov" style="width: 100%; margin-bottom: 24px; opacity: 0.9;">
+      <img src="{base}Max Mitenkov.png" alt="Max Mitenkov" style="width: 100%; margin-bottom: 24px; opacity: 0.9;">
       <nav class="main-nav">
         <ul>
-          <li><a href="../index.html">← Portfolio</a></li>
+          <li><a href="{base}index.html">← Portfolio</a></li>
         </ul>
       </nav>
       {social_html_project}
+      <img src="{base}vimark_logo.png" alt="Logo" style="width: 60px; margin-top: auto; margin-bottom: 100px; opacity: 0.9; align-self: center;">
       <div class="lang-switch">
         <a href="#" id="lang-en">EN</a>
         <span>/</span>
         <a href="#" id="lang-ru">RU</a>
       </div>
-      <script>(function(){{ var p=location.pathname; var e=document.getElementById('lang-en'); var r=document.getElementById('lang-ru'); e.href=p.replace(/^\\/ru/, '')||'/'; r.href='/ru'+(p.replace(/^\\/ru/, '')||'/'); if(p.startsWith('/ru')){{r.classList.add('active');}}else{{e.classList.add('active');}} }})();</script>
-      <img src="../vimark_logo.png" alt="Logo" style="width: 60px; margin-top: auto; margin-bottom: 100px; opacity: 0.9; align-self: center;">
+      <script>(function(){{var p=location.pathname.split('\\\\').join('/');var i=p.indexOf('/ru/')!==-1||p.indexOf('/ru')!==-1;var e=document.getElementById('lang-en');var r=document.getElementById('lang-ru');if(i){{e.href=p.replace('/ru/','/');r.href=p;}}else{{r.href=p.replace('/project/','/ru/project/').replace('/index.html','/ru/index.html');e.href=p;}}if(i){{r.classList.add('active');}}else{{e.classList.add('active');}}}})();</script>
     </aside>
 
     <button class="mobile-toggle">{t.get('menu', 'Menu')}</button>
 
     <main id="main">
       <div class="project-header">
-        <a href="/index.html" class="back-link">{t.get('back_to_portfolio', '← Back to portfolio')}</a>
+        <a href="{base}index.html" class="back-link">{t.get('back_to_portfolio', '← Back to portfolio')}</a>
         <h1>{title}</h1>
         {meta_html}
         {desc_html}
       </div>
-      {project_gallery_html(items)}
+      {project_gallery_html(items, base)}
     </main>
   </div>
 
@@ -418,7 +420,7 @@ def build_lang(lang='en'):
     <div class="lightbox-counter"></div>
   </div>
 
-  <script src="../script.js"></script>
+  <script src="{base}script.js"></script>
 </body>
 </html>
 """
@@ -661,19 +663,19 @@ def build_lang(lang='en'):
       <img src="Max Mitenkov.png" alt="Max Mitenkov" style="width: 100%; margin-bottom: 24px; opacity: 0.9;">
       {"\n      ".join(nav_lines)}
       {social_html}
+      <img src="vimark_logo.png" alt="Logo" style="width: 60px; margin-top: auto; margin-bottom: 100px; opacity: 0.9; align-self: center;">
       <div class="lang-switch">
         <a href="#" id="lang-en">EN</a>
         <span>/</span>
         <a href="#" id="lang-ru">RU</a>
       </div>
       <script>(function(){{var p=location.pathname.split('\\\\').join('/');var i=p.indexOf('/ru/')!==-1||p.indexOf('/ru')!==-1;var e=document.getElementById('lang-en');var r=document.getElementById('lang-ru');if(i){{e.href=p.replace('/ru/','/');r.href=p;}}else{{r.href=p.replace('/project/','/ru/project/').replace('/index.html','/ru/index.html');e.href=p;}}if(i){{r.classList.add('active');}}else{{e.classList.add('active');}}}})();</script>
-      <img src="vimark_logo.png" alt="Logo" style="width: 60px; margin-top: auto; margin-bottom: 100px; opacity: 0.9; align-self: center;">
     </aside>
 
     <button class="mobile-toggle">Menu</button>
 
     <main id="main">
-      {gallery_html(all_items)}
+      {gallery_html(all_items, base_index)}
 {about_html}
 {contact_html}
     </main>
@@ -695,19 +697,6 @@ def build_lang(lang='en'):
 </html>
 """
 
-    # Convert relative paths to absolute for cross-language compatibility
-    html_content = html_content.replace('href="style.css"', 'href="/style.css"')
-    html_content = html_content.replace('src="script.js"', 'src="/script.js"')
-    html_content = html_content.replace('src="vimark_logo.png"', 'src="/vimark_logo.png"')
-    html_content = html_content.replace('src="Max Mitenkov.png"', 'src="/Max Mitenkov.png"')
-    html_content = html_content.replace('src="behance.png"', 'src="/behance.png"')
-    html_content = html_content.replace('src="deviantart.png"', 'src="/deviantart.png"')
-    html_content = html_content.replace('src="thumbnails/', 'src="/thumbnails/')
-    html_content = html_content.replace('data-full="Book Illustrations/', 'data-full="/Book Illustrations/')
-    html_content = html_content.replace('data-full="BookCover/', 'data-full="/BookCover/')
-    html_content = html_content.replace('data-full="comic/', 'data-full="/comic/')
-    html_content = html_content.replace('data-full="Single/', 'data-full="/Single/')
-
     (out_dir / "index.html").write_text(html_content, encoding="utf-8")
     print(f"Generated {lang}/index.html with {len(all_items)} images.")
     for key, info in categories.items():
@@ -723,20 +712,8 @@ def build_lang(lang='en'):
             proj_images = [img for img in all_items if img.get("subcategory") == sub_key]
             if not proj_images:
                 continue
-            page_html = build_project_page(sub_key, proj, proj_images)
-            # Convert relative paths to absolute
-            page_html = page_html.replace('href="../style.css"', 'href="/style.css"')
-            page_html = page_html.replace('src="../script.js"', 'src="/script.js"')
-            page_html = page_html.replace('src="../vimark_logo.png"', 'src="/vimark_logo.png"')
-            page_html = page_html.replace('src="../Max Mitenkov.png"', 'src="/Max Mitenkov.png"')
-            page_html = page_html.replace('src="../behance.png"', 'src="/behance.png"')
-            page_html = page_html.replace('src="../deviantart.png"', 'src="/deviantart.png"')
-            page_html = page_html.replace('src="../thumbnails/', 'src="/thumbnails/')
-            page_html = page_html.replace('data-full="../Book Illustrations/', 'data-full="/Book Illustrations/')
-            page_html = page_html.replace('data-full="../BookCover/', 'data-full="/BookCover/')
-            page_html = page_html.replace('data-full="../comic/', 'data-full="/comic/')
-            page_html = page_html.replace('data-full="../Single/', 'data-full="/Single/')
-            page_html = page_html.replace('href="../index.html"', 'href="/index.html"')
+            proj_base = "../../" if base_index else "../"
+            page_html = build_project_page(sub_key, proj, proj_images, base=proj_base)
             (proj_dir / f"{sub_key}.html").write_text(page_html, encoding="utf-8")
         print(f"Generated {len(projects)} {lang}/project pages.")
 
