@@ -11,6 +11,7 @@ from pathlib import Path
 
 ROOT = Path("d:/Concept_work/Vimark_art")
 WEBSITE = ROOT
+CAPTIONS_FILE = WEBSITE / "captions.txt"
 
 
 def collect_images_from_path(rel_path):
@@ -37,6 +38,41 @@ def slugify(name):
     s = re.sub(r'[^a-z0-9\-]+', '', s)
     s = re.sub(r'\-+', '-', s).strip('-')
     return s
+
+
+def load_captions():
+    """Load custom captions from captions.txt if it exists."""
+    captions = {}
+    if not CAPTIONS_FILE.exists():
+        return captions
+    for line in CAPTIONS_FILE.read_text(encoding="utf-8").splitlines():
+        line = line.strip()
+        if not line or line.startswith('#'):
+            continue
+        if '=' not in line:
+            continue
+        path_part, caption = line.split('=', 1)
+        path_part = path_part.strip()
+        caption = caption.strip()
+        if path_part and caption:
+            captions[path_part] = caption
+    return captions
+
+
+def ensure_captions_file(items):
+    """Create captions.txt template if it doesn't exist yet."""
+    if CAPTIONS_FILE.exists():
+        return
+    lines = [
+        "# Custom captions for portfolio images",
+        "# Format: relative/path/to/image.jpg = Your custom caption",
+        "# Lines starting with # are ignored. If an image is not listed, auto-caption is used.",
+        "",
+    ]
+    for img in items:
+        lines.append(f'{img["src"]} = {img["name"]}')
+    CAPTIONS_FILE.write_text("\n".join(lines) + "\n", encoding="utf-8")
+    print(f"Generated {CAPTIONS_FILE.name} — edit it to customize image captions.")
 
 
 def human_label(name):
@@ -118,6 +154,10 @@ def build():
                     break
             all_items.append(img)
 
+    # Load or create captions file
+    captions = load_captions()
+    ensure_captions_file(all_items)
+
     # No "Select" section — show all by default
     select_items = []
     select_set = set()
@@ -126,7 +166,7 @@ def build():
         lines = ['<div class="gallery-grid">']
         for img in items:
             src = html.escape(img["src"], quote=True)
-            alt = html.escape(img["name"], quote=True)
+            alt = html.escape(captions.get(img["src"], img["name"]), quote=True)
             cat = html.escape(img["category"], quote=True)
             sub = html.escape(img.get("subcategory", ""), quote=True)
             lines.append(f'  <div class="gallery-item" data-category="{cat}" data-subcategory="{sub}">')
