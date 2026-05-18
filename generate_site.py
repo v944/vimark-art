@@ -6,6 +6,7 @@ Sub-folders become sub-menu items.
 import os
 import html
 import re
+import random
 import datetime
 import configparser
 from pathlib import Path
@@ -33,6 +34,21 @@ def collect_images_from_path(rel_path):
         return []
     files = []
     for p in sorted(path.rglob("*")):
+        if p.is_file() and p.suffix.lower() in exts:
+            rel = os.path.relpath(p, WEBSITE).replace("\\", "/")
+            name = clean_name(p.stem)
+            files.append({"src": rel, "name": name, "path": p, "mtime": p.stat().st_mtime})
+    return files
+
+
+def collect_hero_images():
+    """Collect images from HERO folder for random hero banners."""
+    exts = {".jpg", ".jpeg", ".png", ".webp", ".gif"}
+    hero_dir = ROOT / "HERO"
+    if not hero_dir.exists():
+        return []
+    files = []
+    for p in sorted(hero_dir.iterdir()):
         if p.is_file() and p.suffix.lower() in exts:
             rel = os.path.relpath(p, WEBSITE).replace("\\", "/")
             name = clean_name(p.stem)
@@ -256,6 +272,9 @@ def build_lang(lang='en'):
                     break
             all_items.append(img)
 
+    # Sort all items by modification time (newest first)
+    all_items.sort(key=lambda x: x["mtime"], reverse=True)
+
     # Collect all subfolders flat map
     all_subfolders = {}
     for cat_key, info in categories.items():
@@ -268,6 +287,11 @@ def build_lang(lang='en'):
     # Load or create projects file
     projects = load_projects()
     ensure_projects_file(all_subfolders)
+
+    # Collect HERO images for random banners
+    hero_images = collect_hero_images()
+    if hero_images:
+        print(f"Found {len(hero_images)} HERO image(s) for random banners.")
 
     # Generate thumbnails
     if HAS_PILLOW:
@@ -284,18 +308,76 @@ def build_lang(lang='en'):
     select_items = []
     select_set = set()
 
+    def hero_html(items, base=""):
+        if hero_images:
+            hero = random.choice(hero_images)
+        elif items:
+            hero = items[0]
+        else:
+            return ""
+        src = html.escape(base + hero["src"], quote=True)
+        thumb = html.escape(base + hero.get("thumb", hero["src"]), quote=True)
+        alt = html.escape(captions.get(hero["src"], hero["name"]), quote=True)
+        return f'<section class="hero"><img src="{thumb}" data-full="{src}" alt="{alt}" loading="eager"></section>'
+
+    def project_card_html(key, label, images, base=""):
+        if not images:
+            return ""
+        count = len(images)
+        if hero_images:
+            main = random.choice(hero_images)
+        else:
+            main = images[0]
+        main_thumb = html.escape(base + main.get("thumb", main["src"]), quote=True)
+        main_src = html.escape(base + main["src"], quote=True)
+        main_alt = html.escape(captions.get(main["src"], main["name"]), quote=True)
+        thumbs_html = ""
+        for img in images[1:4]:
+            thumb = html.escape(base + img.get("thumb", img["src"]), quote=True)
+            alt = html.escape(captions.get(img["src"], img["name"]), quote=True)
+            thumbs_html += f'<img src="{thumb}" alt="{alt}" loading="lazy">'
+        count_label = t.get("artworks", "artworks")
+        return f'''<a href="{base}project/{key}.html" class="project-card">
+  <div class="project-card-preview">
+    <img src="{main_thumb}" data-full="{main_src}" alt="{main_alt}" class="project-card-main" loading="lazy">
+    <div class="project-card-thumbs">{thumbs_html}</div>
+  </div>
+  <div class="project-card-info">
+    <h3>{html.escape(label)}</h3>
+    <span>{count} {count_label}</span>
+  </div>
+</a>'''
+
+    def projects_sections_html(base=""):
+        sections = []
+        for cat_key, info in categories.items():
+            cards = []
+            if info["subfolders"]:
+                for sub_key, sub_info in info["subfolders"].items():
+                    proj_images = [img for img in all_items if img.get("subcategory") == sub_key]
+                    card = project_card_html(sub_key, sub_info["label"], proj_images, base)
+                    if card:
+                        cards.append(card)
+            else:
+                proj_images = [img for img in all_items if img["category"] == cat_key]
+                card = project_card_html(cat_key, info["label"], proj_images, base)
+                if card:
+                    cards.append(card)
+            if cards:
+                cards_str = "\n".join(cards)
+                sections.append(f'<section class="projects-section" id="{cat_key}">\n  <h2>{html.escape(info["label"])}</h2>\n  <div class="projects-grid">\n    {cards_str}\n  </div>\n</section>')
+        return "\n".join(sections)
+
     def gallery_html(items, base=""):
         lines = ['<div class="gallery-grid">']
         for img in items:
             src = html.escape(base + img["src"], quote=True)
             thumb = html.escape(base + img.get("thumb", img["src"]), quote=True)
             alt = html.escape(captions.get(img["src"], img["name"]), quote=True)
-            cat = html.escape(img["category"], quote=True)
-            sub = html.escape(img.get("subcategory", ""), quote=True)
             w = img.get("width", "")
             h = img.get("height", "")
             dim_attr = f' width="{w}" height="{h}"' if w and h else ''
-            lines.append(f'  <div class="gallery-item" data-category="{cat}" data-subcategory="{sub}">')
+            lines.append(f'  <div class="gallery-item">')
             lines.append(f'    <img src="{thumb}" data-full="{src}" alt="{alt}" loading="lazy"{dim_attr}>')
             lines.append('  </div>')
         lines.append('</div>')
@@ -328,6 +410,11 @@ def build_lang(lang='en'):
         desc_html = f'<p class="project-desc">{description}</p>' if description else ''
 
         social_html_project = social_html.replace('src="behance.png"', f'src="{base}behance.png"').replace('src="deviantart.png"', f'src="{base}deviantart.png"')
+
+        hero_img = random.choice(hero_images) if hero_images else (items[0] if items else None)
+        hero_thumb = html.escape(base + hero_img.get("thumb", hero_img["src"]), quote=True) if hero_img else ""
+        hero_src = html.escape(base + hero_img["src"], quote=True) if hero_img else ""
+        hero_alt = html.escape(captions.get(hero_img["src"], hero_img["name"]), quote=True) if hero_img else ""
 
         page_content = f"""<!DOCTYPE html>
 <html lang="en">
@@ -388,17 +475,14 @@ def build_lang(lang='en'):
       </nav>
       {social_html_project}
       <img src="{base}vimark_logo.png" alt="Logo" style="width: 60px; margin-top: auto; margin-bottom: 100px; opacity: 0.9; align-self: center;">
-      <div class="lang-switch">
-        <a href="#" id="lang-en">EN</a>
-        <span>/</span>
-        <a href="#" id="lang-ru">RU</a>
-      </div>
-      <script>(function(){{var p=location.pathname.split('\\\\').join('/');var i=p.indexOf('/ru/')!==-1||p.indexOf('/ru')!==-1;var e=document.getElementById('lang-en');var r=document.getElementById('lang-ru');if(i){{e.href=p.replace('/ru/','/');r.href=p;}}else{{r.href=p.replace('/project/','/ru/project/').replace('/index.html','/ru/index.html');e.href=p;}}if(i){{r.classList.add('active');}}else{{e.classList.add('active');}}}})();</script>
     </aside>
 
     <button class="mobile-toggle">{t.get('menu', 'Menu')}</button>
 
     <main id="main">
+      <section class="project-hero">
+        <img src="{hero_thumb}" data-full="{hero_src}" alt="{hero_alt}" loading="eager">
+      </section>
       <div class="project-header">
         <a href="{base}index.html" class="back-link">{t.get('back_to_portfolio', '← Back to portfolio')}</a>
         <h1>{title}</h1>
@@ -409,7 +493,14 @@ def build_lang(lang='en'):
     </main>
   </div>
 
-  <div class="site-footer"><b>©</b> Max Mitenkov.</div>
+  <div class="site-footer">
+    <div class="lang-switch">
+      <a href="#" id="lang-en" title="English"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 30" width="24" height="12"><path fill="#012169" d="M0,0 h60 v30 h-60 z"/><path stroke="#fff" stroke-width="6" d="M0,0 L60,30 M60,0 L0,30"/><path stroke="#C8102E" stroke-width="4" d="M0,0 L60,30 M60,0 L0,30"/><path stroke="#fff" stroke-width="10" d="M30,0 v30 M0,15 h60"/><path stroke="#C8102E" stroke-width="6" d="M30,0 v30 M0,15 h60"/></svg></a>
+      <a href="#" id="lang-ru" title="Русский"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 30" width="24" height="12"><rect width="60" height="10" fill="#fff"/><rect y="10" width="60" height="10" fill="#0039A6"/><rect y="20" width="60" height="10" fill="#D52B1E"/></svg></a>
+    </div>
+    <script>(function(){{var p=location.pathname.split('\\\\').join('/');var i=p.indexOf('/ru/')!==-1||p.indexOf('/ru')!==-1;var e=document.getElementById('lang-en');var r=document.getElementById('lang-ru');if(i){{e.href=p.replace('/ru/','/');r.href=p;}}else{{r.href=p.replace('/project/','/ru/project/').replace('/index.html','/ru/index.html');e.href=p;}}if(i){{r.classList.add('active');}}else{{e.classList.add('active');}}}})();</script>
+    <span><b>©</b> Max Mitenkov.</span>
+  </div>
 
   <div id="lightbox">
     <button class="lightbox-close" aria-label="Close">×</button>
@@ -426,26 +517,16 @@ def build_lang(lang='en'):
 """
         return page_content
 
-    # Build nav
+    # Build nav with category anchors + About + Contact
     nav_lines = [
         '<nav class="main-nav">',
         '  <ul>',
     ]
     for key, info in categories.items():
-        if info["subfolders"]:
-            nav_lines.append(f'    <li class="folder">')
-            nav_lines.append(f'      <a href="#" data-category="{key}">{html.escape(info["label"])}</a>')
-            nav_lines.append('      <ul>')
-            for sub_key, sub_info in info["subfolders"].items():
-                project_link = f'<a href="/project/{sub_key}.html" class="project-link" title="{t.get("project_page", "Project page")}">▶▶</a>' if sub_key in projects else ''
-                nav_lines.append(f'        <li><a href="#" data-category="{key}" data-subcategory="{sub_key}">{html.escape(sub_info["label"])}</a> {project_link}</li>')
-            nav_lines.append('      </ul>')
-            nav_lines.append('    </li>')
-        else:
-            nav_lines.append(f'    <li><a href="#" data-category="{key}">{html.escape(info["label"])}</a></li>')
+        nav_lines.append(f'    <li><a href="#{key}">{html.escape(info["label"])}</a></li>')
     nav_lines.extend([
-        f'    <li><a href="#" data-view="about">{t.get("about", "About")}</a></li>',
-        f'    <li><a href="#" data-view="contact">{t.get("contact", "Contact")}</a></li>',
+        f'    <li><a href="#about">{t.get("about", "About")}</a></li>',
+        f'    <li><a href="#contact">{t.get("contact", "Contact")}</a></li>',
         '  </ul>',
         '</nav>',
     ])
@@ -583,8 +664,8 @@ def build_lang(lang='en'):
 <title>Max Mitenkov · {t.get('job_title', 'Illustrator · Concept Artist')}</title>
 <meta name="description" content="{t.get('meta_description', 'Portfolio of Max Mitenkov, illustrator and concept artist with 12+ years of experience in games, books, and NFT projects.')}">
 <link rel="canonical" href="https://vimark.art/">
-<link rel="stylesheet" href="style.css">
-<link rel="icon" type="image/png" href="vimark_logo.png">
+<link rel="stylesheet" href="{base_index}style.css">
+<link rel="icon" type="image/png" href="{base_index}vimark_logo.png">
 
 <!-- Open Graph / Facebook -->
 <meta property="og:type" content="website">
@@ -660,28 +741,30 @@ def build_lang(lang='en'):
 <body>
   <div id="canvasWrapper">
     <aside id="sidebar">
-      <img src="Max Mitenkov.png" alt="Max Mitenkov" style="width: 100%; margin-bottom: 24px; opacity: 0.9;">
+      <img src="{base_index}Max Mitenkov.png" alt="Max Mitenkov" style="width: 100%; margin-bottom: 24px; opacity: 0.9;">
       {"\n      ".join(nav_lines)}
-      {social_html}
-      <img src="vimark_logo.png" alt="Logo" style="width: 60px; margin-top: auto; margin-bottom: 100px; opacity: 0.9; align-self: center;">
-      <div class="lang-switch">
-        <a href="#" id="lang-en">EN</a>
-        <span>/</span>
-        <a href="#" id="lang-ru">RU</a>
-      </div>
-      <script>(function(){{var p=location.pathname.split('\\\\').join('/');var i=p.indexOf('/ru/')!==-1||p.indexOf('/ru')!==-1;var e=document.getElementById('lang-en');var r=document.getElementById('lang-ru');if(i){{e.href=p.replace('/ru/','/');r.href=p;}}else{{r.href=p.replace('/project/','/ru/project/').replace('/index.html','/ru/index.html');e.href=p;}}if(i){{r.classList.add('active');}}else{{e.classList.add('active');}}}})();</script>
+      {social_html.replace('src=\"behance.png\"', f'src=\"{base_index}behance.png\"').replace('src=\"deviantart.png\"', f'src=\"{base_index}deviantart.png\"')}
+      <img src="{base_index}vimark_logo.png" alt="Logo" style="width: 60px; margin-top: auto; margin-bottom: 100px; opacity: 0.9; align-self: center;">
     </aside>
 
     <button class="mobile-toggle">Menu</button>
 
     <main id="main">
-      {gallery_html(all_items, base_index)}
+      {hero_html(all_items, base_index)}
+      {projects_sections_html(base_index)}
 {about_html}
 {contact_html}
     </main>
   </div>
 
-  <div class="site-footer"><b>©</b> Max Mitenkov.</div>
+  <div class="site-footer">
+    <div class="lang-switch">
+      <a href="#" id="lang-en" title="English"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 30" width="24" height="12"><path fill="#012169" d="M0,0 h60 v30 h-60 z"/><path stroke="#fff" stroke-width="6" d="M0,0 L60,30 M60,0 L0,30"/><path stroke="#C8102E" stroke-width="4" d="M0,0 L60,30 M60,0 L0,30"/><path stroke="#fff" stroke-width="10" d="M30,0 v30 M0,15 h60"/><path stroke="#C8102E" stroke-width="6" d="M30,0 v30 M0,15 h60"/></svg></a>
+      <a href="#" id="lang-ru" title="Русский"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 30" width="24" height="12"><rect width="60" height="10" fill="#fff"/><rect y="10" width="60" height="10" fill="#0039A6"/><rect y="20" width="60" height="10" fill="#D52B1E"/></svg></a>
+    </div>
+    <script>(function(){{var p=location.pathname.split('\\\\').join('/');var i=p.indexOf('/ru/')!==-1||p.indexOf('/ru')!==-1;var e=document.getElementById('lang-en');var r=document.getElementById('lang-ru');if(i){{e.href=p.replace('/ru/','/');r.href=p;}}else{{r.href=p.replace('/project/','/ru/project/').replace('/index.html','/ru/index.html');e.href=p;}}if(i){{r.classList.add('active');}}else{{e.classList.add('active');}}}})();</script>
+    <span><b>©</b> Max Mitenkov.</span>
+  </div>
 
   <div id="lightbox">
     <button class="lightbox-close">×</button>
@@ -692,7 +775,7 @@ def build_lang(lang='en'):
     <div class="lightbox-counter"></div>
   </div>
 
-  <script src="script.js"></script>
+  <script src="{base_index}script.js"></script>
 </body>
 </html>
 """
@@ -704,35 +787,56 @@ def build_lang(lang='en'):
         print(f"  - {key}: {len(info['images'])} images (subfolders: {subs})")
     print(f"Select preview: {len(select_items)} images.")
 
-    # Generate project pages
-    if projects:
-        proj_dir = out_dir / "project"
-        proj_dir.mkdir(exist_ok=True)
-        for sub_key, proj in projects.items():
-            proj_images = [img for img in all_items if img.get("subcategory") == sub_key]
-            if not proj_images:
-                continue
-            proj_base = "../../" if base_index else "../"
-            page_html = build_project_page(sub_key, proj, proj_images, base=proj_base)
-            (proj_dir / f"{sub_key}.html").write_text(page_html, encoding="utf-8")
-        print(f"Generated {len(projects)} {lang}/project pages.")
+    # Generate project pages for subfolders and standalone categories
+    proj_dir = out_dir / "project"
+    proj_dir.mkdir(exist_ok=True)
+    generated_projects = 0
+    # Subfolder projects
+    for sub_key, proj in projects.items():
+        proj_images = [img for img in all_items if img.get("subcategory") == sub_key]
+        if not proj_images:
+            continue
+        proj_base = "../../" if base_index else "../"
+        page_html = build_project_page(sub_key, proj, proj_images, base=proj_base)
+        (proj_dir / f"{sub_key}.html").write_text(page_html, encoding="utf-8")
+        generated_projects += 1
+    # Standalone categories (no subfolders)
+    for cat_key, info in categories.items():
+        if info["subfolders"]:
+            continue
+        proj_images = info["images"]
+        if not proj_images:
+            continue
+        proj = projects.get(cat_key, {
+            "title": info["label"],
+            "year": "",
+            "client": "",
+            "description": "",
+        })
+        proj_base = "../../" if base_index else "../"
+        page_html = build_project_page(cat_key, proj, proj_images, base=proj_base)
+        (proj_dir / f"{cat_key}.html").write_text(page_html, encoding="utf-8")
+        generated_projects += 1
+    print(f"Generated {generated_projects} {lang}/project pages.")
 
     # Generate sitemap.xml
     today = datetime.date.today().isoformat()
+    urls = [
+        ("https://vimark.art/", "1.0"),
+        (f"https://vimark.art/{base_index}index.html", "1.0"),
+    ]
+    for sub_key in projects.keys():
+        urls.append((f"https://vimark.art/project/{sub_key}.html", "0.8"))
+    for cat_key, info in categories.items():
+        if not info["subfolders"]:
+            urls.append((f"https://vimark.art/project/{cat_key}.html", "0.8"))
+    url_entries = "\n".join(
+        f"  <url>\n    <loc>{loc}</loc>\n    <lastmod>{today}</lastmod>\n    <changefreq>weekly</changefreq>\n    <priority>{priority}</priority>\n  </url>"
+        for loc, priority in urls
+    )
     sitemap_content = f"""<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://vimark.art/</loc>
-    <lastmod>{today}</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
-  </url>
-  <url>
-    <loc>https://vimark.art/index.html</loc>
-    <lastmod>{today}</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
-  </url>
+{url_entries}
 </urlset>"""
     (out_dir / "sitemap.xml").write_text(sitemap_content, encoding="utf-8")
     print(f"Generated {lang}/sitemap.xml")
