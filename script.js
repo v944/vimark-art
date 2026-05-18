@@ -14,6 +14,11 @@
   let currentItems = [];
   let currentIndex = 0;
 
+  // Accessibility labels
+  if (lbClose) lbClose.setAttribute('aria-label', 'Close');
+  if (lbPrev) lbPrev.setAttribute('aria-label', 'Previous image');
+  if (lbNext) lbNext.setAttribute('aria-label', 'Next image');
+
   function getVisibleItems() {
     return Array.from(document.querySelectorAll('.gallery-item:not(.hidden)'));
   }
@@ -37,7 +42,7 @@
     if (!item) return;
     const img = item.querySelector('img');
     lbImg.src = img.dataset.full || img.src;
-    lbCaption.textContent = '';
+    lbCaption.textContent = img.alt || '';
     lbCounter.textContent = (currentIndex + 1) + ' / ' + currentItems.length;
   }
 
@@ -141,25 +146,31 @@
     }
   }
 
+  function setHash(hash) {
+    if (location.hash !== hash) {
+      location.hash = hash;
+    }
+  }
+
   navLinks.forEach(link => {
     link.addEventListener('click', (e) => {
       e.preventDefault();
       const view = link.dataset.view;
 
       if (view === 'about') {
-        // Update active state
         navLinks.forEach(l => l.classList.remove('active'));
         link.classList.add('active');
         showAbout();
+        setHash('#about');
         sidebar.classList.remove('open');
         return;
       }
 
       if (view === 'contact') {
-        // Update active state
         navLinks.forEach(l => l.classList.remove('active'));
         link.classList.add('active');
         showContact();
+        setHash('#contact');
         sidebar.classList.remove('open');
         return;
       }
@@ -168,18 +179,19 @@
       const subcategory = link.dataset.subcategory || '';
       const parentFolder = link.closest('.folder');
 
-      // Update active state
       navLinks.forEach(l => l.classList.remove('active'));
       link.classList.add('active');
 
       if (subcategory) {
-        // Subcategory clicked: keep parent open and active too
         const parentLink = document.querySelector(`.main-nav a[data-category="${category}"]:not([data-subcategory])`);
         if (parentLink) parentLink.classList.add('active');
         if (parentFolder) openFolder(parentFolder);
+        setHash('#' + category + '/' + subcategory);
       } else if (parentFolder) {
-        // Parent folder link clicked: toggle folder, don't close others unless opening this one
         toggleFolder(parentFolder);
+        setHash('#' + category);
+      } else {
+        setHash('#' + category);
       }
 
       applyFilter(category, subcategory);
@@ -194,8 +206,51 @@
     });
   }
 
-  // Default: show all
-  applyFilter('all', '');
+  // Hash-based routing
+  function handleHash() {
+    const hash = location.hash.slice(1);
 
+    if (hash === 'about') {
+      navLinks.forEach(l => l.classList.remove('active'));
+      const aboutLink = document.querySelector('.main-nav a[data-view="about"]');
+      if (aboutLink) aboutLink.classList.add('active');
+      showAbout();
+      return;
+    }
+
+    if (hash === 'contact') {
+      navLinks.forEach(l => l.classList.remove('active'));
+      const contactLink = document.querySelector('.main-nav a[data-view="contact"]');
+      if (contactLink) contactLink.classList.add('active');
+      showContact();
+      return;
+    }
+
+    const parts = hash.split('/');
+    const category = parts[0] || 'all';
+    const subcategory = parts[1] || '';
+
+    navLinks.forEach(l => l.classList.remove('active'));
+    let targetLink;
+    if (subcategory) {
+      targetLink = document.querySelector(`.main-nav a[data-category="${category}"][data-subcategory="${subcategory}"]`);
+    } else if (category !== 'all') {
+      targetLink = document.querySelector(`.main-nav a[data-category="${category}"]:not([data-subcategory])`);
+    }
+    if (targetLink) {
+      targetLink.classList.add('active');
+      const parentFolder = targetLink.closest('.folder');
+      if (parentFolder) openFolder(parentFolder);
+      if (subcategory) {
+        const parentLink = document.querySelector(`.main-nav a[data-category="${category}"]:not([data-subcategory])`);
+        if (parentLink) parentLink.classList.add('active');
+      }
+    }
+
+    applyFilter(category, subcategory);
+  }
+
+  window.addEventListener('hashchange', handleHash);
+  handleHash();
 
 })();
