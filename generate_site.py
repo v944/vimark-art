@@ -6,10 +6,12 @@ Sub-folders become sub-menu items.
 import os
 import html
 import re
+import datetime
 from pathlib import Path
 
 ROOT = Path("d:/Concept_work/Vimark_art")
 WEBSITE = ROOT
+
 
 def collect_images_from_path(rel_path):
     """Collect image files from a relative path recursively, sorted."""
@@ -25,6 +27,7 @@ def collect_images_from_path(rel_path):
             files.append({"src": rel, "name": name, "path": p})
     return files
 
+
 def slugify(name):
     # Normalize various apostrophes and quotes
     s = name.lower()
@@ -35,11 +38,13 @@ def slugify(name):
     s = re.sub(r'\-+', '-', s).strip('-')
     return s
 
+
 def human_label(name):
     s = re.sub(r'([a-z0-9])([A-Z])', r'\1 \2', name)
     s = re.sub(r'([A-Z]+)([A-Z][a-z])', r'\1 \2', s)
     s = re.sub(r'\s+', ' ', s).strip()
     return s.title()
+
 
 def build():
     categories = {}
@@ -137,14 +142,199 @@ def build():
       <a href="https://www.deviantart.com/vimark" aria-label="DeviantArt"><img src="deviantart.png" alt="DeviantArt" class="social-icon"></a>
     </div>'''
 
+    about_html = '''      <section id="about" class="hidden">
+        <div class="about-container">
+          <div class="about-photo">
+            <img src="Mitenkov600.jpg" alt="Max Mitenkov">
+          </div>
+          <div class="about-content">
+            <h1>About</h1>
+            <p class="about-intro">I'm Max Mitenkov, an illustrator and concept designer with over 12 years of professional experience. I've worked on projects for studios in Belarus, the USA, and the UAE — from NFT character design to photorealistic environments in Unreal Engine 5.</p>
+
+            <div class="about-section">
+              <h2>Skills</h2>
+              <p>Photoshop, ZBrush, Houdini, Substance Painter, Substance Designer, Unreal Engine 4/5.</p>
+            </div>
+
+            <div class="about-section">
+              <h2>Work Experience</h2>
+              <div class="job">
+                <h3>Senior Concept Artist — Apex Digital VC, Dubai, UAE <span class="job-date">(2022 – Present)</span></h3>
+                <ul>
+                  <li>Created concept art and illustrations for the project "Search for Animera"</li>
+                  <li>Developed environmental concept art for "Search for Animera"</li>
+                  <li>Designed NFT characters</li>
+                </ul>
+              </div>
+              <div class="job">
+                <h3>3D Artist — ICVR, Los Angeles, California <span class="job-date">(2021 – 2022)</span></h3>
+                <ul>
+                  <li>Collaborated with the director to create photorealistic scenes in Unreal Engine 5</li>
+                  <li>Created locations and shaders in UE5 based on concept art</li>
+                  <li>Textured assets using Substance Painter</li>
+                  <li>Optimized scenes in Unreal Engine 5</li>
+                </ul>
+              </div>
+              <div class="job">
+                <h3>3D Artist — Lunas pro, Minsk, Belarus <span class="job-date">(2016 – 2021)</span></h3>
+                <ul>
+                  <li>Created locations in Unreal Engine 4</li>
+                  <li>Prepared high-quality materials in Substance Designer</li>
+                  <li>Textured assets using Substance Painter</li>
+                  <li>Prepared shaders</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="about-section">
+              <h2>Education</h2>
+              <p>Belarusian State University of Informatics and Radioelectronics (BSUIR)<br>
+              Faculty of Computer-Aided Design <span class="job-date">(1993–1998)</span></p>
+            </div>
+
+            <div class="about-section">
+              <h2>Professional Development</h2>
+              <ul class="courses">
+                <li><span class="course-year">2024</span> — ZBrush for Concept and Iteration — CGMA</li>
+                <li><span class="course-year">2022</span> — Fundamentals of Houdini for 3D Artists — CGMA</li>
+                <li><span class="course-year">2021</span> — Advanced Substance for Environment Art — CGMA</li>
+                <li><span class="course-year">2020</span> — Creating PBR Materials — Epic Games</li>
+                <li><span class="course-year">2020</span> — Organic World Building in UE4 — CGMA</li>
+                <li><span class="course-year">2019</span> — VFXlab — Unreal Engine</li>
+              </ul>
+            </div>
+
+            <div class="about-section">
+              <h2>Portfolio</h2>
+              <div class="portfolio-buttons">
+                <a href="https://vimark.art" target="_blank" rel="noopener">vimark.art</a>
+                <a href="https://artstation.com/vimark" target="_blank" rel="noopener">ArtStation</a>
+                <a href="https://behance.net/vimark" target="_blank" rel="noopener">Behance</a>
+                <a href="https://linkedin.com/in/maxim-mitenkov-06192940" target="_blank" rel="noopener">LinkedIn</a>
+              </div>
+            </div>
+
+            <div class="about-section">
+              <h2>Contact</h2>
+              <p>Email: <a href="mailto:hello@vimark.art">hello@vimark.art</a></p>
+              <p>Phone / WhatsApp: <a href="tel:+375296534382">(+375) 29 653-43-82</a></p>
+              <p>Telegram: <a href="https://t.me/MaxMitenkov" target="_blank" rel="noopener">@MaxMitenkov</a></p>
+              <p class="about-closing">I'm open to remote work, one-time commissions, and long-term collaboration. Feel free to reach out — let's create visual content for your book, game, animation, or advertising campaign.</p>
+            </div>
+          </div>
+        </div>
+      </section>'''
+
+    contact_html = '''      <section id="contact" class="hidden">
+        <div class="contact-container">
+          <h1>Contact</h1>
+          <form action="https://api.web3forms.com/submit" method="POST" class="contact-form">
+            <input type="hidden" name="access_key" value="211a1ef5-25ea-4d59-9b9c-33b5f9126f21">
+            <input type="hidden" name="redirect" value="https://vimark.art/thanks.html">
+            <input type="hidden" name="subject" value="New message from vimark.art">
+            <div class="form-group">
+              <label for="email">Email <span class="required">(required)</span></label>
+              <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="first-name">First Name <span class="required">(required)</span></label>
+                <input type="text" id="first-name" name="first-name" required>
+              </div>
+              <div class="form-group">
+                <label for="last-name">Last Name <span class="required">(required)</span></label>
+                <input type="text" id="last-name" name="last-name" required>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" rows="6" required></textarea>
+            </div>
+            <button type="submit" class="submit-btn">Submit</button>
+          </form>
+        </div>
+      </section>'''
+
     html_content = f"""<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Max Mitenkov · Illustrator · Concept Artist</title>
+<meta name="description" content="Portfolio of Max Mitenkov, illustrator and concept artist with 12+ years of experience in games, books, and NFT projects.">
+<link rel="canonical" href="https://vimark.art/">
 <link rel="stylesheet" href="style.css">
 <link rel="icon" type="image/png" href="vimark_logo.png">
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://vimark.art/">
+<meta property="og:title" content="Max Mitenkov · Illustrator · Concept Artist">
+<meta property="og:description" content="Portfolio of Max Mitenkov, illustrator and concept artist with 12+ years of experience in games, books, and NFT projects.">
+<meta property="og:image" content="https://vimark.art/Mitenkov600.jpg">
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url" content="https://vimark.art/">
+<meta property="twitter:title" content="Max Mitenkov · Illustrator · Concept Artist">
+<meta property="twitter:description" content="Portfolio of Max Mitenkov, illustrator and concept artist with 12+ years of experience in games, books, and NFT projects.">
+<meta property="twitter:image" content="https://vimark.art/Mitenkov600.jpg">
+
+<!-- Schema.org -->
+<script type="application/ld+json">
+{{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Max Mitenkov",
+  "jobTitle": "Illustrator and Concept Artist",
+  "url": "https://vimark.art/",
+  "image": "https://vimark.art/Mitenkov600.jpg",
+  "sameAs": [
+    "https://www.behance.net/vimark",
+    "https://www.linkedin.com/in/maxim-mitenkov-06192940/",
+    "https://www.instagram.com/vimark_art/",
+    "https://www.deviantart.com/vimark",
+    "https://www.facebook.com/maks.vimark/"
+  ],
+  "description": "Illustrator and concept designer with over 12 years of professional experience. Worked on projects for studios in Belarus, the USA, and the UAE."
+}}
+</script>
+
+<!-- Google Analytics 4 (gtag.js) — ЗАМЕНИТЕ G-XXXXXXXXXX на ваш реальный ID -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){{dataLayer.push(arguments);}}
+  gtag('js', new Date());
+  gtag('config', 'G-XXXXXXXXXX');
+</script>
+
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+    (function(m,e,t,r,i,k,a){{
+        m[i]=m[i]||function(){{
+            (m[i].a=m[i].a||[]).push(arguments)
+        }};
+        m[i].l=1*new Date();
+        for (var j = 0; j < document.scripts.length; j++) {{
+            if (document.scripts[j].src === r) {{ return; }}
+        }}
+        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+    }})(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=109279162', 'ym');
+
+    ym(109279162, 'init', {{
+        ssr:true,
+        webvisor:true,
+        clickmap:true,
+        ecommerce:"dataLayer",
+        referrer: document.referrer,
+        url: location.href,
+        accurateTrackBounce:true,
+        trackLinks:true
+    }});
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/109279162" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
 </head>
 <body>
   <div id="canvasWrapper">
@@ -159,6 +349,8 @@ def build():
 
     <main id="main">
       {gallery_html(all_items)}
+{about_html}
+{contact_html}
     </main>
   </div>
 
@@ -184,6 +376,27 @@ def build():
         subs = ", ".join(info["subfolders"].keys()) if info["subfolders"] else "none"
         print(f"  - {key}: {len(info['images'])} images (subfolders: {subs})")
     print(f"Select preview: {len(select_items)} images.")
+
+    # Generate sitemap.xml
+    today = datetime.date.today().isoformat()
+    sitemap_content = f"""<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://vimark.art/</loc>
+    <lastmod>{today}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://vimark.art/index.html</loc>
+    <lastmod>{today}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+</urlset>"""
+    (WEBSITE / "sitemap.xml").write_text(sitemap_content, encoding="utf-8")
+    print("Generated sitemap.xml")
+
 
 if __name__ == "__main__":
     build()
