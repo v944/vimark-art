@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://vimark.art/sitemap.xml
