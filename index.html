@@ -566,9 +566,10 @@
       <section id="contact" class="hidden">
         <div class="contact-container">
           <h1>Contact</h1>
-          <form action="https://formsubmit.co/hello@vimark.art" method="POST" class="contact-form">
-            <input type="hidden" name="_subject" value="New message from vimark.art">
-            <input type="hidden" name="_next" value="https://vimark.art/thanks.html">
+          <form action="https://api.web3forms.com/submit" method="POST" class="contact-form">
+            <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY">
+            <input type="hidden" name="redirect" value="https://vimark.art/thanks.html">
+            <input type="hidden" name="subject" value="New message from vimark.art">
             <div class="form-group">
               <label for="email">Email <span class="required">(required)</span></label>
               <input type="email" id="email" name="email" required>

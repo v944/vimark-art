@@ -590,6 +590,37 @@ img {
   }
 }
 
+.thanks-container {
+  max-width: 600px;
+  padding-top: 40px;
+}
+
+.thanks-container h1 {
+  font-size: 1.6rem;
+  font-weight: 400;
+  color: #eee;
+  margin-bottom: 16px;
+}
+
+.thanks-container p {
+  font-size: 0.95rem;
+  color: #999;
+  margin-bottom: 32px;
+  line-height: 1.7;
+}
+
+.back-link {
+  font-size: 0.85rem;
+  color: #aaa;
+  text-decoration: none;
+  letter-spacing: 0.04em;
+  transition: color 0.2s ease;
+}
+
+.back-link:hover {
+  color: #eee;
+}
+
 /* Hide/show categories */
 .gallery-grid.hidden {
   display: none;
