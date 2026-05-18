@@ -23,7 +23,7 @@ def collect_images_from_path(rel_path):
     for p in sorted(path.rglob("*")):
         if p.is_file() and p.suffix.lower() in exts:
             rel = os.path.relpath(p, WEBSITE).replace("\\", "/")
-            name = p.stem.replace("__", "").replace("_", " ").strip()
+            name = clean_name(p.stem)
             files.append({"src": rel, "name": name, "path": p})
     return files
 
@@ -44,6 +44,29 @@ def human_label(name):
     s = re.sub(r'([A-Z]+)([A-Z][a-z])', r'\1 \2', s)
     s = re.sub(r'\s+', ' ', s).strip()
     return s.title()
+
+
+def clean_name(stem):
+    """Clean image filename into a human-readable caption."""
+    s = stem
+    # Remove duplicate extension if still present in stem
+    s = re.sub(r'\.(jpg|jpeg|png|webp|gif)$', '', s, flags=re.IGNORECASE)
+    # Remove leading numeric batch prefixes: __0001_, _0001_, etc.
+    s = re.sub(r'^__?\d+[_\-]', '', s)
+    # Remove view/size suffixes first (e.g. -fullview, -pre)
+    s = re.sub(r'-(fullview|pre|414w-2x)$', '', s, flags=re.IGNORECASE)
+    # Remove author suffixes like _by_vimark_d85g8w5
+    s = re.sub(r'_by_[a-z0-9_]+$', '', s)
+    # Replace separators with spaces
+    s = s.replace('_', ' ').replace('-', ' ')
+    # Remove zero-padded numeric tokens (0001, 0002...)
+    s = re.sub(r'\b0+\d+\b', '', s)
+    # Collapse extra spaces
+    s = re.sub(r'\s+', ' ', s).strip()
+    # Capitalize first letter
+    if s:
+        s = s[0].upper() + s[1:]
+    return s
 
 
 def build():
@@ -258,6 +281,9 @@ def build():
     html_content = f"""<!DOCTYPE html>
 <html lang="en">
 <head>
+<link rel="preconnect" href="https://www.googletagmanager.com">
+<link rel="preconnect" href="https://mc.yandex.ru">
+<link rel="dns-prefetch" href="https://www.google-analytics.com">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Max Mitenkov · Illustrator · Concept Artist</title>
