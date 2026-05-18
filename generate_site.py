@@ -435,13 +435,15 @@ def build_lang(lang='en'):
             nav_lines.append(f'      <a href="#" data-category="{key}">{html.escape(info["label"])}</a>')
             nav_lines.append('      <ul>')
             for sub_key, sub_info in info["subfolders"].items():
-                project_link = f'<a href="/project/{sub_key}.html" class="project-link" title="{t.get("project_page", "Project page")}">→</a>' if sub_key in projects else ''
+                project_link = f'<a href="/project/{sub_key}.html" class="project-link" title="{t.get("project_page", "Project page")}">▶▶</a>' if sub_key in projects else ''
                 nav_lines.append(f'        <li><a href="#" data-category="{key}" data-subcategory="{sub_key}">{html.escape(sub_info["label"])}</a> {project_link}</li>')
             nav_lines.append('      </ul>')
             nav_lines.append('    </li>')
         else:
             nav_lines.append(f'    <li><a href="#" data-category="{key}">{html.escape(info["label"])}</a></li>')
     nav_lines.extend([
+        f'    <li><a href="#" data-view="about">{t.get("about", "About")}</a></li>',
+        f'    <li><a href="#" data-view="contact">{t.get("contact", "Contact")}</a></li>',
         '  </ul>',
         '</nav>',
     ])
@@ -664,7 +666,7 @@ def build_lang(lang='en'):
         <span>/</span>
         <a href="#" id="lang-ru">RU</a>
       </div>
-      <script>(function(){{ var p=location.pathname; var e=document.getElementById('lang-en'); var r=document.getElementById('lang-ru'); e.href=p.replace(/^/ru/, '')||'/'; r.href='/ru'+(p.replace(/^/ru/, '')||'/'); if(p.startsWith('/ru')){{r.classList.add('active');}}else{{e.classList.add('active');}} }})();</script>
+      <script>(function(){{var p=location.pathname.split('\\\\').join('/');var i=p.indexOf('/ru/')!==-1||p.indexOf('/ru')!==-1;var e=document.getElementById('lang-en');var r=document.getElementById('lang-ru');if(i){{e.href=p.replace('/ru/','/');r.href=p;}}else{{r.href=p.replace('/project/','/ru/project/').replace('/index.html','/ru/index.html');e.href=p;}}if(i){{r.classList.add('active');}}else{{e.classList.add('active');}}}})();</script>
       <img src="vimark_logo.png" alt="Logo" style="width: 60px; margin-top: auto; margin-bottom: 100px; opacity: 0.9; align-self: center;">
     </aside>
 

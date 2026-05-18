@@ -92,27 +92,29 @@
           <li class="folder">
             <a href="#" data-category="book-illustrations">Book Illustrations</a>
             <ul>
-              <li><a href="#" data-category="book-illustrations" data-subcategory="endymion">Endymion</a> <a href="/project/endymion.html" class="project-link" title="Project page">→</a></li>
-              <li><a href="#" data-category="book-illustrations" data-subcategory="insmoot">Insmoot</a> <a href="/project/insmoot.html" class="project-link" title="Project page">→</a></li>
-              <li><a href="#" data-category="book-illustrations" data-subcategory="nameless-city">Nameless City</a> <a href="/project/nameless-city.html" class="project-link" title="Project page">→</a></li>
-              <li><a href="#" data-category="book-illustrations" data-subcategory="vegetation">Vegetation</a> <a href="/project/vegetation.html" class="project-link" title="Project page">→</a></li>
-              <li><a href="#" data-category="book-illustrations" data-subcategory="winters-twins">Winter’S Twins</a> <a href="/project/winters-twins.html" class="project-link" title="Project page">→</a></li>
+              <li><a href="#" data-category="book-illustrations" data-subcategory="endymion">Endymion</a> <a href="/project/endymion.html" class="project-link" title="Project page">▶▶</a></li>
+              <li><a href="#" data-category="book-illustrations" data-subcategory="insmoot">Insmoot</a> <a href="/project/insmoot.html" class="project-link" title="Project page">▶▶</a></li>
+              <li><a href="#" data-category="book-illustrations" data-subcategory="nameless-city">Nameless City</a> <a href="/project/nameless-city.html" class="project-link" title="Project page">▶▶</a></li>
+              <li><a href="#" data-category="book-illustrations" data-subcategory="vegetation">Vegetation</a> <a href="/project/vegetation.html" class="project-link" title="Project page">▶▶</a></li>
+              <li><a href="#" data-category="book-illustrations" data-subcategory="winters-twins">Winter’S Twins</a> <a href="/project/winters-twins.html" class="project-link" title="Project page">▶▶</a></li>
             </ul>
           </li>
           <li><a href="#" data-category="bookcover">Book Cover</a></li>
           <li class="folder">
             <a href="#" data-category="comic">Comic</a>
             <ul>
-              <li><a href="#" data-category="comic" data-subcategory="biological-deviations">Biological Deviations</a> <a href="/project/biological-deviations.html" class="project-link" title="Project page">→</a></li>
-              <li><a href="#" data-category="comic" data-subcategory="faceless">Faceless</a> <a href="/project/faceless.html" class="project-link" title="Project page">→</a></li>
-              <li><a href="#" data-category="comic" data-subcategory="geologyst">Geologyst</a> <a href="/project/geologyst.html" class="project-link" title="Project page">→</a></li>
-              <li><a href="#" data-category="comic" data-subcategory="nemirum">Nemirum</a> <a href="/project/nemirum.html" class="project-link" title="Project page">→</a></li>
-              <li><a href="#" data-category="comic" data-subcategory="the-symbol-of-faith">The Symbol Of Faith</a> <a href="/project/the-symbol-of-faith.html" class="project-link" title="Project page">→</a></li>
-              <li><a href="#" data-category="comic" data-subcategory="wanderer">Wanderer</a> <a href="/project/wanderer.html" class="project-link" title="Project page">→</a></li>
-              <li><a href="#" data-category="comic" data-subcategory="winter">Winter</a> <a href="/project/winter.html" class="project-link" title="Project page">→</a></li>
+              <li><a href="#" data-category="comic" data-subcategory="biological-deviations">Biological Deviations</a> <a href="/project/biological-deviations.html" class="project-link" title="Project page">▶▶</a></li>
+              <li><a href="#" data-category="comic" data-subcategory="faceless">Faceless</a> <a href="/project/faceless.html" class="project-link" title="Project page">▶▶</a></li>
+              <li><a href="#" data-category="comic" data-subcategory="geologyst">Geologyst</a> <a href="/project/geologyst.html" class="project-link" title="Project page">▶▶</a></li>
+              <li><a href="#" data-category="comic" data-subcategory="nemirum">Nemirum</a> <a href="/project/nemirum.html" class="project-link" title="Project page">▶▶</a></li>
+              <li><a href="#" data-category="comic" data-subcategory="the-symbol-of-faith">The Symbol Of Faith</a> <a href="/project/the-symbol-of-faith.html" class="project-link" title="Project page">▶▶</a></li>
+              <li><a href="#" data-category="comic" data-subcategory="wanderer">Wanderer</a> <a href="/project/wanderer.html" class="project-link" title="Project page">▶▶</a></li>
+              <li><a href="#" data-category="comic" data-subcategory="winter">Winter</a> <a href="/project/winter.html" class="project-link" title="Project page">▶▶</a></li>
             </ul>
           </li>
           <li><a href="#" data-category="single">Single</a></li>
+          <li><a href="#" data-view="about">About</a></li>
+          <li><a href="#" data-view="contact">Contact</a></li>
         </ul>
       </nav>
       <div class="social-links">
@@ -128,7 +130,7 @@
         <span>/</span>
         <a href="#" id="lang-ru">RU</a>
       </div>
-      <script>(function(){ var p=location.pathname; var e=document.getElementById('lang-en'); var r=document.getElementById('lang-ru'); e.href=p.replace(/^/ru/, '')||'/'; r.href='/ru'+(p.replace(/^/ru/, '')||'/'); if(p.startsWith('/ru')){r.classList.add('active');}else{e.classList.add('active');} })();</script>
+      <script>(function(){var p=location.pathname.split('\\').join('/');var i=p.indexOf('/ru/')!==-1||p.indexOf('/ru')!==-1;var e=document.getElementById('lang-en');var r=document.getElementById('lang-ru');if(i){e.href=p.replace('/ru/','/');r.href=p;}else{r.href=p.replace('/project/','/ru/project/').replace('/index.html','/ru/index.html');e.href=p;}if(i){r.classList.add('active');}else{e.classList.add('active');}})();</script>
       <img src="/vimark_logo.png" alt="Logo" style="width: 60px; margin-top: auto; margin-bottom: 100px; opacity: 0.9; align-self: center;">
     </aside>
 
