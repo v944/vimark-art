@@ -300,13 +300,14 @@ def build():
 }}
 </script>
 
-<!-- Google Analytics 4 (gtag.js) — ЗАМЕНИТЕ G-XXXXXXXXXX на ваш реальный ID -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-6RBP7X7H88"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){{dataLayer.push(arguments);}}
   gtag('js', new Date());
-  gtag('config', 'G-XXXXXXXXXX');
+
+  gtag('config', 'G-6RBP7X7H88');
 </script>
 
 <!-- Yandex.Metrika counter -->
