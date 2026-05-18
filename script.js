@@ -79,15 +79,24 @@
   const navLinks = document.querySelectorAll('.main-nav a[data-category], .main-nav a[data-view]');
   const galleryGrid = document.querySelector('.gallery-grid');
   const aboutSection = document.getElementById('about');
+  const contactSection = document.getElementById('contact');
 
   function showAbout() {
     if (galleryGrid) galleryGrid.classList.add('hidden');
     if (aboutSection) aboutSection.classList.remove('hidden');
+    if (contactSection) contactSection.classList.add('hidden');
+  }
+
+  function showContact() {
+    if (galleryGrid) galleryGrid.classList.add('hidden');
+    if (aboutSection) aboutSection.classList.add('hidden');
+    if (contactSection) contactSection.classList.remove('hidden');
   }
 
   function showGallery() {
     if (galleryGrid) galleryGrid.classList.remove('hidden');
     if (aboutSection) aboutSection.classList.add('hidden');
+    if (contactSection) contactSection.classList.add('hidden');
   }
 
   function applyFilter(category, subcategory) {
@@ -142,6 +151,15 @@
         navLinks.forEach(l => l.classList.remove('active'));
         link.classList.add('active');
         showAbout();
+        sidebar.classList.remove('open');
+        return;
+      }
+
+      if (view === 'contact') {
+        // Update active state
+        navLinks.forEach(l => l.classList.remove('active'));
+        link.classList.add('active');
+        showContact();
         sidebar.classList.remove('open');
         return;
       }
