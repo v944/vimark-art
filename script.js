@@ -10,6 +10,7 @@
   const lbNext = document.querySelector('.lightbox-next');
   const mobileToggle = document.querySelector('.mobile-toggle');
   const sidebar = document.getElementById('sidebar');
+  const main = document.getElementById('main');
 
   let currentItems = [];
   let currentIndex = 0;
@@ -19,12 +20,12 @@
   if (lbPrev) lbPrev.setAttribute('aria-label', 'Previous image');
   if (lbNext) lbNext.setAttribute('aria-label', 'Next image');
 
-  function getVisibleItems() {
-    return Array.from(document.querySelectorAll('.gallery-item:not(.hidden)'));
+  function getGalleryItems() {
+    return Array.from(document.querySelectorAll('.gallery-item'));
   }
 
   function openLightbox(index) {
-    currentItems = getVisibleItems();
+    currentItems = getGalleryItems();
     if (!currentItems.length) return;
     currentIndex = index;
     updateLightbox();
@@ -59,145 +60,117 @@
   // Event listeners for gallery items
   document.querySelectorAll('.gallery-item').forEach((item) => {
     item.addEventListener('click', () => {
-      const visible = getVisibleItems();
-      const realIndex = visible.indexOf(item);
+      const items = getGalleryItems();
+      const realIndex = items.indexOf(item);
       openLightbox(realIndex >= 0 ? realIndex : 0);
     });
   });
 
-  lbClose.addEventListener('click', closeLightbox);
-  lbNext.addEventListener('click', nextSlide);
-  lbPrev.addEventListener('click', prevSlide);
+  if (lbClose) lbClose.addEventListener('click', closeLightbox);
+  if (lbNext) lbNext.addEventListener('click', nextSlide);
+  if (lbPrev) lbPrev.addEventListener('click', prevSlide);
 
-  lightbox.addEventListener('click', (e) => {
-    if (e.target === lightbox) closeLightbox();
-  });
+  if (lightbox) {
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox) closeLightbox();
+    });
+  }
 
   document.addEventListener('keydown', (e) => {
-    if (!lightbox.classList.contains('active')) return;
+    if (!lightbox || !lightbox.classList.contains('active')) return;
     if (e.key === 'Escape') closeLightbox();
     if (e.key === 'ArrowRight') nextSlide();
     if (e.key === 'ArrowLeft') prevSlide();
   });
 
-  // Filtering
-  const navLinks = document.querySelectorAll('.main-nav a[data-category], .main-nav a[data-view]');
-  const galleryGrid = document.querySelector('.gallery-grid');
+  // Show / hide sections
+  const heroSection = document.querySelector('.hero');
+  const projectSections = document.querySelectorAll('.projects-section');
   const aboutSection = document.getElementById('about');
   const contactSection = document.getElementById('contact');
+  const navLinks = document.querySelectorAll('.main-nav a');
+
+  function showProjects() {
+    if (heroSection) heroSection.classList.remove('hidden');
+    projectSections.forEach(s => s.classList.remove('hidden'));
+    if (aboutSection) aboutSection.classList.add('hidden');
+    if (contactSection) contactSection.classList.add('hidden');
+  }
 
   function showAbout() {
-    if (galleryGrid) galleryGrid.classList.add('hidden');
+    if (heroSection) heroSection.classList.add('hidden');
+    projectSections.forEach(s => s.classList.add('hidden'));
     if (aboutSection) aboutSection.classList.remove('hidden');
     if (contactSection) contactSection.classList.add('hidden');
   }
 
   function showContact() {
-    if (galleryGrid) galleryGrid.classList.add('hidden');
+    if (heroSection) heroSection.classList.add('hidden');
+    projectSections.forEach(s => s.classList.add('hidden'));
     if (aboutSection) aboutSection.classList.add('hidden');
     if (contactSection) contactSection.classList.remove('hidden');
   }
 
-  function showGallery() {
-    if (galleryGrid) galleryGrid.classList.remove('hidden');
-    if (aboutSection) aboutSection.classList.add('hidden');
-    if (contactSection) contactSection.classList.add('hidden');
-  }
-
-  function applyFilter(category, subcategory) {
-    showGallery();
-    document.querySelectorAll('.gallery-item').forEach(item => {
-      let show = false;
-      if (!category || category === 'all') {
-        show = true;
-      } else if (subcategory) {
-        show = item.dataset.category === category && item.dataset.subcategory === subcategory;
-      } else {
-        show = item.dataset.category === category;
-      }
-
-      if (show) {
-        item.classList.remove('hidden');
-      } else {
-        item.classList.add('hidden');
-      }
-    });
-  }
-
-  function openFolder(folderLi) {
-    // Close other folders (accordion)
-    document.querySelectorAll('.main-nav .folder.open').forEach(other => {
-      if (other !== folderLi) {
-        other.classList.remove('open');
-      }
-    });
-    folderLi.classList.add('open');
-  }
-
-  function closeFolder(folderLi) {
-    folderLi.classList.remove('open');
-  }
-
-  function toggleFolder(folderLi) {
-    if (folderLi.classList.contains('open')) {
-      closeFolder(folderLi);
-    } else {
-      openFolder(folderLi);
-    }
-  }
-
-  function setHash(hash) {
-    if (location.hash !== hash) {
-      location.hash = hash;
-    }
-  }
-
+  // Navigation click handling
   navLinks.forEach(link => {
     link.addEventListener('click', (e) => {
-      e.preventDefault();
-      const view = link.dataset.view;
+      const href = link.getAttribute('href');
+      if (!href || !href.startsWith('#')) return;
+      const targetId = href.slice(1);
 
-      if (view === 'about') {
-        navLinks.forEach(l => l.classList.remove('active'));
-        link.classList.add('active');
+      if (targetId === 'about') {
+        e.preventDefault();
         showAbout();
-        setHash('#about');
-        sidebar.classList.remove('open');
-        return;
-      }
-
-      if (view === 'contact') {
         navLinks.forEach(l => l.classList.remove('active'));
         link.classList.add('active');
-        showContact();
-        setHash('#contact');
         sidebar.classList.remove('open');
         return;
       }
 
-      const category = link.dataset.category;
-      const subcategory = link.dataset.subcategory || '';
-      const parentFolder = link.closest('.folder');
+      if (targetId === 'contact') {
+        e.preventDefault();
+        showContact();
+        navLinks.forEach(l => l.classList.remove('active'));
+        link.classList.add('active');
+        sidebar.classList.remove('open');
+        return;
+      }
 
+      // Category anchor — show projects and smooth scroll
+      e.preventDefault();
+      showProjects();
       navLinks.forEach(l => l.classList.remove('active'));
       link.classList.add('active');
-
-      if (subcategory) {
-        const parentLink = document.querySelector(`.main-nav a[data-category="${category}"]:not([data-subcategory])`);
-        if (parentLink) parentLink.classList.add('active');
-        if (parentFolder) openFolder(parentFolder);
-        setHash('#' + category + '/' + subcategory);
-      } else if (parentFolder) {
-        toggleFolder(parentFolder);
-        setHash('#' + category);
-      } else {
-        setHash('#' + category);
+      const target = document.getElementById(targetId);
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth' });
       }
-
-      applyFilter(category, subcategory);
       sidebar.classList.remove('open');
     });
   });
+
+  // Hash-based routing for about/contact on load
+  function handleHash() {
+    const hash = location.hash.slice(1);
+    if (hash === 'about') {
+      showAbout();
+      navLinks.forEach(l => l.classList.remove('active'));
+      const aboutLink = document.querySelector('.main-nav a[href="#about"]');
+      if (aboutLink) aboutLink.classList.add('active');
+      return;
+    }
+    if (hash === 'contact') {
+      showContact();
+      navLinks.forEach(l => l.classList.remove('active'));
+      const contactLink = document.querySelector('.main-nav a[href="#contact"]');
+      if (contactLink) contactLink.classList.add('active');
+      return;
+    }
+    showProjects();
+  }
+
+  window.addEventListener('hashchange', handleHash);
+  handleHash();
 
   // Mobile toggle
   if (mobileToggle) {
@@ -205,52 +178,4 @@
       sidebar.classList.toggle('open');
     });
   }
-
-  // Hash-based routing
-  function handleHash() {
-    const hash = location.hash.slice(1);
-
-    if (hash === 'about') {
-      navLinks.forEach(l => l.classList.remove('active'));
-      const aboutLink = document.querySelector('.main-nav a[data-view="about"]');
-      if (aboutLink) aboutLink.classList.add('active');
-      showAbout();
-      return;
-    }
-
-    if (hash === 'contact') {
-      navLinks.forEach(l => l.classList.remove('active'));
-      const contactLink = document.querySelector('.main-nav a[data-view="contact"]');
-      if (contactLink) contactLink.classList.add('active');
-      showContact();
-      return;
-    }
-
-    const parts = hash.split('/');
-    const category = parts[0] || 'all';
-    const subcategory = parts[1] || '';
-
-    navLinks.forEach(l => l.classList.remove('active'));
-    let targetLink;
-    if (subcategory) {
-      targetLink = document.querySelector(`.main-nav a[data-category="${category}"][data-subcategory="${subcategory}"]`);
-    } else if (category !== 'all') {
-      targetLink = document.querySelector(`.main-nav a[data-category="${category}"]:not([data-subcategory])`);
-    }
-    if (targetLink) {
-      targetLink.classList.add('active');
-      const parentFolder = targetLink.closest('.folder');
-      if (parentFolder) openFolder(parentFolder);
-      if (subcategory) {
-        const parentLink = document.querySelector(`.main-nav a[data-category="${category}"]:not([data-subcategory])`);
-        if (parentLink) parentLink.classList.add('active');
-      }
-    }
-
-    applyFilter(category, subcategory);
-  }
-
-  window.addEventListener('hashchange', handleHash);
-  handleHash();
-
 })();
