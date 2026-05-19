@@ -371,7 +371,7 @@ def build_lang(lang='en'):
 
     # Custom order for single subfolders: Recent → Growth → Early
     if "single" in categories and categories["single"]["subfolders"]:
-        single_order = {"recent-work": 0, "professional-growth": 1, "early-work": 2}
+        single_order = {"single-recent-work": 0, "single-professional-growth": 1, "single-early-work": 2}
         sorted_single = dict(sorted(
             categories["single"]["subfolders"].items(),
             key=lambda x: single_order.get(x[0], 99)
