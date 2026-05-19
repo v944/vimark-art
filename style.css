@@ -324,6 +324,15 @@ img {
   display: block;
 }
 
+.logo-link {
+  display: flex;
+  margin-top: auto;
+  margin-bottom: 100px;
+  align-self: center;
+  opacity: 0.9;
+  text-decoration: none;
+}
+
 @media (max-width: 800px) {
   #sidebar {
     transform: translateX(-100%);
