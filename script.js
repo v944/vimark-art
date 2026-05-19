@@ -59,6 +59,7 @@
     if (!currentItems.length) return;
     currentIndex = index;
     updateLightbox();
+    preloadAdjacent();
     lightbox.classList.add('active');
     document.body.style.overflow = 'hidden';
   }
@@ -82,6 +83,7 @@
 
     lbCaption.textContent = img.alt || '';
     lbCounter.textContent = (currentIndex + 1) + ' / ' + currentItems.length;
+    preloadAdjacent();
   }
 
   if (lbImg) {
@@ -99,6 +101,39 @@
   function prevSlide() {
     currentIndex = (currentIndex - 1 + currentItems.length) % currentItems.length;
     updateLightbox();
+  }
+
+  // Preload adjacent images
+  function preloadAdjacent() {
+    if (!currentItems.length) return;
+    const indices = [
+      (currentIndex + 1) % currentItems.length,
+      (currentIndex - 1 + currentItems.length) % currentItems.length
+    ];
+    indices.forEach(idx => {
+      const item = currentItems[idx];
+      if (!item) return;
+      const src = item.querySelector('img').dataset.full || item.querySelector('img').src;
+      const img = new Image();
+      img.src = src;
+    });
+  }
+
+  // Swipe support for lightbox
+  let touchStartX = 0;
+  let touchEndX = 0;
+
+  if (lightbox) {
+    lightbox.addEventListener('touchstart', (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+
+    lightbox.addEventListener('touchend', (e) => {
+      touchEndX = e.changedTouches[0].screenX;
+      const delta = touchEndX - touchStartX;
+      if (delta < -50) nextSlide();
+      if (delta > 50) prevSlide();
+    }, { passive: true });
   }
 
   // Event listeners for gallery items

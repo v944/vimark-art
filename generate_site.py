@@ -185,13 +185,14 @@ def extract_sort_index(stem):
 
 
 def ensure_thumbnail(original_path):
-    """Generate a JPEG thumbnail if it doesn't exist or is outdated."""
+    """Generate a WebP thumbnail if it doesn't exist or is outdated."""
     rel = os.path.relpath(original_path, WEBSITE).replace("\\", "/")
-    thumb_rel = os.path.relpath(THUMBS_DIR / rel, WEBSITE).replace("\\", "/")
+    # Use .webp extension for thumbnails regardless of source format
+    thumb_path = (THUMBS_DIR / rel).with_suffix('.webp')
+    thumb_rel = os.path.relpath(thumb_path, WEBSITE).replace("\\", "/")
     if not HAS_PILLOW:
         return thumb_rel, "", ""
 
-    thumb_path = THUMBS_DIR / rel
     thumb_path.parent.mkdir(parents=True, exist_ok=True)
 
     # If thumbnail exists and is newer than original, reuse it
@@ -205,13 +206,13 @@ def ensure_thumbnail(original_path):
 
     try:
         with Image.open(original_path) as im:
-            # Convert palette/RGBA to RGB for JPEG
+            # Convert palette/RGBA to RGB for WebP
             if im.mode in ('RGBA', 'P'):
                 im_rgb = im.convert('RGB')
             else:
                 im_rgb = im
             im_rgb.thumbnail(THUMB_SIZE, Image.LANCZOS)
-            im_rgb.save(thumb_path, "JPEG", quality=THUMB_QUALITY, optimize=True)
+            im_rgb.save(thumb_path, "WEBP", quality=THUMB_QUALITY, method=6)
             w, h = im_rgb.size
         return thumb_rel, str(w), str(h)
     except Exception as e:
