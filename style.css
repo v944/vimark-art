@@ -695,6 +695,7 @@ img {
   width: calc(100% + 90px);
   margin-left: -45px;
   margin-top: -45px;
+  margin-bottom: 64px;
   height: 100vh;
   display: flex;
   justify-content: center;
@@ -984,6 +985,7 @@ img {
     width: calc(100% + 40px);
     margin-left: -20px;
     margin-top: -70px;
+    margin-bottom: 48px;
   }
 
   .hero img {
