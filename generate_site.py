@@ -28,7 +28,7 @@ def get_avg_color(image_path):
             if im.mode == 'RGBA':
                 # Sample down to 50x50 for speed, then average opaque pixels
                 small = im.resize((50, 50), Image.LANCZOS)
-                pixels = list(small.getdata())
+                pixels = list(small.get_flattened_data())
                 opaque = [(r, g, b) for r, g, b, a in pixels if a > 128]
                 if opaque:
                     r = sum(c[0] for c in opaque) // len(opaque)

@@ -15,10 +15,40 @@
   let currentItems = [];
   let currentIndex = 0;
 
+  // Mobile sidebar overlay
+  let overlay = document.querySelector('.sidebar-overlay');
+  if (!overlay) {
+    overlay = document.createElement('div');
+    overlay.className = 'sidebar-overlay';
+    document.body.appendChild(overlay);
+  }
+
+  if (overlay) {
+    overlay.addEventListener('click', () => {
+      if (sidebar) sidebar.classList.remove('open');
+      overlay.classList.remove('active');
+    });
+  }
+
+  if (mobileToggle) {
+    mobileToggle.addEventListener('click', () => {
+      sidebar.classList.toggle('open');
+      if (overlay) overlay.classList.toggle('active', sidebar.classList.contains('open'));
+    });
+  }
+
   // Accessibility labels
   if (lbClose) lbClose.setAttribute('aria-label', 'Close');
   if (lbPrev) lbPrev.setAttribute('aria-label', 'Previous image');
   if (lbNext) lbNext.setAttribute('aria-label', 'Next image');
+
+  // Lightbox loader element
+  let lbLoader = document.querySelector('.lightbox-loader');
+  if (!lbLoader && lightbox) {
+    lbLoader = document.createElement('div');
+    lbLoader.className = 'lightbox-loader';
+    lightbox.insertBefore(lbLoader, lbImg);
+  }
 
   function getGalleryItems() {
     return Array.from(document.querySelectorAll('.gallery-item'));
@@ -42,9 +72,23 @@
     const item = currentItems[currentIndex];
     if (!item) return;
     const img = item.querySelector('img');
-    lbImg.src = img.dataset.full || img.src;
+    const newSrc = img.dataset.full || img.src;
+
+    if (lbImg.src !== newSrc) {
+      lbImg.classList.remove('loaded');
+      if (lbLoader) lbLoader.style.display = 'block';
+      lbImg.src = newSrc;
+    }
+
     lbCaption.textContent = img.alt || '';
     lbCounter.textContent = (currentIndex + 1) + ' / ' + currentItems.length;
+  }
+
+  if (lbImg) {
+    lbImg.addEventListener('load', () => {
+      lbImg.classList.add('loaded');
+      if (lbLoader) lbLoader.style.display = 'none';
+    });
   }
 
   function nextSlide() {
@@ -77,10 +121,16 @@
   }
 
   document.addEventListener('keydown', (e) => {
-    if (!lightbox || !lightbox.classList.contains('active')) return;
-    if (e.key === 'Escape') closeLightbox();
-    if (e.key === 'ArrowRight') nextSlide();
-    if (e.key === 'ArrowLeft') prevSlide();
+    if (lightbox && lightbox.classList.contains('active')) {
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowRight') nextSlide();
+      if (e.key === 'ArrowLeft') prevSlide();
+      return;
+    }
+    if (e.key === 'Escape' && sidebar && sidebar.classList.contains('open')) {
+      sidebar.classList.remove('open');
+      if (overlay) overlay.classList.remove('active');
+    }
   });
 
   // Show / hide sections
@@ -125,7 +175,8 @@
         showAbout();
         navLinks.forEach(l => l.classList.remove('active'));
         link.classList.add('active');
-        sidebar.classList.remove('open');
+        if (sidebar) sidebar.classList.remove('open');
+        if (overlay) overlay.classList.remove('active');
         return;
       }
 
@@ -134,7 +185,8 @@
         showContact();
         navLinks.forEach(l => l.classList.remove('active'));
         link.classList.add('active');
-        sidebar.classList.remove('open');
+        if (sidebar) sidebar.classList.remove('open');
+        if (overlay) overlay.classList.remove('active');
         return;
       }
 
@@ -147,7 +199,8 @@
       if (target) {
         target.scrollIntoView({ behavior: 'smooth' });
       }
-      sidebar.classList.remove('open');
+      if (sidebar) sidebar.classList.remove('open');
+      if (overlay) overlay.classList.remove('active');
     });
   });
 
@@ -174,10 +227,25 @@
   window.addEventListener('hashchange', handleHash);
   handleHash();
 
-  // Mobile toggle
-  if (mobileToggle) {
-    mobileToggle.addEventListener('click', () => {
-      sidebar.classList.toggle('open');
-    });
+  // Scroll spy — highlight active nav based on scroll position
+  function updateActiveNav() {
+    const scrollPos = window.scrollY + 120;
+
+    // Check project sections
+    for (const section of projectSections) {
+      const rect = section.getBoundingClientRect();
+      const top = section.offsetTop;
+      const bottom = top + section.offsetHeight;
+      if (scrollPos >= top && scrollPos < bottom) {
+        const id = section.id;
+        navLinks.forEach(l => {
+          l.classList.toggle('active', l.getAttribute('href') === '#' + id);
+        });
+        return;
+      }
+    }
   }
+
+  window.addEventListener('scroll', updateActiveNav, { passive: true });
+  updateActiveNav();
 })();

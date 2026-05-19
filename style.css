@@ -166,6 +166,36 @@ img {
   display: flex;
 }
 
+.lightbox-loader {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 40px;
+  height: 40px;
+  border: 3px solid rgba(255, 255, 255, 0.15);
+  border-top-color: #eee;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.lightbox-img {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.lightbox-img.loaded {
+  opacity: 1;
+}
+
+@keyframes spin {
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
 .lightbox-img {
   max-width: 90vw;
   max-height: 85vh;
@@ -280,6 +310,18 @@ img {
   text-transform: uppercase;
   letter-spacing: 0.08em;
   cursor: pointer;
+}
+
+.sidebar-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 99;
+}
+
+.sidebar-overlay.active {
+  display: block;
 }
 
 @media (max-width: 800px) {
@@ -606,6 +648,16 @@ img {
   max-width: 100%;
   height: auto;
   display: block;
+}
+
+/* Section transitions */
+@keyframes sectionFadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+#main > section:not(.hidden) {
+  animation: sectionFadeIn 0.3s ease;
 }
 
 /* Projects sections */
