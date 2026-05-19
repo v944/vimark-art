@@ -614,7 +614,7 @@ def build_lang(lang='en'):
       <img src="{base}Max Mitenkov.png" alt="Max Mitenkov" style="width: 100%; margin-bottom: 24px; opacity: 0.9;">
       {project_nav_html}
       {social_html_project}
-      <a href="{base}index.html" class="logo-link"><img src="{base}vimark_logo.png" alt="Logo" style="width: 60px; margin-top: auto; margin-bottom: 100px; opacity: 0.9; align-self: center;"></a>
+      <a href="{base}index.html" class="logo-link"><img src="{base}vimark_logo.png" alt="Logo" style="width: 60px;"></a>
     </aside>
 
     <button class="mobile-toggle">{t.get('menu', 'Menu')}</button>
@@ -848,7 +848,7 @@ def build_lang(lang='en'):
       <img src="{base_index}Max Mitenkov.png" alt="Max Mitenkov" style="width: 100%; margin-bottom: 24px; opacity: 0.9;">
       {"\n      ".join(nav_lines)}
       {social_html.replace('src=\"behance.png\"', f'src=\"{base_index}behance.png\"').replace('src=\"deviantart.png\"', f'src=\"{base_index}deviantart.png\"')}
-      <a href="{base_index}index.html" class="logo-link"><img src="{base_index}vimark_logo.png" alt="Logo" style="width: 60px; margin-top: auto; margin-bottom: 100px; opacity: 0.9; align-self: center;"></a>
+      <a href="{base_index}index.html" class="logo-link"><img src="{base_index}vimark_logo.png" alt="Logo" style="width: 60px;"></a>
     </aside>
 
     <button class="mobile-toggle">Menu</button>
