@@ -702,79 +702,27 @@ def build_lang(lang='en'):
           </div>
           <div class="about-content">
             <h1>{t.get('about', 'About')}</h1>
-            <p class="about-intro">{t.get('about_intro', "I'm Max Mitenkov, an illustrator and concept designer with over 12 years of professional experience. I've worked on projects for studios in Belarus, the USA, and the UAE — from NFT character design to photorealistic environments in Unreal Engine 5.")}</p>
+            <hr class="about-divider">
+            <p class="about-intro">{t.get('about_intro_v2', "I'm Max Mitenkov, an award-winning illustrator and concept artist with 12+ years in the entertainment industry. My work spans book covers, AAA game environments, and NFT character design — created with Photoshop, ZBrush, and Unreal Engine 5. I've collaborated with studios in Dubai (Apex Digital), Los Angeles (ICVR), and Minsk (Lunas Pro). Currently open to freelance and full-time opportunities.")}</p>
+            <p class="about-tools"><strong>{t.get('about_tools_label', 'Tools')}:</strong> {t.get('about_tools', 'Photoshop · ZBrush · Houdini · UE5 · Substance')}</p>
+
+            <hr class="about-divider">
+            <h2>{t.get('about_experience', 'Selected Experience')}</h2>
+            <div class="experience-list">
+              <p>Senior Concept Artist — Apex Digital VC, Dubai <span class="job-date">(2022–Present)</span></p>
+              <p>3D Artist — ICVR, Los Angeles <span class="job-date">(2021–2022)</span></p>
+              <p>3D Artist — Lunas pro, Minsk <span class="job-date">(2016–2021)</span></p>
+            </div>
+
+            <hr class="about-divider">
+            <h2>{t.get('about_contact_title', "Let's work together")}</h2>
+            <div class="about-contact">
+              <p><a href="mailto:hello@vimark.art">hello@vimark.art</a></p>
+              <p>(+375) 29 653-43-82 · <a href="https://t.me/MaxMitenkov" target="_blank" rel="noopener">Telegram: @MaxMitenkov</a></p>
+              <p><a href="{base_index}2025_Resume_eng_concept.pdf" target="_blank" rel="noopener" class="cv-link">{t.get('about_cv', 'Download CV (PDF)')}</a></p>
+            </div>
 
             {about_gallery_html}
-            <div class="about-section">
-              <h2>{t.get('skills', 'Skills')}</h2>
-              <p>Photoshop, ZBrush, Houdini, Substance Painter, Substance Designer, Unreal Engine 4/5.</p>
-            </div>
-
-            <div class="about-section">
-              <h2>{t.get('work_experience', 'Work Experience')}</h2>
-              <div class="job">
-                <h3>Senior Concept Artist — Apex Digital VC, Dubai, UAE <span class="job-date">(2022 – Present)</span></h3>
-                <ul>
-                  <li>Created concept art and illustrations for the project "Search for Animera"</li>
-                  <li>Developed environmental concept art for "Search for Animera"</li>
-                  <li>Designed NFT characters</li>
-                </ul>
-              </div>
-              <div class="job">
-                <h3>3D Artist — ICVR, Los Angeles, California <span class="job-date">(2021 – 2022)</span></h3>
-                <ul>
-                  <li>Collaborated with the director to create photorealistic scenes in Unreal Engine 5</li>
-                  <li>Created locations and shaders in UE5 based on concept art</li>
-                  <li>Textured assets using Substance Painter</li>
-                  <li>Optimized scenes in Unreal Engine 5</li>
-                </ul>
-              </div>
-              <div class="job">
-                <h3>3D Artist — Lunas pro, Minsk, Belarus <span class="job-date">(2016 – 2021)</span></h3>
-                <ul>
-                  <li>Created locations in Unreal Engine 4</li>
-                  <li>Prepared high-quality materials in Substance Designer</li>
-                  <li>Textured assets using Substance Painter</li>
-                  <li>Prepared shaders</li>
-                </ul>
-              </div>
-            </div>
-
-            <div class="about-section">
-              <h2>{t.get('education', 'Education')}</h2>
-              <p>Belarusian State University of Informatics and Radioelectronics (BSUIR)<br>
-              Faculty of Computer-Aided Design <span class="job-date">(1993–1998)</span></p>
-            </div>
-
-            <div class="about-section">
-              <h2>{t.get('professional_development', 'Professional Development')}</h2>
-              <ul class="courses">
-                <li><span class="course-year">2024</span> — ZBrush for Concept and Iteration — CGMA</li>
-                <li><span class="course-year">2022</span> — Fundamentals of Houdini for 3D Artists — CGMA</li>
-                <li><span class="course-year">2021</span> — Advanced Substance for Environment Art — CGMA</li>
-                <li><span class="course-year">2020</span> — Creating PBR Materials — Epic Games</li>
-                <li><span class="course-year">2020</span> — Organic World Building in UE4 — CGMA</li>
-                <li><span class="course-year">2019</span> — VFXlab — Unreal Engine</li>
-              </ul>
-            </div>
-
-            <div class="about-section">
-              <h2>{t.get('portfolio', 'Portfolio')}</h2>
-              <div class="portfolio-buttons">
-                <a href="https://vimark.art" target="_blank" rel="noopener">vimark.art</a>
-                <a href="https://artstation.com/vimark" target="_blank" rel="noopener">ArtStation</a>
-                <a href="https://behance.net/vimark" target="_blank" rel="noopener">Behance</a>
-                <a href="https://linkedin.com/in/maxim-mitenkov-06192940" target="_blank" rel="noopener">LinkedIn</a>
-              </div>
-            </div>
-
-            <div class="about-section">
-              <h2>{t.get('contact', 'Contact')}</h2>
-              <p>Email: <a href="mailto:hello@vimark.art">hello@vimark.art</a></p>
-              <p>Phone / WhatsApp: <a href="tel:+375296534382">(+375) 29 653-43-82</a></p>
-              <p>Telegram: <a href="https://t.me/MaxMitenkov" target="_blank" rel="noopener">@MaxMitenkov</a></p>
-              <p class="about-closing">{t.get('about_closing', "I'm open to remote work, one-time commissions, and long-term collaboration. Feel free to reach out — let's create visual content for your book, game, animation, or advertising campaign.")}</p>
-            </div>
           </div>
         </div>
       </section>'''
