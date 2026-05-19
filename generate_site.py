@@ -339,7 +339,7 @@ def build_lang(lang='en'):
         img["year"] = extract_year(caption)
         img["sort_index"] = extract_sort_index(Path(img["path"]).stem)
 
-    YEAR_FIRST_CATEGORIES = {"bookcover", "single"}
+    YEAR_FIRST_CATEGORIES = {"bookcover"}
 
     def sort_key(img):
         cat = img.get("category", "")
@@ -368,6 +368,15 @@ def build_lang(lang='en'):
                 return 0
             sorted_subs = dict(sorted(info["subfolders"].items(), key=_sub_year))
             info["subfolders"] = sorted_subs
+
+    # Custom order for single subfolders: Recent → Growth → Early
+    if "single" in categories and categories["single"]["subfolders"]:
+        single_order = {"recent-work": 0, "professional-growth": 1, "early-work": 2}
+        sorted_single = dict(sorted(
+            categories["single"]["subfolders"].items(),
+            key=lambda x: single_order.get(x[0], 99)
+        ))
+        categories["single"]["subfolders"] = sorted_single
 
     # Collect all subfolders flat map (after sorting)
     all_subfolders = {}
