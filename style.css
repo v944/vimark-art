@@ -692,7 +692,9 @@ img {
 /* Hero section — fullscreen landing */
 .hero {
   position: relative;
-  width: 100%;
+  width: calc(100% + 90px);
+  margin-left: -45px;
+  margin-top: -45px;
   height: 100vh;
   display: flex;
   justify-content: center;
@@ -978,12 +980,18 @@ img {
     width: 60px;
   }
 
+  .hero {
+    width: calc(100% + 40px);
+    margin-left: -20px;
+    margin-top: -70px;
+  }
+
   .hero img {
     max-height: none;
   }
 
   .hero-overlay {
-    padding: 40px 20px;
+    padding: 40px 20px 80px;
   }
 
   .project-hero img {
