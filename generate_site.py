@@ -17,6 +17,36 @@ try:
 except ImportError:
     HAS_PILLOW = False
 
+
+def get_avg_color(image_path):
+    """Compute average color of an image for use as background.
+    Ignores fully transparent pixels in RGBA images."""
+    if not HAS_PILLOW:
+        return ""
+    try:
+        with Image.open(image_path) as im:
+            if im.mode == 'RGBA':
+                # Sample down to 50x50 for speed, then average opaque pixels
+                small = im.resize((50, 50), Image.LANCZOS)
+                pixels = list(small.getdata())
+                opaque = [(r, g, b) for r, g, b, a in pixels if a > 128]
+                if opaque:
+                    r = sum(c[0] for c in opaque) // len(opaque)
+                    g = sum(c[1] for c in opaque) // len(opaque)
+                    b = sum(c[2] for c in opaque) // len(opaque)
+                    return f"#{r:02x}{g:02x}{b:02x}"
+                return ""
+            if im.mode == 'P':
+                im = im.convert('RGB')
+            if im.mode != 'RGB':
+                im = im.convert('RGB')
+            im = im.resize((1, 1), Image.LANCZOS)
+            r, g, b = im.getpixel((0, 0))
+            return f"#{r:02x}{g:02x}{b:02x}"
+    except Exception:
+        return ""
+
+
 ROOT = Path("d:/Concept_work/Vimark_art")
 WEBSITE = ROOT
 CAPTIONS_FILE = WEBSITE / "captions.txt"
@@ -42,18 +72,22 @@ def collect_images_from_path(rel_path):
 
 
 def collect_hero_images():
-    """Collect images from HERO folder for random hero banners."""
+    """Collect images from HERO2 (preferred) or HERO folder for random hero banners."""
     exts = {".jpg", ".jpeg", ".png", ".webp", ".gif"}
-    hero_dir = ROOT / "HERO"
-    if not hero_dir.exists():
-        return []
-    files = []
-    for p in sorted(hero_dir.iterdir()):
-        if p.is_file() and p.suffix.lower() in exts:
-            rel = os.path.relpath(p, WEBSITE).replace("\\", "/")
-            name = clean_name(p.stem)
-            files.append({"src": rel, "name": name, "path": p})
-    return files
+    for folder_name in ("HERO2", "HERO"):
+        hero_dir = ROOT / folder_name
+        if not hero_dir.exists():
+            continue
+        files = []
+        for p in sorted(hero_dir.iterdir()):
+            if p.is_file() and p.suffix.lower() in exts:
+                rel = os.path.relpath(p, WEBSITE).replace("\\", "/")
+                name = clean_name(p.stem)
+                files.append({"src": rel, "name": name, "path": p, "bgcolor": get_avg_color(p)})
+        if files:
+            print(f"Found {len(files)} hero image(s) in {folder_name}.")
+            return files
+    return []
 
 
 def slugify(name):
@@ -130,6 +164,24 @@ def clean_name(stem):
     if s:
         s = s[0].upper() + s[1:]
     return s
+
+
+def extract_year(text):
+    """Extract a 4-digit year from caption or filename text."""
+    if not text:
+        return 0
+    match = re.search(r'\b(19|20)\d{2}\b', text)
+    if match:
+        return int(match.group(0))
+    return 0
+
+
+def extract_sort_index(stem):
+    """Extract leading numeric index from filename stem (e.g. __0001_ -> 1)."""
+    match = re.search(r'^__?(\d+)[_\-]', stem)
+    if match:
+        return int(match.group(1))
+    return 999999
 
 
 def ensure_thumbnail(original_path):
@@ -224,13 +276,14 @@ def build_lang(lang='en'):
     out_dir.mkdir(exist_ok=True)
     base_index = "" if lang == 'en' else "../"
     base_project = "../" if lang == 'en' else "../../"
+    year = datetime.date.today().year
     categories = {}
     for entry in sorted(ROOT.iterdir()):
         if not entry.is_dir():
             continue
         if entry.name.startswith(".") or entry.name.startswith("_"):
             continue
-        if entry.name in ("website", "thumbnails", "project"):
+        if entry.name.lower() in ("website", "thumbnails", "project", "hero", "hero2"):
             continue
 
         # Discover subfolders
@@ -272,9 +325,6 @@ def build_lang(lang='en'):
                     break
             all_items.append(img)
 
-    # Sort all items by modification time (newest first)
-    all_items.sort(key=lambda x: x["mtime"], reverse=True)
-
     # Collect all subfolders flat map
     all_subfolders = {}
     for cat_key, info in categories.items():
@@ -283,6 +333,31 @@ def build_lang(lang='en'):
     # Load or create captions file
     captions = load_captions()
     ensure_captions_file(all_items)
+
+    # Extract year and sort index for each image
+    for img in all_items:
+        caption = captions.get(img["src"], img["name"])
+        img["year"] = extract_year(caption)
+        img["sort_index"] = extract_sort_index(Path(img["path"]).stem)
+
+    YEAR_FIRST_CATEGORIES = {"bookcover", "single"}
+
+    def sort_key(img):
+        cat = img.get("category", "")
+        year = -img.get("year", 0)
+        idx = img.get("sort_index", 999999)
+        mtime = -img["mtime"]
+        if cat in YEAR_FIRST_CATEGORIES:
+            return (year, idx, mtime)
+        return (0, idx, mtime)
+
+    all_items.sort(key=sort_key)
+
+    # Re-sort category and subfolder images to match global order
+    for cat_key, info in categories.items():
+        info["images"].sort(key=sort_key)
+        for sub_key, sub_info in info["subfolders"].items():
+            sub_info["images"].sort(key=sort_key)
 
     # Load or create projects file
     projects = load_projects()
@@ -311,31 +386,36 @@ def build_lang(lang='en'):
     def hero_html(items, base=""):
         if hero_images:
             hero = random.choice(hero_images)
+            use_original = True
         elif items:
             hero = items[0]
+            use_original = False
         else:
             return ""
         src = html.escape(base + hero["src"], quote=True)
         thumb = html.escape(base + hero.get("thumb", hero["src"]), quote=True)
         alt = html.escape(captions.get(hero["src"], hero["name"]), quote=True)
-        return f'<section class="hero"><img src="{thumb}" data-full="{src}" alt="{alt}" loading="eager"></section>'
+        img_src = src if use_original else thumb
+        bg_color = hero.get("bgcolor", "")
+        bg_style = f' style="background-color: {bg_color}"' if bg_color else ""
+        return f'<section class="hero"{bg_style}><img src="{img_src}" data-full="{src}" alt="{alt}" loading="eager"></section>'
 
     def project_card_html(key, label, images, base=""):
         if not images:
             return ""
         count = len(images)
-        if hero_images:
-            main = random.choice(hero_images)
-        else:
-            main = images[0]
+        main = images[0]
         main_thumb = html.escape(base + main.get("thumb", main["src"]), quote=True)
         main_src = html.escape(base + main["src"], quote=True)
         main_alt = html.escape(captions.get(main["src"], main["name"]), quote=True)
         thumbs_html = ""
+        transparent_gif = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
         for img in images[1:4]:
             thumb = html.escape(base + img.get("thumb", img["src"]), quote=True)
             alt = html.escape(captions.get(img["src"], img["name"]), quote=True)
             thumbs_html += f'<img src="{thumb}" alt="{alt}" loading="lazy">'
+        for _ in range(3 - len(images[1:4])):
+            thumbs_html += f'<img src="{transparent_gif}" alt="" loading="lazy">'
         count_label = t.get("artworks", "artworks")
         return f'''<a href="{base}project/{key}.html" class="project-card">
   <div class="project-card-preview">
@@ -399,6 +479,7 @@ def build_lang(lang='en'):
         return "\n".join(lines)
 
     def build_project_page(sub_key, proj, items, base="../"):
+        year = datetime.date.today().year
         title = html.escape(proj.get("title", sub_key))
         year = html.escape(proj.get("year", ""))
         client = html.escape(proj.get("client", ""))
@@ -411,10 +492,39 @@ def build_lang(lang='en'):
 
         social_html_project = social_html.replace('src="behance.png"', f'src="{base}behance.png"').replace('src="deviantart.png"', f'src="{base}deviantart.png"')
 
-        hero_img = random.choice(hero_images) if hero_images else (items[0] if items else None)
-        hero_thumb = html.escape(base + hero_img.get("thumb", hero_img["src"]), quote=True) if hero_img else ""
-        hero_src = html.escape(base + hero_img["src"], quote=True) if hero_img else ""
-        hero_alt = html.escape(captions.get(hero_img["src"], hero_img["name"]), quote=True) if hero_img else ""
+        project_nav = [
+            '<nav class="main-nav">',
+            '  <ul>',
+        ]
+        for key, info in categories.items():
+            project_nav.append(f'    <li><a href="{base}index.html#{key}">{html.escape(info["label"])}</a></li>')
+        project_nav.extend([
+            f'    <li><a href="{base}index.html#about">{t.get("about", "About")}</a></li>',
+            f'    <li><a href="{base}index.html#contact">{t.get("contact", "Contact")}</a></li>',
+            '  </ul>',
+            '</nav>',
+        ])
+        project_nav_html = "\n      ".join(project_nav)
+
+        if hero_images:
+            hero_img = random.choice(hero_images)
+            use_original = True
+        else:
+            hero_img = items[0] if items else None
+            use_original = False
+        if hero_img:
+            hero_thumb = html.escape(base + hero_img.get("thumb", hero_img["src"]), quote=True)
+            hero_src = html.escape(base + hero_img["src"], quote=True)
+            hero_alt = html.escape(captions.get(hero_img["src"], hero_img["name"]), quote=True)
+            hero_display = hero_src if use_original else hero_thumb
+            bg_color = hero_img.get("bgcolor", "")
+            bg_style = f' style="background-color: {bg_color}"' if bg_color else ""
+        else:
+            hero_thumb = ""
+            hero_src = ""
+            hero_alt = ""
+            hero_display = ""
+            bg_style = ""
 
         page_content = f"""<!DOCTYPE html>
 <html lang="en">
@@ -468,11 +578,7 @@ def build_lang(lang='en'):
   <div id="canvasWrapper">
     <aside id="sidebar">
       <img src="{base}Max Mitenkov.png" alt="Max Mitenkov" style="width: 100%; margin-bottom: 24px; opacity: 0.9;">
-      <nav class="main-nav">
-        <ul>
-          <li><a href="{base}index.html">← Portfolio</a></li>
-        </ul>
-      </nav>
+      {project_nav_html}
       {social_html_project}
       <img src="{base}vimark_logo.png" alt="Logo" style="width: 60px; margin-top: auto; margin-bottom: 100px; opacity: 0.9; align-self: center;">
     </aside>
@@ -480,8 +586,8 @@ def build_lang(lang='en'):
     <button class="mobile-toggle">{t.get('menu', 'Menu')}</button>
 
     <main id="main">
-      <section class="project-hero">
-        <img src="{hero_thumb}" data-full="{hero_src}" alt="{hero_alt}" loading="eager">
+      <section class="project-hero"{bg_style}>
+        <img src="{hero_display}" data-full="{hero_src}" alt="{hero_alt}" loading="eager">
       </section>
       <div class="project-header">
         <a href="{base}index.html" class="back-link">{t.get('back_to_portfolio', '← Back to portfolio')}</a>
@@ -494,12 +600,12 @@ def build_lang(lang='en'):
   </div>
 
   <div class="site-footer">
+    <span><b>©</b> Max Mitenkov, {year}.</span>
     <div class="lang-switch">
       <a href="#" id="lang-en" title="English"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 30" width="24" height="12"><path fill="#012169" d="M0,0 h60 v30 h-60 z"/><path stroke="#fff" stroke-width="6" d="M0,0 L60,30 M60,0 L0,30"/><path stroke="#C8102E" stroke-width="4" d="M0,0 L60,30 M60,0 L0,30"/><path stroke="#fff" stroke-width="10" d="M30,0 v30 M0,15 h60"/><path stroke="#C8102E" stroke-width="6" d="M30,0 v30 M0,15 h60"/></svg></a>
       <a href="#" id="lang-ru" title="Русский"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 30" width="24" height="12"><rect width="60" height="10" fill="#fff"/><rect y="10" width="60" height="10" fill="#0039A6"/><rect y="20" width="60" height="10" fill="#D52B1E"/></svg></a>
     </div>
-    <script>(function(){{var p=location.pathname.split('\\\\').join('/');var i=p.indexOf('/ru/')!==-1||p.indexOf('/ru')!==-1;var e=document.getElementById('lang-en');var r=document.getElementById('lang-ru');if(i){{e.href=p.replace('/ru/','/');r.href=p;}}else{{r.href=p.replace('/project/','/ru/project/').replace('/index.html','/ru/index.html');e.href=p;}}if(i){{r.classList.add('active');}}else{{e.classList.add('active');}}}})();</script>
-    <span><b>©</b> Max Mitenkov.</span>
+    <script>(function(){{var p=location.pathname.split('\\\\').join('/');var h=location.hash;var i=p.indexOf('/ru/')!==-1||p.indexOf('/ru/')!==-1;var e=document.getElementById('lang-en');var r=document.getElementById('lang-ru');if(i){{e.href=p.replace('/ru/','/')+h;r.href=p+h;}}else{{r.href=p.replace('/project/','/ru/project/').replace('/index.html','/ru/index.html')+h;e.href=p+h;}}if(i){{r.classList.add('active');}}else{{e.classList.add('active');}}}})();</script>
   </div>
 
   <div id="lightbox">
@@ -543,7 +649,7 @@ def build_lang(lang='en'):
     about_html = f'''      <section id="about" class="hidden">
         <div class="about-container">
           <div class="about-photo">
-            <img src="Mitenkov600.jpg" alt="Max Mitenkov">
+            <img src="{base_index}Mitenkov600.jpg" alt="Max Mitenkov">
           </div>
           <div class="about-content">
             <h1>{t.get('about', 'About')}</h1>
@@ -758,12 +864,12 @@ def build_lang(lang='en'):
   </div>
 
   <div class="site-footer">
+    <span><b>©</b> Max Mitenkov, {year}.</span>
     <div class="lang-switch">
       <a href="#" id="lang-en" title="English"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 30" width="24" height="12"><path fill="#012169" d="M0,0 h60 v30 h-60 z"/><path stroke="#fff" stroke-width="6" d="M0,0 L60,30 M60,0 L0,30"/><path stroke="#C8102E" stroke-width="4" d="M0,0 L60,30 M60,0 L0,30"/><path stroke="#fff" stroke-width="10" d="M30,0 v30 M0,15 h60"/><path stroke="#C8102E" stroke-width="6" d="M30,0 v30 M0,15 h60"/></svg></a>
       <a href="#" id="lang-ru" title="Русский"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 30" width="24" height="12"><rect width="60" height="10" fill="#fff"/><rect y="10" width="60" height="10" fill="#0039A6"/><rect y="20" width="60" height="10" fill="#D52B1E"/></svg></a>
     </div>
-    <script>(function(){{var p=location.pathname.split('\\\\').join('/');var i=p.indexOf('/ru/')!==-1||p.indexOf('/ru')!==-1;var e=document.getElementById('lang-en');var r=document.getElementById('lang-ru');if(i){{e.href=p.replace('/ru/','/');r.href=p;}}else{{r.href=p.replace('/project/','/ru/project/').replace('/index.html','/ru/index.html');e.href=p;}}if(i){{r.classList.add('active');}}else{{e.classList.add('active');}}}})();</script>
-    <span><b>©</b> Max Mitenkov.</span>
+    <script>(function(){{var p=location.pathname.split('\\\\').join('/');var h=location.hash;var i=p.indexOf('/ru/')!==-1||p.indexOf('/ru/')!==-1;var e=document.getElementById('lang-en');var r=document.getElementById('lang-ru');if(i){{e.href=p.replace('/ru/','/')+h;r.href=p+h;}}else{{r.href=p.replace('/project/','/ru/project/').replace('/index.html','/ru/index.html')+h;e.href=p+h;}}if(i){{r.classList.add('active');}}else{{e.classList.add('active');}}}})();</script>
   </div>
 
   <div id="lightbox">
@@ -792,10 +898,16 @@ def build_lang(lang='en'):
     proj_dir.mkdir(exist_ok=True)
     generated_projects = 0
     # Subfolder projects
-    for sub_key, proj in projects.items():
+    for sub_key, sub_info in all_subfolders.items():
         proj_images = [img for img in all_items if img.get("subcategory") == sub_key]
         if not proj_images:
             continue
+        proj = projects.get(sub_key, {
+            "title": sub_info["label"],
+            "year": "",
+            "client": "",
+            "description": "",
+        })
         proj_base = "../../" if base_index else "../"
         page_html = build_project_page(sub_key, proj, proj_images, base=proj_base)
         (proj_dir / f"{sub_key}.html").write_text(page_html, encoding="utf-8")

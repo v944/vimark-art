@@ -98,17 +98,19 @@
   }
 
   function showAbout() {
-    if (heroSection) heroSection.classList.add('hidden');
+    if (heroSection) heroSection.classList.remove('hidden');
     projectSections.forEach(s => s.classList.add('hidden'));
     if (aboutSection) aboutSection.classList.remove('hidden');
     if (contactSection) contactSection.classList.add('hidden');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
   function showContact() {
-    if (heroSection) heroSection.classList.add('hidden');
+    if (heroSection) heroSection.classList.remove('hidden');
     projectSections.forEach(s => s.classList.add('hidden'));
     if (aboutSection) aboutSection.classList.add('hidden');
     if (contactSection) contactSection.classList.remove('hidden');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
   // Navigation click handling

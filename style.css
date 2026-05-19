@@ -252,8 +252,9 @@ img {
   z-index: 101;
   pointer-events: none;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
+  gap: 16px;
 }
 
 .site-footer > * {
@@ -593,13 +594,18 @@ img {
 .hero {
   width: 100%;
   margin-bottom: 48px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 6px;
+  overflow: hidden;
 }
 
 .hero img {
-  width: 100%;
-  max-height: 520px;
-  object-fit: cover;
-  border-radius: 6px;
+  max-height: 360px;
+  max-width: 100%;
+  height: auto;
+  display: block;
 }
 
 /* Projects sections */
@@ -653,6 +659,8 @@ img {
   aspect-ratio: 16 / 10;
   object-fit: cover;
   border-radius: 4px;
+  min-width: 0;
+  overflow: hidden;
 }
 
 .project-card-thumbs {
@@ -669,6 +677,8 @@ img {
   object-fit: cover;
   border-radius: 4px;
   min-height: 0;
+  filter: grayscale(100%) contrast(0.7) brightness(1.3);
+  opacity: 0.6;
 }
 
 .project-card-info {
@@ -692,13 +702,18 @@ img {
 .project-hero {
   width: 100%;
   margin-bottom: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 6px;
+  overflow: hidden;
 }
 
 .project-hero img {
-  width: 100%;
-  max-height: 520px;
-  object-fit: cover;
-  border-radius: 6px;
+  max-height: 360px;
+  max-width: 100%;
+  height: auto;
+  display: block;
 }
 
 /* Project pages */
@@ -794,6 +809,6 @@ img {
 
   .hero img,
   .project-hero img {
-    max-height: 320px;
+    max-height: 280px;
   }
 }
