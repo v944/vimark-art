@@ -9,6 +9,7 @@ import re
 import random
 import datetime
 import configparser
+import json
 from pathlib import Path
 
 try:
@@ -416,7 +417,16 @@ def build_lang(lang='en'):
         thumb = html.escape(base + hero.get("thumb", hero["src"]), quote=True)
         alt = html.escape(captions.get(hero["src"], hero["name"]), quote=True)
         img_src = src if use_original else thumb
-        return f'''<section class="hero">
+        # Build pool of all STRONG images for client-side random switching
+        hero_pool = []
+        for img in strong_images:
+            hero_pool.append({
+                "src": html.escape(base + img.get("thumb", img["src"]), quote=True),
+                "full": html.escape(base + img["src"], quote=True),
+                "alt": html.escape(captions.get(img["src"], img["name"]), quote=True)
+            })
+        pool_json = html.escape(json.dumps(hero_pool), quote=True)
+        return f'''<section class="hero" data-hero-pool="{pool_json}">
   <img src="{img_src}" data-full="{src}" alt="{alt}" loading="eager">
   <div class="hero-overlay"></div>
   <div class="hero-scroll-hint" onclick="document.getElementById('book-illustrations').scrollIntoView({{behavior:'smooth'}})">
@@ -604,7 +614,7 @@ def build_lang(lang='en'):
       <img src="{base}Max Mitenkov.png" alt="Max Mitenkov" style="width: 100%; margin-bottom: 24px; opacity: 0.9;">
       {project_nav_html}
       {social_html_project}
-      <img src="{base}vimark_logo.png" alt="Logo" style="width: 60px; margin-top: auto; margin-bottom: 100px; opacity: 0.9; align-self: center;">
+      <a href="{base}index.html" class="logo-link"><img src="{base}vimark_logo.png" alt="Logo" style="width: 60px; margin-top: auto; margin-bottom: 100px; opacity: 0.9; align-self: center;"></a>
     </aside>
 
     <button class="mobile-toggle">{t.get('menu', 'Menu')}</button>
@@ -890,7 +900,7 @@ def build_lang(lang='en'):
       <img src="{base_index}Max Mitenkov.png" alt="Max Mitenkov" style="width: 100%; margin-bottom: 24px; opacity: 0.9;">
       {"\n      ".join(nav_lines)}
       {social_html.replace('src=\"behance.png\"', f'src=\"{base_index}behance.png\"').replace('src=\"deviantart.png\"', f'src=\"{base_index}deviantart.png\"')}
-      <img src="{base_index}vimark_logo.png" alt="Logo" style="width: 60px; margin-top: auto; margin-bottom: 100px; opacity: 0.9; align-self: center;">
+      <a href="{base_index}index.html" class="logo-link"><img src="{base_index}vimark_logo.png" alt="Logo" style="width: 60px; margin-top: auto; margin-bottom: 100px; opacity: 0.9; align-self: center;"></a>
     </aside>
 
     <button class="mobile-toggle">Menu</button>
