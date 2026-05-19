@@ -52,7 +52,12 @@
       <img src="../Max Mitenkov.png" alt="Max Mitenkov" style="width: 100%; margin-bottom: 24px; opacity: 0.9;">
       <nav class="main-nav">
         <ul>
-          <li><a href="../index.html">← Portfolio</a></li>
+          <li><a href="../index.html#book-illustrations">Book Illustrations</a></li>
+          <li><a href="../index.html#bookcover">Book Cover</a></li>
+          <li><a href="../index.html#comic">Comic</a></li>
+          <li><a href="../index.html#single">Single</a></li>
+          <li><a href="../index.html#about">About</a></li>
+          <li><a href="../index.html#contact">Contact</a></li>
         </ul>
       </nav>
       <div class="social-links">
@@ -69,8 +74,8 @@
     <button class="mobile-toggle">Menu</button>
 
     <main id="main">
-      <section class="project-hero">
-        <img src="../thumbnails/comic/Wanderer/Pepel7.jpg" data-full="../comic/Wanderer/Pepel7.jpg" alt="Portal, 2026" loading="eager">
+      <section class="project-hero" style="background-color: #5c5948">
+        <img src="../HERO2/__0000_Svalka_4.png" data-full="../HERO2/__0000_Svalka_4.png" alt="Svalka 4" loading="eager">
       </section>
       <div class="project-header">
         <a href="../index.html" class="back-link">← Back to portfolio</a>
@@ -105,12 +110,12 @@
   </div>
 
   <div class="site-footer">
+    <span><b>©</b> Max Mitenkov, .</span>
     <div class="lang-switch">
       <a href="#" id="lang-en" title="English"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 30" width="24" height="12"><path fill="#012169" d="M0,0 h60 v30 h-60 z"/><path stroke="#fff" stroke-width="6" d="M0,0 L60,30 M60,0 L0,30"/><path stroke="#C8102E" stroke-width="4" d="M0,0 L60,30 M60,0 L0,30"/><path stroke="#fff" stroke-width="10" d="M30,0 v30 M0,15 h60"/><path stroke="#C8102E" stroke-width="6" d="M30,0 v30 M0,15 h60"/></svg></a>
       <a href="#" id="lang-ru" title="Русский"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 30" width="24" height="12"><rect width="60" height="10" fill="#fff"/><rect y="10" width="60" height="10" fill="#0039A6"/><rect y="20" width="60" height="10" fill="#D52B1E"/></svg></a>
     </div>
-    <script>(function(){var p=location.pathname.split('\\').join('/');var i=p.indexOf('/ru/')!==-1||p.indexOf('/ru')!==-1;var e=document.getElementById('lang-en');var r=document.getElementById('lang-ru');if(i){e.href=p.replace('/ru/','/');r.href=p;}else{r.href=p.replace('/project/','/ru/project/').replace('/index.html','/ru/index.html');e.href=p;}if(i){r.classList.add('active');}else{e.classList.add('active');}})();</script>
-    <span><b>©</b> Max Mitenkov.</span>
+    <script>(function(){var p=location.pathname.split('\\').join('/');var h=location.hash;var i=p.indexOf('/ru/')!==-1||p.indexOf('/ru/')!==-1;var e=document.getElementById('lang-en');var r=document.getElementById('lang-ru');if(i){e.href=p.replace('/ru/','/')+h;r.href=p+h;}else{r.href=p.replace('/project/','/ru/project/').replace('/index.html','/ru/index.html')+h;e.href=p+h;}if(i){r.classList.add('active');}else{e.classList.add('active');}})();</script>
   </div>
 
   <div id="lightbox">
