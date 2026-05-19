@@ -284,7 +284,7 @@ def build_lang(lang='en'):
             continue
         if entry.name.startswith(".") or entry.name.startswith("_"):
             continue
-        if entry.name.lower() in ("website", "thumbnails", "project", "hero", "hero2"):
+        if entry.name.lower() in ("website", "thumbnails", "project", "hero", "hero2", "strong"):
             continue
 
         cat_key = slugify(entry.name)
@@ -381,6 +381,12 @@ def build_lang(lang='en'):
     hero_images = collect_hero_images()
     if hero_images:
         print(f"Found {len(hero_images)} HERO image(s) for random banners.")
+
+    # Collect STRONG images for OG/social sharing
+    strong_images = collect_images_from_path("STRONG")
+    if strong_images:
+        print(f"Found {len(strong_images)} STRONG image(s) for social preview.")
+    og_strong = random.choice(strong_images)["src"] if strong_images else "Mitenkov600.jpg"
 
     # Generate thumbnails
     if HAS_PILLOW:
@@ -791,15 +797,15 @@ def build_lang(lang='en'):
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://vimark.art/">
 <meta property="og:title" content="Max Mitenkov · Illustrator · Concept Artist">
-<meta property="og:description" content="Portfolio of Max Mitenkov, illustrator and concept artist with 12+ years of experience in games, books, and NFT projects.">
-<meta property="og:image" content="https://vimark.art/Mitenkov600.jpg">
+<meta property="og:description" content="Gallery of illustrations, concept art, and book covers by Max Mitenkov.">
+<meta property="og:image" content="https://vimark.art/{og_strong}">
 
 <!-- Twitter -->
 <meta property="twitter:card" content="summary_large_image">
 <meta property="twitter:url" content="https://vimark.art/">
 <meta property="twitter:title" content="Max Mitenkov · Illustrator · Concept Artist">
-<meta property="twitter:description" content="Portfolio of Max Mitenkov, illustrator and concept artist with 12+ years of experience in games, books, and NFT projects.">
-<meta property="twitter:image" content="https://vimark.art/Mitenkov600.jpg">
+<meta property="twitter:description" content="Gallery of illustrations, concept art, and book covers by Max Mitenkov.">
+<meta property="twitter:image" content="https://vimark.art/{og_strong}">
 
 <!-- Schema.org -->
 <script type="application/ld+json">
@@ -809,7 +815,7 @@ def build_lang(lang='en'):
   "name": "Max Mitenkov",
   "jobTitle": "Illustrator and Concept Artist",
   "url": "https://vimark.art/",
-  "image": "https://vimark.art/Mitenkov600.jpg",
+  "image": "https://vimark.art/{og_strong}",
   "sameAs": [
     "https://www.behance.net/vimark",
     "https://www.linkedin.com/in/maxim-mitenkov-06192940/",
