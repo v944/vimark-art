@@ -416,14 +416,10 @@ def build_lang(lang='en'):
         thumb = html.escape(base + hero.get("thumb", hero["src"]), quote=True)
         alt = html.escape(captions.get(hero["src"], hero["name"]), quote=True)
         img_src = src if use_original else thumb
-        tagline = html.escape(t.get('tagline', 'Opening new worlds'), quote=True)
         return f'''<section class="hero">
   <img src="{img_src}" data-full="{src}" alt="{alt}" loading="eager">
-  <div class="hero-overlay">
-    <p>{tagline}</p>
-  </div>
+  <div class="hero-overlay"></div>
   <div class="hero-scroll-hint" onclick="document.getElementById('book-illustrations').scrollIntoView({{behavior:'smooth'}})">
-    <span>Scroll</span>
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
   </div>
 </section>'''
@@ -674,6 +670,21 @@ def build_lang(lang='en'):
       <a href="https://www.deviantart.com/vimark" aria-label="DeviantArt"><img src="deviantart.png" alt="DeviantArt" class="social-icon"></a>
     </div>'''
 
+    # Select up to 6 random STRONG works for About gallery
+    about_gallery_imgs = random.sample(strong_images, min(6, len(strong_images))) if strong_images else []
+    about_gallery_items = ""
+    for img in about_gallery_imgs:
+        img_src = html.escape(base_index + img.get("thumb", img["src"]), quote=True)
+        img_full = html.escape(base_index + img["src"], quote=True)
+        img_alt = html.escape(captions.get(img["src"], img["name"]), quote=True)
+        about_gallery_items += f'<div class="gallery-item"><img src="{img_src}" data-full="{img_full}" alt="{img_alt}" loading="lazy"></div>'
+
+    about_gallery_html = f'''<div class="about-section about-gallery">
+              <h2>{t.get('portfolio', 'Portfolio')}</h2>
+              <div class="about-gallery-grid">{about_gallery_items}</div>
+            </div>
+''' if about_gallery_items else ""
+
     about_html = f'''      <section id="about" class="hidden">
         <div class="about-container">
           <div class="about-photo">
@@ -683,6 +694,7 @@ def build_lang(lang='en'):
             <h1>{t.get('about', 'About')}</h1>
             <p class="about-intro">{t.get('about_intro', "I'm Max Mitenkov, an illustrator and concept designer with over 12 years of professional experience. I've worked on projects for studios in Belarus, the USA, and the UAE — from NFT character design to photorealistic environments in Unreal Engine 5.")}</p>
 
+            {about_gallery_html}
             <div class="about-section">
               <h2>{t.get('skills', 'Skills')}</h2>
               <p>Photoshop, ZBrush, Houdini, Substance Painter, Substance Designer, Unreal Engine 4/5.</p>
