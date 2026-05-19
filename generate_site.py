@@ -73,9 +73,9 @@ def collect_images_from_path(rel_path):
 
 
 def collect_hero_images():
-    """Collect images from STRONG (preferred), HERO2, or HERO folder for hero banners."""
+    """Collect images from HERO2 or HERO folder for hero banners."""
     exts = {".jpg", ".jpeg", ".png", ".webp", ".gif"}
-    for folder_name in ("STRONG", "HERO2", "HERO"):
+    for folder_name in ("HERO2", "HERO"):
         hero_dir = ROOT / folder_name
         if not hero_dir.exists():
             continue
@@ -413,9 +413,10 @@ def build_lang(lang='en'):
     select_items = []
     select_set = set()
 
-    def hero_html(items, base=""):
-        if hero_images:
-            hero = random.choice(hero_images)
+    def hero_html(items, base="", pool=None):
+        banner_pool = pool if pool is not None else hero_images
+        if banner_pool:
+            hero = random.choice(banner_pool)
             use_original = True
         elif items:
             hero = items[0]
@@ -428,7 +429,8 @@ def build_lang(lang='en'):
         img_src = src if use_original else thumb
         # Build pool of all STRONG images for client-side random switching
         hero_pool = []
-        for img in strong_images:
+        switch_pool = strong_images if strong_images else hero_images
+        for img in switch_pool:
             hero_pool.append({
                 "src": html.escape(base + img.get("thumb", img["src"]), quote=True),
                 "full": html.escape(base + img["src"], quote=True),
@@ -863,7 +865,7 @@ def build_lang(lang='en'):
     <button class="mobile-toggle">Menu</button>
 
     <main id="main">
-      {hero_html(all_items, base_index)}
+      {hero_html(all_items, base_index, pool=(strong_images if strong_images else hero_images))}
       {projects_sections_html(base_index)}
 {about_html}
 {contact_html}
