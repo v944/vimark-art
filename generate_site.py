@@ -287,15 +287,18 @@ def build_lang(lang='en'):
         if entry.name.lower() in ("website", "thumbnails", "project", "hero", "hero2"):
             continue
 
+        cat_key = slugify(entry.name)
+
         # Discover subfolders
         subfolders = {}
         for sub in sorted(entry.iterdir()):
             if sub.is_dir():
                 sub_imgs = collect_images_from_path(os.path.join(entry.name, sub.name))
                 if sub_imgs:
-                    sub_key = slugify(sub.name)
+                    sub_slug = slugify(sub.name)
+                    sub_key = f"{cat_key}-{sub_slug}"
                     subfolders[sub_key] = {
-                        "label": t.get(sub_key, human_label(sub.name)),
+                        "label": t.get(sub_slug, human_label(sub.name)),
                         "images": sub_imgs,
                     }
 
@@ -305,7 +308,6 @@ def build_lang(lang='en'):
         if not all_cat_images and not subfolders:
             continue
 
-        cat_key = slugify(entry.name)
         categories[cat_key] = {
             "label": t.get(cat_key, human_label(entry.name)),
             "folder": entry.name,
@@ -325,11 +327,6 @@ def build_lang(lang='en'):
                     img["subcategory"] = sub_key
                     break
             all_items.append(img)
-
-    # Collect all subfolders flat map
-    all_subfolders = {}
-    for cat_key, info in categories.items():
-        all_subfolders.update(info["subfolders"])
 
     # Load or create captions file
     captions = load_captions()
@@ -359,6 +356,22 @@ def build_lang(lang='en'):
         info["images"].sort(key=sort_key)
         for sub_key, sub_info in info["subfolders"].items():
             sub_info["images"].sort(key=sort_key)
+
+    # Sort subfolders for year-first categories by year descending
+    for cat_key, info in categories.items():
+        if cat_key in YEAR_FIRST_CATEGORIES and info["subfolders"]:
+            def _sub_year(item):
+                parts = item[0].rsplit('-', 1)
+                if len(parts) == 2 and parts[-1].isdigit():
+                    return -int(parts[-1])
+                return 0
+            sorted_subs = dict(sorted(info["subfolders"].items(), key=_sub_year))
+            info["subfolders"] = sorted_subs
+
+    # Collect all subfolders flat map (after sorting)
+    all_subfolders = {}
+    for cat_key, info in categories.items():
+        all_subfolders.update(info["subfolders"])
 
     # Load or create projects file
     projects = load_projects()
