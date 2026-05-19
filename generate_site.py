@@ -72,9 +72,9 @@ def collect_images_from_path(rel_path):
 
 
 def collect_hero_images():
-    """Collect images from HERO2 (preferred) or HERO folder for random hero banners."""
+    """Collect images from STRONG (preferred), HERO2, or HERO folder for hero banners."""
     exts = {".jpg", ".jpeg", ".png", ".webp", ".gif"}
-    for folder_name in ("HERO2", "HERO"):
+    for folder_name in ("STRONG", "HERO2", "HERO"):
         hero_dir = ROOT / folder_name
         if not hero_dir.exists():
             continue
@@ -416,9 +416,17 @@ def build_lang(lang='en'):
         thumb = html.escape(base + hero.get("thumb", hero["src"]), quote=True)
         alt = html.escape(captions.get(hero["src"], hero["name"]), quote=True)
         img_src = src if use_original else thumb
-        bg_color = hero.get("bgcolor", "")
-        bg_style = f' style="background-color: {bg_color}"' if bg_color else ""
-        return f'<section class="hero"{bg_style}><img src="{img_src}" data-full="{src}" alt="{alt}" loading="eager"></section>'
+        tagline = html.escape(t.get('tagline', 'Opening new worlds'), quote=True)
+        return f'''<section class="hero">
+  <img src="{img_src}" data-full="{src}" alt="{alt}" loading="eager">
+  <div class="hero-overlay">
+    <p>{tagline}</p>
+  </div>
+  <div class="hero-scroll-hint" onclick="document.getElementById('book-illustrations').scrollIntoView({{behavior:'smooth'}})">
+    <span>Scroll</span>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+  </div>
+</section>'''
 
     def project_card_html(key, label, images, base=""):
         if not images:
