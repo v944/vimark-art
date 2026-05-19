@@ -183,7 +183,7 @@
   }
 
   function showAbout() {
-    if (heroSection) heroSection.classList.remove('hidden');
+    if (heroSection) heroSection.classList.add('hidden');
     projectSections.forEach(s => s.classList.add('hidden'));
     if (aboutSection) aboutSection.classList.remove('hidden');
     if (contactSection) contactSection.classList.add('hidden');
@@ -191,7 +191,7 @@
   }
 
   function showContact() {
-    if (heroSection) heroSection.classList.remove('hidden');
+    if (heroSection) heroSection.classList.add('hidden');
     projectSections.forEach(s => s.classList.add('hidden'));
     if (aboutSection) aboutSection.classList.add('hidden');
     if (contactSection) contactSection.classList.remove('hidden');
@@ -283,4 +283,15 @@
 
   window.addEventListener('scroll', updateActiveNav, { passive: true });
   updateActiveNav();
+
+  // Hero scroll fade effect
+  if (heroSection) {
+    window.addEventListener('scroll', () => {
+      const scrollY = window.scrollY;
+      const vh = window.innerHeight;
+      const progress = Math.min(scrollY / vh, 1);
+      heroSection.style.opacity = 1 - progress * 0.8;
+      heroSection.style.transform = 'scale(' + (1 + progress * 0.05) + ')';
+    }, { passive: true });
+  }
 })();
