@@ -294,4 +294,36 @@
       heroSection.style.transform = 'scale(' + (1 + progress * 0.05) + ')';
     }, { passive: true });
   }
+
+  // Logo click — go home + random hero
+  const logoLink = document.querySelector('.logo-link');
+  if (logoLink && heroSection) {
+    logoLink.addEventListener('click', (e) => {
+      e.preventDefault();
+      showProjects();
+      navLinks.forEach(l => l.classList.remove('active'));
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      history.pushState(null, null, '#');
+
+      const poolAttr = heroSection.getAttribute('data-hero-pool');
+      if (!poolAttr) return;
+      try {
+        const pool = JSON.parse(poolAttr);
+        if (pool.length > 1) {
+          const heroImg = heroSection.querySelector('img');
+          if (heroImg) {
+            const currentSrc = heroImg.getAttribute('src');
+            let choices = pool.filter(item => item.src !== currentSrc);
+            if (choices.length === 0) choices = pool;
+            const next = choices[Math.floor(Math.random() * choices.length)];
+            heroImg.src = next.src;
+            heroImg.dataset.full = next.full;
+            heroImg.alt = next.alt;
+          }
+        }
+      } catch (err) {
+        // ignore JSON parse errors
+      }
+    });
+  }
 })();
