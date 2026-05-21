@@ -624,6 +624,8 @@ def build_lang(lang='en'):
         <a href="{base}index.html#contact" class="hero-cta">{cta_btn}</a>
       </div>'''
 
+        back_href = f"{base}index.html#{cat_key}" if cat_key else f"{base}index.html"
+
         page_content = f"""<!DOCTYPE html>
 <html lang="{page_lang}">
 <head>
@@ -697,7 +699,7 @@ def build_lang(lang='en'):
         <img src="{hero_display}" data-full="{hero_src}" alt="{hero_alt}" loading="eager" fetchpriority="high">
       </section>
       <div class="project-header">
-        <a href="{base}index.html#" class="back-link">{t.get('back_to_portfolio', '← Back to portfolio')}</a>
+        <a href="{back_href}" class="back-link">{t.get('back_to_portfolio', '← Back to portfolio')}</a>
         <h1>{title}</h1>
         {meta_html}
         {desc_html}
