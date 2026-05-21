@@ -968,7 +968,7 @@ def build_lang(lang='en'):
 <noscript><div><img src="https://mc.yandex.ru/watch/109279162" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
 <!-- /Yandex.Metrika counter -->
 </head>
-<body>
+<body class="home">
   <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">☀</button>
   <div id="canvasWrapper">
     <aside id="sidebar">
