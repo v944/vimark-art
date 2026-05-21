@@ -1385,9 +1385,8 @@ body.first-visit #main {
 }
 
 body.first-visit .hero {
-  width: 100vw;
-  margin-left: 0;
-  margin-right: 0;
+  width: calc(100% + 90px);
+  margin-left: -45px;
 }
 
 body.first-visit.revealed #sidebar {
