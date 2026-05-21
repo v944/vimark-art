@@ -15,6 +15,40 @@
   let currentItems = [];
   let currentIndex = 0;
 
+  // Theme toggle
+  const themeToggle = document.getElementById('themeToggle');
+  if (themeToggle) {
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'light') {
+      document.documentElement.setAttribute('data-theme', 'light');
+      themeToggle.textContent = '☾';
+    }
+    themeToggle.addEventListener('click', () => {
+      const isLight = document.documentElement.getAttribute('data-theme') === 'light';
+      if (isLight) {
+        document.documentElement.removeAttribute('data-theme');
+        localStorage.removeItem('theme');
+        themeToggle.textContent = '☀';
+      } else {
+        document.documentElement.setAttribute('data-theme', 'light');
+        localStorage.setItem('theme', 'light');
+        themeToggle.textContent = '☾';
+      }
+    });
+  }
+
+  // Scroll-to-top button
+  const scrollTopBtn = document.getElementById('scrollTop');
+  if (scrollTopBtn) {
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > window.innerHeight * 0.5) {
+        scrollTopBtn.classList.add('visible');
+      } else {
+        scrollTopBtn.classList.remove('visible');
+      }
+    });
+  }
+
   // Mobile sidebar overlay
   let overlay = document.querySelector('.sidebar-overlay');
   if (!overlay) {
@@ -54,6 +88,9 @@
     return Array.from(document.querySelectorAll('.gallery-item'));
   }
 
+  let viewedImages = new Set();
+  let galleryViewTriggered = false;
+
   function openLightbox(index) {
     currentItems = getGalleryItems();
     if (!currentItems.length) return;
@@ -62,6 +99,20 @@
     preloadAdjacent();
     lightbox.classList.add('active');
     document.body.style.overflow = 'hidden';
+
+    // Track unique image views for gallery_view event
+    const item = currentItems[currentIndex];
+    if (item) {
+      const img = item.querySelector('img');
+      if (img && img.dataset.full) {
+        viewedImages.add(img.dataset.full);
+      }
+      if (!galleryViewTriggered && viewedImages.size >= 3) {
+        galleryViewTriggered = true;
+        if (typeof gtag !== 'undefined') gtag('event', 'gallery_view');
+        if (typeof ym !== 'undefined') ym(109279162, 'reachGoal', 'gallery_view');
+      }
+    }
   }
 
   function closeLightbox() {
@@ -174,12 +225,34 @@
   const aboutSection = document.getElementById('about');
   const contactSection = document.getElementById('contact');
   const navLinks = document.querySelectorAll('.main-nav a');
+  const filterBar = document.querySelector('.filter-bar');
+
+  // Category filter
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  if (filterBtns.length && projectSections.length) {
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const filter = btn.dataset.filter;
+        projectSections.forEach(sec => {
+          if (filter === 'all' || sec.id === filter) {
+            sec.style.display = '';
+            sec.style.animation = 'sectionFadeIn 0.3s ease';
+          } else {
+            sec.style.display = 'none';
+          }
+        });
+      });
+    });
+  }
 
   function showProjects() {
     if (heroSection) heroSection.classList.remove('hidden');
     projectSections.forEach(s => s.classList.remove('hidden'));
     if (aboutSection) aboutSection.classList.add('hidden');
     if (contactSection) contactSection.classList.add('hidden');
+    if (filterBar) filterBar.style.display = '';
   }
 
   function showAbout() {
@@ -187,6 +260,7 @@
     projectSections.forEach(s => s.classList.add('hidden'));
     if (aboutSection) aboutSection.classList.remove('hidden');
     if (contactSection) contactSection.classList.add('hidden');
+    if (filterBar) filterBar.style.display = 'none';
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
@@ -195,6 +269,7 @@
     projectSections.forEach(s => s.classList.add('hidden'));
     if (aboutSection) aboutSection.classList.add('hidden');
     if (contactSection) contactSection.classList.remove('hidden');
+    if (filterBar) filterBar.style.display = 'none';
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
@@ -260,6 +335,11 @@
   }
 
   window.addEventListener('hashchange', handleHash);
+  window.addEventListener('pageshow', (event) => {
+    if (event.persisted) {
+      handleHash();
+    }
+  });
   handleHash();
 
   // Scroll spy — highlight active nav based on scroll position

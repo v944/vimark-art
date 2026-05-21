@@ -1,3 +1,9 @@
 User-agent: *
 Allow: /
+Allow: /images/
+Allow: /uploads/
+Disallow: /admin
+Disallow: /.env
+Disallow: /cgi-bin
+Disallow: /wp-config
 Sitemap: https://vimark.art/sitemap.xml

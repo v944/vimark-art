@@ -279,6 +279,8 @@ def build_lang(lang='en'):
     base_index = "" if lang == 'en' else "../"
     base_project = "../" if lang == 'en' else "../../"
     year = datetime.date.today().year
+    lang_attr = 'en' if lang == 'en' else 'ru'
+    canonical_root = 'https://vimark.art/' if lang == 'en' else 'https://vimark.art/ru/'
     categories = {}
     for entry in sorted(ROOT.iterdir()):
         if not entry.is_dir():
@@ -369,14 +371,14 @@ def build_lang(lang='en'):
             sorted_subs = dict(sorted(info["subfolders"].items(), key=_sub_year))
             info["subfolders"] = sorted_subs
 
-    # Custom order for single subfolders: Recent → Growth → Early
-    if "single" in categories and categories["single"]["subfolders"]:
-        single_order = {"single-recent-work": 0, "single-professional-growth": 1, "single-early-work": 2}
-        sorted_single = dict(sorted(
-            categories["single"]["subfolders"].items(),
-            key=lambda x: single_order.get(x[0], 99)
+    # Custom order for personal subfolders: Recent → Growth → Early
+    if "personal" in categories and categories["personal"]["subfolders"]:
+        personal_order = {"personal-recent-work": 0, "personal-professional-growth": 1, "personal-early-work": 2}
+        sorted_personal = dict(sorted(
+            categories["personal"]["subfolders"].items(),
+            key=lambda x: personal_order.get(x[0], 99)
         ))
-        categories["single"]["subfolders"] = sorted_single
+        categories["personal"]["subfolders"] = sorted_personal
 
     # Collect all subfolders flat map (after sorting)
     all_subfolders = {}
@@ -437,9 +439,16 @@ def build_lang(lang='en'):
                 "alt": html.escape(captions.get(img["src"], img["name"]), quote=True)
             })
         pool_json = html.escape(json.dumps(hero_pool), quote=True)
+        hero_title = t.get('hero_name', 'Max Mitenkov')
+        hero_sub = t.get('job_title', 'Illustrator · Concept Artist')
+        hero_cta = t.get('view_portfolio', 'View Portfolio')
         return f'''<section class="hero" data-hero-pool="{pool_json}">
-  <img src="{img_src}" data-full="{src}" alt="{alt}" loading="eager">
-  <div class="hero-overlay"></div>
+  <img src="{img_src}" data-full="{src}" alt="{alt}" loading="eager" fetchpriority="high">
+  <div class="hero-overlay">
+    <h1>{hero_title}</h1>
+    <p class="hero-subtitle">{hero_sub}</p>
+    <a href="#book-illustrations" class="hero-cta">{hero_cta}</a>
+  </div>
   <div class="hero-scroll-hint" onclick="document.getElementById('book-illustrations').scrollIntoView({{behavior:'smooth'}})">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
   </div>
@@ -466,6 +475,10 @@ def build_lang(lang='en'):
   <div class="project-card-preview">
     <img src="{main_thumb}" data-full="{main_src}" alt="{main_alt}" class="project-card-main" loading="lazy">
     <div class="project-card-thumbs">{thumbs_html}</div>
+    <div class="project-card-overlay">
+      <span class="overlay-title">{html.escape(label)}</span>
+      <span class="overlay-count">{count} {count_label}</span>
+    </div>
   </div>
   <div class="project-card-info">
     <h3>{html.escape(label)}</h3>
@@ -499,12 +512,16 @@ def build_lang(lang='en'):
             src = html.escape(base + img["src"], quote=True)
             thumb = html.escape(base + img.get("thumb", img["src"]), quote=True)
             alt = html.escape(captions.get(img["src"], img["name"]), quote=True)
+            year = img.get("year", "")
+            year_meta = f'<meta itemprop="dateCreated" content="{year}">' if year else ''
             w = img.get("width", "")
             h = img.get("height", "")
             dim_attr = f' width="{w}" height="{h}"' if w and h else ''
-            lines.append(f'  <div class="gallery-item">')
-            lines.append(f'    <img src="{thumb}" data-full="{src}" alt="{alt}" loading="lazy"{dim_attr}>')
-            lines.append('  </div>')
+            lines.append(f'  <figure class="gallery-item" itemscope itemtype="https://schema.org/VisualArtwork">')
+            lines.append(f'    <img src="{thumb}" data-full="{src}" alt="{alt}" loading="lazy"{dim_attr} itemprop="image">')
+            lines.append(f'    {year_meta}')
+            lines.append(f'    <figcaption itemprop="name">{alt}</figcaption>')
+            lines.append('  </figure>')
         lines.append('</div>')
         return "\n".join(lines)
 
@@ -514,22 +531,50 @@ def build_lang(lang='en'):
             src = html.escape(base + img["src"], quote=True)
             thumb = html.escape(base + img.get("thumb", img["src"]), quote=True)
             alt = html.escape(captions.get(img["src"], img["name"]), quote=True)
+            year = img.get("year", "")
+            year_meta = f'<meta itemprop="dateCreated" content="{year}">' if year else ''
             w = img.get("width", "")
             h = img.get("height", "")
             dim_attr = f' width="{w}" height="{h}"' if w and h else ''
-            lines.append(f'  <div class="gallery-item">')
-            lines.append(f'    <img src="{thumb}" data-full="{src}" alt="{alt}" loading="lazy"{dim_attr}>')
-            lines.append('  </div>')
+            lines.append(f'  <figure class="gallery-item" itemscope itemtype="https://schema.org/VisualArtwork">')
+            lines.append(f'    <img src="{thumb}" data-full="{src}" alt="{alt}" loading="lazy"{dim_attr} itemprop="image">')
+            lines.append(f'    {year_meta}')
+            lines.append(f'    <figcaption itemprop="name">{alt}</figcaption>')
+            lines.append('  </figure>')
         lines.append('</div>')
         return "\n".join(lines)
 
     def build_project_page(sub_key, proj, items, base="../"):
+        page_lang = 'ru' if lang == 'ru' else 'en'
+        page_canonical = f"https://vimark.art/ru/project/{sub_key}.html" if page_lang == 'ru' else f"https://vimark.art/project/{sub_key}.html"
+        page_hreflang = f'''<!-- hreflang -->
+<link rel="alternate" hreflang="en" href="https://vimark.art/project/{sub_key}.html" />
+<link rel="alternate" hreflang="ru" href="https://vimark.art/ru/project/{sub_key}.html" />
+<link rel="alternate" hreflang="x-default" href="https://vimark.art/project/{sub_key}.html" />'''
         year = datetime.date.today().year
         title = html.escape(proj.get("title", sub_key))
         year = html.escape(proj.get("year", ""))
         client = html.escape(proj.get("client", ""))
         description = html.escape(proj.get("description", ""))
         og_image = html.escape(items[0]["src"], quote=True) if items else "Mitenkov600.jpg"
+
+        # Breadcrumb data
+        cat_key = None
+        cat_label = "Portfolio"
+        for ck, ci in categories.items():
+            if sub_key in ci.get("subfolders", {}):
+                cat_key = ck
+                cat_label = ci["label"]
+                break
+        breadcrumb_json = json.dumps({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+                {"@type": "ListItem", "position": 1, "name": "Portfolio", "item": "https://vimark.art/"},
+                {"@type": "ListItem", "position": 2, "name": cat_label, "item": f"https://vimark.art/#{cat_key}" if cat_key else "https://vimark.art/"},
+                {"@type": "ListItem", "position": 3, "name": title, "item": page_canonical}
+            ]
+        }, ensure_ascii=False)
 
         meta_parts = [p for p in [year, client] if p]
         meta_html = f'<p class="project-meta">{" · ".join(meta_parts)}</p>' if meta_parts else ''
@@ -571,14 +616,22 @@ def build_lang(lang='en'):
             hero_display = ""
             bg_style = ""
 
+        cta_text = t.get('project_cta_text', 'Interested in something similar?')
+        cta_btn = t.get('discuss_project', 'Discuss a project')
+        project_cta_html = f'''<div class="project-cta">
+        <p>{cta_text}</p>
+        <a href="{base}index.html#contact" class="hero-cta">{cta_btn}</a>
+      </div>'''
+
         page_content = f"""<!DOCTYPE html>
-<html lang="en">
+<html lang="{page_lang}">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>{title} · Max Mitenkov</title>
 <meta name="description" content="{title} — {description or 'Portfolio project by Max Mitenkov'}">
-<link rel="canonical" href="https://vimark.art/project/{sub_key}.html">
+<link rel="canonical" href="{page_canonical}">
+{page_hreflang}
 <link rel="preconnect" href="https://www.googletagmanager.com">
 <link rel="preconnect" href="https://mc.yandex.ru">
 <link rel="stylesheet" href="{base}style.css">
@@ -618,13 +671,21 @@ def build_lang(lang='en'):
     ym(109279162, 'init', {{ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true}});
 </script>
 <noscript><div><img src="https://mc.yandex.ru/watch/109279162" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- BreadcrumbList -->
+<script type="application/ld+json">
+{breadcrumb_json}
+</script>
 </head>
 <body>
+  <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">☀</button>
   <div id="canvasWrapper">
     <aside id="sidebar">
-      <img src="{base}Max Mitenkov.png" alt="Max Mitenkov" style="width: 100%; margin-bottom: 24px; opacity: 0.9;">
-      {project_nav_html}
+      <header class="sidebar-header">
+        <img src="{base}Max Mitenkov.png" alt="Max Mitenkov" class="sidebar-photo" style="width: 100%; margin-bottom: 24px; opacity: 0.9;">
+        {project_nav_html}
+      </header>
       {social_html_project}
+      {commissions_html}
       <a href="{base}index.html" class="logo-link"><img src="{base}vimark_logo.png" alt="Logo" style="width: 60px;"></a>
     </aside>
 
@@ -632,26 +693,27 @@ def build_lang(lang='en'):
 
     <main id="main">
       <section class="project-hero"{bg_style}>
-        <img src="{hero_display}" data-full="{hero_src}" alt="{hero_alt}" loading="eager">
+        <img src="{hero_display}" data-full="{hero_src}" alt="{hero_alt}" loading="eager" fetchpriority="high">
       </section>
       <div class="project-header">
-        <a href="{base}index.html" class="back-link">{t.get('back_to_portfolio', '← Back to portfolio')}</a>
+        <a href="{base}index.html#" class="back-link">{t.get('back_to_portfolio', '← Back to portfolio')}</a>
         <h1>{title}</h1>
         {meta_html}
         {desc_html}
       </div>
       {project_gallery_html(items, base)}
+      {project_cta_html}
     </main>
   </div>
 
-  <div class="site-footer">
+  <footer class="site-footer">
     <span><b>©</b> Max Mitenkov, {year}.</span>
     <div class="lang-switch">
       <a href="#" id="lang-en" title="English"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 30" width="24" height="12"><path fill="#012169" d="M0,0 h60 v30 h-60 z"/><path stroke="#fff" stroke-width="6" d="M0,0 L60,30 M60,0 L0,30"/><path stroke="#C8102E" stroke-width="4" d="M0,0 L60,30 M60,0 L0,30"/><path stroke="#fff" stroke-width="10" d="M30,0 v30 M0,15 h60"/><path stroke="#C8102E" stroke-width="6" d="M30,0 v30 M0,15 h60"/></svg></a>
       <a href="#" id="lang-ru" title="Русский"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 30" width="24" height="12"><rect width="60" height="10" fill="#fff"/><rect y="10" width="60" height="10" fill="#0039A6"/><rect y="20" width="60" height="10" fill="#D52B1E"/></svg></a>
     </div>
     <script>(function(){{var p=location.pathname.split('\\\\').join('/');var h=location.hash;var i=p.indexOf('/ru/')!==-1||p.indexOf('/ru/')!==-1;var e=document.getElementById('lang-en');var r=document.getElementById('lang-ru');if(i){{e.href=p.replace('/ru/','/')+h;r.href=p+h;}}else{{r.href=p.replace('/project/','/ru/project/').replace('/index.html','/ru/index.html')+h;e.href=p+h;}}if(i){{r.classList.add('active');}}else{{e.classList.add('active');}}}})();</script>
-  </div>
+  </footer>
 
   <div id="lightbox">
     <button class="lightbox-close" aria-label="Close">×</button>
@@ -662,6 +724,8 @@ def build_lang(lang='en'):
     <div class="lightbox-counter"></div>
   </div>
 
+  {sticky_contact_html}
+  <button id="scrollTop" onclick="window.scrollTo({{top:0,behavior:'smooth'}})" aria-label="Back to top">↑</button>
   <script src="{base}script.js"></script>
 </body>
 </html>
@@ -682,6 +746,14 @@ def build_lang(lang='en'):
         '</nav>',
     ])
 
+    commissions_status = t.get('commissions_open', 'Open for commissions')
+    commissions_html = f'<div class="commissions-status"><span class="status-dot"></span><span>{commissions_status}</span></div>'
+
+    sticky_contact_html = '''<div class="sticky-contact">
+      <a href="https://t.me/MaxMitenkov" target="_blank" rel="noopener" aria-label="Telegram" onclick="if(typeof gtag!=='undefined')gtag('event','click_telegram');if(typeof ym!=='undefined')ym(109279162,'reachGoal','click_telegram');"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.198 2.433a2.242 2.242 0 0 0-1.022.215l-16.031 6.26a2.27 2.27 0 0 0-.093 4.07l3.827 1.558 1.56 4.44a1.5 1.5 0 0 0 2.663.52l2.33-3.14 3.75 2.83a2.27 2.27 0 0 0 3.58-1.74L22.34 3.89a2.24 2.24 0 0 0-1.142-1.457z"/></svg></a>
+      <a href="https://wa.me/375296534382" target="_blank" rel="noopener" aria-label="WhatsApp" onclick="if(typeof gtag!=='undefined')gtag('event','click_whatsapp');if(typeof ym!=='undefined')ym(109279162,'reachGoal','click_whatsapp');"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></a>
+    </div>'''
+
     social_html = '''<div class="social-links">
       <a href="mailto:hello@vimark.art" aria-label="Email"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></a>
       <a href="https://www.facebook.com/maks.vimark/" aria-label="Facebook"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
@@ -698,7 +770,7 @@ def build_lang(lang='en'):
         img_src = html.escape(base_index + img.get("thumb", img["src"]), quote=True)
         img_full = html.escape(base_index + img["src"], quote=True)
         img_alt = html.escape(captions.get(img["src"], img["name"]), quote=True)
-        about_gallery_items += f'<div class="gallery-item"><img src="{img_src}" data-full="{img_full}" alt="{img_alt}" loading="lazy"></div>'
+        about_gallery_items += f'<figure class="gallery-item"><img src="{img_src}" data-full="{img_full}" alt="{img_alt}" loading="lazy"><figcaption>{img_alt}</figcaption></figure>'
 
     about_gallery_html = f'''<div class="about-section about-gallery">
               <h2>{t.get('portfolio', 'Portfolio')}</h2>
@@ -726,11 +798,19 @@ def build_lang(lang='en'):
             </div>
 
             <hr class="about-divider">
+            <h2>{t.get('pricing_title', 'Pricing')}</h2>
+            <div class="pricing-list">
+              <p>{t.get('pricing_character', 'Character design')} <span class="pricing-from">$800</span></p>
+              <p>{t.get('pricing_cover', 'Book cover')} <span class="pricing-from">$500</span></p>
+              <p>{t.get('pricing_env', 'Environment concept')} <span class="pricing-from">$1200</span></p>
+            </div>
+
+            <hr class="about-divider">
             <h2>{t.get('about_contact_title', "Let's work together")}</h2>
             <div class="about-contact">
               <p><a href="mailto:hello@vimark.art">hello@vimark.art</a></p>
               <p>(+375) 29 653-43-82 · <a href="https://t.me/MaxMitenkov" target="_blank" rel="noopener">Telegram: @MaxMitenkov</a></p>
-              <p><a href="{base_index}2025_Resume_eng_concept.pdf" target="_blank" rel="noopener" class="cv-link">{t.get('about_cv', 'Download CV (PDF)')}</a></p>
+              <p><a href="{base_index}2025_Resume_eng_concept.pdf" target="_blank" rel="noopener" class="cv-link" onclick="if(typeof gtag!=='undefined')gtag('event','download_cv');if(typeof ym!=='undefined')ym(109279162,'reachGoal','download_cv');">{t.get('about_cv', 'Download CV (PDF)')}</a></p>
             </div>
 
             {about_gallery_html}
@@ -738,13 +818,26 @@ def build_lang(lang='en'):
         </div>
       </section>'''
 
+    project_type_options = [
+        ("", t.get('select', 'Select...')),
+        ("Book cover", "Book cover"),
+        ("Illustration", "Illustration"),
+        ("Concept art", "Concept art"),
+        ("Other", t.get('other', 'Other')),
+    ]
+    project_type_options_html = "\n".join(f'              <option value="{html.escape(v)}">{html.escape(l)}</option>' for v, l in project_type_options)
+
     contact_html = f'''      <section id="contact" class="hidden">
         <div class="contact-container">
           <h1>{t.get('contact', 'Contact')}</h1>
-          <form action="https://api.web3forms.com/submit" method="POST" class="contact-form">
+          <form action="https://api.web3forms.com/submit" method="POST" class="contact-form" onsubmit="if(typeof gtag!=='undefined')gtag('event','submit_contact');if(typeof ym!=='undefined')ym(109279162,'reachGoal','submit_contact');">
             <input type="hidden" name="access_key" value="211a1ef5-25ea-4d59-9b9c-33b5f9126f21">
             <input type="hidden" name="redirect" value="https://vimark.art/thanks.html">
             <input type="hidden" name="subject" value="New message from vimark.art">
+            <div class="form-group hp-field" style="display:none !important">
+              <label for="hp-name">Name</label>
+              <input type="text" id="hp-name" name="hp-name" tabindex="-1" autocomplete="off">
+            </div>
             <div class="form-group">
               <label for="email">{t.get('email_label', 'Email')} <span class="required">({t.get('required', 'required')})</span></label>
               <input type="email" id="email" name="email" required>
@@ -760,6 +853,12 @@ def build_lang(lang='en'):
               </div>
             </div>
             <div class="form-group">
+              <label for="project-type">{t.get('project_type_label', 'Project type')}</label>
+              <select id="project-type" name="project-type">
+{project_type_options_html}
+              </select>
+            </div>
+            <div class="form-group">
               <label for="message">{t.get('message_label', 'Message')}</label>
               <textarea id="message" name="message" rows="6" required></textarea>
             </div>
@@ -768,8 +867,20 @@ def build_lang(lang='en'):
         </div>
       </section>'''
 
+    hreflang_block = f'''<!-- hreflang -->
+<link rel="alternate" hreflang="en" href="https://vimark.art/" />
+<link rel="alternate" hreflang="ru" href="https://vimark.art/ru/" />
+<link rel="alternate" hreflang="x-default" href="https://vimark.art/" />'''
+
+    filter_buttons = []
+    filter_all = t.get('filter_all', 'All')
+    filter_buttons.append(f'<button class="filter-btn active" data-filter="all">{html.escape(filter_all)}</button>')
+    for cat_key, info in categories.items():
+        filter_buttons.append(f'<button class="filter-btn" data-filter="{cat_key}">{html.escape(info["label"])}</button>')
+    filter_bar = f'<div class="filter-bar">\n  {"\n  ".join(filter_buttons)}\n</div>'
+
     html_content = f"""<!DOCTYPE html>
-<html lang="en">
+<html lang="{lang_attr}">
 <head>
 <link rel="preconnect" href="https://www.googletagmanager.com">
 <link rel="preconnect" href="https://mc.yandex.ru">
@@ -778,7 +889,8 @@ def build_lang(lang='en'):
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Max Mitenkov · {t.get('job_title', 'Illustrator · Concept Artist')}</title>
 <meta name="description" content="{t.get('meta_description', 'Portfolio of Max Mitenkov, illustrator and concept artist with 12+ years of experience in games, books, and NFT projects.')}">
-<link rel="canonical" href="https://vimark.art/">
+<link rel="canonical" href="{canonical_root}">
+{hreflang_block}
 <link rel="stylesheet" href="{base_index}style.css">
 <link rel="icon" type="image/png" href="{base_index}vimark_logo.png">
 
@@ -854,11 +966,15 @@ def build_lang(lang='en'):
 <!-- /Yandex.Metrika counter -->
 </head>
 <body>
+  <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">☀</button>
   <div id="canvasWrapper">
     <aside id="sidebar">
-      <img src="{base_index}Max Mitenkov.png" alt="Max Mitenkov" style="width: 100%; margin-bottom: 24px; opacity: 0.9;">
-      {"\n      ".join(nav_lines)}
+      <header class="sidebar-header">
+        <img src="{base_index}Max Mitenkov.png" alt="Max Mitenkov" class="sidebar-photo" style="width: 100%; margin-bottom: 24px; opacity: 0.9;">
+        {"\n      ".join(nav_lines)}
+      </header>
       {social_html.replace('src=\"behance.png\"', f'src=\"{base_index}behance.png\"').replace('src=\"deviantart.png\"', f'src=\"{base_index}deviantart.png\"')}
+      {commissions_html}
       <a href="{base_index}index.html" class="logo-link"><img src="{base_index}vimark_logo.png" alt="Logo" style="width: 60px;"></a>
     </aside>
 
@@ -866,20 +982,21 @@ def build_lang(lang='en'):
 
     <main id="main">
       {hero_html(all_items, base_index, pool=(strong_images if strong_images else hero_images))}
+      {filter_bar}
       {projects_sections_html(base_index)}
 {about_html}
 {contact_html}
     </main>
   </div>
 
-  <div class="site-footer">
+  <footer class="site-footer">
     <span><b>©</b> Max Mitenkov, {year}.</span>
     <div class="lang-switch">
       <a href="#" id="lang-en" title="English"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 30" width="24" height="12"><path fill="#012169" d="M0,0 h60 v30 h-60 z"/><path stroke="#fff" stroke-width="6" d="M0,0 L60,30 M60,0 L0,30"/><path stroke="#C8102E" stroke-width="4" d="M0,0 L60,30 M60,0 L0,30"/><path stroke="#fff" stroke-width="10" d="M30,0 v30 M0,15 h60"/><path stroke="#C8102E" stroke-width="6" d="M30,0 v30 M0,15 h60"/></svg></a>
       <a href="#" id="lang-ru" title="Русский"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 30" width="24" height="12"><rect width="60" height="10" fill="#fff"/><rect y="10" width="60" height="10" fill="#0039A6"/><rect y="20" width="60" height="10" fill="#D52B1E"/></svg></a>
     </div>
     <script>(function(){{var p=location.pathname.split('\\\\').join('/');var h=location.hash;var i=p.indexOf('/ru/')!==-1||p.indexOf('/ru/')!==-1;var e=document.getElementById('lang-en');var r=document.getElementById('lang-ru');if(i){{e.href=p.replace('/ru/','/')+h;r.href=p+h;}}else{{r.href=p.replace('/project/','/ru/project/').replace('/index.html','/ru/index.html')+h;e.href=p+h;}}if(i){{r.classList.add('active');}}else{{e.classList.add('active');}}}})();</script>
-  </div>
+  </footer>
 
   <div id="lightbox">
     <button class="lightbox-close">×</button>
@@ -890,6 +1007,8 @@ def build_lang(lang='en'):
     <div class="lightbox-counter"></div>
   </div>
 
+  {sticky_contact_html}
+  <button id="scrollTop" onclick="window.scrollTo({{top:0,behavior:'smooth'}})" aria-label="Back to top">↑</button>
   <script src="{base_index}script.js"></script>
 </body>
 </html>
@@ -942,15 +1061,16 @@ def build_lang(lang='en'):
 
     # Generate sitemap.xml
     today = datetime.date.today().isoformat()
+    root_url = "https://vimark.art/" if lang == 'en' else "https://vimark.art/ru/"
+    project_base = "https://vimark.art/project/" if lang == 'en' else "https://vimark.art/ru/project/"
     urls = [
-        ("https://vimark.art/", "1.0"),
-        (f"https://vimark.art/{base_index}index.html", "1.0"),
+        (root_url, "1.0"),
     ]
     for sub_key in projects.keys():
-        urls.append((f"https://vimark.art/project/{sub_key}.html", "0.8"))
+        urls.append((f"{project_base}{sub_key}.html", "0.9"))
     for cat_key, info in categories.items():
         if not info["subfolders"]:
-            urls.append((f"https://vimark.art/project/{cat_key}.html", "0.8"))
+            urls.append((f"{project_base}{cat_key}.html", "0.9"))
     url_entries = "\n".join(
         f"  <url>\n    <loc>{loc}</loc>\n    <lastmod>{today}</lastmod>\n    <changefreq>weekly</changefreq>\n    <priority>{priority}</priority>\n  </url>"
         for loc, priority in urls
@@ -961,6 +1081,20 @@ def build_lang(lang='en'):
 </urlset>"""
     (out_dir / "sitemap.xml").write_text(sitemap_content, encoding="utf-8")
     print(f"Generated {lang}/sitemap.xml")
+
+    if lang == 'en':
+        image_urls = []
+        for img in all_items:
+            img_loc = f"https://vimark.art/{html.escape(img['src'])}"
+            img_title = html.escape(captions.get(img['src'], img['name']))
+            image_urls.append(f'  <url>\n    <loc>{img_loc}</loc>\n    <image:image>\n      <image:loc>{img_loc}</image:loc>\n      <image:title>{img_title}</image:title>\n    </image:image>\n  </url>')
+        image_sitemap = f"""<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+{chr(10).join(image_urls)}
+</urlset>"""
+        (WEBSITE / "image-sitemap.xml").write_text(image_sitemap, encoding="utf-8")
+        print(f"Generated image-sitemap.xml with {len(all_items)} images.")
 
 
 if __name__ == "__main__":
