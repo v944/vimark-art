@@ -1,6 +1,27 @@
 (function() {
   'use strict';
 
+  // First-visit fullscreen hero effect (desktop only)
+  (function initFirstVisitHero() {
+    if (!document.body.classList.contains('home')) return;
+    if (window.innerWidth <= 768) return;
+
+    const visited = localStorage.getItem('visited');
+    if (visited) return;
+
+    document.body.classList.add('first-visit');
+
+    function onScroll() {
+      if (window.scrollY > window.innerHeight * 0.7) {
+        document.body.classList.add('revealed');
+        localStorage.setItem('visited', 'true');
+        window.removeEventListener('scroll', onScroll);
+      }
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+  })();
+
   const lightbox = document.getElementById('lightbox');
   const lbImg = document.querySelector('.lightbox-img');
   const lbCaption = document.querySelector('.lightbox-caption');
