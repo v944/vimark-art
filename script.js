@@ -22,6 +22,19 @@
     window.addEventListener('scroll', onScroll, { passive: true });
   })();
 
+  // Click logo on homepage to reset first-visit effect
+  (function initLogoReset() {
+    const logoLink = document.querySelector('.logo-link');
+    if (!logoLink) return;
+    logoLink.addEventListener('click', function(e) {
+      if (document.body.classList.contains('home')) {
+        e.preventDefault();
+        localStorage.removeItem('visited');
+        window.location.reload();
+      }
+    });
+  })();
+
   const lightbox = document.getElementById('lightbox');
   const lbImg = document.querySelector('.lightbox-img');
   const lbCaption = document.querySelector('.lightbox-caption');
