@@ -5,6 +5,7 @@ Sub-folders become sub-menu items.
 """
 import os
 import html
+import urllib.parse
 import re
 import random
 import datetime
@@ -781,7 +782,7 @@ def build_lang(lang='en'):
     about_html = f'''      <section id="about" class="hidden">
         <div class="about-container">
           <div class="about-photo">
-            <img src="{base_index}Mitenkov600.jpg" alt="Max Mitenkov">
+            <img src="{base_index}Mitenkov600.jpg" alt="Max Mitenkov" loading="lazy">
           </div>
           <div class="about-content">
             <h1>{t.get('about', 'About')}</h1>
@@ -1084,9 +1085,17 @@ def build_lang(lang='en'):
 
     if lang == 'en':
         image_urls = []
+        title_counts = {}
         for img in all_items:
-            img_loc = f"https://vimark.art/{html.escape(img['src'])}"
+            src_quoted = urllib.parse.quote(img['src'], safe='/')
+            img_loc = f"https://vimark.art/{src_quoted}"
             img_title = html.escape(captions.get(img['src'], img['name']))
+            # Make titles unique
+            if img_title in title_counts:
+                title_counts[img_title] += 1
+                img_title = f"{img_title} ({title_counts[img_title]})"
+            else:
+                title_counts[img_title] = 1
             image_urls.append(f'  <url>\n    <loc>{img_loc}</loc>\n    <image:image>\n      <image:loc>{img_loc}</image:loc>\n      <image:title>{img_title}</image:title>\n    </image:image>\n  </url>')
         image_sitemap = f"""<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
