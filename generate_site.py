@@ -282,6 +282,7 @@ def build_lang(lang='en'):
     year = datetime.date.today().year
     lang_attr = 'en' if lang == 'en' else 'ru'
     canonical_root = 'https://vimark.art/' if lang == 'en' else 'https://vimark.art/ru/'
+    hero_name = html.escape(t.get('hero_name', 'Max Mitenkov'))
     categories = {}
     for entry in sorted(ROOT.iterdir()):
         if not entry.is_dir():
@@ -554,6 +555,7 @@ def build_lang(lang='en'):
 <link rel="alternate" hreflang="x-default" href="https://vimark.art/project/{sub_key}.html" />'''
         year = datetime.date.today().year
         title = html.escape(proj.get("title", sub_key))
+        hero_name = html.escape(t.get('hero_name', 'Max Mitenkov'))
         year = html.escape(proj.get("year", ""))
         client = html.escape(proj.get("client", ""))
         description = html.escape(proj.get("description", ""))
@@ -631,7 +633,7 @@ def build_lang(lang='en'):
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>{title} · Max Mitenkov</title>
+<title>{title} · {hero_name}</title>
 <meta name="description" content="{title} — {description or 'Portfolio project by Max Mitenkov'}">
 <link rel="canonical" href="{page_canonical}">
 {page_hreflang}
@@ -643,14 +645,14 @@ def build_lang(lang='en'):
 <!-- Open Graph -->
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://vimark.art/project/{sub_key}.html">
-<meta property="og:title" content="{title} · Max Mitenkov">
+<meta property="og:title" content="{title} · {hero_name}">
 <meta property="og:description" content="{description or 'Portfolio project by Max Mitenkov'}">
 <meta property="og:image" content="https://vimark.art/{og_image}">
 
 <!-- Twitter -->
 <meta property="twitter:card" content="summary_large_image">
 <meta property="twitter:url" content="https://vimark.art/project/{sub_key}.html">
-<meta property="twitter:title" content="{title} · Max Mitenkov">
+<meta property="twitter:title" content="{title} · {hero_name}">
 <meta property="twitter:description" content="{description or 'Portfolio project by Max Mitenkov'}">
 <meta property="twitter:image" content="https://vimark.art/{og_image}">
 
@@ -684,7 +686,7 @@ def build_lang(lang='en'):
   <div id="canvasWrapper">
     <aside id="sidebar">
       <header class="sidebar-header">
-        <img src="{base}Max Mitenkov.png" alt="Max Mitenkov" class="sidebar-photo" style="width: 100%; margin-bottom: 24px; opacity: 0.9;">
+        <img src="{base}Max Mitenkov.png" alt="{hero_name}" class="sidebar-photo" style="width: 100%; margin-bottom: 24px; opacity: 0.9;">
         {project_nav_html}
       </header>
       {social_html_project}
@@ -710,7 +712,7 @@ def build_lang(lang='en'):
   </div>
 
   <footer class="site-footer">
-    <span><b>©</b> Max Mitenkov, {year}.</span>
+    <span><b>©</b> {hero_name}, {year}.</span>
     <div class="lang-switch">
       <a href="#" id="lang-en" title="English"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 30" width="24" height="12"><path fill="#012169" d="M0,0 h60 v30 h-60 z"/><path stroke="#fff" stroke-width="6" d="M0,0 L60,30 M60,0 L0,30"/><path stroke="#C8102E" stroke-width="4" d="M0,0 L60,30 M60,0 L0,30"/><path stroke="#fff" stroke-width="10" d="M30,0 v30 M0,15 h60"/><path stroke="#C8102E" stroke-width="6" d="M30,0 v30 M0,15 h60"/></svg></a>
       <a href="#" id="lang-ru" title="Русский"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 30" width="24" height="12"><rect width="60" height="10" fill="#fff"/><rect y="10" width="60" height="10" fill="#0039A6"/><rect y="20" width="60" height="10" fill="#D52B1E"/></svg></a>
@@ -784,7 +786,7 @@ def build_lang(lang='en'):
     about_html = f'''      <section id="about" class="hidden">
         <div class="about-container">
           <div class="about-photo">
-            <img src="{base_index}Mitenkov600.jpg" alt="Max Mitenkov" loading="lazy">
+            <img src="{base_index}Mitenkov600.jpg" alt="{hero_name}" loading="lazy">
           </div>
           <div class="about-content">
             <h1>{t.get('about', 'About')}</h1>
@@ -882,6 +884,8 @@ def build_lang(lang='en'):
         filter_buttons.append(f'<button class="filter-btn" data-filter="{cat_key}">{html.escape(info["label"])}</button>')
     filter_bar = f'<div class="filter-bar">\n  {"\n  ".join(filter_buttons)}\n</div>'
 
+    hero_name = html.escape(t.get('hero_name', 'Max Mitenkov'))
+
     html_content = f"""<!DOCTYPE html>
 <html lang="{lang_attr}">
 <head>
@@ -890,7 +894,7 @@ def build_lang(lang='en'):
 <link rel="dns-prefetch" href="https://www.google-analytics.com">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Max Mitenkov · {t.get('job_title', 'Illustrator · Concept Artist')}</title>
+<title>{hero_name} · {t.get('job_title', 'Illustrator · Concept Artist')}</title>
 <meta name="description" content="{t.get('meta_description', 'Portfolio of Max Mitenkov, illustrator and concept artist with 12+ years of experience in games, books, and NFT projects.')}">
 <link rel="canonical" href="{canonical_root}">
 {hreflang_block}
@@ -900,14 +904,14 @@ def build_lang(lang='en'):
 <!-- Open Graph / Facebook -->
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://vimark.art/">
-<meta property="og:title" content="Max Mitenkov · Illustrator · Concept Artist">
+<meta property="og:title" content="{hero_name} · Illustrator · Concept Artist">
 <meta property="og:description" content="Gallery of illustrations, concept art, and book covers by Max Mitenkov.">
 <meta property="og:image" content="https://vimark.art/{og_strong}">
 
 <!-- Twitter -->
 <meta property="twitter:card" content="summary_large_image">
 <meta property="twitter:url" content="https://vimark.art/">
-<meta property="twitter:title" content="Max Mitenkov · Illustrator · Concept Artist">
+<meta property="twitter:title" content="{hero_name} · Illustrator · Concept Artist">
 <meta property="twitter:description" content="Gallery of illustrations, concept art, and book covers by Max Mitenkov.">
 <meta property="twitter:image" content="https://vimark.art/{og_strong}">
 
@@ -916,7 +920,7 @@ def build_lang(lang='en'):
 {{
   "@context": "https://schema.org",
   "@type": "Person",
-  "name": "Max Mitenkov",
+  "name": "{hero_name}",
   "jobTitle": "Illustrator and Concept Artist",
   "url": "https://vimark.art/",
   "image": "https://vimark.art/{og_strong}",
@@ -973,7 +977,7 @@ def build_lang(lang='en'):
   <div id="canvasWrapper">
     <aside id="sidebar">
       <header class="sidebar-header">
-        <img src="{base_index}Max Mitenkov.png" alt="Max Mitenkov" class="sidebar-photo" style="width: 100%; margin-bottom: 24px; opacity: 0.9;">
+        <img src="{base_index}Max Mitenkov.png" alt="{hero_name}" class="sidebar-photo" style="width: 100%; margin-bottom: 24px; opacity: 0.9;">
         {"\n      ".join(nav_lines)}
       </header>
       {social_html.replace('src=\"behance.png\"', f'src=\"{base_index}behance.png\"').replace('src=\"deviantart.png\"', f'src=\"{base_index}deviantart.png\"')}
@@ -993,7 +997,7 @@ def build_lang(lang='en'):
   </div>
 
   <footer class="site-footer">
-    <span><b>©</b> Max Mitenkov, {year}.</span>
+    <span><b>©</b> {hero_name}, {year}.</span>
     <div class="lang-switch">
       <a href="#" id="lang-en" title="English"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 30" width="24" height="12"><path fill="#012169" d="M0,0 h60 v30 h-60 z"/><path stroke="#fff" stroke-width="6" d="M0,0 L60,30 M60,0 L0,30"/><path stroke="#C8102E" stroke-width="4" d="M0,0 L60,30 M60,0 L0,30"/><path stroke="#fff" stroke-width="10" d="M30,0 v30 M0,15 h60"/><path stroke="#C8102E" stroke-width="6" d="M30,0 v30 M0,15 h60"/></svg></a>
       <a href="#" id="lang-ru" title="Русский"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 30" width="24" height="12"><rect width="60" height="10" fill="#fff"/><rect y="10" width="60" height="10" fill="#0039A6"/><rect y="20" width="60" height="10" fill="#D52B1E"/></svg></a>
