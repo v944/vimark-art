@@ -445,7 +445,7 @@ def build_lang(lang='en'):
         switch_pool = strong_images if strong_images else hero_images
         for img in switch_pool:
             hero_pool.append({
-                "src": html.escape(base + img.get("thumb", img["src"]), quote=True),
+                "src": html.escape(base + img["src"], quote=True),
                 "full": html.escape(base + img["src"], quote=True),
                 "alt": html.escape(captions.get(img["src"], img["name"]), quote=True)
             })
