@@ -29,8 +29,6 @@
     logoLink.addEventListener('click', function(e) {
       if (document.body.classList.contains('home')) {
         e.preventDefault();
-        localStorage.removeItem('visited');
-        window.location.reload();
       }
     });
   })();
@@ -418,6 +416,21 @@
       navLinks.forEach(l => l.classList.remove('active'));
       window.scrollTo({ top: 0, behavior: 'smooth' });
       history.pushState(null, null, '#');
+
+      // Reset first-visit scroll listener for returning visitors
+      if (document.body.classList.contains('home')) {
+        localStorage.removeItem('visited');
+        document.body.classList.add('first-visit');
+        document.body.classList.remove('revealed');
+        function onLogoScroll() {
+          if (window.scrollY > window.innerHeight * 0.7) {
+            document.body.classList.add('revealed');
+            localStorage.setItem('visited', 'true');
+            window.removeEventListener('scroll', onLogoScroll);
+          }
+        }
+        window.addEventListener('scroll', onLogoScroll, { passive: true });
+      }
 
       const poolAttr = heroSection.getAttribute('data-hero-pool');
       if (!poolAttr) return;
