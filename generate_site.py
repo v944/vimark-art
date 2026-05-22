@@ -400,7 +400,16 @@ def build_lang(lang='en'):
     strong_images = collect_images_from_path("STRONG")
     if strong_images:
         print(f"Found {len(strong_images)} STRONG image(s) for social preview.")
-    og_strong = random.choice(strong_images)["src"] if strong_images else "Mitenkov600.jpg"
+        if HAS_PILLOW:
+            for img in strong_images:
+                thumb_rel, w, h = ensure_thumbnail(img["path"])
+                img["thumb"] = thumb_rel
+                img["width"] = w
+                img["height"] = h
+    og_strong = random.choice(strong_images) if strong_images else None
+    og_strong_src = html.escape(og_strong.get("thumb", og_strong["src"]) if og_strong else "Mitenkov600.jpg", quote=True)
+    og_strong_width = html.escape(og_strong.get("width", "600"), quote=True) if og_strong else "600"
+    og_strong_height = html.escape(og_strong.get("height", "600"), quote=True) if og_strong else "600"
 
     # Generate thumbnails
     if HAS_PILLOW:
@@ -559,7 +568,10 @@ def build_lang(lang='en'):
         year = html.escape(proj.get("year", ""))
         client = html.escape(proj.get("client", ""))
         description = html.escape(proj.get("description", ""))
-        og_image = html.escape(items[0]["src"], quote=True) if items else "Mitenkov600.jpg"
+        first_item = items[0] if items else None
+        og_image = html.escape(first_item.get("thumb", first_item["src"]), quote=True) if first_item else "Mitenkov600.jpg"
+        og_image_width = html.escape(first_item.get("width", "600"), quote=True) if first_item else "600"
+        og_image_height = html.escape(first_item.get("height", "600"), quote=True) if first_item else "600"
 
         # Breadcrumb data
         cat_key = None
@@ -648,6 +660,9 @@ def build_lang(lang='en'):
 <meta property="og:title" content="{title} · {hero_name}">
 <meta property="og:description" content="{description or 'Portfolio project by Max Mitenkov'}">
 <meta property="og:image" content="https://vimark.art/{og_image}">
+<meta property="og:image:width" content="{og_image_width}">
+<meta property="og:image:height" content="{og_image_height}">
+<link rel="image_src" href="https://vimark.art/{og_image}">
 
 <!-- Twitter -->
 <meta property="twitter:card" content="summary_large_image">
@@ -906,14 +921,17 @@ def build_lang(lang='en'):
 <meta property="og:url" content="https://vimark.art/">
 <meta property="og:title" content="{hero_name} · Illustrator · Concept Artist">
 <meta property="og:description" content="Gallery of illustrations, concept art, and book covers by Max Mitenkov.">
-<meta property="og:image" content="https://vimark.art/{og_strong}">
+<meta property="og:image" content="https://vimark.art/{og_strong_src}">
+<meta property="og:image:width" content="{og_strong_width}">
+<meta property="og:image:height" content="{og_strong_height}">
+<link rel="image_src" href="https://vimark.art/{og_strong_src}">
 
 <!-- Twitter -->
 <meta property="twitter:card" content="summary_large_image">
 <meta property="twitter:url" content="https://vimark.art/">
 <meta property="twitter:title" content="{hero_name} · Illustrator · Concept Artist">
 <meta property="twitter:description" content="Gallery of illustrations, concept art, and book covers by Max Mitenkov.">
-<meta property="twitter:image" content="https://vimark.art/{og_strong}">
+<meta property="twitter:image" content="https://vimark.art/{og_strong_src}">
 
 <!-- Schema.org -->
 <script type="application/ld+json">
@@ -923,7 +941,7 @@ def build_lang(lang='en'):
   "name": "{hero_name}",
   "jobTitle": "Illustrator and Concept Artist",
   "url": "https://vimark.art/",
-  "image": "https://vimark.art/{og_strong}",
+  "image": "https://vimark.art/{og_strong_src}",
   "sameAs": [
     "https://www.behance.net/vimark",
     "https://www.linkedin.com/in/maxim-mitenkov-06192940/",
