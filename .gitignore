@@ -8,3 +8,7 @@ Thumbs.db
 
 # Kimi sessions
 .kimi/
+
+# Desert Giants WIP (development branch only)
+scenes/
+__UE_web/
