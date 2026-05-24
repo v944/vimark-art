@@ -20,12 +20,12 @@ const scene = new THREE.Scene();
 scene.background = null;
 
 const camera = new THREE.PerspectiveCamera(
-    45,
+    75,
     window.innerWidth / window.innerHeight,
     0.1,
     300
 );
-camera.position.set(15, 8, 20);
+camera.position.set(-55, 1.2, 12);
 
 const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
 renderer.setSize(window.innerWidth, window.innerHeight);
@@ -93,8 +93,8 @@ setTimeout(() => {
 /* =========================================================
    LIGHTING
    ========================================================= */
-const sun = new THREE.DirectionalLight(0xffaa66, 1.5);
-sun.position.set(50, 80, 30);
+const sun = new THREE.DirectionalLight(0xffcc88, 3.0);
+sun.position.set(-60, 25, 40);
 sun.castShadow = true;
 sun.shadow.mapSize.set(SHADOW_MAP_SIZE, SHADOW_MAP_SIZE);
 sun.shadow.camera.near = 0.5;
@@ -105,11 +105,11 @@ sun.shadow.camera.top = 60;
 sun.shadow.camera.bottom = -60;
 scene.add(sun);
 
-const fill = new THREE.DirectionalLight(0x6688ff, 0.3);
-fill.position.set(-30, 20, -30);
+const fill = new THREE.DirectionalLight(0x6688ff, 0.15);
+fill.position.set(30, 20, -30);
 scene.add(fill);
 
-const ambient = new THREE.AmbientLight(0x404040, 0.4);
+const ambient = new THREE.AmbientLight(0x5a4a35, 0.5);
 scene.add(ambient);
 
 /* =========================================================
@@ -132,93 +132,59 @@ rgbeLoader.load('assets/desert_sunset_2k.hdr',
 // GLB Scene
 gltfLoader.load('assets/desert_scene.glb',
     (gltf) => {
+        let desertMesh = null;
+        let desertMaterial = null;
+
         gltf.scene.traverse((child) => {
             if (child.isMesh && child.material) {
                 child.castShadow = true;
                 child.receiveShadow = true;
-
                 const box = new THREE.Box3().setFromObject(child);
                 const size = box.getSize(new THREE.Vector3());
+                const center = box.getCenter(new THREE.Vector3());
+                console.log('MESH:', child.name, 'size:', size.x.toFixed(1), size.y.toFixed(1), size.z.toFixed(1), 'center:', center.x.toFixed(1), center.y.toFixed(1), center.z.toFixed(1), 'verts:', child.geometry.attributes.position.count);
 
-                // Recolor by bounding box height (desert vs giants vs props)
-                if (size.y < 1) {
-                    child.material.color.set(0xC9A96E);
-                    child.material.roughness = 0.9;
-                    child.material.envMapIntensity = 0.5;
-                } else if (size.y > 5) {
-                    child.material.color.set(0x8B7355);
-                    child.material.roughness = 0.65;
-                    child.material.envMapIntensity = 1.2;
-                } else if (size.y < 2) {
-                    child.material.color.set(0x4A4035);
-                    child.material.roughness = 0.8;
-                    child.material.envMapIntensity = 0.8;
-                } else {
-                    child.material.color.set(0x6b5b4f);
-                    child.material.roughness = 0.75;
+                // Identify desert mesh: very flat and large in X/Z
+                if (size.y < 1.0 && (size.x > 40 || size.z > 40)) {
+                    desertMesh = child;
+                    desertMaterial = child.material.clone();
+                    console.log('Found desert mesh:', child.name);
                 }
             }
         });
 
-        // Replace desert ground mesh with infinite plane for better performance
-        const desertMesh = gltf.scene.getObjectByName('mesh_0_1');
-        if (desertMesh && desertMesh.material) {
-            const desertMat = desertMesh.material.clone();
-            const planeGeo = new THREE.PlaneGeometry(500, 500);
-            const groundPlane = new THREE.Mesh(planeGeo, desertMat);
-            groundPlane.rotation.x = -Math.PI / 2;
-            groundPlane.position.y = 1.57;
-            groundPlane.receiveShadow = true;
-            scene.add(groundPlane);
-            desertMesh.visible = false;
-        } else {
-            // Fallback: create default sand plane if mesh_0_1 was removed from GLB
-            const fallbackMat = new THREE.MeshStandardMaterial({
-                color: 0xC9A96E,
-                roughness: 0.9,
-                envMapIntensity: 0.5,
-            });
-            const planeGeo = new THREE.PlaneGeometry(500, 500);
-            const groundPlane = new THREE.Mesh(planeGeo, fallbackMat);
-            groundPlane.rotation.x = -Math.PI / 2;
-            groundPlane.position.y = 0;
-            groundPlane.receiveShadow = true;
-            scene.add(groundPlane);
+        // Remove original desert mesh and replace with infinite plane
+        if (desertMesh && desertMesh.parent) {
+            desertMesh.parent.remove(desertMesh);
+            console.log('Removed original desert mesh from scene');
         }
+
+        const sandNormal = texLoader.load('assets/Normal_4K_Rippled_Sand.PNG',
+            undefined, undefined, (err) => console.error('Normal map error:', err));
+        sandNormal.wrapS = THREE.RepeatWrapping;
+        sandNormal.wrapT = THREE.RepeatWrapping;
+        sandNormal.repeat.set(120, 120);
+
+        const planeGeo = new THREE.PlaneGeometry(1000, 1000);
+        const planeMat = new THREE.MeshStandardMaterial({
+            color: 0x5a3d20,
+            roughness: 0.95,
+            envMapIntensity: 0.4,
+            normalMap: sandNormal,
+            normalScale: new THREE.Vector2(1.0, 1.0),
+        });
+        const desertPlane = new THREE.Mesh(planeGeo, planeMat);
+        desertPlane.rotation.x = -Math.PI / 2;
+        desertPlane.position.y = 0;
+        desertPlane.receiveShadow = true;
+        scene.add(desertPlane);
+        console.log('Added infinite desert plane');
+
         scene.add(gltf.scene);
     },
     undefined,
     (err) => console.error('GLB load error:', err)
 );
-
-// Billboards
-const billboardTex1 = texLoader.load('assets/giant_billboard_01.png',
-    undefined, undefined, (err) => console.error('Billboard 1 error:', err));
-const billboardMat1 = new THREE.SpriteMaterial({
-    map: billboardTex1,
-    alphaTest: 0.5,
-    depthWrite: false,
-    color: 0xffffff
-});
-const sprite1 = new THREE.Sprite(billboardMat1);
-sprite1.position.set(-40, 4, -30);
-sprite1.scale.set(8, 10, 1);
-sprite1.renderOrder = 100;
-scene.add(sprite1);
-
-const billboardTex2 = texLoader.load('assets/giant_billboard_02.png',
-    undefined, undefined, (err) => console.error('Billboard 2 error:', err));
-const billboardMat2 = new THREE.SpriteMaterial({
-    map: billboardTex2,
-    alphaTest: 0.5,
-    depthWrite: false,
-    color: 0xffffff
-});
-const sprite2 = new THREE.Sprite(billboardMat2);
-sprite2.position.set(50, 4, -25);
-sprite2.scale.set(8, 10, 1);
-sprite2.renderOrder = 100;
-scene.add(sprite2);
 
 /* =========================================================
    GROUND FOG (5 PLANES)
@@ -281,8 +247,8 @@ float fbm(vec2 p) {
 
 void main() {
     vec2 uv = vUv * 3.0;
-    uv.x += uTime * 0.15;
-    uv.y += uTime * 0.03;
+    uv.x += uTime * 0.05;
+    uv.y += uTime * 0.0;
     float n = fbm(uv);
     float mask = smoothstep(0.2, 0.6, n * 0.5 + 0.5);
     float edgeFade = smoothstep(0.0, 0.2, vUv.x) * smoothstep(1.0, 0.8, vUv.x)
@@ -293,23 +259,23 @@ void main() {
 `;
 
 const fogConfigs = [
-    { y: 0.3, z: -5, opacity: 0.25 },
-    { y: 0.7, z: 0, opacity: 0.20 },
-    { y: 1.1, z: 5, opacity: 0.18 },
-    { y: 1.5, z: 8, opacity: 0.15 },
-    { y: 2.0, z: 10, opacity: 0.12 },
+    { y: -0.10, z: -45, opacity: 0.15 },
+    { y: 0.30, z: -25, opacity: 0.15 },
+    { y: 0.70, z: -5, opacity: 0.15 },
+    { y: 1.10, z: 15, opacity: 0.15 },
+    { y: 1.50, z: 35, opacity: 0.15 },
 ];
 
 const fogUniforms = { value: 0 };
 
 fogConfigs.forEach((cfg) => {
-    const geometry = new THREE.PlaneGeometry(40, 8);
+    const geometry = new THREE.PlaneGeometry(120, 120);
     const material = new THREE.ShaderMaterial({
         vertexShader: fogVertexShader,
         fragmentShader: fogFragmentShader,
         uniforms: {
             uTime: fogUniforms,
-            uColor: { value: new THREE.Vector3(0.788, 0.663, 0.431) },
+            uColor: { value: new THREE.Vector3(0.55, 0.45, 0.30) },
             uOpacity: { value: cfg.opacity },
         },
         transparent: true,
@@ -374,8 +340,8 @@ const btnReset = document.getElementById('btn-reset');
 const btnAuto = document.getElementById('btn-auto');
 
 btnReset.addEventListener('click', () => {
-    camera.position.set(15, 8, 20);
-    controls.target.set(0, 4, 0);
+    camera.position.set(-50, 1.5, 10);
+    controls.target.set(-45, 3, 2);
     controls.update();
 });
 
