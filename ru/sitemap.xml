@@ -2,116 +2,146 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://vimark.art/ru/</loc>
-    <lastmod>2026-05-22</lastmod>
+    <lastmod>2026-05-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
+    <loc>https://vimark.art/ru/contact.html</loc>
+    <lastmod>2026-05-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://vimark.art/ru/project/book-illustrations-endymion.html</loc>
-    <lastmod>2026-05-22</lastmod>
+    <lastmod>2026-05-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://vimark.art/ru/project/book-illustrations-insmoot.html</loc>
-    <lastmod>2026-05-22</lastmod>
+    <lastmod>2026-05-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://vimark.art/ru/project/book-illustrations-nameless-city.html</loc>
-    <lastmod>2026-05-22</lastmod>
+    <lastmod>2026-05-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://vimark.art/ru/project/book-illustrations-vegetation.html</loc>
-    <lastmod>2026-05-22</lastmod>
+    <lastmod>2026-05-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://vimark.art/ru/project/book-illustrations-winters-twins.html</loc>
-    <lastmod>2026-05-22</lastmod>
+    <lastmod>2026-05-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://vimark.art/ru/project/bookcover-2024.html</loc>
-    <lastmod>2026-05-22</lastmod>
+    <lastmod>2026-05-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://vimark.art/ru/project/bookcover-2025.html</loc>
-    <lastmod>2026-05-22</lastmod>
+    <lastmod>2026-05-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://vimark.art/ru/project/bookcover-2026.html</loc>
-    <lastmod>2026-05-22</lastmod>
+    <lastmod>2026-05-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://vimark.art/ru/project/comic-biological-deviations.html</loc>
-    <lastmod>2026-05-22</lastmod>
+    <lastmod>2026-05-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://vimark.art/ru/project/comic-faceless.html</loc>
-    <lastmod>2026-05-22</lastmod>
+    <lastmod>2026-05-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://vimark.art/ru/project/comic-geologyst.html</loc>
-    <lastmod>2026-05-22</lastmod>
+    <lastmod>2026-05-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://vimark.art/ru/project/comic-nemirum.html</loc>
-    <lastmod>2026-05-22</lastmod>
+    <lastmod>2026-05-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://vimark.art/ru/project/comic-the-symbol-of-faith.html</loc>
-    <lastmod>2026-05-22</lastmod>
+    <lastmod>2026-05-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://vimark.art/ru/project/comic-wanderer.html</loc>
-    <lastmod>2026-05-22</lastmod>
+    <lastmod>2026-05-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://vimark.art/ru/project/comic-winter.html</loc>
-    <lastmod>2026-05-22</lastmod>
+    <lastmod>2026-05-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://vimark.art/ru/project/personal-early-work.html</loc>
-    <lastmod>2026-05-22</lastmod>
+    <lastmod>2026-05-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://vimark.art/ru/project/personal-professional-growth.html</loc>
-    <lastmod>2026-05-22</lastmod>
+    <lastmod>2026-05-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://vimark.art/ru/project/personal-recent-work.html</loc>
-    <lastmod>2026-05-22</lastmod>
+    <lastmod>2026-05-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/book-illustrations.html</loc>
+    <lastmod>2026-05-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/bookcover.html</loc>
+    <lastmod>2026-05-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/comic.html</loc>
+    <lastmod>2026-05-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/personal.html</loc>
+    <lastmod>2026-05-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
   </url>
 </urlset>
