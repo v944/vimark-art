@@ -16,7 +16,10 @@ html, body {
 #canvas-container {
     position: fixed;
     inset: 0;
-    background: linear-gradient(to bottom, #3d3020 0%, #1f1810 40%, #0f0c09 100%);
+    background:
+        radial-gradient(ellipse 80% 60% at 5% 30%, #b8a078 0%, transparent 60%),
+        radial-gradient(ellipse 60% 50% at 15% 40%, #7a6848 0%, transparent 50%),
+        linear-gradient(to bottom, #4a3d28 0%, #2a2018 50%, #0f0c09 100%);
     z-index: 1;
 }
 

@@ -18,8 +18,6 @@
 | Файл | Тип | Размер | Назначение |
 |------|-----|--------|------------|
 | `desert_scene.glb` | glTF Binary | ~12 MB | Пустыня + 1 центральный гигант + 2 пастуха |
-| `giant_billboard_01.png` | PNG (RGBA) | ~100–300 KB | Дальний гигант слева, силуэт с alpha |
-| `giant_billboard_02.png` | PNG (RGBA) | ~100–300 KB | Дальний гигант справа, силуэт с alpha |
 | `desert_sunset_2k.hdr` | HDR (Radiance) | ~2–4 MB | HDRI освещение из UE5 (2048×1024) |
 
 **Все файлы лежат в:** `scenes/desert-giants/assets/`
@@ -68,43 +66,7 @@ gltf.scene.traverse((child) => {
 
 ---
 
-## 4. Billboard'ы (дальние гиганты)
-
-Два дальних гиганта — это **Sprite** (не Plane), чтобы всегда смотрели в камеру.
-
-| Параметр | Значение |
-|----------|----------|
-| Тип | `THREE.Sprite` |
-| Материал | `SpriteMaterial`, `transparent: true`, `alphaTest: 0.5` |
-| Позиция 1 | `(-40, 4, -30)` |
-| Позиция 2 | `(50, 4, -25)` |
-| Scale | `(8, 10, 1)` — ширина × высота |
-| Цвет материала | `0xffffff` (белый, не тонировать) |
-
-**Код-фрагмент:**
-```javascript
-const billboardTex = new THREE.TextureLoader().load('assets/giant_billboard_01.png');
-const billboardMat = new THREE.SpriteMaterial({
-    map: billboardTex,
-    transparent: true,
-    alphaTest: 0.5
-});
-
-const sprite1 = new THREE.Sprite(billboardMat);
-sprite1.position.set(-40, 4, -30);
-sprite1.scale.set(8, 10, 1);
-scene.add(sprite1);
-
-// sprite2 — аналогично, с giant_billboard_02.png
-const sprite2 = new THREE.Sprite(billboardMat.clone());
-sprite2.position.set(50, 4, -25);
-sprite2.scale.set(8, 10, 1);
-scene.add(sprite2);
-```
-
----
-
-## 5. HDRI / Environment
+## 4. HDRI / Environment
 
 | Параметр | Значение |
 |----------|----------|
@@ -125,7 +87,7 @@ new RGBELoader().load('assets/desert_sunset_2k.hdr', (texture) => {
 
 ---
 
-## 6. CSS-фон (вместо HDR-неба)
+## 5. CSS-фон (вместо HDR-неба)
 
 ```css
 #canvas-container {
@@ -135,9 +97,9 @@ new RGBELoader().load('assets/desert_sunset_2k.hdr', (texture) => {
 
 ---
 
-## 7. Песчаная буря (procedural, без текстур)
+## 6. Песчаная буря (procedural, без текстур)
 
-### 7.1. Ground Fog — 5 плоскостей с шейдером
+### 6.1. Ground Fog — 5 плоскостей с шейдером
 
 **Vertex Shader:**
 ```glsl
@@ -221,7 +183,7 @@ void main() {
 - Position: Y = 0.3–2.0, Z = -5 до +10
 - Material: `ShaderMaterial`, `transparent: true`, `depthWrite: false`, `side: DoubleSide`
 
-### 7.2. Floating Particles — 1200 точек
+### 6.2. Floating Particles — 1200 точек
 
 - `PointsMaterial`, `size: 0.12`
 - `CanvasTexture` (radial gradient 64×64)
@@ -229,7 +191,7 @@ void main() {
 - Bounds: X ±15, Y 0–5, Z ±10
 - Wind drift: +X, reset loop
 
-### 7.3. CSS Overlay
+### 6.3. CSS Overlay
 
 ```css
 #dust-overlay {
@@ -250,7 +212,7 @@ void main() {
 
 ---
 
-## 8. Камера и управление
+## 7. Камера и управление
 
 | Параметр | Значение |
 |----------|----------|
@@ -264,7 +226,7 @@ void main() {
 
 ---
 
-## 9. UI / Оверлей
+## 8. UI / Оверлей
 
 | Элемент | Стиль |
 |---------|-------|
@@ -276,7 +238,7 @@ void main() {
 
 ---
 
-## 10. Освещение (дополнительно к HDR)
+## 9. Освещение (дополнительно к HDR)
 
 ```javascript
 const sun = new THREE.DirectionalLight(0xffaa66, 1.5);
@@ -292,7 +254,7 @@ scene.add(fill);
 
 ---
 
-## 11. Производительность / Limits
+## 10. Производительность / Limits
 
 | Параметр | Лимит |
 |----------|-------|
@@ -305,7 +267,7 @@ scene.add(fill);
 
 ---
 
-## 12. Структура файлов проекта
+## 11. Структура файлов проекта
 
 ```
 scenes/desert-giants/
@@ -314,14 +276,12 @@ scenes/desert-giants/
 ├── style.css
 └── assets/
     ├── desert_scene.glb
-    ├── giant_billboard_01.png
-    ├── giant_billboard_02.png
     └── desert_sunset_2k.hdr
 ```
 
 ---
 
-## 13. Примечания для разработчика (Kimi Code)
+## 12. Примечания для разработчика (Kimi Code)
 
 - GLB экспортирован из Houdini, материалы серые — **обязательна цветокоррекция в коде** (раздел 3).
 - Billboard'ы — PNG с чистым alpha, подготовлены в Photoshop.
