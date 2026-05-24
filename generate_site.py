@@ -752,6 +752,162 @@ def build_lang(lang='en'):
 """
         return page_content
 
+    def build_category_page(cat_key, info, base=""):
+        page_lang = 'ru' if lang == 'ru' else 'en'
+        cat_label = html.escape(info["label"])
+        cat_canonical = f"https://vimark.art/{cat_key}.html" if page_lang == 'en' else f"https://vimark.art/ru/{cat_key}.html"
+        page_hreflang = f'''<!-- hreflang -->
+<link rel="alternate" hreflang="en" href="https://vimark.art/{cat_key}.html" />
+<link rel="alternate" hreflang="ru" href="https://vimark.art/ru/{cat_key}.html" />
+<link rel="alternate" hreflang="x-default" href="https://vimark.art/{cat_key}.html" />'''
+        breadcrumb_json = json.dumps({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+                {"@type": "ListItem", "position": 1, "name": "Portfolio", "item": "https://vimark.art/"},
+                {"@type": "ListItem", "position": 2, "name": cat_label, "item": cat_canonical}
+            ]
+        }, ensure_ascii=False)
+        # Build cards
+        cards = []
+        if info["subfolders"]:
+            for sub_key, sub_info in info["subfolders"].items():
+                proj_images = [img for img in all_items if img.get("subcategory") == sub_key]
+                card = project_card_html(sub_key, sub_info["label"], proj_images, base)
+                if card:
+                    cards.append(card)
+        else:
+            proj_images = [img for img in all_items if img["category"] == cat_key]
+            card = project_card_html(cat_key, cat_label, proj_images, base)
+            if card:
+                cards.append(card)
+        cards_str = "\n".join(cards) if cards else ""
+        meta_desc = f"{cat_label} — portfolio works by {hero_name}."
+        # Category nav
+        cat_nav_lines = [
+            '<nav class="main-nav">',
+            '  <ul>',
+        ]
+        for key, cinfo in categories.items():
+            if key == cat_key:
+                cat_nav_lines.append(f'    <li><a href="{base}index.html#{key}">{html.escape(cinfo["label"])}</a></li>')
+            else:
+                cat_nav_lines.append(f'    <li><a href="{base}{key}.html">{html.escape(cinfo["label"])}</a></li>')
+        cat_nav_lines.extend([
+            f'    <li><a href="{base}index.html#about">{t.get("about", "About")}</a></li>',
+            f'    <li><a href="{base}index.html#contact">{t.get("contact", "Contact")}</a></li>',
+            '  </ul>',
+            '</nav>',
+        ])
+        cat_nav_html = "\n      ".join(cat_nav_lines)
+        social_html_cat = social_html.replace('src="behance.png"', f'src="{base}behance.png"').replace('src="deviantart.png"', f'src="{base}deviantart.png"')
+        year_num = datetime.date.today().year
+        return f"""<!DOCTYPE html>
+<html lang="{page_lang}">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{cat_label} · {hero_name}</title>
+<meta name="description" content="{meta_desc}">
+<link rel="canonical" href="{cat_canonical}">
+{page_hreflang}
+<link rel="preconnect" href="https://www.googletagmanager.com">
+<link rel="preconnect" href="https://mc.yandex.ru">
+<link rel="stylesheet" href="{base}style.css">
+<link rel="icon" type="image/png" href="{base}vimark_logo.png">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="{cat_canonical}">
+<meta property="og:title" content="{cat_label} · {hero_name}">
+<meta property="og:description" content="{meta_desc}">
+<meta property="og:image" content="https://vimark.art/{og_strong_src}">
+<meta property="og:image:width" content="{og_strong_width}">
+<meta property="og:image:height" content="{og_strong_height}">
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url" content="{cat_canonical}">
+<meta property="twitter:title" content="{cat_label} · {hero_name}">
+<meta property="twitter:description" content="{meta_desc}">
+<meta property="twitter:image" content="https://vimark.art/{og_strong_src}">
+
+<!-- BreadcrumbList -->
+<script type="application/ld+json">
+{breadcrumb_json}
+</script>
+
+<!-- Google tag -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-6RBP7X7H88"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){{dataLayer.push(arguments);}}
+  gtag('js', new Date());
+  gtag('config', 'G-6RBP7X7H88');
+</script>
+
+<!-- Yandex.Metrika -->
+<script type="text/javascript">
+    (function(m,e,t,r,i,k,a){{
+        m[i]=m[i]||function(){{(m[i].a=m[i].a||[]).push(arguments)}};
+        m[i].l=1*new Date();
+        for (var j = 0; j < document.scripts.length; j++) {{if (document.scripts[j].src === r) {{ return; }}}}
+        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+    }})(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=109279162', 'ym');
+    ym(109279162, 'init', {{ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true}});
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/109279162" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+</head>
+<body>
+  <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">☀</button>
+  <div id="canvasWrapper">
+    <aside id="sidebar">
+      <header class="sidebar-header">
+        <img src="{base}Max Mitenkov.png" alt="{hero_name}" class="sidebar-photo" style="width: 100%; margin-bottom: 24px; opacity: 0.9;">
+        {cat_nav_html}
+      </header>
+      {social_html_cat}
+      {commissions_html}
+      <a href="{base}index.html" class="logo-link"><img src="{base}vimark_logo.png" alt="Logo" style="width: 60px;"></a>
+    </aside>
+
+    <button class="mobile-toggle">{t.get('menu', 'Menu')}</button>
+
+    <main id="main">
+      <section class="category-page">
+        <h1>{cat_label}</h1>
+        <div class="projects-grid">
+          {cards_str}
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <footer class="site-footer">
+    <span><b>©</b> {hero_name}, {year_num}.</span>
+    <div class="lang-switch">
+      <a href="#" id="lang-en" title="English"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 30" width="24" height="12"><path fill="#012169" d="M0,0 h60 v30 h-60 z"/><path stroke="#fff" stroke-width="6" d="M0,0 L60,30 M60,0 L0,30"/><path stroke="#C8102E" stroke-width="4" d="M0,0 L60,30 M60,0 L0,30"/><path stroke="#fff" stroke-width="10" d="M30,0 v30 M0,15 h60"/><path stroke="#C8102E" stroke-width="6" d="M30,0 v30 M0,15 h60"/></svg></a>
+      <a href="#" id="lang-ru" title="Русский"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 30" width="24" height="12"><rect width="60" height="10" fill="#fff"/><rect y="10" width="60" height="10" fill="#0039A6"/><rect y="20" width="60" height="10" fill="#D52B1E"/></svg></a>
+    </div>
+    <script>(function(){{var p=location.pathname.split('\\\\').join('/');var h=location.hash;var cat='{cat_key}.html';var isRu=p.indexOf('/ru/')!==-1;var e=document.getElementById('lang-en');var r=document.getElementById('lang-ru');if(isRu){{e.href='/'+cat+h;r.href='/ru/'+cat+h;}}else{{r.href='/ru/'+cat+h;e.href='/'+cat+h;}}if(isRu){{r.classList.add('active');}}else{{e.classList.add('active');}}}})();</script>
+  </footer>
+
+  <div id="lightbox">
+    <button class="lightbox-close" aria-label="Close">×</button>
+    <button class="lightbox-prev" aria-label="Previous image">‹</button>
+    <img class="lightbox-img" src="" alt="">
+    <button class="lightbox-next" aria-label="Next image">›</button>
+    <div class="lightbox-caption"></div>
+    <div class="lightbox-counter"></div>
+  </div>
+
+  {sticky_contact_html}
+  <button id="scrollTop" onclick="window.scrollTo({{top:0,behavior:'smooth'}})" aria-label="Back to top">↑</button>
+  <script src="{base}script.js"></script>
+</body>
+</html>
+"""
+
     # Build nav with category anchors + About + Contact
     nav_lines = [
         '<nav class="main-nav">',
@@ -1084,18 +1240,29 @@ def build_lang(lang='en'):
         generated_projects += 1
     print(f"Generated {generated_projects} {lang}/project pages.")
 
+    # Generate category pages
+    for cat_key, info in categories.items():
+        cat_base = "../" if base_index else ""
+        page_html = build_category_page(cat_key, info, base=cat_base)
+        (out_dir / f"{cat_key}.html").write_text(page_html, encoding="utf-8")
+        print(f"Generated {lang}/{cat_key}.html")
+
     # Generate sitemap.xml
     today = datetime.date.today().isoformat()
     root_url = "https://vimark.art/" if lang == 'en' else "https://vimark.art/ru/"
     project_base = "https://vimark.art/project/" if lang == 'en' else "https://vimark.art/ru/project/"
     urls = [
         (root_url, "1.0"),
+        (f"{root_url}contact.html", "0.5"),
     ]
     for sub_key in projects.keys():
         urls.append((f"{project_base}{sub_key}.html", "0.9"))
     for cat_key, info in categories.items():
         if not info["subfolders"]:
             urls.append((f"{project_base}{cat_key}.html", "0.9"))
+    # Category landing pages
+    for cat_key, info in categories.items():
+        urls.append((f"{root_url}{cat_key}.html", "0.8"))
     url_entries = "\n".join(
         f"  <url>\n    <loc>{loc}</loc>\n    <lastmod>{today}</lastmod>\n    <changefreq>weekly</changefreq>\n    <priority>{priority}</priority>\n  </url>"
         for loc, priority in urls

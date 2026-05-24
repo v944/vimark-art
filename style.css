@@ -1013,6 +1013,21 @@ img {
 }
 
 /* Projects sections */
+.category-page {
+  margin-bottom: 64px;
+}
+
+.category-page h1 {
+  font-size: 1.4rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #eee;
+  margin-bottom: 32px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #222;
+}
+
 .projects-section {
   margin-bottom: 64px;
 }
