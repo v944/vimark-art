@@ -1,0 +1,209 @@
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: #0a0a0a;
+    color: #fff;
+}
+
+#canvas-container {
+    position: fixed;
+    inset: 0;
+    background:
+        radial-gradient(ellipse 80% 60% at 5% 30%, #b8a078 0%, transparent 60%),
+        radial-gradient(ellipse 60% 50% at 15% 40%, #7a6848 0%, transparent 50%),
+        linear-gradient(to bottom, #4a3d28 0%, #2a2018 50%, #0f0c09 100%);
+    z-index: 1;
+}
+
+#canvas-container canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+#dust-overlay {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.06;
+    mix-blend-mode: overlay;
+    background:
+        radial-gradient(circle at 20% 50%, rgba(201,169,110,0.15) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(201,169,110,0.1) 0%, transparent 40%);
+    animation: dustShift 12s ease-in-out infinite;
+    z-index: 2;
+}
+
+@keyframes dustShift {
+    0%, 100% { transform: translate(0, 0); }
+    33% { transform: translate(30px, -10px); }
+    66% { transform: translate(-20px, 15px); }
+}
+
+/* Loading Screen */
+#loading-screen {
+    position: fixed;
+    inset: 0;
+    background: #0a0a0a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+    transition: opacity 0.8s ease, visibility 0.8s ease;
+}
+
+#loading-screen.hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.loading-content {
+    text-align: center;
+}
+
+.loading-text {
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #c9a96e;
+    margin-bottom: 16px;
+}
+
+.loading-bar {
+    width: 200px;
+    height: 2px;
+    background: rgba(201,169,110,0.2);
+    border-radius: 1px;
+    overflow: hidden;
+}
+
+.loading-bar-fill {
+    width: 0%;
+    height: 100%;
+    background: #c9a96e;
+    transition: width 0.3s ease;
+}
+
+.loading-error {
+    margin-top: 12px;
+    font-size: 11px;
+    color: #ff6666;
+    letter-spacing: 0.5px;
+    max-width: 260px;
+    line-height: 1.5;
+    display: none;
+}
+
+.loading-error.visible {
+    display: block;
+}
+
+/* Info Block */
+#info-block {
+    position: fixed;
+    top: 24px;
+    left: 24px;
+    z-index: 10;
+    pointer-events: none;
+    user-select: none;
+}
+
+#info-block h1 {
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #c9a96e;
+    margin-bottom: 6px;
+}
+
+#info-block p {
+    font-size: 11px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+    line-height: 1.6;
+}
+
+#info-block .controls-hint {
+    margin-top: 8px;
+    color: rgba(255,255,255,0.3);
+    font-size: 10px;
+}
+
+/* Controls */
+#controls {
+    position: fixed;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+#controls button,
+#controls a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 16px;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.7);
+    background: rgba(255,255,255,0.05);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.25s ease;
+    font-family: inherit;
+}
+
+#controls button:hover,
+#controls a:hover {
+    border-color: #c9a96e;
+    color: #c9a96e;
+    background: rgba(201,169,110,0.08);
+}
+
+#controls button.active {
+    border-color: #c9a96e;
+    color: #c9a96e;
+    background: rgba(201,169,110,0.12);
+}
+
+/* Mobile */
+@media (max-width: 640px) {
+    #info-block {
+        top: 16px;
+        left: 16px;
+    }
+    #info-block .controls-hint {
+        display: none;
+    }
+    #controls {
+        bottom: 16px;
+        gap: 6px;
+    }
+    #controls button,
+    #controls a {
+        padding: 6px 12px;
+        font-size: 10px;
+    }
+}
