@@ -10,5 +10,9 @@ Thumbs.db
 .kimi/
 
 # Desert Giants WIP (development branch only)
-scenes/
 __UE_web/
+scenes/desert-giants/node_modules/
+scenes/desert-giants/package-lock.json
+scenes/desert-giants/*.log
+scenes/desert-giants/test-result.png
+scenes/desert-giants/test-logs.json
