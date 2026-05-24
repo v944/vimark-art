@@ -133,15 +133,14 @@ rgbeLoader.load('assets/desert_sunset_2k.hdr',
 gltfLoader.load('assets/desert_scene.glb',
     (gltf) => {
         gltf.scene.traverse((child) => {
-            console.log('traverse:', child.type, child.name, 'isMesh:', child.isMesh, 'hasMat:', !!child.material);
             if (child.isMesh && child.material) {
                 child.castShadow = true;
                 child.receiveShadow = true;
 
                 const box = new THREE.Box3().setFromObject(child);
                 const size = box.getSize(new THREE.Vector3());
-                const center = box.getCenter(new THREE.Vector3());
 
+                // Recolor by bounding box height (desert vs giants vs props)
                 if (size.y < 1) {
                     child.material.color.set(0xC9A96E);
                     child.material.roughness = 0.9;
@@ -160,8 +159,33 @@ gltfLoader.load('assets/desert_scene.glb',
                 }
             }
         });
-        window.gltfScene = gltf.scene;
-    scene.add(gltf.scene);
+
+        // Replace desert ground mesh with infinite plane for better performance
+        const desertMesh = gltf.scene.getObjectByName('mesh_0_1');
+        if (desertMesh && desertMesh.material) {
+            const desertMat = desertMesh.material.clone();
+            const planeGeo = new THREE.PlaneGeometry(500, 500);
+            const groundPlane = new THREE.Mesh(planeGeo, desertMat);
+            groundPlane.rotation.x = -Math.PI / 2;
+            groundPlane.position.y = 1.57;
+            groundPlane.receiveShadow = true;
+            scene.add(groundPlane);
+            desertMesh.visible = false;
+        } else {
+            // Fallback: create default sand plane if mesh_0_1 was removed from GLB
+            const fallbackMat = new THREE.MeshStandardMaterial({
+                color: 0xC9A96E,
+                roughness: 0.9,
+                envMapIntensity: 0.5,
+            });
+            const planeGeo = new THREE.PlaneGeometry(500, 500);
+            const groundPlane = new THREE.Mesh(planeGeo, fallbackMat);
+            groundPlane.rotation.x = -Math.PI / 2;
+            groundPlane.position.y = 0;
+            groundPlane.receiveShadow = true;
+            scene.add(groundPlane);
+        }
+        scene.add(gltf.scene);
     },
     undefined,
     (err) => console.error('GLB load error:', err)
