@@ -272,6 +272,69 @@ def load_locale():
     return locale
 
 
+STAR_SVG = '<svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>'
+
+GAUGE_IMG_MAP = {
+    'Professionalism': 'gauge-professionalism.png',
+    'Quality': 'gauge-quality.png',
+    'Value': 'gauge-value.png',
+    'Responsiveness': 'gauge-responsiveness.png',
+    'Профессионализм': 'gauge-professionalism.png',
+    'Качество': 'gauge-quality.png',
+    'Ценность': 'gauge-value.png',
+    'Отзывчивость': 'gauge-responsiveness.png',
+}
+
+REEDSY_LOGO = '<svg class="reedsy-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 24" width="80" height="24" fill="currentColor"><text x="2" y="18" font-family="Georgia, serif" font-size="20" font-style="italic">reedsy</text></svg>'
+
+
+def render_reviews_bar(base, t):
+    reviews_bar_stars = STAR_SVG * 5
+    reviews_bar_categories = [
+        (t.get('professionalism', 'Professionalism'), 5),
+        (t.get('quality', 'Quality'), 5),
+        (t.get('value', 'Value'), 5),
+        (t.get('responsiveness', 'Responsiveness'), 5),
+    ]
+    reviews_bar_cats_html = ""
+    for cat_label, cat_rating in reviews_bar_categories:
+        cat_img = GAUGE_IMG_MAP.get(cat_label, 'gauge-bg.png')
+        reviews_bar_cats_html += f'<div class="reviews-bar-category"><div class="reviews-gauge"><img src="{base}thumbnails/reviews/{cat_img}" alt="{html.escape(cat_label)}" class="reviews-gauge-img"></div></div>'
+    return f'''<section class="reviews-bar">
+      <div class="reviews-bar-summary">
+        <a href="{base}reviews.html" class="reviews-bar-count-link"><span class="reviews-bar-count">71 {t.get('reviews', 'Reviews').lower()}</span></a>
+        <span class="reviews-bar-on">on <a href="https://reedsy.com/freelancers/maxim-m" target="_blank" rel="noopener">{REEDSY_LOGO}</a></span>
+        <div class="reviews-bar-stars">{reviews_bar_stars}</div>
+      </div>
+      <a href="{base}reviews.html" class="reviews-bar-categories-link">
+        <div class="reviews-bar-categories">{reviews_bar_cats_html}</div>
+      </a>
+    </section>'''
+
+
+def render_reviews_hero(base, t):
+    reviews_bar_stars = STAR_SVG * 5
+    gauge_imgs = ""
+    for label in ['Professionalism', 'Quality', 'Value', 'Responsiveness']:
+        cat_img = GAUGE_IMG_MAP.get(label, 'gauge-bg.png')
+        gauge_imgs += f'<img src="{base}thumbnails/reviews/{cat_img}" alt="{html.escape(label)}" class="hero-reviews-gauge">'
+    return f'''<div class="hero-reviews">
+  <div class="hero-reviews-gauges">{gauge_imgs}</div>
+  <div class="hero-reviews-summary">
+    <a href="{base}reviews.html" class="hero-reviews-count-link"><span class="hero-reviews-count">71 {t.get('reviews', 'Reviews').lower()}</span></a>
+    <span class="hero-reviews-on">on <a href="https://reedsy.com/freelancers/maxim-m" target="_blank" rel="noopener">{REEDSY_LOGO}</a></span>
+    <div class="hero-reviews-stars">{reviews_bar_stars}</div>
+  </div>
+</div>'''
+
+
+def load_reviews():
+    rev_path = WEBSITE / "Reedsy" / "reviews.json"
+    if rev_path.exists():
+        return json.loads(rev_path.read_text(encoding="utf-8"))
+    return {"reviews": []}
+
+
 def build_lang(lang='en'):
     locale = load_locale()
     t = locale.get(lang, {})
@@ -283,13 +346,14 @@ def build_lang(lang='en'):
     lang_attr = 'en' if lang == 'en' else 'ru'
     canonical_root = 'https://vimark.art/' if lang == 'en' else 'https://vimark.art/ru/'
     hero_name = html.escape(t.get('hero_name', 'Max Mitenkov'))
+    reviews_data = load_reviews()
     categories = {}
     for entry in sorted(ROOT.iterdir()):
         if not entry.is_dir():
             continue
         if entry.name.startswith(".") or entry.name.startswith("_"):
             continue
-        if entry.name.lower() in ("website", "thumbnails", "project", "hero", "hero2", "strong"):
+        if entry.name.lower() in ("website", "thumbnails", "project", "hero", "hero2", "strong", "reedsy"):
             continue
 
         cat_key = slugify(entry.name)
@@ -426,7 +490,7 @@ def build_lang(lang='en'):
     select_items = []
     select_set = set()
 
-    def hero_html(items, base="", pool=None):
+    def hero_html(items, base="", pool=None, reviews_hero=""):
         banner_pool = pool if pool is not None else hero_images
         if banner_pool:
             hero = random.choice(banner_pool)
@@ -456,6 +520,7 @@ def build_lang(lang='en'):
         return f'''<section class="hero" data-hero-pool="{pool_json}">
   <img src="{img_src}" data-full="{src}" alt="{alt}" loading="eager" fetchpriority="high">
   <div class="hero-overlay">
+    {reviews_hero}
     <h1>{hero_title}</h1>
     <p class="hero-subtitle">{hero_sub}</p>
     <a href="#book-illustrations" class="hero-cta">{hero_cta}</a>
@@ -732,7 +797,7 @@ def build_lang(lang='en'):
       <a href="#" id="lang-en" title="English"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 30" width="24" height="12"><path fill="#012169" d="M0,0 h60 v30 h-60 z"/><path stroke="#fff" stroke-width="6" d="M0,0 L60,30 M60,0 L0,30"/><path stroke="#C8102E" stroke-width="4" d="M0,0 L60,30 M60,0 L0,30"/><path stroke="#fff" stroke-width="10" d="M30,0 v30 M0,15 h60"/><path stroke="#C8102E" stroke-width="6" d="M30,0 v30 M0,15 h60"/></svg></a>
       <a href="#" id="lang-ru" title="Русский"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 30" width="24" height="12"><rect width="60" height="10" fill="#fff"/><rect y="10" width="60" height="10" fill="#0039A6"/><rect y="20" width="60" height="10" fill="#D52B1E"/></svg></a>
     </div>
-    <script>(function(){{var p=location.pathname.split('\\\\').join('/');var h=location.hash;if(p==='/'||p==='')p='/index.html';var i=p.indexOf('/ru/')!==-1;var e=document.getElementById('lang-en');var r=document.getElementById('lang-ru');if(i){{e.href=p.replace('/ru/','/')+h;r.href=p+h;}}else{{r.href=p.replace('/project/','/ru/project/').replace('/index.html','/ru/index.html')+h;e.href=p+h;}}if(i){{r.classList.add('active');}}else{{e.classList.add('active');}}}})();</script>
+    <script>(function(){{var p=location.pathname.split('\\\\').join('/');var h=location.hash;if(p==='/'||p==='')p='/index.html';var i=p.indexOf('/ru/')!==-1;var e=document.getElementById('lang-en');var r=document.getElementById('lang-ru');if(i){{e.href=p.replace('/ru/','/')+h;r.href=p+h;}}else{{r.href=p.replace('/project/','/ru/project/').replace('/index.html','/ru/index.html').replace('/reviews.html','/ru/reviews.html')+h;e.href=p+h;}}if(i){{r.classList.add('active');}}else{{e.classList.add('active');}}}})();</script>
   </footer>
 
   <div id="lightbox">
@@ -908,6 +973,192 @@ def build_lang(lang='en'):
 </html>
 """
 
+    def build_reviews_page(base=""):
+        page_lang = 'ru' if lang == 'ru' else 'en'
+        reviews_canonical = f"https://vimark.art/reviews.html" if page_lang == 'en' else f"https://vimark.art/ru/reviews.html"
+        page_hreflang = f'''<!-- hreflang -->
+<link rel="alternate" hreflang="en" href="https://vimark.art/reviews.html" />
+<link rel="alternate" hreflang="ru" href="https://vimark.art/ru/reviews.html" />
+<link rel="alternate" hreflang="x-default" href="https://vimark.art/reviews.html" />'''
+        breadcrumb_json = json.dumps({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+                {"@type": "ListItem", "position": 1, "name": "Portfolio", "item": "https://vimark.art/"},
+                {"@type": "ListItem", "position": 2, "name": t.get('reviews', 'Reviews'), "item": reviews_canonical}
+            ]
+        }, ensure_ascii=False)
+        if page_lang == 'ru':
+            reviews_title_text = f"71 проверенных отзыва на Reedsy · {hero_name} · Иллюстратор и концепт-художник"
+            meta_desc = f"Читайте 71 проверенный отзыв с 5 звёздами от клиентов Reedsy, которые нанимали {hero_name}. Оценка 5/5 за профессионализм, качество, ценность и отзывчивость."
+            reviews_h1_text = "71 проверенных отзыва от клиентов Reedsy"
+            reviews_subtitle_text = "Оценка 5/5 за профессионализм, качество, ценность и отзывчивость"
+        else:
+            reviews_title_text = f"71 Verified Reedsy Reviews · {hero_name} · Illustrator & Concept Artist"
+            meta_desc = f"Read 71 verified 5-star reviews from Reedsy clients who hired {hero_name} for book covers, illustrations, and concept art. Rated 5/5 for professionalism, quality, value, and responsiveness."
+            reviews_h1_text = "71 Verified Reviews from Reedsy Clients"
+            reviews_subtitle_text = "Rated 5/5 for professionalism, quality, value, and responsiveness"
+
+        # Reviews nav (same as project nav but with Reviews link active)
+        reviews_nav = [
+            '<nav class="main-nav">',
+            '  <ul>',
+        ]
+        for key, info in categories.items():
+            reviews_nav.append(f'    <li><a href="{base}index.html#{key}">{html.escape(info["label"])}</a></li>')
+        reviews_nav.extend([
+            f'    <li><a href="{base}index.html#about">{t.get("about", "About")}</a></li>',
+            f'    <li><a href="{base}index.html#contact">{t.get("contact", "Contact")}</a></li>',
+            f'    <li><a href="{base}reviews.html">{t.get("reviews", "Reviews")}</a></li>',
+            '  </ul>',
+            '</nav>',
+        ])
+        reviews_nav_html = "\n      ".join(reviews_nav)
+        social_html_reviews = social_html.replace('src="behance.png"', f'src="{base}behance.png"').replace('src="deviantart.png"', f'src="{base}deviantart.png"')
+
+        # Build review cards
+        review_cards = []
+        for rev in reviews_data.get("reviews", []):
+            rev_name = html.escape(rev.get("name", ""))
+            rev_date = html.escape(rev.get("date", ""))
+            rev_text = html.escape(rev.get("text", ""))
+            rev_photo = html.escape(rev.get("photo", ""), quote=True)
+            rev_rating = rev.get("rating") or 5
+            rev_stars = STAR_SVG * rev_rating
+            rev_photo_src = f'{base}{rev_photo}' if rev_photo else ''
+            if rev_photo and not rev_photo.endswith('default.png'):
+                avatar_html = f'<img src="{rev_photo_src}" alt="{rev_name}" class="review-card-avatar" loading="lazy">'
+            else:
+                initial = html.escape(rev_name[0]) if rev_name else '?'
+                avatar_html = f'<div class="review-card-avatar review-avatar-default"><span>{initial}</span></div>'
+            review_cards.append(f'''<article class="review-card">
+  <div class="review-card-header">
+    {avatar_html}
+    <div class="review-card-meta">
+      <span class="review-card-name">{rev_name}</span>
+      <span class="review-card-date">{rev_date}</span>
+    </div>
+  </div>
+  <div class="review-card-stars">{rev_stars}</div>
+  <div class="review-card-text"><p>{rev_text}</p></div>
+</article>''')
+
+        cards_str = "\n".join(review_cards)
+        year_num = datetime.date.today().year
+
+        return f"""<!DOCTYPE html>
+<html lang="{page_lang}">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{reviews_title_text}</title>
+<meta name="description" content="{meta_desc}">
+<link rel="canonical" href="{reviews_canonical}">
+{page_hreflang}
+<link rel="preconnect" href="https://www.googletagmanager.com">
+<link rel="preconnect" href="https://mc.yandex.ru">
+<link rel="stylesheet" href="{base}style.css">
+<link rel="icon" type="image/png" href="{base}vimark_logo.png">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="{reviews_canonical}">
+<meta property="og:title" content="{reviews_title_text}">
+<meta property="og:description" content="{meta_desc}">
+<meta property="og:image" content="https://vimark.art/{og_strong_src}">
+<meta property="og:image:width" content="{og_strong_width}">
+<meta property="og:image:height" content="{og_strong_height}">
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url" content="{reviews_canonical}">
+<meta property="twitter:title" content="{reviews_title_text}">
+<meta property="twitter:description" content="{meta_desc}">
+<meta property="twitter:image" content="https://vimark.art/{og_strong_src}">
+
+<!-- BreadcrumbList -->
+<script type="application/ld+json">
+{breadcrumb_json}
+</script>
+
+<!-- AggregateRating -->
+<script type="application/ld+json">
+{{"@context": "https://schema.org", "@type": "Service", "name": "Illustration & Concept Art by {hero_name}", "provider": {{"@type": "Person", "name": "{hero_name}", "url": "{reviews_canonical.replace('/reviews.html', '/')}"}}, "aggregateRating": {{"@type": "AggregateRating", "ratingValue": "5", "reviewCount": "71", "bestRating": "5", "worstRating": "1"}}}}
+</script>
+
+<!-- Google tag -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-6RBP7X7H88"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){{dataLayer.push(arguments);}}
+  gtag('js', new Date());
+  gtag('config', 'G-6RBP7X7H88');
+</script>
+
+<!-- Yandex.Metrika -->
+<script type="text/javascript">
+    (function(m,e,t,r,i,k,a){{
+        m[i]=m[i]||function(){{(m[i].a=m[i].a||[]).push(arguments)}};
+        m[i].l=1*new Date();
+        for (var j = 0; j < document.scripts.length; j++) {{if (document.scripts[j].src === r) {{ return; }}}}
+        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+    }})(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=109279162', 'ym');
+    ym(109279162, 'init', {{ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true}});
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/109279162" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+</head>
+<body>
+  <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">☀</button>
+  <div id="canvasWrapper">
+    <aside id="sidebar">
+      <header class="sidebar-header">
+        <img src="{base}Max Mitenkov.png" alt="{hero_name}" class="sidebar-photo" style="width: 100%; margin-bottom: 24px; opacity: 0.9;">
+        {reviews_nav_html}
+      </header>
+      {social_html_reviews}
+      {commissions_html}
+      <a href="{base}index.html" class="logo-link"><img src="{base}vimark_logo.png" alt="Logo" style="width: 60px;"></a>
+    </aside>
+
+    <button class="mobile-toggle">{t.get('menu', 'Menu')}</button>
+
+    <main id="main">
+      {render_reviews_bar(base, t)}
+      <section class="reviews-page">
+        <h1>{reviews_h1_text}</h1>
+        <p class="reviews-subtitle">{reviews_subtitle_text}</p>
+        <div class="reviews-grid">
+          {cards_str}
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <footer class="site-footer">
+    <span><b>©</b> {hero_name}, {year_num}.</span>
+    <div class="lang-switch">
+      <a href="#" id="lang-en" title="English"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 30" width="24" height="12"><path fill="#012169" d="M0,0 h60 v30 h-60 z"/><path stroke="#fff" stroke-width="6" d="M0,0 L60,30 M60,0 L0,30"/><path stroke="#C8102E" stroke-width="4" d="M0,0 L60,30 M60,0 L0,30"/><path stroke="#fff" stroke-width="10" d="M30,0 v30 M0,15 h60"/><path stroke="#C8102E" stroke-width="6" d="M30,0 v30 M0,15 h60"/></svg></a>
+      <a href="#" id="lang-ru" title="Русский"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 30" width="24" height="12"><rect width="60" height="10" fill="#fff"/><rect y="10" width="60" height="10" fill="#0039A6"/><rect y="20" width="60" height="10" fill="#D52B1E"/></svg></a>
+    </div>
+    <script>(function(){{var p=location.pathname.split('\\\\').join('/');var h=location.hash;var i=p.indexOf('/ru/')!==-1;var e=document.getElementById('lang-en');var r=document.getElementById('lang-ru');if(i){{e.href=p.replace('/ru/','/')+h;r.href=p+h;}}else{{r.href=p.replace('/project/','/ru/project/').replace('/index.html','/ru/index.html').replace('/contact.html','/ru/contact.html').replace('/reviews.html','/ru/reviews.html')+h;e.href=p+h;}}if(i){{r.classList.add('active');}}else{{e.classList.add('active');}}}})();</script>
+  </footer>
+
+  <div id="lightbox">
+    <button class="lightbox-close" aria-label="Close">×</button>
+    <button class="lightbox-prev" aria-label="Previous image">‹</button>
+    <img class="lightbox-img" src="" alt="">
+    <button class="lightbox-next" aria-label="Next image">›</button>
+    <div class="lightbox-caption"></div>
+    <div class="lightbox-counter"></div>
+  </div>
+
+  {sticky_contact_html}
+  <button id="scrollTop" onclick="window.scrollTo({{top:0,behavior:'smooth'}})" aria-label="Back to top">↑</button>
+  <script src="{base}script.js"></script>
+</body>
+</html>
+"""
+
     # Build nav with category anchors + About + Contact
     nav_lines = [
         '<nav class="main-nav">',
@@ -918,6 +1169,7 @@ def build_lang(lang='en'):
     nav_lines.extend([
         f'    <li><a href="#about">{t.get("about", "About")}</a></li>',
         f'    <li><a href="#contact">{t.get("contact", "Contact")}</a></li>',
+        f'    <li><a href="{base_index}reviews.html">{t.get("reviews", "Reviews")}</a></li>',
         '  </ul>',
         '</nav>',
     ])
@@ -953,6 +1205,8 @@ def build_lang(lang='en'):
               <div class="about-gallery-grid">{about_gallery_items}</div>
             </div>
 ''' if about_gallery_items else ""
+
+    reviews_summary_html = render_reviews_bar(base_index, t)
 
     about_html = f'''      <section id="about" class="hidden">
         <div class="about-container">
@@ -1163,7 +1417,7 @@ def build_lang(lang='en'):
     <button class="mobile-toggle">Menu</button>
 
     <main id="main">
-      {hero_html(all_items, base_index, pool=(strong_images if strong_images else hero_images))}
+      {hero_html(all_items, base_index, pool=(strong_images if strong_images else hero_images), reviews_hero=render_reviews_hero(base_index, t))}
       {filter_bar}
       {projects_sections_html(base_index)}
 {about_html}
@@ -1177,7 +1431,7 @@ def build_lang(lang='en'):
       <a href="#" id="lang-en" title="English"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 30" width="24" height="12"><path fill="#012169" d="M0,0 h60 v30 h-60 z"/><path stroke="#fff" stroke-width="6" d="M0,0 L60,30 M60,0 L0,30"/><path stroke="#C8102E" stroke-width="4" d="M0,0 L60,30 M60,0 L0,30"/><path stroke="#fff" stroke-width="10" d="M30,0 v30 M0,15 h60"/><path stroke="#C8102E" stroke-width="6" d="M30,0 v30 M0,15 h60"/></svg></a>
       <a href="#" id="lang-ru" title="Русский"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 30" width="24" height="12"><rect width="60" height="10" fill="#fff"/><rect y="10" width="60" height="10" fill="#0039A6"/><rect y="20" width="60" height="10" fill="#D52B1E"/></svg></a>
     </div>
-    <script>(function(){{var p=location.pathname.split('\\\\').join('/');var h=location.hash;if(p==='/'||p==='')p='/index.html';var i=p.indexOf('/ru/')!==-1;var e=document.getElementById('lang-en');var r=document.getElementById('lang-ru');if(i){{e.href=p.replace('/ru/','/')+h;r.href=p+h;}}else{{r.href=p.replace('/project/','/ru/project/').replace('/index.html','/ru/index.html')+h;e.href=p+h;}}if(i){{r.classList.add('active');}}else{{e.classList.add('active');}}}})();</script>
+    <script>(function(){{var p=location.pathname.split('\\\\').join('/');var h=location.hash;if(p==='/'||p==='')p='/index.html';var i=p.indexOf('/ru/')!==-1;var e=document.getElementById('lang-en');var r=document.getElementById('lang-ru');if(i){{e.href=p.replace('/ru/','/')+h;r.href=p+h;}}else{{r.href=p.replace('/project/','/ru/project/').replace('/index.html','/ru/index.html').replace('/reviews.html','/ru/reviews.html')+h;e.href=p+h;}}if(i){{r.classList.add('active');}}else{{e.classList.add('active');}}}})();</script>
   </footer>
 
   <div id="lightbox">
@@ -1248,6 +1502,12 @@ def build_lang(lang='en'):
         (out_dir / f"{cat_key}.html").write_text(page_html, encoding="utf-8")
         print(f"Generated {lang}/{cat_key}.html")
 
+    # Generate reviews page
+    reviews_base = base_index
+    reviews_html = build_reviews_page(base=reviews_base)
+    (out_dir / "reviews.html").write_text(reviews_html, encoding="utf-8")
+    print(f"Generated {lang}/reviews.html")
+
     # Generate sitemap.xml
     today = datetime.date.today().isoformat()
     root_url = "https://vimark.art/" if lang == 'en' else "https://vimark.art/ru/"
@@ -1255,6 +1515,7 @@ def build_lang(lang='en'):
     urls = [
         (root_url, "1.0"),
         (f"{root_url}contact.html", "0.5"),
+        (f"{root_url}reviews.html", "0.7"),
     ]
     for sub_key in projects.keys():
         urls.append((f"{project_base}{sub_key}.html", "0.9"))

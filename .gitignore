@@ -16,3 +16,6 @@ scenes/desert-giants/package-lock.json
 scenes/desert-giants/*.log
 scenes/desert-giants/test-result.png
 scenes/desert-giants/test-logs.json
+
+__pycache__/
+preview_*.png
