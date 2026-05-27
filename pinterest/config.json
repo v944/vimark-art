@@ -1,0 +1,14 @@
+{
+  "board_mapping": {
+    "bookcover": "Book Cover Design",
+    "book-illustrations": "Dark Fantasy Illustration",
+    "comic": "Comic Art & Sequential",
+    "personal": "Maxim Mitenkov Portfolio",
+    "character-design": "Character Design & Concept Art",
+    "board-game": "Game Art & Illustration",
+    "matte-painting": "Environment & Matte Painting"
+  },
+  "default_board": "Maxim Mitenkov Portfolio",
+  "api_version": "v5",
+  "image_source_type": "image_url"
+}

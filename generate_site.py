@@ -56,6 +56,27 @@ THUMBS_DIR = WEBSITE / "thumbnails"
 THUMB_SIZE = (600, 600)
 THUMB_QUALITY = 85
 PROJECTS_DIR = WEBSITE / "project"
+PINTEREST_DIR = WEBSITE / "pinterest"
+PINTEREST_IMAGES_DIR = PINTEREST_DIR / "images"
+PINTEREST_PINS_PATH = PINTEREST_DIR / "pins.json"
+PINTEREST_IMAGE_SIZE = (1200, 1800)
+
+PINTEREST_BOARD_MAP = {
+    "bookcover": "Book Cover Design",
+    "book-illustrations": "Dark Fantasy Illustration",
+    "comic": "Comic Art & Sequential",
+    "personal": "Maxim Mitenkov Portfolio",
+    "character-design": "Character Design & Concept Art",
+    "board-game": "Game Art & Illustration",
+    "matte-painting": "Environment & Matte Painting",
+}
+
+PINTEREST_CATEGORY_TAGS = {
+    "bookcover": ["#bookcover", "#coverdesign", "#bookillustration"],
+    "book-illustrations": ["#bookillustration", "#darkart", "#fantasyart"],
+    "comic": ["#comicart", "#sequentialart", "#darkart"],
+    "personal": ["#personalart", "#darkart", "#fantasyart"],
+}
 
 
 def collect_images_from_path(rel_path):
@@ -222,6 +243,107 @@ def ensure_thumbnail(original_path):
         return thumb_rel, "", ""
 
 
+def ensure_pinterest_image(original_path, project_id):
+    """Generate a 2:3 vertical Pinterest image (1200x1800) from the first project image."""
+    if not HAS_PILLOW:
+        return None
+    PINTEREST_IMAGES_DIR.mkdir(parents=True, exist_ok=True)
+    dest = PINTEREST_IMAGES_DIR / f"{project_id}.webp"
+
+    # Reuse if up to date
+    if dest.exists() and dest.stat().st_mtime >= original_path.stat().st_mtime:
+        return f"pinterest/images/{project_id}.webp"
+
+    try:
+        with Image.open(original_path) as im:
+            if im.mode in ('RGBA', 'P'):
+                im_rgb = im.convert('RGB')
+            else:
+                im_rgb = im
+            w, h = im_rgb.size
+            target_ratio = 2 / 3  # width / height
+            current_ratio = w / h
+            if current_ratio > target_ratio:
+                new_w = int(h * target_ratio)
+                left = (w - new_w) // 2
+                im_cropped = im_rgb.crop((left, 0, left + new_w, h))
+            else:
+                new_h = int(w / target_ratio)
+                top = (h - new_h) // 2
+                im_cropped = im_rgb.crop((0, top, w, top + new_h))
+            im_final = im_cropped.resize(PINTEREST_IMAGE_SIZE, Image.LANCZOS)
+            im_final.save(dest, "WEBP", quality=90, method=6)
+        return f"pinterest/images/{project_id}.webp"
+    except Exception as e:
+        print(f"  Warning: could not create Pinterest image for {project_id}: {e}")
+        return None
+
+
+def build_pinterest_pin(project_id, sub_info_or_label, proj, images, pinterest_rel, cat_key):
+    if isinstance(sub_info_or_label, dict):
+        label = sub_info_or_label.get("label", project_id)
+    else:
+        label = sub_info_or_label
+    title = proj.get("title", label)
+    client = proj.get("client", "")
+    description = proj.get("description", "")
+    board = PINTEREST_BOARD_MAP.get(cat_key, "Maxim Mitenkov Portfolio")
+    alt_text = f"{title} — {description[:120] if description else 'Digital painting'} by Maxim Mitenkov"
+
+    cat_hashtags = PINTEREST_CATEGORY_TAGS.get(cat_key, ["#illustration", "#artwork"])
+    hashtags = list(dict.fromkeys(cat_hashtags + ["#digitalpainting", "#maximmitenkov", "#vimarkart"]))
+
+    desc_parts = [title]
+    if client:
+        desc_parts.append(f"for {client}")
+    if description:
+        short_desc = description.strip()
+        if len(short_desc) > 200:
+            short_desc = short_desc[:197].rsplit(' ', 1)[0] + "..."
+        desc_parts.append(short_desc)
+    desc_parts.append("Digital painting by Maxim Mitenkov.")
+
+    pin_description = ". ".join(desc_parts) + "\n\n" + " ".join(hashtags)
+    image_url = (
+        f"https://vimark.art/{pinterest_rel}"
+        if pinterest_rel
+        else (f"https://vimark.art/{images[0]['src']}" if images else "https://vimark.art/Mitenkov600.jpg")
+    )
+    link = f"https://www.vimark.art/project/{project_id}.html"
+
+    return {
+        "pin_id": project_id,
+        "status": "ready_to_publish",
+        "board": board,
+        "image_url": image_url,
+        "link": link,
+        "title": f"{title} · Maxim Mitenkov",
+        "description": pin_description,
+        "alt_text": alt_text,
+        "tags": [h.lstrip("#") for h in hashtags],
+        "date_created": datetime.date.today().isoformat(),
+        "date_published": None,
+    }
+
+
+def update_pins_json(new_pins):
+    PINTEREST_DIR.mkdir(parents=True, exist_ok=True)
+    existing_map = {}
+    if PINTEREST_PINS_PATH.exists():
+        try:
+            existing = json.loads(PINTEREST_PINS_PATH.read_text(encoding="utf-8"))
+            existing_map = {p["pin_id"]: p for p in existing}
+        except Exception:
+            pass
+    for pin in new_pins:
+        old = existing_map.get(pin["pin_id"])
+        if old and old.get("status") == "published":
+            pin["status"] = "published"
+            pin["date_published"] = old.get("date_published")
+            pin["pinterest_pin_id"] = old.get("pinterest_pin_id")
+    PINTEREST_PINS_PATH.write_text(json.dumps(new_pins, indent=2, ensure_ascii=False), encoding="utf-8")
+
+
 def load_projects():
     """Load project descriptions from projects.ini if it exists."""
     projects = {}
@@ -353,7 +475,7 @@ def build_lang(lang='en'):
             continue
         if entry.name.startswith(".") or entry.name.startswith("_"):
             continue
-        if entry.name.lower() in ("website", "thumbnails", "project", "hero", "hero2", "strong", "reedsy"):
+        if entry.name.lower() in ("website", "thumbnails", "project", "hero", "hero2", "strong", "reedsy", "pinterest"):
             continue
 
         cat_key = slugify(entry.name)
@@ -454,6 +576,38 @@ def build_lang(lang='en'):
     # Load or create projects file
     projects = load_projects()
     ensure_projects_file(all_subfolders)
+
+    # Generate Pinterest images and pins registry
+    pinterest_pins = []
+    if HAS_PILLOW:
+        print("Generating Pinterest images...")
+        PINTEREST_IMAGES_DIR.mkdir(parents=True, exist_ok=True)
+
+    for sub_key, sub_info in all_subfolders.items():
+        proj_images = [img for img in all_items if img.get("subcategory") == sub_key]
+        if not proj_images:
+            continue
+        proj = projects.get(sub_key, {"title": sub_info["label"], "year": "", "client": "", "description": ""})
+        cat_key = None
+        for ck, ci in categories.items():
+            if sub_key in ci.get("subfolders", {}):
+                cat_key = ck
+                break
+        pinterest_rel = ensure_pinterest_image(proj_images[0]["path"], sub_key) if HAS_PILLOW and proj_images else None
+        pinterest_pins.append(build_pinterest_pin(sub_key, sub_info, proj, proj_images, pinterest_rel, cat_key))
+
+    for cat_key, info in categories.items():
+        if info["subfolders"]:
+            continue
+        proj_images = info["images"]
+        if not proj_images:
+            continue
+        proj = projects.get(cat_key, {"title": info["label"], "year": "", "client": "", "description": ""})
+        pinterest_rel = ensure_pinterest_image(proj_images[0]["path"], cat_key) if HAS_PILLOW and proj_images else None
+        pinterest_pins.append(build_pinterest_pin(cat_key, info["label"], proj, proj_images, pinterest_rel, cat_key))
+
+    update_pins_json(pinterest_pins)
+    print(f"Updated pinterest/pins.json with {len(pinterest_pins)} pins.")
 
     # Collect HERO images for random banners
     hero_images = collect_hero_images()
@@ -735,6 +889,10 @@ def build_lang(lang='en'):
 <meta property="twitter:title" content="{title} · {hero_name}">
 <meta property="twitter:description" content="{description or 'Portfolio project by Max Mitenkov'}">
 <meta property="twitter:image" content="https://vimark.art/{og_image}">
+
+<!-- Pinterest Rich Pins -->
+<meta name="pinterest-rich-pin" content="true">
+<meta property="article:published_time" content="{year or datetime.date.today().year}-01-01">
 
 <!-- Google tag -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-6RBP7X7H88"></script>
