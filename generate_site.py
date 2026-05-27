@@ -976,9 +976,10 @@ def build_lang(lang='en'):
             <hr class="about-divider">
             <h2>{t.get('pricing_title', 'Pricing')}</h2>
             <div class="pricing-list">
-              <p>{t.get('pricing_character', 'Character design')} <span class="pricing-from">$800</span></p>
-              <p>{t.get('pricing_cover', 'Book cover')} <span class="pricing-from">$500</span></p>
-              <p>{t.get('pricing_env', 'Environment concept')} <span class="pricing-from">$1200</span></p>
+              <p>{t.get('pricing_illustration', 'Illustration')} <span class="pricing-from">$500</span></p>
+              <p>{t.get('pricing_cover', 'Book cover')} <span class="pricing-from">$700</span></p>
+              <p>{t.get('pricing_character', 'Character design')} <span class="pricing-from">$700</span></p>
+              <p>{t.get('pricing_env', 'Environment concept')} <span class="pricing-from">$800</span></p>
             </div>
 
             <hr class="about-divider">
