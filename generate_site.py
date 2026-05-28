@@ -457,6 +457,42 @@ def load_reviews():
     return {"reviews": []}
 
 
+def load_art_reviews():
+    """Load art-to-review mapping from art_reviews.ini."""
+    reviews = {}
+    ini_path = WEBSITE / "art_reviews.ini"
+    if not ini_path.exists():
+        return reviews
+    cfg = configparser.ConfigParser()
+    cfg.read(ini_path, encoding="utf-8")
+    for section in cfg.sections():
+        reviewer = cfg.get(section, "reviewer", fallback="")
+        date = cfg.get(section, "date", fallback="")
+        text = cfg.get(section, "text", fallback="")
+        if reviewer and text:
+            reviews[section] = {
+                "reviewer": reviewer,
+                "date": date,
+                "text": text,
+            }
+    return reviews
+
+
+def find_wip_images(art_slug, project_folder):
+    """Find WIP images for a specific artwork in the project/wip folder."""
+    wip_dir = ROOT / project_folder / "wip"
+    if not wip_dir.exists():
+        return []
+    exts = {".jpg", ".jpeg", ".png", ".webp", ".gif"}
+    wip_images = []
+    for p in sorted(wip_dir.iterdir()):
+        if p.is_file() and p.suffix.lower() in exts:
+            if art_slug.lower() in p.stem.lower():
+                rel = os.path.relpath(p, WEBSITE).replace("\\", "/")
+                wip_images.append({"src": rel, "name": clean_name(p.stem)})
+    return wip_images
+
+
 def build_lang(lang='en'):
     locale = load_locale()
     t = locale.get(lang, {})
@@ -766,11 +802,13 @@ def build_lang(lang='en'):
             w = img.get("width", "")
             h = img.get("height", "")
             dim_attr = f' width="{w}" height="{h}"' if w and h else ''
-            lines.append(f'  <figure class="gallery-item" itemscope itemtype="https://schema.org/VisualArtwork">')
-            lines.append(f'    <img src="{thumb}" data-full="{src}" alt="{alt}" loading="lazy"{dim_attr} itemprop="image">')
+            art_slug = slugify(captions.get(img["src"], img["name"]))
+            art_href = f"art/{art_slug}.html"
+            lines.append(f'  <a href="{art_href}" class="gallery-item" itemscope itemtype="https://schema.org/VisualArtwork">')
+            lines.append(f'    <img src="{thumb}" alt="{alt}" loading="lazy"{dim_attr} itemprop="image">')
             lines.append(f'    {year_meta}')
             lines.append(f'    <figcaption itemprop="name">{alt}</figcaption>')
-            lines.append('  </figure>')
+            lines.append('  </a>')
         lines.append('</div>')
         return "\n".join(lines)
 
@@ -958,15 +996,6 @@ def build_lang(lang='en'):
     <script>(function(){{var p=location.pathname.split('\\\\').join('/');var h=location.hash;if(p==='/'||p==='')p='/index.html';var i=p.indexOf('/ru/')!==-1;var e=document.getElementById('lang-en');var r=document.getElementById('lang-ru');if(i){{e.href=p.replace('/ru/','/')+h;r.href=p+h;}}else{{r.href=p.replace('/project/','/ru/project/').replace('/index.html','/ru/index.html').replace('/reviews.html','/ru/reviews.html')+h;e.href=p+h;}}if(i){{r.classList.add('active');}}else{{e.classList.add('active');}}}})();</script>
   </footer>
 
-  <div id="lightbox">
-    <button class="lightbox-close" aria-label="Close">×</button>
-    <button class="lightbox-prev" aria-label="Previous image">‹</button>
-    <img class="lightbox-img" src="" alt="">
-    <button class="lightbox-next" aria-label="Next image">›</button>
-    <div class="lightbox-caption"></div>
-    <div class="lightbox-counter"></div>
-  </div>
-
   {sticky_contact_html}
   <button id="scrollTop" onclick="window.scrollTo({{top:0,behavior:'smooth'}})" aria-label="Back to top">↑</button>
   <script src="{base}script.js"></script>
@@ -974,6 +1003,169 @@ def build_lang(lang='en'):
 </html>
 """
         return page_content
+
+    def build_art_page(art, proj, review, wip_images, base="../../"):
+        page_lang = 'ru' if lang == 'ru' else 'en'
+        art_slug = slugify(captions.get(art["src"], art["name"]))
+        art_name = html.escape(captions.get(art["src"], art["name"]))
+        art_src = html.escape(base + art["src"], quote=True)
+        hero_name = html.escape(t.get('hero_name', 'Max Mitenkov'))
+        year = html.escape(proj.get("year", ""))
+        title = html.escape(proj.get("title", ""))
+        cat_key = art.get("category", "")
+        cat_label = t.get(cat_key, human_label(cat_key))
+        back_href = f"{base}project/{art.get('subcategory', cat_key)}.html"
+        og_image = html.escape(base + art.get("thumb", art["src"]), quote=True)
+        og_image_width = html.escape(art.get("width", "600"), quote=True)
+        og_image_height = html.escape(art.get("height", "600"), quote=True)
+        page_canonical = f"https://vimark.art/project/art/{art_slug}.html"
+        page_hreflang = f'''<!-- hreflang -->
+<link rel="alternate" hreflang="en" href="https://vimark.art/project/art/{art_slug}.html" />
+<link rel="alternate" hreflang="ru" href="https://vimark.art/ru/project/art/{art_slug}.html" />
+<link rel="alternate" hreflang="x-default" href="https://vimark.art/project/art/{art_slug}.html" />'''
+        breadcrumb_json = json.dumps({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+                {"@type": "ListItem", "position": 1, "name": "Portfolio", "item": "https://vimark.art/"},
+                {"@type": "ListItem", "position": 2, "name": cat_label, "item": f"https://vimark.art/#{cat_key}"},
+                {"@type": "ListItem", "position": 3, "name": title, "item": back_href.replace(base, "https://vimark.art/")},
+                {"@type": "ListItem", "position": 4, "name": art_name, "item": page_canonical}
+            ]
+        }, ensure_ascii=False)
+        social_html_project = social_html.replace('src="behance.png"', f'src="{base}behance.png"').replace('src="deviantart.png"', f'src="{base}deviantart.png"')
+        project_nav = [
+            '<nav class="main-nav">',
+            '  <ul>',
+        ]
+        for key, info in categories.items():
+            project_nav.append(f'    <li><a href="{base}index.html#{key}">{html.escape(info["label"])}</a></li>')
+        project_nav.extend([
+            f'    <li><a href="{base}index.html#about">{t.get("about", "About")}</a></li>',
+            f'    <li><a href="{base}index.html#contact">{t.get("contact", "Contact")}</a></li>',
+            '  </ul>',
+            '</nav>',
+        ])
+        project_nav_html = "\n      ".join(project_nav)
+        review_html = ""
+        if review:
+            review_html = f'''<div class="art-review">
+      <blockquote>“{html.escape(review['text'])}”</blockquote>
+      <cite><strong>{html.escape(review['reviewer'])}</strong>{', ' + html.escape(review['date']) if review.get('date') else ''}</cite>
+    </div>'''
+        wip_html = ""
+        if wip_images:
+            wip_slides = "\n".join(
+                f'      <div class="wip-slide"><img src="{base}{html.escape(w["src"])}" alt="{html.escape(w["name"])}" loading="lazy"><div class="wip-label">{html.escape(w["name"])}</div></div>'
+                for w in wip_images
+            )
+            wip_html = f'''<div class="wip-section">
+      <h3>Process</h3>
+      <div class="wip-slider">
+{wip_slides}
+      </div>
+    </div>'''
+        cta_text = t.get('project_cta_text', 'Interested in something similar?')
+        cta_btn = t.get('discuss_project', 'Discuss a project')
+        return f"""<!DOCTYPE html>
+<html lang="{page_lang}">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{art_name} · {hero_name}</title>
+<meta name="description" content="{art_name} — {title} by {hero_name}">
+<link rel="canonical" href="{page_canonical}">
+{page_hreflang}
+<link rel="preconnect" href="https://www.googletagmanager.com">
+<link rel="preconnect" href="https://mc.yandex.ru">
+<link rel="stylesheet" href="{base}style.css">
+<link rel="icon" type="image/png" href="{base}vimark_logo.png">
+<!-- Open Graph -->
+<meta property="og:type" content="article">
+<meta property="og:url" content="{page_canonical}">
+<meta property="og:title" content="{art_name} · {hero_name}">
+<meta property="og:description" content="{art_name} — {title} by {hero_name}">
+<meta property="og:image" content="https://vimark.art/{og_image}">
+<meta property="og:image:width" content="{og_image_width}">
+<meta property="og:image:height" content="{og_image_height}">
+<link rel="image_src" href="https://vimark.art/{og_image}">
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url" content="{page_canonical}">
+<meta property="twitter:title" content="{art_name} · {hero_name}">
+<meta property="twitter:description" content="{art_name} — {title} by {hero_name}">
+<meta property="twitter:image" content="https://vimark.art/{og_image}">
+<!-- Pinterest Rich Pins -->
+<meta name="pinterest-rich-pin" content="true">
+<meta property="article:published_time" content="{year or datetime.date.today().year}-01-01">
+<!-- Google tag -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-6RBP7X7H88"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){{dataLayer.push(arguments);}}
+  gtag('js', new Date());
+  gtag('config', 'G-6RBP7X7H88');
+</script>
+<!-- Yandex.Metrika -->
+<script type="text/javascript">
+    (function(m,e,t,r,i,k,a){{
+        m[i]=m[i]||function(){{(m[i].a=m[i].a||[]).push(arguments)}};
+        m[i].l=1*new Date();
+        for (var j = 0; j < document.scripts.length; j++) {{if (document.scripts[j].src === r) {{ return; }}}}
+        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+    }})(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=109279162', 'ym');
+    ym(109279162, 'init', {{ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true}});
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/109279162" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- BreadcrumbList -->
+<script type="application/ld+json">
+{breadcrumb_json}
+</script>
+</head>
+<body>
+  <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">☀</button>
+  <div id="canvasWrapper">
+    <aside id="sidebar">
+      <header class="sidebar-header">
+        <img src="{base}Max Mitenkov.png" alt="{hero_name}" class="sidebar-photo" style="width: 100%; margin-bottom: 24px; opacity: 0.9;">
+        {project_nav_html}
+      </header>
+      {social_html_project}
+      {commissions_html}
+      <a href="{base}index.html" class="logo-link"><img src="{base}vimark_logo.png" alt="Logo" style="width: 60px;"></a>
+    </aside>
+    <button class="mobile-toggle">{t.get('menu', 'Menu')}</button>
+    <main id="main">
+      <section class="art-hero">
+        <img src="{art_src}" alt="{art_name}" loading="eager" fetchpriority="high">
+      </section>
+      <div class="art-header">
+        <a href="{back_href}" class="back-link">← Back to project</a>
+        <h1>{art_name}</h1>
+        <p class="art-meta">{title}{' · ' + year if year else ''}</p>
+      </div>
+      {review_html}
+      {wip_html}
+      <div class="project-cta">
+        <p>{cta_text}</p>
+        <a href="{base}index.html#contact" class="hero-cta">{cta_btn}</a>
+      </div>
+    </main>
+  </div>
+  <footer class="site-footer">
+    <span><b>©</b> {hero_name}, {year}.</span>
+    <div class="lang-switch">
+      <a href="#" id="lang-en" title="English"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 30" width="24" height="12"><path fill="#012169" d="M0,0 h60 v30 h-60 z"/><path stroke="#fff" stroke-width="6" d="M0,0 L60,30 M60,0 L0,30"/><path stroke="#C8102E" stroke-width="4" d="M0,0 L60,30 M60,0 L0,30"/><path stroke="#fff" stroke-width="10" d="M30,0 v30 M0,15 h60"/><path stroke="#C8102E" stroke-width="6" d="M30,0 v30 M0,15 h60"/></svg></a>
+      <a href="#" id="lang-ru" title="Русский"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 30" width="24" height="12"><rect width="60" height="10" fill="#fff"/><rect y="10" width="60" height="10" fill="#0039A6"/><rect y="20" width="60" height="10" fill="#D52B1E"/></svg></a>
+    </div>
+    <script>(function(){{var p=location.pathname.split('\\\\').join('/');var h=location.hash;if(p==='/'||p==='')p='/index.html';var i=p.indexOf('/ru/')!==-1;var e=document.getElementById('lang-en');var r=document.getElementById('lang-ru');if(i){{e.href=p.replace('/ru/','/')+h;r.href=p+h;}}else{{r.href=p.replace('/project/','/ru/project/').replace('/index.html','/ru/index.html').replace('/reviews.html','/ru/reviews.html')+h;e.href=p+h;}}if(i){{r.classList.add('active');}}else{{e.classList.add('active');}}}})();</script>
+  </footer>
+  {sticky_contact_html}
+  <button id="scrollTop" onclick="window.scrollTo({{top:0,behavior:'smooth'}})" aria-label="Back to top">↑</button>
+  <script src="{base}script.js"></script>
+</body>
+</html>
+"""
 
     def build_category_page(cat_key, info, base=""):
         page_lang = 'ru' if lang == 'ru' else 'en'
@@ -1652,6 +1844,47 @@ def build_lang(lang='en'):
         (proj_dir / f"{cat_key}.html").write_text(page_html, encoding="utf-8")
         generated_projects += 1
     print(f"Generated {generated_projects} {lang}/project pages.")
+
+    # Generate individual artwork pages
+    art_dir = proj_dir / "art"
+    art_dir.mkdir(exist_ok=True)
+    art_reviews = load_art_reviews()
+    generated_arts = 0
+    for sub_key, sub_info in all_subfolders.items():
+        proj_images = [img for img in all_items if img.get("subcategory") == sub_key]
+        if not proj_images:
+            continue
+        proj = projects.get(sub_key, {"title": sub_info["label"], "year": "", "client": "", "description": ""})
+        # Determine project folder for WIP lookup
+        project_folder = ""
+        if proj_images:
+            project_folder = os.path.dirname(proj_images[0]["src"])
+        for img in proj_images:
+            art_slug = slugify(captions.get(img["src"], img["name"]))
+            review = art_reviews.get(art_slug)
+            wip_images = find_wip_images(art_slug, project_folder) if project_folder else []
+            art_base = "../../../" if base_index else "../../"
+            page_html = build_art_page(img, proj, review, wip_images, base=art_base)
+            (art_dir / f"{art_slug}.html").write_text(page_html, encoding="utf-8")
+            generated_arts += 1
+    # Also generate art pages for standalone categories
+    for cat_key, info in categories.items():
+        if info["subfolders"]:
+            continue
+        cat_images = info["images"]
+        if not cat_images:
+            continue
+        proj = projects.get(cat_key, {"title": info["label"], "year": "", "client": "", "description": ""})
+        project_folder = info["folder"] if info.get("folder") else ""
+        for img in cat_images:
+            art_slug = slugify(captions.get(img["src"], img["name"]))
+            review = art_reviews.get(art_slug)
+            wip_images = find_wip_images(art_slug, project_folder) if project_folder else []
+            art_base = "../../../" if base_index else "../../"
+            page_html = build_art_page(img, proj, review, wip_images, base=art_base)
+            (art_dir / f"{art_slug}.html").write_text(page_html, encoding="utf-8")
+            generated_arts += 1
+    print(f"Generated {generated_arts} {lang}/project/art pages.")
 
     # Generate category pages
     for cat_key, info in categories.items():
