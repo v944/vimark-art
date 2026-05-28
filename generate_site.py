@@ -1053,11 +1053,21 @@ def build_lang(lang='en'):
         if review:
             reviewer = html.escape(review['reviewer'])
             initials = reviewer[0] if reviewer else 'R'
+            # Find reviewer photo from reviews.json
+            rev_photo = ""
+            for rev in load_reviews().get("reviews", []):
+                if rev.get("name") == review['reviewer']:
+                    rev_photo = rev.get("photo", "")
+                    break
+            if rev_photo:
+                avatar_html = f'<img src="{base}{html.escape(rev_photo)}" alt="{reviewer}" class="review-card-avatar" loading="lazy">'
+            else:
+                avatar_html = f'<div class="review-card-avatar review-avatar-default"><span>{initials}</span></div>'
             stars = '<svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>' * 5
             date_str = html.escape(review['date']) if review.get('date') else ''
             review_html = f'''<article class="review-card">
   <div class="review-card-header">
-    <div class="review-card-avatar review-avatar-default"><span>{initials}</span></div>
+    {avatar_html}
     <div class="review-card-meta">
       <span class="review-card-name">{reviewer}</span>
       <span class="review-card-date">{date_str}</span>
