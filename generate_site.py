@@ -1149,12 +1149,12 @@ def build_lang(lang='en'):
         if page_lang == 'ru':
             reviews_title_text = f"71 проверенных отзыва на Reedsy · {hero_name} · Иллюстратор и концепт-художник"
             meta_desc = f"Читайте 71 проверенный отзыв с 5 звёздами от клиентов Reedsy, которые нанимали {hero_name}. Оценка 5/5 за профессионализм, качество, ценность и отзывчивость."
-            reviews_h1_text = "71 проверенных отзыва от клиентов Reedsy"
+            reviews_h1_text = "Featured reviews"
             reviews_subtitle_text = "Оценка 5/5 за профессионализм, качество, ценность и отзывчивость"
         else:
             reviews_title_text = f"71 Verified Reedsy Reviews · {hero_name} · Illustrator & Concept Artist"
             meta_desc = f"Read 71 verified 5-star reviews from Reedsy clients who hired {hero_name} for book covers, illustrations, and concept art. Rated 5/5 for professionalism, quality, value, and responsiveness."
-            reviews_h1_text = "71 Verified Reviews from Reedsy Clients"
+            reviews_h1_text = "Featured reviews"
             reviews_subtitle_text = "Rated 5/5 for professionalism, quality, value, and responsiveness"
 
         # Reviews nav (same as project nav but with Reviews link active)
