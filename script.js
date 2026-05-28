@@ -166,6 +166,11 @@
 
     lbCaption.textContent = img.alt || '';
     lbCounter.textContent = (currentIndex + 1) + ' / ' + currentItems.length;
+    
+    // Hide/show nav arrows based on item count
+    if (lbPrev) lbPrev.style.display = currentItems.length > 1 ? '' : 'none';
+    if (lbNext) lbNext.style.display = currentItems.length > 1 ? '' : 'none';
+    
     preloadAdjacent();
   }
 
@@ -177,11 +182,13 @@
   }
 
   function nextSlide() {
+    if (!currentItems.length || currentItems.length <= 1) return;
     currentIndex = (currentIndex + 1) % currentItems.length;
     updateLightbox();
   }
 
   function prevSlide() {
+    if (!currentItems.length || currentItems.length <= 1) return;
     currentIndex = (currentIndex - 1 + currentItems.length) % currentItems.length;
     updateLightbox();
   }
