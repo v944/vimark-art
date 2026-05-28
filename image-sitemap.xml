@@ -310,6 +310,13 @@
     </image:image>
   </url>
   <url>
+    <loc>https://vimark.art/BookCover/2024/__0004_First_Contact.jpg</loc>
+    <image:image>
+      <image:loc>https://vimark.art/BookCover/2024/__0004_First_Contact.jpg</image:loc>
+      <image:title>First Contact</image:title>
+    </image:image>
+  </url>
+  <url>
     <loc>https://vimark.art/BookCover/2026/__0004_Prizraki_2026.jpg</loc>
     <image:image>
       <image:loc>https://vimark.art/BookCover/2026/__0004_Prizraki_2026.jpg</image:loc>
@@ -384,6 +391,13 @@
     <image:image>
       <image:loc>https://vimark.art/comic/Geologyst/_0004_Geologyst_5.jpg</image:loc>
       <image:title>The sixth story.  Submarine, 2026</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/BookCover/2024/__0005_Ashes_of_the_Wake.jpg</loc>
+    <image:image>
+      <image:loc>https://vimark.art/BookCover/2024/__0005_Ashes_of_the_Wake.jpg</image:loc>
+      <image:title>Ashes of the Wake</image:title>
     </image:image>
   </url>
   <url>
