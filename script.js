@@ -228,6 +228,20 @@
     });
   });
 
+  // Art hero lightbox click
+  document.querySelectorAll('.art-hero').forEach((hero) => {
+    hero.addEventListener('click', (e) => {
+      if (e.target.closest('.art-nav-prev') || e.target.closest('.art-nav-next')) return;
+      const img = hero.querySelector('img');
+      if (!img || !lightbox) return;
+      currentItems = [hero];
+      currentIndex = 0;
+      updateLightbox();
+      lightbox.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    });
+  });
+
   if (lbClose) lbClose.addEventListener('click', closeLightbox);
   if (lbNext) lbNext.addEventListener('click', nextSlide);
   if (lbPrev) lbPrev.addEventListener('click', prevSlide);
