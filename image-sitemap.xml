@@ -590,6 +590,13 @@
     </image:image>
   </url>
   <url>
+    <loc>https://vimark.art/BookCover/2026/__0008_Pandoras_Daugher.jpg</loc>
+    <image:image>
+      <image:loc>https://vimark.art/BookCover/2026/__0008_Pandoras_Daugher.jpg</image:loc>
+      <image:title>Pandoras Daugher</image:title>
+    </image:image>
+  </url>
+  <url>
     <loc>https://vimark.art/Book%20Illustrations/Endymion/__0008_E8_Sea.jpg</loc>
     <image:image>
       <image:loc>https://vimark.art/Book%20Illustrations/Endymion/__0008_E8_Sea.jpg</image:loc>
@@ -604,6 +611,13 @@
     </image:image>
   </url>
   <url>
+    <loc>https://vimark.art/BookCover/2026/__0009_SuperUnknown.jpg</loc>
+    <image:image>
+      <image:loc>https://vimark.art/BookCover/2026/__0009_SuperUnknown.jpg</image:loc>
+      <image:title>SuperUnknown</image:title>
+    </image:image>
+  </url>
+  <url>
     <loc>https://vimark.art/Book%20Illustrations/Endymion/__0009_E9_Ice.jpg</loc>
     <image:image>
       <image:loc>https://vimark.art/Book%20Illustrations/Endymion/__0009_E9_Ice.jpg</image:loc>
@@ -615,6 +629,13 @@
     <image:image>
       <image:loc>https://vimark.art/Book%20Illustrations/vegetation/__0009_10_salvation.jpg</image:loc>
       <image:title>Salvation, 2026</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/BookCover/2026/__00010_Shards_of_Humanity.jpg</loc>
+    <image:image>
+      <image:loc>https://vimark.art/BookCover/2026/__00010_Shards_of_Humanity.jpg</image:loc>
+      <image:title>Shards of Humanity</image:title>
     </image:image>
   </url>
   <url>
