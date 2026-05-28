@@ -1005,7 +1005,7 @@ def build_lang(lang='en'):
 """
         return page_content
 
-    def build_art_page(art, proj, review, wip_images, base="../../"):
+    def build_art_page(art, proj, review, wip_images, base="../../", prev_art=None, next_art=None):
         page_lang = 'ru' if lang == 'ru' else 'en'
         art_slug = slugify(captions.get(art["src"], art["name"]))
         art_name = html.escape(captions.get(art["src"], art["name"]))
@@ -1090,6 +1090,25 @@ def build_lang(lang='en'):
     </div>'''
         cta_text = t.get('project_cta_text', 'Interested in something similar?')
         cta_btn = t.get('discuss_project', 'Discuss a project')
+        # Navigation arrows
+        prev_link = ""
+        next_link = ""
+        if prev_art:
+            prev_slug = slugify(captions.get(prev_art["src"], prev_art["name"]))
+            prev_name = html.escape(captions.get(prev_art["src"], prev_art["name"]))
+            prev_link = f'<a href="{prev_slug}.html" class="art-nav-prev" aria-label="Previous: {prev_name}">‹</a>'
+        if next_art:
+            next_slug = slugify(captions.get(next_art["src"], next_art["name"]))
+            next_name = html.escape(captions.get(next_art["src"], next_art["name"]))
+            next_link = f'<a href="{next_slug}.html" class="art-nav-next" aria-label="Next: {next_name}">›</a>'
+        lightbox_html = '''<div id="lightbox">
+    <button class="lightbox-close">×</button>
+    <button class="lightbox-prev">‹</button>
+    <img class="lightbox-img" src="" alt="">
+    <button class="lightbox-next">›</button>
+    <div class="lightbox-caption"></div>
+    <div class="lightbox-counter"></div>
+  </div>'''
         return f"""<!DOCTYPE html>
 <html lang="{page_lang}">
 <head>
@@ -1165,7 +1184,9 @@ def build_lang(lang='en'):
         <p class="art-meta">{title}{' · ' + year if year else ''}</p>
       </div>
       <section class="art-hero">
-        <img src="{art_src}" alt="{art_name}" loading="eager" fetchpriority="high">
+        {prev_link}
+        <img src="{art_src}" alt="{art_name}" loading="eager" fetchpriority="high" data-full="{art_src}">
+        {next_link}
       </section>
       {review_html}
       {wip_html}
@@ -1183,6 +1204,7 @@ def build_lang(lang='en'):
     </div>
     <script>(function(){{var p=location.pathname.split('\\\\').join('/');var h=location.hash;if(p==='/'||p==='')p='/index.html';var i=p.indexOf('/ru/')!==-1;var e=document.getElementById('lang-en');var r=document.getElementById('lang-ru');if(i){{e.href=p.replace('/ru/','/')+h;r.href=p+h;}}else{{r.href=p.replace('/project/','/ru/project/').replace('/index.html','/ru/index.html').replace('/reviews.html','/ru/reviews.html')+h;e.href=p+h;}}if(i){{r.classList.add('active');}}else{{e.classList.add('active');}}}})();</script>
   </footer>
+  {lightbox_html}
   {sticky_contact_html}
   <button id="scrollTop" onclick="window.scrollTo({{top:0,behavior:'smooth'}})" aria-label="Back to top">↑</button>
   <script src="{base}script.js"></script>
@@ -1882,12 +1904,14 @@ def build_lang(lang='en'):
         project_folder = ""
         if proj_images:
             project_folder = os.path.dirname(proj_images[0]["src"])
-        for img in proj_images:
+        for i, img in enumerate(proj_images):
             art_slug = slugify(captions.get(img["src"], img["name"]))
             review = art_reviews.get(art_slug)
             wip_images = find_wip_images(art_slug, project_folder) if project_folder else []
             art_base = "../../../" if base_index else "../../"
-            page_html = build_art_page(img, proj, review, wip_images, base=art_base)
+            prev_img = proj_images[i-1] if i > 0 else None
+            next_img = proj_images[i+1] if i < len(proj_images) - 1 else None
+            page_html = build_art_page(img, proj, review, wip_images, base=art_base, prev_art=prev_img, next_art=next_img)
             (art_dir / f"{art_slug}.html").write_text(page_html, encoding="utf-8")
             generated_arts += 1
     # Also generate art pages for standalone categories
@@ -1899,12 +1923,14 @@ def build_lang(lang='en'):
             continue
         proj = projects.get(cat_key, {"title": info["label"], "year": "", "client": "", "description": ""})
         project_folder = info["folder"] if info.get("folder") else ""
-        for img in cat_images:
+        for i, img in enumerate(cat_images):
             art_slug = slugify(captions.get(img["src"], img["name"]))
             review = art_reviews.get(art_slug)
             wip_images = find_wip_images(art_slug, project_folder) if project_folder else []
             art_base = "../../../" if base_index else "../../"
-            page_html = build_art_page(img, proj, review, wip_images, base=art_base)
+            prev_img = cat_images[i-1] if i > 0 else None
+            next_img = cat_images[i+1] if i < len(cat_images) - 1 else None
+            page_html = build_art_page(img, proj, review, wip_images, base=art_base, prev_art=prev_img, next_art=next_img)
             (art_dir / f"{art_slug}.html").write_text(page_html, encoding="utf-8")
             generated_arts += 1
     print(f"Generated {generated_arts} {lang}/project/art pages.")
