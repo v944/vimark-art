@@ -863,6 +863,7 @@ def build_lang(lang='en'):
         project_nav.extend([
             f'    <li><a href="{base}index.html#about">{t.get("about", "About")}</a></li>',
             f'    <li><a href="{base}index.html#contact">{t.get("contact", "Contact")}</a></li>',
+            f'    <li><a href="{base}reviews.html">{t.get("reviews", "Reviews")}</a></li>',
             '  </ul>',
             '</nav>',
         ])
@@ -1043,16 +1044,28 @@ def build_lang(lang='en'):
         project_nav.extend([
             f'    <li><a href="{base}index.html#about">{t.get("about", "About")}</a></li>',
             f'    <li><a href="{base}index.html#contact">{t.get("contact", "Contact")}</a></li>',
+            f'    <li><a href="{base}reviews.html">{t.get("reviews", "Reviews")}</a></li>',
             '  </ul>',
             '</nav>',
         ])
         project_nav_html = "\n      ".join(project_nav)
         review_html = ""
         if review:
-            review_html = f'''<div class="art-review">
-      <blockquote>“{html.escape(review['text'])}”</blockquote>
-      <cite><strong>{html.escape(review['reviewer'])}</strong>{', ' + html.escape(review['date']) if review.get('date') else ''}</cite>
-    </div>'''
+            reviewer = html.escape(review['reviewer'])
+            initials = reviewer[0] if reviewer else 'R'
+            stars = '<svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>' * 5
+            date_str = html.escape(review['date']) if review.get('date') else ''
+            review_html = f'''<article class="review-card">
+  <div class="review-card-header">
+    <div class="review-card-avatar review-avatar-default"><span>{initials}</span></div>
+    <div class="review-card-meta">
+      <span class="review-card-name">{reviewer}</span>
+      <span class="review-card-date">{date_str}</span>
+    </div>
+  </div>
+  <div class="review-card-stars">{stars}</div>
+  <div class="review-card-text"><p>{html.escape(review['text'])}</p></div>
+</article>'''
         wip_html = ""
         if wip_images:
             wip_slides = "\n".join(
@@ -1136,14 +1149,14 @@ def build_lang(lang='en'):
     </aside>
     <button class="mobile-toggle">{t.get('menu', 'Menu')}</button>
     <main id="main">
-      <section class="art-hero">
-        <img src="{art_src}" alt="{art_name}" loading="eager" fetchpriority="high">
-      </section>
       <div class="art-header">
         <a href="{back_href}" class="back-link">← Back to project</a>
         <h1>{art_name}</h1>
         <p class="art-meta">{title}{' · ' + year if year else ''}</p>
       </div>
+      <section class="art-hero">
+        <img src="{art_src}" alt="{art_name}" loading="eager" fetchpriority="high">
+      </section>
       {review_html}
       {wip_html}
       <div class="project-cta">
