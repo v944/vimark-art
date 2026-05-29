@@ -1015,11 +1015,11 @@ def build_lang(lang='en'):
         title = html.escape(proj.get("title", ""))
         cat_key = art.get("category", "")
         cat_label = t.get(cat_key, human_label(cat_key))
-        back_href = f"{base}project/{art.get('subcategory', cat_key)}.html"
+        back_href = f"{base}{'ru/' if page_lang == 'ru' else ''}project/{art.get('subcategory', cat_key)}.html"
         og_image = html.escape(base + art.get("thumb", art["src"]), quote=True)
         og_image_width = html.escape(art.get("width", "600"), quote=True)
         og_image_height = html.escape(art.get("height", "600"), quote=True)
-        page_canonical = f"https://vimark.art/project/art/{art_slug}.html"
+        page_canonical = f"https://vimark.art/ru/project/art/{art_slug}.html" if page_lang == 'ru' else f"https://vimark.art/project/art/{art_slug}.html"
         page_hreflang = f'''<!-- hreflang -->
 <link rel="alternate" hreflang="en" href="https://vimark.art/project/art/{art_slug}.html" />
 <link rel="alternate" hreflang="ru" href="https://vimark.art/ru/project/art/{art_slug}.html" />
@@ -1893,6 +1893,9 @@ def build_lang(lang='en'):
     # Generate individual artwork pages
     art_dir = proj_dir / "art"
     art_dir.mkdir(exist_ok=True)
+    # Remove orphaned artwork pages from previous generations
+    for f in art_dir.glob("*.html"):
+        f.unlink()
     art_reviews = load_art_reviews()
     generated_arts = 0
     for sub_key, sub_info in all_subfolders.items():
