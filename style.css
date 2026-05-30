@@ -1325,6 +1325,50 @@ img {
   border-radius: 1px;
 }
 
+/* Behance Tools ribbon (Photoshop etc.) */
+.behance-ribbon-tools {
+  position: absolute;
+  top: 0;
+  right: 58px;
+  width: 32px;
+  height: 42px;
+  background: linear-gradient(180deg, #001e36, #00152a);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  z-index: 10;
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.behance-ribbon-tools:hover {
+  transform: translateY(2px);
+  filter: brightness(1.15);
+}
+
+.behance-ribbon-tools::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 0;
+  height: 0;
+  border-left: 16px solid #00152a;
+  border-right: 16px solid #00152a;
+  border-bottom: 8px solid transparent;
+}
+
+.behance-ribbon-tools span {
+  position: relative;
+  z-index: 1;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 0;
+  line-height: 1;
+}
+
 .main-nav li {
   white-space: nowrap;
 }
