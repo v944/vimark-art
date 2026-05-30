@@ -1325,6 +1325,18 @@ img {
   border-radius: 1px;
 }
 
+.behance-ribbon-label {
+  position: relative;
+  z-index: 1;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: rgba(255,255,255,0.9);
+  letter-spacing: 0;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
 /* Behance Tools ribbon (Photoshop etc.) */
 .behance-ribbon-tools {
   position: absolute;
@@ -1367,6 +1379,23 @@ img {
   color: #fff;
   letter-spacing: 0;
   line-height: 1;
+}
+
+/* Multiple ribbons group */
+.behance-ribbons {
+  position: absolute;
+  top: 0;
+  right: 20px;
+  display: flex;
+  gap: 6px;
+  z-index: 10;
+}
+
+.behance-ribbons .behance-ribbon,
+.behance-ribbons .behance-ribbon-tools {
+  position: relative;
+  top: auto;
+  right: auto;
 }
 
 .main-nav li {
