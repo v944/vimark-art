@@ -1230,6 +1230,7 @@ img {
 
 /* Project pages */
 .project-header {
+  position: relative;
   margin-bottom: 32px;
   max-width: 900px;
 }
@@ -1269,6 +1270,59 @@ img {
   color: #aaa;
   line-height: 1.7;
   max-width: 700px;
+}
+
+/* Behance ribbon link */
+.behance-ribbon {
+  position: absolute;
+  top: 0;
+  right: 20px;
+  width: 32px;
+  height: 42px;
+  background: linear-gradient(180deg, #c9a96e, #a88b52);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  z-index: 10;
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.behance-ribbon:hover {
+  transform: translateY(2px);
+  filter: brightness(1.1);
+}
+
+.behance-ribbon::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 0;
+  height: 0;
+  border-left: 16px solid #a88b52;
+  border-right: 16px solid #a88b52;
+  border-bottom: 8px solid transparent;
+}
+
+.behance-ribbon-lines {
+  position: relative;
+  display: block;
+  width: 2px;
+  height: 10px;
+  background: rgba(255,255,255,0.85);
+  border-radius: 1px;
+}
+
+.behance-ribbon-lines::before {
+  content: '';
+  position: absolute;
+  left: 5px;
+  top: 0;
+  width: 2px;
+  height: 10px;
+  background: rgba(255,255,255,0.85);
+  border-radius: 1px;
 }
 
 .main-nav li {
