@@ -474,4 +474,29 @@
       }
     });
   }
+
+  // Anti-spam protection for contact form
+  (function initSpamProtection() {
+    const form = document.querySelector('.contact-form');
+    if (!form) return;
+
+    const formLoadedAt = Date.now();
+    const botcheck = form.querySelector('input[name="botcheck"]');
+
+    form.addEventListener('submit', function(e) {
+      // Honeypot check
+      if (botcheck && botcheck.value) {
+        e.preventDefault();
+        console.warn('Spam submission blocked (honeypot)');
+        return;
+      }
+
+      // Minimum fill time check (3 seconds)
+      if (Date.now() - formLoadedAt < 3000) {
+        e.preventDefault();
+        alert('Please take a moment to fill out the form properly.');
+        return;
+      }
+    });
+  })();
 })();
