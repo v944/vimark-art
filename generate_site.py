@@ -395,6 +395,55 @@ def load_locale():
     return locale
 
 
+# Project-specific Behance ribbon HTML snippets
+PROJECT_BEHANCE = {
+    "book-illustrations-endymion": '<a href="https://www.behance.net/gallery/238419265/Endymion" class="behance-ribbon" target="_blank" rel="noopener" aria-label="View on Behance"><span class="behance-ribbon-lines"></span></a>\n        <a href="https://www.behance.net/gallery/238419265/Endymion" class="behance-ribbon-tools" target="_blank" rel="noopener" aria-label="Adobe Photoshop" title="Adobe Photoshop"><span>Ps</span></a>',
+    "book-illustrations-insmoot": '<a href="https://www.behance.net/gallery/218916137/The-Shadow-over-Innsmouth" class="behance-ribbon" target="_blank" rel="noopener" aria-label="View on Behance"><span class="behance-ribbon-lines"></span></a>\n        <a href="https://www.behance.net/gallery/218916137/The-Shadow-over-Innsmouth" class="behance-ribbon-tools" target="_blank" rel="noopener" aria-label="Adobe Photoshop" title="Adobe Photoshop"><span>Ps</span></a>',
+    "comic-biological-deviations": '<a href="https://www.behance.net/gallery/216716341/Biological-deviations" class="behance-ribbon" target="_blank" rel="noopener" aria-label="View on Behance"><span class="behance-ribbon-lines"></span></a>',
+    "comic-faceless": '<a href="https://www.behance.net/gallery/150019657/Concept-Mix-V" class="behance-ribbon" target="_blank" rel="noopener" aria-label="View on Behance"><span class="behance-ribbon-lines"></span></a>',
+    "comic-geologyst": '<a href="https://www.behance.net/gallery/234790063/Strange-stories-of-a-taiga-geologist" class="behance-ribbon" target="_blank" rel="noopener" aria-label="View on Behance"><span class="behance-ribbon-lines"></span></a>\n        <a href="https://www.behance.net/gallery/234790063/Strange-stories-of-a-taiga-geologist" class="behance-ribbon-tools" target="_blank" rel="noopener" aria-label="Adobe Photoshop" title="Adobe Photoshop"><span>Ps</span></a>',
+    "comic-nemirum": '<a href="https://www.behance.net/gallery/200133687/A-week-on-Nemirum" class="behance-ribbon" target="_blank" rel="noopener" aria-label="View on Behance"><span class="behance-ribbon-label">3D</span></a>\n        <a href="https://www.behance.net/gallery/200133687/A-week-on-Nemirum" class="behance-ribbon-tools" target="_blank" rel="noopener" aria-label="Adobe Photoshop" title="Adobe Photoshop"><span>Ps</span></a>',
+    "comic-the-symbol-of-faith": '<a href="https://www.behance.net/gallery/224137257/The-Symbol-of-Faith" class="behance-ribbon" target="_blank" rel="noopener" aria-label="View on Behance"><span class="behance-ribbon-lines"></span></a>\n        <a href="https://www.behance.net/gallery/224137257/The-Symbol-of-Faith" class="behance-ribbon-tools" target="_blank" rel="noopener" aria-label="Adobe Photoshop" title="Adobe Photoshop"><span>Ps</span></a>',
+    "comic-wanderer": '<a href="https://www.behance.net/gallery/248097067/wanderer" class="behance-ribbon" target="_blank" rel="noopener" aria-label="View on Behance"><span class="behance-ribbon-lines"></span></a>',
+    "personal-professional-growth": '<div class="behance-ribbons">\n          <a href="https://www.behance.net/vimark" class="behance-ribbon" target="_blank" rel="noopener" aria-label="Adobe Photoshop"><span class="behance-ribbon-label">Ph</span></a>\n          <a href="https://www.behance.net/vimark" class="behance-ribbon" target="_blank" rel="noopener" aria-label="View on Behance"><span class="behance-ribbon-lines"></span></a>\n          <a href="https://www.behance.net/vimark" class="behance-ribbon" target="_blank" rel="noopener" aria-label="3D"><span class="behance-ribbon-label">3D</span></a>\n          <a href="https://www.behance.net/vimark" class="behance-ribbon-tools" target="_blank" rel="noopener" aria-label="Adobe Photoshop" title="Adobe Photoshop"><span>Ps</span></a>\n        </div>',
+    "personal-recent-work": '<div class="behance-ribbons">\n          <a href="https://www.behance.net/vimark" class="behance-ribbon" target="_blank" rel="noopener" aria-label="Adobe Photoshop"><span class="behance-ribbon-label">Ph</span></a>\n          <a href="https://www.behance.net/vimark" class="behance-ribbon" target="_blank" rel="noopener" aria-label="View on Behance"><span class="behance-ribbon-lines"></span></a>\n          <a href="https://www.behance.net/vimark" class="behance-ribbon" target="_blank" rel="noopener" aria-label="3D"><span class="behance-ribbon-label">3D</span></a>\n          <a href="https://www.behance.net/vimark" class="behance-ribbon-tools" target="_blank" rel="noopener" aria-label="Adobe Photoshop" title="Adobe Photoshop"><span>Ps</span></a>\n        </div>',
+}
+
+# Project-specific reviews to show on project pages
+PROJECT_REVIEWS = {
+    "book-illustrations-insmoot": [
+        {
+            "name": "Esther Akinborewa",
+            "date": "Mar 25, 2026",
+            "avatar": "thumbnails/reviews/esther-a.jpg",
+            "text": "the atmosphere is so enthralling!! I have no words",
+        }
+    ],
+    "book-illustrations-nameless-city": [
+        {
+            "name": "Esther Akinborewa",
+            "date": "Mar 25, 2026",
+            "avatar": "thumbnails/reviews/esther-a.jpg",
+            "text": "the atmosphere is so enthralling!! I have no words",
+        },
+        {
+            "name": "Romain Brunas",
+            "date": "Apr 7, 2026",
+            "avatar": "thumbnails/reviews/romain-b.jpg",
+            "text": "Another masterpieces Max!",
+        }
+    ],
+    "comic-wanderer": [
+        {
+            "name": "Divyam Garg",
+            "date": "Apr 28, 2026",
+            "avatar": "thumbnails/reviews/divyam-g.jpg",
+            "text": "They look like cinematic matte painting, love the vibe, inspiring work!",
+        }
+    ],
+}
+
+
 STAR_SVG = '<svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>'
 
 GAUGE_IMG_MAP = {
@@ -867,6 +916,31 @@ def build_lang(lang='en'):
         meta_html = f'<p class="project-meta">{" · ".join(meta_parts)}</p>' if meta_parts else ''
         desc_html = f'<p class="project-desc">{description}</p>' if description else ''
 
+        # Behance ribbons
+        behance_snippet = PROJECT_BEHANCE.get(sub_key, "")
+        ribbons_html = f"\n        {behance_snippet}" if behance_snippet else ""
+
+        # Project reviews
+        reviews = PROJECT_REVIEWS.get(sub_key, [])
+        if reviews:
+            review_cards = []
+            for rev in reviews:
+                review_cards.append(f'''<article class="review-card">
+          <div class="review-card-header">
+            <img src="{base}{html.escape(rev['avatar'])}" alt="{html.escape(rev['name'])}" class="review-card-avatar" loading="lazy">
+            <div class="review-card-meta">
+              <span class="review-card-name">{html.escape(rev['name'])}</span>
+              <span class="review-card-date">{html.escape(rev['date'])}</span>
+            </div>
+          </div>
+          <div class="review-card-text"><p>{html.escape(rev['text'])}</p></div>
+        </article>''')
+            reviews_html = f'''<div class="project-reviews" style="max-width: 640px; margin: 40px auto 0;">
+        {"\n        ".join(review_cards)}
+      </div>'''
+        else:
+            reviews_html = ""
+
         social_html_project = social_html.replace('src="behance.png"', f'src="{base}behance.png"').replace('src="deviantart.png"', f'src="{base}deviantart.png"')
 
         project_nav = [
@@ -997,8 +1071,10 @@ def build_lang(lang='en'):
         <h1>{title}</h1>
         {meta_html}
         {desc_html}
+        {ribbons_html}
       </div>
       {project_gallery_html(items, base)}
+      {reviews_html}
       {project_cta_html}
     </main>
   </div>
@@ -1678,8 +1754,8 @@ def build_lang(lang='en'):
             <input type="hidden" name="redirect" value="https://vimark.art/thanks.html">
             <input type="hidden" name="subject" value="New message from vimark.art">
             <div class="form-group hp-field" style="display:none !important">
-              <label for="hp-name">Name</label>
-              <input type="text" id="hp-name" name="hp-name" tabindex="-1" autocomplete="off">
+              <label for="botcheck">{t.get('honeypot_label', 'Do not fill this field')}</label>
+              <input type="text" id="botcheck" name="botcheck" tabindex="-1" autocomplete="off">
             </div>
             <div class="form-group">
               <label for="email">{t.get('email_label', 'Email')} <span class="required">({t.get('required', 'required')})</span></label>
