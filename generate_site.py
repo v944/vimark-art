@@ -358,6 +358,7 @@ def load_projects():
             "year": cfg.get(section, "year", fallback=""),
             "client": cfg.get(section, "client", fallback=""),
             "description": cfg.get(section, "description", fallback=""),
+            "thumbnail": cfg.get(section, "thumbnail", fallback=""),
         }
     return projects
 
@@ -720,21 +721,27 @@ def build_lang(lang='en'):
   </div>
 </section>'''
 
-    def project_card_html(key, label, images, base=""):
+    def project_card_html(key, label, images, base="", thumbnail=""):
         if not images:
             return ""
         count = len(images)
         main = images[0]
+        if thumbnail:
+            for img in images:
+                if img["src"] == thumbnail or img["src"].endswith("/" + thumbnail):
+                    main = img
+                    break
         main_thumb = html.escape(base + main.get("thumb", main["src"]), quote=True)
         main_src = html.escape(base + main["src"], quote=True)
         main_alt = html.escape(captions.get(main["src"], main["name"]), quote=True)
         thumbs_html = ""
         transparent_gif = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-        for img in images[1:4]:
+        thumbs = [img for img in images if img["src"] != main["src"]][:3]
+        for img in thumbs:
             thumb = html.escape(base + img.get("thumb", img["src"]), quote=True)
             alt = html.escape(captions.get(img["src"], img["name"]), quote=True)
             thumbs_html += f'<img src="{thumb}" alt="{alt}" loading="lazy">'
-        for _ in range(3 - len(images[1:4])):
+        for _ in range(3 - len(thumbs)):
             thumbs_html += f'<img src="{transparent_gif}" alt="" loading="lazy">'
         count_label = t.get("artworks", "artworks")
         return f'''<a href="{base}project/{key}.html" class="project-card">
@@ -759,12 +766,14 @@ def build_lang(lang='en'):
             if info["subfolders"]:
                 for sub_key, sub_info in info["subfolders"].items():
                     proj_images = [img for img in all_items if img.get("subcategory") == sub_key]
-                    card = project_card_html(sub_key, sub_info["label"], proj_images, base)
+                    proj = projects.get(sub_key, {})
+                    card = project_card_html(sub_key, sub_info["label"], proj_images, base, proj.get("thumbnail", ""))
                     if card:
                         cards.append(card)
             else:
                 proj_images = [img for img in all_items if img["category"] == cat_key]
-                card = project_card_html(cat_key, info["label"], proj_images, base)
+                proj = projects.get(cat_key, {})
+                card = project_card_html(cat_key, info["label"], proj_images, base, proj.get("thumbnail", ""))
                 if card:
                     cards.append(card)
             if cards:
@@ -825,7 +834,13 @@ def build_lang(lang='en'):
         year = html.escape(proj.get("year", ""))
         client = html.escape(proj.get("client", ""))
         description = html.escape(proj.get("description", ""))
+        thumbnail_path = proj.get("thumbnail", "")
         first_item = items[0] if items else None
+        if thumbnail_path:
+            for item in items:
+                if item["src"] == thumbnail_path or item["src"].endswith("/" + thumbnail_path):
+                    first_item = item
+                    break
         og_image = html.escape(first_item.get("thumb", first_item["src"]), quote=True) if first_item else "Mitenkov600.jpg"
         og_image_width = html.escape(first_item.get("width", "600"), quote=True) if first_item else "600"
         og_image_height = html.escape(first_item.get("height", "600"), quote=True) if first_item else "600"
@@ -1233,12 +1248,14 @@ def build_lang(lang='en'):
         if info["subfolders"]:
             for sub_key, sub_info in info["subfolders"].items():
                 proj_images = [img for img in all_items if img.get("subcategory") == sub_key]
-                card = project_card_html(sub_key, sub_info["label"], proj_images, base)
+                proj = projects.get(sub_key, {})
+                card = project_card_html(sub_key, sub_info["label"], proj_images, base, proj.get("thumbnail", ""))
                 if card:
                     cards.append(card)
         else:
             proj_images = [img for img in all_items if img["category"] == cat_key]
-            card = project_card_html(cat_key, cat_label, proj_images, base)
+            proj = projects.get(cat_key, {})
+            card = project_card_html(cat_key, cat_label, proj_images, base, proj.get("thumbnail", ""))
             if card:
                 cards.append(card)
         cards_str = "\n".join(cards) if cards else ""

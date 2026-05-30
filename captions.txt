@@ -149,3 +149,11 @@ BookCover/2026/__0004_Prizraki_2026.jpg = Prizraki
 BookCover/2026/__0005_Red_Planet_2_2026.jpg = Red Planet 2
 BookCover/2026/__0006_Damned_2026.jpg = Damned
 BookCover/2026/__0007_Sentient_2026.jpg = Sentient
+
+Book Illustrations/20000 leagues under the sea/__0001_il_1.jpg = The Misty Approach
+Book Illustrations/20000 leagues under the sea/__0002_il_2.jpg = The Underwater Hunt
+Book Illustrations/20000 leagues under the sea/__0003_il_3.jpg = The Sunken Forest
+Book Illustrations/20000 leagues under the sea/__0004_il_4.jpg = The Shipwreck
+Book Illustrations/20000 leagues under the sea/__0005_il_5.jpg = The Sunken City
+Book Illustrations/20000 leagues under the sea/__0006_il_6.jpg = The Antarctic Ice
+Book Illustrations/20000 leagues under the sea/__0007_il_7.jpg = The Giant Squid
