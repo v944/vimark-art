@@ -170,6 +170,7 @@ img {
 
 .gallery-item {
   position: relative;
+  display: block;
   overflow: hidden;
   cursor: pointer;
   background: #1a1a1a;
@@ -205,6 +206,35 @@ img {
 
 .gallery-item:hover figcaption {
   opacity: 1;
+}
+
+.gallery-item-media {
+  position: relative;
+  display: block;
+}
+
+.gallery-item-wake {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  transform: translateY(-50%);
+  z-index: 10;
+  color: #c4a882;
+  font-size: 1.1rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.6);
+  pointer-events: none;
+  text-align: center;
+  white-space: nowrap;
+  animation: wakePulse 2.5s ease-in-out infinite;
+}
+
+@keyframes wakePulse {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 1; }
 }
 
 /* Lightbox */
