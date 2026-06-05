@@ -1081,9 +1081,17 @@ img {
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: #eee;
-  margin-bottom: 32px;
+  margin-bottom: 16px;
   padding-bottom: 12px;
   border-bottom: 1px solid #222;
+}
+
+.category-page .category-desc {
+  color: #aaa;
+  font-size: 1rem;
+  line-height: 1.7;
+  margin-bottom: 32px;
+  max-width: 720px;
 }
 
 .projects-section {

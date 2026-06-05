@@ -561,7 +561,7 @@ def build_lang(lang='en'):
             continue
         if entry.name.startswith(".") or entry.name.startswith("_"):
             continue
-        if entry.name.lower() in ("website", "thumbnails", "project", "hero", "hero2", "strong", "reedsy", "pinterest"):
+        if entry.name.lower() in ("website", "thumbnails", "project", "hero", "hero2", "strong", "reedsy", "pinterest", "living-illustration", "living-illustrations"):
             continue
 
         cat_key = slugify(entry.name)
