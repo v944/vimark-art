@@ -70,6 +70,17 @@
   <script type="module" crossorigin src="./assets/index-Dku_ULXp.js"></script>
   <link rel="modulepreload" crossorigin href="./assets/pixi-CPkrh62E.js">
   <link rel="modulepreload" crossorigin href="./assets/audio-C2jd-sK5.js">
+  <script>
+    window.getCameraStats = function(){
+      var stats = {};
+      for(var i = 0; i < localStorage.length; i++){
+        var k = localStorage.key(i);
+        if(k && k.startsWith("vimark_camera_")) stats[k] = localStorage.getItem(k);
+      }
+      console.table(stats);
+      return stats;
+    };
+  </script>
 </head>
 <body>
   <div id="app">
