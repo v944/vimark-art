@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Living Illustrations — Camera Stats</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #1a1a1a;
+    color: #c4a882;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 24px;
+  }
+  h1 { font-size: 24px; margin-bottom: 8px; color: #e8dcc8; }
+  p { font-size: 14px; opacity: 0.7; margin-bottom: 32px; }
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+    width: 100%;
+    max-width: 600px;
+  }
+  .stat-card {
+    background: rgba(0,0,0,0.35);
+    border: 1px solid rgba(196,168,130,0.2);
+    border-radius: 12px;
+    padding: 24px;
+    text-align: center;
+  }
+  .stat-card h2 {
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 12px;
+    opacity: 0.8;
+  }
+  .stat-card .value {
+    font-size: 48px;
+    font-weight: bold;
+    color: #e8dcc8;
+  }
+  .actions {
+    margin-top: 32px;
+    display: flex;
+    gap: 12px;
+  }
+  button {
+    background: rgba(196,168,130,0.15);
+    border: 1px solid rgba(196,168,130,0.3);
+    color: #c4a882;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background 0.2s;
+  }
+  button:hover { background: rgba(196,168,130,0.25); }
+  .empty { opacity: 0.5; font-style: italic; }
+</style>
+</head>
+<body>
+  <h1>📷 Camera Clicks</h1>
+  <p>Statistics are stored locally in your browser.</p>
+  <div class="stats-grid" id="grid"></div>
+  <div class="actions">
+    <button onclick="copyStats()">Copy JSON</button>
+    <button onclick="resetStats()">Reset all</button>
+  </div>
+
+  <script>
+    const PREFIX = 'vimark_camera_';
+
+    function readStats() {
+      const stats = {};
+      for (let i = 0; i < localStorage.length; i++) {
+        const k = localStorage.key(i);
+        if (k && k.startsWith(PREFIX)) {
+          stats[k.replace(PREFIX, '')] = parseInt(localStorage.getItem(k), 10);
+        }
+      }
+      return stats;
+    }
+
+    function render() {
+      const stats = readStats();
+      const grid = document.getElementById('grid');
+      const keys = Object.keys(stats);
+      if (keys.length === 0) {
+        grid.innerHTML = '<div class="empty stat-card">No clicks yet. Open a living illustration and take a screenshot!</div>';
+        return;
+      }
+      grid.innerHTML = keys.map(scene => `
+        <div class="stat-card">
+          <h2>${scene.replace(/-/g, ' ')}</h2>
+          <div class="value">${stats[scene]}</div>
+        </div>
+      `).join('');
+    }
+
+    function copyStats() {
+      const json = JSON.stringify(readStats(), null, 2);
+      navigator.clipboard.writeText(json).then(() => alert('Copied to clipboard!'));
+    }
+
+    function resetStats() {
+      if (!confirm('Reset all camera counters?')) return;
+      for (let i = localStorage.length - 1; i >= 0; i--) {
+        const k = localStorage.key(i);
+        if (k && k.startsWith(PREFIX)) localStorage.removeItem(k);
+      }
+      render();
+    }
+
+    render();
+  </script>
+</body>
+</html>
