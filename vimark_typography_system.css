@@ -1,0 +1,341 @@
+/* ========================================
+   vimark.art — Unified Typography System
+   Version: 1.0
+   Date: 2026-06-13
+   ======================================== */
+
+/* ---------- CSS Variables ---------- */
+:root {
+  /* Colors */
+  --color-bg: #0a0a0a;
+  --color-text-primary: rgba(255, 255, 255, 0.9);
+  --color-text-secondary: rgba(255, 255, 255, 0.6);
+  --color-text-muted: rgba(255, 255, 255, 0.4);
+  --color-border: rgba(255, 255, 255, 0.1);
+  --color-accent: #fff;
+
+  /* Font sizes — desktop */
+  --font-h1: 24px;
+  --font-h2: 18px;
+  --font-h3: 16px;
+  --font-h4: 13px;
+  --font-body: 15px;
+  --font-small: 12px;
+
+  /* Font sizes — mobile */
+  --font-h1-mobile: 20px;
+  --font-h2-mobile: 17px;
+  --font-h3-mobile: 15px;
+  --font-h4-mobile: 12px;
+  --font-body-mobile: 14px;
+
+  /* Letter spacing */
+  --ls-h1: 0.08em;
+  --ls-h2: 0.05em;
+  --ls-h3: 0.04em;
+  --ls-h4: 0.1em;
+  --ls-body: 0.01em;
+
+  /* Line height */
+  --lh-tight: 1.2;
+  --lh-normal: 1.4;
+  --lh-relaxed: 1.6;
+
+  /* Spacing */
+  --space-xs: 8px;
+  --space-sm: 12px;
+  --space-md: 20px;
+  --space-lg: 32px;
+  --space-xl: 48px;
+  --space-2xl: 64px;
+}
+
+/* ---------- Base ---------- */
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: var(--font-body);
+  line-height: var(--lh-relaxed);
+  letter-spacing: var(--ls-body);
+  color: var(--color-text-secondary);
+  background-color: var(--color-bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+p {
+  font-size: var(--font-body);
+  line-height: var(--lh-relaxed);
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-md);
+}
+
+a {
+  color: var(--color-text-primary);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: var(--color-accent);
+}
+
+/* ---------- H1 — Page Title ---------- */
+h1 {
+  font-size: var(--font-h1);
+  font-weight: 400;
+  letter-spacing: var(--ls-h1);
+  text-transform: uppercase;
+  color: var(--color-text-primary);
+  line-height: var(--lh-tight);
+  margin-bottom: var(--space-lg);
+  padding-bottom: var(--space-md);
+  border-bottom: 1px solid var(--color-border);
+}
+
+/* H1 without border (optional modifier) */
+h1.h1--no-border {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+/* ---------- H2 — Section / Project Group ---------- */
+h2 {
+  font-size: var(--font-h2);
+  font-weight: 400;
+  letter-spacing: var(--ls-h2);
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+  line-height: var(--lh-normal);
+  margin-top: var(--space-xl);
+  margin-bottom: var(--space-md);
+}
+
+/* H2 first child — no top margin */
+h2:first-child,
+section:first-child h2 {
+  margin-top: 0;
+}
+
+/* H2 with bottom line (project separator) */
+h2.h2--ruled {
+  padding-bottom: var(--space-sm);
+  border-bottom: 1px solid var(--color-border);
+}
+
+/* ---------- H3 — Card Title / Artwork Name ---------- */
+h3 {
+  font-size: var(--font-h3);
+  font-weight: 500;
+  letter-spacing: var(--ls-h3);
+  text-transform: none;
+  color: var(--color-text-primary);
+  line-height: var(--lh-normal);
+  margin-bottom: var(--space-xs);
+}
+
+/* ---------- H4 — Label / Genre / Meta ---------- */
+h4 {
+  font-size: var(--font-h4);
+  font-weight: 400;
+  letter-spacing: var(--ls-h4);
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  line-height: var(--lh-normal);
+  margin-bottom: var(--space-xs);
+}
+
+/* ========================================
+   SPECIAL CASES
+   ======================================== */
+
+/* ---------- FAQ Page ---------- */
+.faq-page h1 {
+  margin-bottom: var(--space-xl);
+}
+
+.faq-page h2 {
+  font-size: var(--font-h2);
+  font-weight: 500;
+  letter-spacing: var(--ls-body);
+  text-transform: none;
+  color: var(--color-text-primary);
+  margin-top: var(--space-lg);
+  margin-bottom: var(--space-sm);
+  line-height: var(--lh-normal);
+}
+
+.faq-page h2:first-child {
+  margin-top: 0;
+}
+
+.faq-page p {
+  font-size: var(--font-body);
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-lg);
+}
+
+/* FAQ question marker (optional) */
+.faq-page h2::before {
+  content: "›";
+  color: var(--color-text-muted);
+  margin-right: var(--space-sm);
+  font-size: var(--font-h3);
+}
+
+/* ---------- CTA Section ---------- */
+.cta-section h2 {
+  font-size: var(--font-h3);
+  font-weight: 400;
+  letter-spacing: var(--ls-h2);
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+  margin-top: var(--space-2xl);
+  padding-top: var(--space-xl);
+  border-top: 1px solid var(--color-border);
+}
+
+/* ---------- About Page — Entity Block ---------- */
+.about-entity {
+  font-size: var(--font-body);
+  line-height: var(--lh-relaxed);
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-xl);
+}
+
+.about-entity strong {
+  font-weight: 500;
+  color: var(--color-accent);
+}
+
+/* ---------- Cover / Art Cards ---------- */
+.cover-card h3,
+.art-card h3 {
+  font-size: var(--font-h3);
+  font-weight: 500;
+  letter-spacing: var(--ls-body);
+  text-transform: none;
+  color: var(--color-text-primary);
+  margin-top: var(--space-sm);
+  margin-bottom: var(--space-xs);
+}
+
+.cover-card h4,
+.art-card h4 {
+  font-size: var(--font-h4);
+  font-weight: 400;
+  letter-spacing: var(--ls-h4);
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-bottom: 0;
+}
+
+/* ---------- Case Study / Article ---------- */
+.article-page h1 {
+  margin-bottom: var(--space-md);
+}
+
+.article-page h2 {
+  font-size: var(--font-h2);
+  font-weight: 400;
+  letter-spacing: var(--ls-h2);
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+  margin-top: var(--space-xl);
+  margin-bottom: var(--space-md);
+}
+
+.article-page p {
+  font-size: var(--font-body);
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-md);
+}
+
+/* ---------- Reviews Page ---------- */
+.reviews-page h1 {
+  margin-bottom: var(--space-xl);
+}
+
+.review-item h3 {
+  font-size: var(--font-h3);
+  font-weight: 500;
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-xs);
+}
+
+.review-item h4 {
+  font-size: var(--font-h4);
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-sm);
+}
+
+.review-item p {
+  font-size: var(--font-body);
+  font-style: italic;
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-lg);
+}
+
+/* ========================================
+   MOBILE (≤800px)
+   ======================================== */
+
+@media (max-width: 800px) {
+  :root {
+    --font-h1: var(--font-h1-mobile);
+    --font-h2: var(--font-h2-mobile);
+    --font-h3: var(--font-h3-mobile);
+    --font-h4: var(--font-h4-mobile);
+    --font-body: var(--font-body-mobile);
+  }
+
+  h1 {
+    font-size: var(--font-h1-mobile);
+    margin-bottom: var(--space-md);
+    padding-bottom: var(--space-sm);
+  }
+
+  h2 {
+    font-size: var(--font-h2-mobile);
+    margin-top: var(--space-lg);
+    margin-bottom: var(--space-sm);
+  }
+
+  h3 {
+    font-size: var(--font-h3-mobile);
+  }
+
+  h4 {
+    font-size: var(--font-h4-mobile);
+  }
+
+  p {
+    font-size: var(--font-body-mobile);
+  }
+
+  .faq-page h2 {
+    font-size: var(--font-h2-mobile);
+  }
+
+  .faq-page p {
+    font-size: var(--font-body-mobile);
+  }
+
+  .cta-section h2 {
+    font-size: var(--font-h3-mobile);
+    margin-top: var(--space-xl);
+    padding-top: var(--space-lg);
+  }
+}
+
+/* ========================================
+   UTILITY CLASSES
+   ======================================== */
+
+.text-primary { color: var(--color-text-primary); }
+.text-secondary { color: var(--color-text-secondary); }
+.text-muted { color: var(--color-text-muted); }
+
+.text-uppercase { text-transform: uppercase; }
+.text-normal { text-transform: none; }
+
+.font-small { font-size: var(--font-small); }

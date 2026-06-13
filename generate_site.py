@@ -543,7 +543,7 @@ def find_wip_images(art_slug, project_folder):
     return wip_images
 
 
-def build_lang(lang='en'):
+def build_lang(lang='en', skip_landing_pages=True):
     locale = load_locale()
     t = locale.get(lang, {})
     out_dir = WEBSITE if lang == 'en' else WEBSITE / "ru"
@@ -947,12 +947,15 @@ def build_lang(lang='en'):
             '<nav class="main-nav">',
             '  <ul>',
         ]
-        for key, info in categories.items():
-            project_nav.append(f'    <li><a href="{base}index.html#{key}">{html.escape(info["label"])}</a></li>')
         project_nav.extend([
-            f'    <li><a href="{base}index.html#about">{t.get("about", "About")}</a></li>',
-            f'    <li><a href="{base}index.html#contact">{t.get("contact", "Contact")}</a></li>',
+            f'    <li><a href="{base}book-covers.html">Book Covers</a></li>',
+            f'    <li><a href="{base}book-illustrations.html">Book Illustrations</a></li>',
+            f'    <li><a href="{base}case-studies/hoebeke-sci-fi-series.html">Case Studies</a></li>',
+            f'    <li><a href="{base}visual-stories.html">Visual Stories</a></li>',
+            f'    <li><a href="{base}about.html">{t.get("about", "About")}</a></li>',
+            f'    <li><a href="{base}contact.html">{t.get("contact", "Contact")}</a></li>',
             f'    <li><a href="{base}reviews.html">{t.get("reviews", "Reviews")}</a></li>',
+            f'    <li><a href="{base}faq.html">FAQ</a></li>',
             '  </ul>',
             '</nav>',
         ])
@@ -999,6 +1002,7 @@ def build_lang(lang='en'):
 <link rel="preconnect" href="https://www.googletagmanager.com">
 <link rel="preconnect" href="https://mc.yandex.ru">
 <link rel="stylesheet" href="{base}style.css">
+<link rel="stylesheet" href="{base}vimark_typography_system.css">
 <link rel="icon" type="image/png" href="{base}vimark_logo.png">
 
 <!-- Open Graph -->
@@ -1130,12 +1134,15 @@ def build_lang(lang='en'):
             '<nav class="main-nav">',
             '  <ul>',
         ]
-        for key, info in categories.items():
-            project_nav.append(f'    <li><a href="{base}index.html#{key}">{html.escape(info["label"])}</a></li>')
         project_nav.extend([
-            f'    <li><a href="{base}index.html#about">{t.get("about", "About")}</a></li>',
-            f'    <li><a href="{base}index.html#contact">{t.get("contact", "Contact")}</a></li>',
+            f'    <li><a href="{base}book-covers.html">Book Covers</a></li>',
+            f'    <li><a href="{base}book-illustrations.html">Book Illustrations</a></li>',
+            f'    <li><a href="{base}case-studies/hoebeke-sci-fi-series.html">Case Studies</a></li>',
+            f'    <li><a href="{base}visual-stories.html">Visual Stories</a></li>',
+            f'    <li><a href="{base}about.html">{t.get("about", "About")}</a></li>',
+            f'    <li><a href="{base}contact.html">{t.get("contact", "Contact")}</a></li>',
             f'    <li><a href="{base}reviews.html">{t.get("reviews", "Reviews")}</a></li>',
+            f'    <li><a href="{base}faq.html">FAQ</a></li>',
             '  </ul>',
             '</nav>',
         ])
@@ -1212,6 +1219,7 @@ def build_lang(lang='en'):
 <link rel="preconnect" href="https://www.googletagmanager.com">
 <link rel="preconnect" href="https://mc.yandex.ru">
 <link rel="stylesheet" href="{base}style.css">
+<link rel="stylesheet" href="{base}vimark_typography_system.css">
 <link rel="icon" type="image/png" href="{base}vimark_logo.png">
 <!-- Open Graph -->
 <meta property="og:type" content="article">
@@ -1341,14 +1349,15 @@ def build_lang(lang='en'):
             '<nav class="main-nav">',
             '  <ul>',
         ]
-        for key, cinfo in categories.items():
-            if key == cat_key:
-                cat_nav_lines.append(f'    <li><a href="{base}index.html#{key}">{html.escape(cinfo["label"])}</a></li>')
-            else:
-                cat_nav_lines.append(f'    <li><a href="{base}{key}.html">{html.escape(cinfo["label"])}</a></li>')
         cat_nav_lines.extend([
-            f'    <li><a href="{base}index.html#about">{t.get("about", "About")}</a></li>',
-            f'    <li><a href="{base}index.html#contact">{t.get("contact", "Contact")}</a></li>',
+            f'    <li><a href="{base}book-covers.html">Book Covers</a></li>',
+            f'    <li><a href="{base}book-illustrations.html">Book Illustrations</a></li>',
+            f'    <li><a href="{base}case-studies/hoebeke-sci-fi-series.html">Case Studies</a></li>',
+            f'    <li><a href="{base}visual-stories.html">Visual Stories</a></li>',
+            f'    <li><a href="{base}about.html">{t.get("about", "About")}</a></li>',
+            f'    <li><a href="{base}contact.html">{t.get("contact", "Contact")}</a></li>',
+            f'    <li><a href="{base}reviews.html">{t.get("reviews", "Reviews")}</a></li>',
+            f'    <li><a href="{base}faq.html">FAQ</a></li>',
             '  </ul>',
             '</nav>',
         ])
@@ -1367,6 +1376,7 @@ def build_lang(lang='en'):
 <link rel="preconnect" href="https://www.googletagmanager.com">
 <link rel="preconnect" href="https://mc.yandex.ru">
 <link rel="stylesheet" href="{base}style.css">
+<link rel="stylesheet" href="{base}vimark_typography_system.css">
 <link rel="icon" type="image/png" href="{base}vimark_logo.png">
 
 <!-- Open Graph -->
@@ -1492,12 +1502,15 @@ def build_lang(lang='en'):
             '<nav class="main-nav">',
             '  <ul>',
         ]
-        for key, info in categories.items():
-            reviews_nav.append(f'    <li><a href="{base}index.html#{key}">{html.escape(info["label"])}</a></li>')
         reviews_nav.extend([
-            f'    <li><a href="{base}index.html#about">{t.get("about", "About")}</a></li>',
-            f'    <li><a href="{base}index.html#contact">{t.get("contact", "Contact")}</a></li>',
+            f'    <li><a href="{base}book-covers.html">Book Covers</a></li>',
+            f'    <li><a href="{base}book-illustrations.html">Book Illustrations</a></li>',
+            f'    <li><a href="{base}case-studies/hoebeke-sci-fi-series.html">Case Studies</a></li>',
+            f'    <li><a href="{base}visual-stories.html">Visual Stories</a></li>',
+            f'    <li><a href="{base}about.html">{t.get("about", "About")}</a></li>',
+            f'    <li><a href="{base}contact.html">{t.get("contact", "Contact")}</a></li>',
             f'    <li><a href="{base}reviews.html">{t.get("reviews", "Reviews")}</a></li>',
+            f'    <li><a href="{base}faq.html">FAQ</a></li>',
             '  </ul>',
             '</nav>',
         ])
@@ -1546,6 +1559,7 @@ def build_lang(lang='en'):
 <link rel="preconnect" href="https://www.googletagmanager.com">
 <link rel="preconnect" href="https://mc.yandex.ru">
 <link rel="stylesheet" href="{base}style.css">
+<link rel="stylesheet" href="{base}vimark_typography_system.css">
 <link rel="icon" type="image/png" href="{base}vimark_logo.png">
 
 <!-- Open Graph -->
@@ -1652,12 +1666,15 @@ def build_lang(lang='en'):
         '<nav class="main-nav">',
         '  <ul>',
     ]
-    for key, info in categories.items():
-        nav_lines.append(f'    <li><a href="#{key}">{html.escape(info["label"])}</a></li>')
     nav_lines.extend([
-        f'    <li><a href="#about">{t.get("about", "About")}</a></li>',
-        f'    <li><a href="#contact">{t.get("contact", "Contact")}</a></li>',
+        f'    <li><a href="{base_index}book-covers.html">Book Covers</a></li>',
+        f'    <li><a href="{base_index}book-illustrations.html">Book Illustrations</a></li>',
+        f'    <li><a href="{base_index}case-studies/hoebeke-sci-fi-series.html">Case Studies</a></li>',
+        f'    <li><a href="{base_index}visual-stories.html">Visual Stories</a></li>',
+        f'    <li><a href="{base_index}about.html">{t.get("about", "About")}</a></li>',
+        f'    <li><a href="{base_index}contact.html">{t.get("contact", "Contact")}</a></li>',
         f'    <li><a href="{base_index}reviews.html">{t.get("reviews", "Reviews")}</a></li>',
+        f'    <li><a href="{base_index}faq.html">FAQ</a></li>',
         '  </ul>',
         '</nav>',
     ])
@@ -1813,6 +1830,7 @@ def build_lang(lang='en'):
 <link rel="canonical" href="{canonical_root}">
 {hreflang_block}
 <link rel="stylesheet" href="{base_index}style.css">
+<link rel="stylesheet" href="{base_index}vimark_typography_system.css">
 <link rel="icon" type="image/png" href="{base_index}vimark_logo.png">
 
 <!-- Open Graph / Facebook -->
@@ -1938,8 +1956,11 @@ def build_lang(lang='en'):
 </html>
 """
 
-    (out_dir / "index.html").write_text(html_content, encoding="utf-8")
-    print(f"Generated {lang}/index.html with {len(all_items)} images.")
+    if not skip_landing_pages:
+        (out_dir / "index.html").write_text(html_content, encoding="utf-8")
+        print(f"Generated {lang}/index.html with {len(all_items)} images.")
+    else:
+        print(f"Skipped {lang}/index.html (landing page is static).")
     for key, info in categories.items():
         subs = ", ".join(info["subfolders"].keys()) if info["subfolders"] else "none"
         print(f"  - {key}: {len(info['images'])} images (subfolders: {subs})")
@@ -2031,46 +2052,49 @@ def build_lang(lang='en'):
             generated_arts += 1
     print(f"Generated {generated_arts} {lang}/project/art pages.")
 
-    # Generate category pages
-    for cat_key, info in categories.items():
-        cat_base = "../" if base_index else ""
-        page_html = build_category_page(cat_key, info, base=cat_base)
-        (out_dir / f"{cat_key}.html").write_text(page_html, encoding="utf-8")
-        print(f"Generated {lang}/{cat_key}.html")
+    if not skip_landing_pages:
+        # Generate category pages
+        for cat_key, info in categories.items():
+            cat_base = "../" if base_index else ""
+            page_html = build_category_page(cat_key, info, base=cat_base)
+            (out_dir / f"{cat_key}.html").write_text(page_html, encoding="utf-8")
+            print(f"Generated {lang}/{cat_key}.html")
 
-    # Generate reviews page
-    reviews_base = base_index
-    reviews_html = build_reviews_page(base=reviews_base)
-    (out_dir / "reviews.html").write_text(reviews_html, encoding="utf-8")
-    print(f"Generated {lang}/reviews.html")
+        # Generate reviews page
+        reviews_base = base_index
+        reviews_html = build_reviews_page(base=reviews_base)
+        (out_dir / "reviews.html").write_text(reviews_html, encoding="utf-8")
+        print(f"Generated {lang}/reviews.html")
 
-    # Generate sitemap.xml
-    today = datetime.date.today().isoformat()
-    root_url = "https://vimark.art/" if lang == 'en' else "https://vimark.art/ru/"
-    project_base = "https://vimark.art/project/" if lang == 'en' else "https://vimark.art/ru/project/"
-    urls = [
-        (root_url, "1.0"),
-        (f"{root_url}contact.html", "0.5"),
-        (f"{root_url}reviews.html", "0.7"),
-    ]
-    for sub_key in projects.keys():
-        urls.append((f"{project_base}{sub_key}.html", "0.9"))
-    for cat_key, info in categories.items():
-        if not info["subfolders"]:
-            urls.append((f"{project_base}{cat_key}.html", "0.9"))
-    # Category landing pages
-    for cat_key, info in categories.items():
-        urls.append((f"{root_url}{cat_key}.html", "0.8"))
-    url_entries = "\n".join(
-        f"  <url>\n    <loc>{loc}</loc>\n    <lastmod>{today}</lastmod>\n    <changefreq>weekly</changefreq>\n    <priority>{priority}</priority>\n  </url>"
-        for loc, priority in urls
-    )
-    sitemap_content = f"""<?xml version="1.0" encoding="UTF-8"?>
+        # Generate sitemap.xml
+        today = datetime.date.today().isoformat()
+        root_url = "https://vimark.art/" if lang == 'en' else "https://vimark.art/ru/"
+        project_base = "https://vimark.art/project/" if lang == 'en' else "https://vimark.art/ru/project/"
+        urls = [
+            (root_url, "1.0"),
+            (f"{root_url}contact.html", "0.5"),
+            (f"{root_url}reviews.html", "0.7"),
+        ]
+        for sub_key in projects.keys():
+            urls.append((f"{project_base}{sub_key}.html", "0.9"))
+        for cat_key, info in categories.items():
+            if not info["subfolders"]:
+                urls.append((f"{project_base}{cat_key}.html", "0.9"))
+        # Category landing pages
+        for cat_key, info in categories.items():
+            urls.append((f"{root_url}{cat_key}.html", "0.8"))
+        url_entries = "\n".join(
+            f"  <url>\n    <loc>{loc}</loc>\n    <lastmod>{today}</lastmod>\n    <changefreq>weekly</changefreq>\n    <priority>{priority}</priority>\n  </url>"
+            for loc, priority in urls
+        )
+        sitemap_content = f"""<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 {url_entries}
 </urlset>"""
-    (out_dir / "sitemap.xml").write_text(sitemap_content, encoding="utf-8")
-    print(f"Generated {lang}/sitemap.xml")
+        (out_dir / "sitemap.xml").write_text(sitemap_content, encoding="utf-8")
+        print(f"Generated {lang}/sitemap.xml")
+    else:
+        print(f"Skipped {lang}/category pages, reviews and sitemap (static pages).")
 
     if lang == 'en':
         image_urls = []
@@ -2091,8 +2115,11 @@ def build_lang(lang='en'):
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
 {chr(10).join(image_urls)}
 </urlset>"""
-        (WEBSITE / "image-sitemap.xml").write_text(image_sitemap, encoding="utf-8")
-        print(f"Generated image-sitemap.xml with {len(all_items)} images.")
+        if not skip_landing_pages:
+            (WEBSITE / "image-sitemap.xml").write_text(image_sitemap, encoding="utf-8")
+            print(f"Generated image-sitemap.xml with {len(all_items)} images.")
+        else:
+            print("Skipped image-sitemap.xml (static sitemap).")
 
 
 if __name__ == "__main__":
