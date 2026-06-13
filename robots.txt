@@ -7,3 +7,4 @@ Disallow: /.env
 Disallow: /cgi-bin
 Disallow: /wp-config
 Sitemap: https://vimark.art/sitemap.xml
+Sitemap: https://vimark.art/image-sitemap.xml

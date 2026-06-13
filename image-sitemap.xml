@@ -2,1109 +2,2691 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
-    <loc>https://vimark.art/Book%20Illustrations/Winter%E2%80%99s%20Twins/__0000_JM_Char1.jpg</loc>
+    <loc>https://vimark.art/project/art/animals.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/Book%20Illustrations/Creatures/__0000_animals.jpg</image:loc>
+      <image:title>Animals</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/project/art/1-carib.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/Book%20Illustrations/Planetes/__0000_1_carib.jpg</image:loc>
+      <image:title>1 carib</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/project/art/cirris.html</loc>
     <image:image>
       <image:loc>https://vimark.art/Book%20Illustrations/Winter%E2%80%99s%20Twins/__0000_JM_Char1.jpg</image:loc>
       <image:title>Cirris</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://vimark.art/BookCover/2025/__0000_Layer%209.jpg</loc>
+    <loc>https://vimark.art/project/art/moonstone.html</loc>
     <image:image>
       <image:loc>https://vimark.art/BookCover/2025/__0000_Layer%209.jpg</image:loc>
       <image:title>Moonstone</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://vimark.art/comic/The%20Symbol%20of%20Faith/__0000_knight1.jpg</loc>
+    <loc>https://vimark.art/project/art/abode-2025.html</loc>
     <image:image>
       <image:loc>https://vimark.art/comic/The%20Symbol%20of%20Faith/__0000_knight1.jpg</image:loc>
       <image:title>Abode, 2025</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://vimark.art/comic/Biological%20deviations/__0000_bio_1.jpg</loc>
+    <loc>https://vimark.art/project/art/find-a-way-2025.html</loc>
     <image:image>
       <image:loc>https://vimark.art/comic/Biological%20deviations/__0000_bio_1.jpg</image:loc>
       <image:title>Find a way, 2025</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://vimark.art/comic/Nemirum/__0000_capsule.0002.jpg</loc>
+    <loc>https://vimark.art/project/art/capsule-2024.html</loc>
     <image:image>
       <image:loc>https://vimark.art/comic/Nemirum/__0000_capsule.0002.jpg</image:loc>
       <image:title>Capsule, 2024</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://vimark.art/Book%20Illustrations/Endymion/__0000_E1_Martyn.jpg</loc>
+    <loc>https://vimark.art/project/art/martyn.html</loc>
     <image:image>
       <image:loc>https://vimark.art/Book%20Illustrations/Endymion/__0000_E1_Martyn.jpg</image:loc>
       <image:title>Martyn</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://vimark.art/Book%20Illustrations/vegetation/__0000_1_Garage.jpg</loc>
+    <loc>https://vimark.art/project/art/garage.html</loc>
     <image:image>
       <image:loc>https://vimark.art/Book%20Illustrations/vegetation/__0000_1_Garage.jpg</image:loc>
       <image:title>Garage</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://vimark.art/Book%20Illustrations/Nameless%20City/__0000_Nam1.0001.jpg</loc>
+    <loc>https://vimark.art/project/art/night-at-the-ruins.html</loc>
     <image:image>
       <image:loc>https://vimark.art/Book%20Illustrations/Nameless%20City/__0000_Nam1.0001.jpg</image:loc>
       <image:title>Night at the ruins</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://vimark.art/Book%20Illustrations/Insmoot/__0000_in_0.jpg</loc>
+    <loc>https://vimark.art/project/art/to-the-city.html</loc>
     <image:image>
       <image:loc>https://vimark.art/Book%20Illustrations/Insmoot/__0000_in_0.jpg</image:loc>
       <image:title>To the city</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://vimark.art/comic/Winter/__0000_winter_infantery_1.jpg</loc>
+    <loc>https://vimark.art/project/art/hole-2025.html</loc>
     <image:image>
       <image:loc>https://vimark.art/comic/Winter/__0000_winter_infantery_1.jpg</image:loc>
       <image:title>Hole, 2025</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://vimark.art/comic/Geologyst/_0000_Geologyst_1.jpg</loc>
+    <loc>https://vimark.art/project/art/the-first-story-master-2026.html</loc>
     <image:image>
       <image:loc>https://vimark.art/comic/Geologyst/_0000_Geologyst_1.jpg</image:loc>
       <image:title>The first story. Master, 2026</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://vimark.art/Book%20Illustrations/Winter%E2%80%99s%20Twins/__0001_JM_Char2.jpg</loc>
+    <loc>https://vimark.art/project/art/antrpo.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/Book%20Illustrations/Creatures/__0001_antrpo.jpg</image:loc>
+      <image:title>Antrpo</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/project/art/2-destroed-earth.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/Book%20Illustrations/Planetes/__0001_2_Destroed_earth.jpg</image:loc>
+      <image:title>2 Destroed earth</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/project/art/planetes.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/BookCover/planetes/__0001_Planetes.jpg</image:loc>
+      <image:title>Planetes</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/project/art/elenya.html</loc>
     <image:image>
       <image:loc>https://vimark.art/Book%20Illustrations/Winter%E2%80%99s%20Twins/__0001_JM_Char2.jpg</image:loc>
       <image:title>Elenya</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://vimark.art/BookCover/2025/__0001_Layer%209%20copy.jpg</loc>
+    <loc>https://vimark.art/project/art/pallomand.html</loc>
     <image:image>
       <image:loc>https://vimark.art/BookCover/2025/__0001_Layer%209%20copy.jpg</image:loc>
       <image:title>Pallomand</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://vimark.art/comic/The%20Symbol%20of%20Faith/__0001_knight2.jpg</loc>
+    <loc>https://vimark.art/project/art/abode-of-darkness-2025.html</loc>
     <image:image>
       <image:loc>https://vimark.art/comic/The%20Symbol%20of%20Faith/__0001_knight2.jpg</image:loc>
       <image:title>Abode of darkness, 2025</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://vimark.art/comic/Biological%20deviations/__0001_bio_2-last%20embryo.jpg</loc>
+    <loc>https://vimark.art/project/art/last-embryo-2025.html</loc>
     <image:image>
       <image:loc>https://vimark.art/comic/Biological%20deviations/__0001_bio_2-last%20embryo.jpg</image:loc>
       <image:title>Last embryo, 2025</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://vimark.art/comic/Nemirum/__0001_koly.0001.jpg</loc>
+    <loc>https://vimark.art/project/art/stella-2024.html</loc>
     <image:image>
       <image:loc>https://vimark.art/comic/Nemirum/__0001_koly.0001.jpg</image:loc>
       <image:title>Stella, 2024</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://vimark.art/Book%20Illustrations/Endymion/__0001_E2_Cardinal.jpg</loc>
+    <loc>https://vimark.art/project/art/cardinal.html</loc>
     <image:image>
       <image:loc>https://vimark.art/Book%20Illustrations/Endymion/__0001_E2_Cardinal.jpg</image:loc>
       <image:title>Cardinal</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://vimark.art/Book%20Illustrations/vegetation/__0001_2_morning.jpg</loc>
+    <loc>https://vimark.art/project/art/morning.html</loc>
     <image:image>
       <image:loc>https://vimark.art/Book%20Illustrations/vegetation/__0001_2_morning.jpg</image:loc>
       <image:title>Morning</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://vimark.art/Book%20Illustrations/Nameless%20City/__0001_Nam2.0001.jpg</loc>
+    <loc>https://vimark.art/project/art/vortex.html</loc>
     <image:image>
       <image:loc>https://vimark.art/Book%20Illustrations/Nameless%20City/__0001_Nam2.0001.jpg</image:loc>
       <image:title>Vortex</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://vimark.art/Book%20Illustrations/Insmoot/__0001_in_2.jpg</loc>
+    <loc>https://vimark.art/project/art/legend.html</loc>
     <image:image>
       <image:loc>https://vimark.art/Book%20Illustrations/Insmoot/__0001_in_2.jpg</image:loc>
       <image:title>Legend</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://vimark.art/comic/Winter/__0001_winter_infantery_2.jpg</loc>
+    <loc>https://vimark.art/project/art/entrance-to-the-tunnel-2025.html</loc>
     <image:image>
       <image:loc>https://vimark.art/comic/Winter/__0001_winter_infantery_2.jpg</image:loc>
       <image:title>Entrance to the tunnel, 2025</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://vimark.art/comic/Geologyst/_0001_Geologyst_2.jpg</loc>
+    <loc>https://vimark.art/project/art/the-second-story-smoke-break-2026.html</loc>
     <image:image>
       <image:loc>https://vimark.art/comic/Geologyst/_0001_Geologyst_2.jpg</image:loc>
       <image:title>The second story. Smoke break, 2026</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://vimark.art/Book%20Illustrations/20000%20leagues%20under%20the%20sea/__0001_il_1.jpg</loc>
+    <loc>https://vimark.art/project/art/the-misty-approach.html</loc>
     <image:image>
       <image:loc>https://vimark.art/Book%20Illustrations/20000%20leagues%20under%20the%20sea/__0001_il_1.jpg</image:loc>
       <image:title>The Misty Approach</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://vimark.art/Book%20Illustrations/Winter%E2%80%99s%20Twins/__0002_JM_Char3.jpg</loc>
+    <loc>https://vimark.art/project/art/big.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/Book%20Illustrations/Creatures/__0002_big.jpg</image:loc>
+      <image:title>Big</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/project/art/3-moon-city.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/Book%20Illustrations/Planetes/__0002_3_moon_city.jpg</image:loc>
+      <image:title>3 moon city</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/project/art/marek.html</loc>
     <image:image>
       <image:loc>https://vimark.art/Book%20Illustrations/Winter%E2%80%99s%20Twins/__0002_JM_Char3.jpg</image:loc>
       <image:title>Marek</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://vimark.art/BookCover/2025/__0002_Layer%209%20copy%202.jpg</loc>
+    <loc>https://vimark.art/project/art/solton.html</loc>
     <image:image>
       <image:loc>https://vimark.art/BookCover/2025/__0002_Layer%209%20copy%202.jpg</image:loc>
       <image:title>Solton</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://vimark.art/comic/The%20Symbol%20of%20Faith/__0002_knight3.jpg</loc>
+    <loc>https://vimark.art/project/art/creatures-2025.html</loc>
     <image:image>
       <image:loc>https://vimark.art/comic/The%20Symbol%20of%20Faith/__0002_knight3.jpg</image:loc>
       <image:title>Creatures, 2025</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://vimark.art/comic/Biological%20deviations/__0002_bio_3-get%20inside.jpg</loc>
+    <loc>https://vimark.art/project/art/get-inside-2025.html</loc>
     <image:image>
       <image:loc>https://vimark.art/comic/Biological%20deviations/__0002_bio_3-get%20inside.jpg</image:loc>
       <image:title>Get inside, 2025</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://vimark.art/comic/Nemirum/__0002_Monuments.jpg</loc>
+    <loc>https://vimark.art/project/art/monuments-2024.html</loc>
     <image:image>
       <image:loc>https://vimark.art/comic/Nemirum/__0002_Monuments.jpg</image:loc>
       <image:title>Monuments, 2024</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://vimark.art/Book%20Illustrations/Endymion/__0002_E3_vichod.jpg</loc>
+    <loc>https://vimark.art/project/art/entrance.html</loc>
     <image:image>
       <image:loc>https://vimark.art/Book%20Illustrations/Endymion/__0002_E3_vichod.jpg</image:loc>
       <image:title>Entrance</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://vimark.art/Book%20Illustrations/vegetation/__0002_3_plant.jpg</loc>
+    <loc>https://vimark.art/project/art/plant.html</loc>
     <image:image>
       <image:loc>https://vimark.art/Book%20Illustrations/vegetation/__0002_3_plant.jpg</image:loc>
       <image:title>Plant</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://vimark.art/Book%20Illustrations/Nameless%20City/__0002_Nam3.0001.jpg</loc>
+    <loc>https://vimark.art/project/art/entrance-to-the-dungeon.html</loc>
     <image:image>
       <image:loc>https://vimark.art/Book%20Illustrations/Nameless%20City/__0002_Nam3.0001.jpg</image:loc>
       <image:title>Entrance to the dungeon</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://vimark.art/Book%20Illustrations/Insmoot/__0002_in_3.jpg</loc>
+    <loc>https://vimark.art/project/art/an-old-mans-story.html</loc>
     <image:image>
       <image:loc>https://vimark.art/Book%20Illustrations/Insmoot/__0002_in_3.jpg</image:loc>
       <image:title>An old man&#x27;s story</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://vimark.art/comic/Winter/__0002_winter_infantery_3.jpg</loc>
+    <loc>https://vimark.art/project/art/corridor-system-2025.html</loc>
     <image:image>
       <image:loc>https://vimark.art/comic/Winter/__0002_winter_infantery_3.jpg</image:loc>
       <image:title>Corridor system, 2025</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://vimark.art/comic/Geologyst/_0002_Geologyst_3.jpg</loc>
+    <loc>https://vimark.art/project/art/the-third-story-radar-station-2026.html</loc>
     <image:image>
       <image:loc>https://vimark.art/comic/Geologyst/_0002_Geologyst_3.jpg</image:loc>
       <image:title>The third story. Radar station, 2026</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://vimark.art/Book%20Illustrations/20000%20leagues%20under%20the%20sea/__0002_il_2.jpg</loc>
+    <loc>https://vimark.art/project/art/the-underwater-hunt.html</loc>
     <image:image>
       <image:loc>https://vimark.art/Book%20Illustrations/20000%20leagues%20under%20the%20sea/__0002_il_2.jpg</image:loc>
       <image:title>The Underwater Hunt</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://vimark.art/Book%20Illustrations/Winter%E2%80%99s%20Twins/__0003_JM_Char4.jpg</loc>
+    <loc>https://vimark.art/project/art/gods.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/Book%20Illustrations/Creatures/__0003_gods.jpg</image:loc>
+      <image:title>Gods</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/project/art/4-mars-1.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/Book%20Illustrations/Planetes/__0003_4_mars_1.jpg</image:loc>
+      <image:title>4 mars 1</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/project/art/aeolus.html</loc>
     <image:image>
       <image:loc>https://vimark.art/Book%20Illustrations/Winter%E2%80%99s%20Twins/__0003_JM_Char4.jpg</image:loc>
       <image:title>Aeolus</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://vimark.art/BookCover/2026/__0003_Layer%209%20copy%203.jpg</loc>
+    <loc>https://vimark.art/project/art/arcusian.html</loc>
     <image:image>
       <image:loc>https://vimark.art/BookCover/2026/__0003_Layer%209%20copy%203.jpg</image:loc>
       <image:title>Arcusian</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://vimark.art/comic/The%20Symbol%20of%20Faith/__0003_knight4.jpg</loc>
+    <loc>https://vimark.art/project/art/up-2025.html</loc>
     <image:image>
       <image:loc>https://vimark.art/comic/The%20Symbol%20of%20Faith/__0003_knight4.jpg</image:loc>
       <image:title>Up, 2025</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://vimark.art/comic/Biological%20deviations/__0003_bio_4.jpg</loc>
+    <loc>https://vimark.art/project/art/down-2025.html</loc>
     <image:image>
       <image:loc>https://vimark.art/comic/Biological%20deviations/__0003_bio_4.jpg</image:loc>
       <image:title>Down, 2025</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://vimark.art/comic/Nemirum/__0003_planet.escape%20.jpg</loc>
+    <loc>https://vimark.art/project/art/planet-escape-2024.html</loc>
     <image:image>
       <image:loc>https://vimark.art/comic/Nemirum/__0003_planet.escape%20.jpg</image:loc>
       <image:title>Planet escape, 2024</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://vimark.art/Book%20Illustrations/Endymion/__0003_E3_vichod_1.jpg</loc>
+    <loc>https://vimark.art/project/art/entrance-2.html</loc>
     <image:image>
       <image:loc>https://vimark.art/Book%20Illustrations/Endymion/__0003_E3_vichod_1.jpg</image:loc>
       <image:title>Entrance (2)</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://vimark.art/Book%20Illustrations/vegetation/__0003_4_smsvl.jpg</loc>
+    <loc>https://vimark.art/project/art/dump-truck-attack.html</loc>
     <image:image>
       <image:loc>https://vimark.art/Book%20Illustrations/vegetation/__0003_4_smsvl.jpg</image:loc>
       <image:title>Dump truck attack</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://vimark.art/Book%20Illustrations/Nameless%20City/__0003_Nam4.0001.jpg</loc>
+    <loc>https://vimark.art/project/art/empty-hall.html</loc>
     <image:image>
       <image:loc>https://vimark.art/Book%20Illustrations/Nameless%20City/__0003_Nam4.0001.jpg</image:loc>
       <image:title>Empty hall</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://vimark.art/Book%20Illustrations/Insmoot/__0003_in_5.jpg</loc>
+    <loc>https://vimark.art/project/art/on-the-square.html</loc>
     <image:image>
       <image:loc>https://vimark.art/Book%20Illustrations/Insmoot/__0003_in_5.jpg</image:loc>
       <image:title>On the square</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://vimark.art/comic/Winter/__0003_winter_infantery_4.jpg</loc>
+    <loc>https://vimark.art/project/art/transition-2025.html</loc>
     <image:image>
       <image:loc>https://vimark.art/comic/Winter/__0003_winter_infantery_4.jpg</image:loc>
       <image:title>Transition, 2025</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://vimark.art/comic/Geologyst/_0003_Geologyst_4.jpg</loc>
+    <loc>https://vimark.art/project/art/the-fourth-story-the-chapel-2026.html</loc>
     <image:image>
       <image:loc>https://vimark.art/comic/Geologyst/_0003_Geologyst_4.jpg</image:loc>
       <image:title>The fourth story. The chapel, 2026</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://vimark.art/Book%20Illustrations/20000%20leagues%20under%20the%20sea/__0003_il_3.jpg</loc>
+    <loc>https://vimark.art/project/art/the-sunken-forest.html</loc>
     <image:image>
       <image:loc>https://vimark.art/Book%20Illustrations/20000%20leagues%20under%20the%20sea/__0003_il_3.jpg</image:loc>
       <image:title>The Sunken Forest</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://vimark.art/BookCover/2024/__0004_First_Contact.jpg</loc>
+    <loc>https://vimark.art/project/art/human.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/Book%20Illustrations/Creatures/__0004_human.jpg</image:loc>
+      <image:title>Human</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/project/art/5-mars-terraformed.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/Book%20Illustrations/Planetes/__0004_5_Mars_Terraformed.jpg</image:loc>
+      <image:title>5 Mars Terraformed</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/project/art/first-contact.html</loc>
     <image:image>
       <image:loc>https://vimark.art/BookCover/2024/__0004_First_Contact.jpg</image:loc>
       <image:title>First Contact</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://vimark.art/BookCover/2026/__0004_Prizraki_2026.jpg</loc>
+    <loc>https://vimark.art/project/art/prizraki.html</loc>
     <image:image>
       <image:loc>https://vimark.art/BookCover/2026/__0004_Prizraki_2026.jpg</image:loc>
       <image:title>Prizraki</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://vimark.art/BookCover/2024/__0004_BC24_0.jpg</loc>
+    <loc>https://vimark.art/project/art/twenty-thousand-leagues-under-the-sea.html</loc>
     <image:image>
       <image:loc>https://vimark.art/BookCover/2024/__0004_BC24_0.jpg</image:loc>
       <image:title>Twenty Thousand Leagues Under the Sea</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://vimark.art/comic/The%20Symbol%20of%20Faith/__0004_knight5.jpg</loc>
+    <loc>https://vimark.art/project/art/angels-2025.html</loc>
     <image:image>
       <image:loc>https://vimark.art/comic/The%20Symbol%20of%20Faith/__0004_knight5.jpg</image:loc>
       <image:title>Angels, 2025</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://vimark.art/comic/Biological%20deviations/__0004_bio_5.jpg</loc>
+    <loc>https://vimark.art/project/art/cocoon-2025.html</loc>
     <image:image>
       <image:loc>https://vimark.art/comic/Biological%20deviations/__0004_bio_5.jpg</image:loc>
       <image:title>Cocoon, 2025</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://vimark.art/comic/Nemirum/__0004_Tree_planet.jpg</loc>
+    <loc>https://vimark.art/project/art/tree-planet-2024.html</loc>
     <image:image>
       <image:loc>https://vimark.art/comic/Nemirum/__0004_Tree_planet.jpg</image:loc>
       <image:title>Tree planet, 2024</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://vimark.art/Book%20Illustrations/Endymion/__0004_E4_vector.jpg</loc>
+    <loc>https://vimark.art/project/art/renaissance-vector.html</loc>
     <image:image>
       <image:loc>https://vimark.art/Book%20Illustrations/Endymion/__0004_E4_vector.jpg</image:loc>
       <image:title>Renaissance vector</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://vimark.art/Book%20Illustrations/vegetation/__0004_5_poselok.jpg</loc>
+    <loc>https://vimark.art/project/art/attack.html</loc>
     <image:image>
       <image:loc>https://vimark.art/Book%20Illustrations/vegetation/__0004_5_poselok.jpg</image:loc>
       <image:title>Attack</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://vimark.art/Book%20Illustrations/Nameless%20City/__0004_NNM5.0001.jpg</loc>
+    <loc>https://vimark.art/project/art/hall-of-sarcophagi.html</loc>
     <image:image>
       <image:loc>https://vimark.art/Book%20Illustrations/Nameless%20City/__0004_NNM5.0001.jpg</image:loc>
       <image:title>Hall of sarcophagi</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://vimark.art/Book%20Illustrations/Insmoot/__0004_in_6.jpg</loc>
+    <loc>https://vimark.art/project/art/along-the-streets-of-innsmouth.html</loc>
     <image:image>
       <image:loc>https://vimark.art/Book%20Illustrations/Insmoot/__0004_in_6.jpg</image:loc>
       <image:title>Along the streets of Innsmouth</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://vimark.art/comic/Winter/__0004_winter_infantery_5.jpg</loc>
+    <loc>https://vimark.art/project/art/to-the-center-2025.html</loc>
     <image:image>
       <image:loc>https://vimark.art/comic/Winter/__0004_winter_infantery_5.jpg</image:loc>
       <image:title>To the center, 2025</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://vimark.art/comic/Geologyst/_0004_Geologyst_5.jpg</loc>
+    <loc>https://vimark.art/project/art/the-sixth-story-submarine-2026.html</loc>
     <image:image>
       <image:loc>https://vimark.art/comic/Geologyst/_0004_Geologyst_5.jpg</image:loc>
       <image:title>The sixth story.  Submarine, 2026</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://vimark.art/Book%20Illustrations/20000%20leagues%20under%20the%20sea/__0004_il_4.jpg</loc>
+    <loc>https://vimark.art/project/art/the-shipwreck.html</loc>
     <image:image>
       <image:loc>https://vimark.art/Book%20Illustrations/20000%20leagues%20under%20the%20sea/__0004_il_4.jpg</image:loc>
       <image:title>The Shipwreck</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://vimark.art/BookCover/2024/__0005_Ashes_of_the_Wake.jpg</loc>
+    <loc>https://vimark.art/project/art/inter-dimensionnal.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/Book%20Illustrations/Creatures/__0005_INTER-DIMENSIONNAL.jpg</image:loc>
+      <image:title>INTER DIMENSIONNAL</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/project/art/6-venera.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/Book%20Illustrations/Planetes/__0005_6_Venera.jpg</image:loc>
+      <image:title>6 Venera</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/project/art/ashes-of-the-wake.html</loc>
     <image:image>
       <image:loc>https://vimark.art/BookCover/2024/__0005_Ashes_of_the_Wake.jpg</image:loc>
       <image:title>Ashes of the Wake</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://vimark.art/BookCover/2026/__0005_Red_Planet_2_2026.jpg</loc>
+    <loc>https://vimark.art/project/art/red-planet-2.html</loc>
     <image:image>
       <image:loc>https://vimark.art/BookCover/2026/__0005_Red_Planet_2_2026.jpg</image:loc>
       <image:title>Red Planet 2</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://vimark.art/BookCover/2025/__0005_BC25_2.jpg</loc>
+    <loc>https://vimark.art/project/art/trek.html</loc>
     <image:image>
       <image:loc>https://vimark.art/BookCover/2025/__0005_BC25_2.jpg</image:loc>
       <image:title>Trek</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://vimark.art/comic/Biological%20deviations/__0005_bio_6.jpg</loc>
+    <loc>https://vimark.art/project/art/lonely-2025.html</loc>
     <image:image>
       <image:loc>https://vimark.art/comic/Biological%20deviations/__0005_bio_6.jpg</image:loc>
       <image:title>Lonely, 2025</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://vimark.art/Book%20Illustrations/Endymion/__0005_E5_arc.jpg</loc>
+    <loc>https://vimark.art/project/art/arc.html</loc>
     <image:image>
       <image:loc>https://vimark.art/Book%20Illustrations/Endymion/__0005_E5_arc.jpg</image:loc>
       <image:title>Arc</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://vimark.art/Book%20Illustrations/vegetation/__0005_6_forest.jpg</loc>
+    <loc>https://vimark.art/project/art/changed.html</loc>
     <image:image>
       <image:loc>https://vimark.art/Book%20Illustrations/vegetation/__0005_6_forest.jpg</image:loc>
       <image:title>Changed</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://vimark.art/Book%20Illustrations/Nameless%20City/__0005_NNM6.0001.jpg</loc>
+    <loc>https://vimark.art/project/art/hole.html</loc>
     <image:image>
       <image:loc>https://vimark.art/Book%20Illustrations/Nameless%20City/__0005_NNM6.0001.jpg</image:loc>
       <image:title>Hole</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://vimark.art/Book%20Illustrations/Insmoot/__0005_in_7.jpg</loc>
+    <loc>https://vimark.art/project/art/escape.html</loc>
     <image:image>
       <image:loc>https://vimark.art/Book%20Illustrations/Insmoot/__0005_in_7.jpg</image:loc>
       <image:title>Escape</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://vimark.art/comic/Winter/__0005_winter_infantery_6.jpg</loc>
+    <loc>https://vimark.art/project/art/last-climb-2025.html</loc>
     <image:image>
       <image:loc>https://vimark.art/comic/Winter/__0005_winter_infantery_6.jpg</image:loc>
       <image:title>Last climb, 2025</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://vimark.art/comic/Geologyst/_0005_Geologyst_6.jpg</loc>
+    <loc>https://vimark.art/project/art/the-seventh-story-pyramid-2026.html</loc>
     <image:image>
       <image:loc>https://vimark.art/comic/Geologyst/_0005_Geologyst_6.jpg</image:loc>
       <image:title>The seventh story. Pyramid, 2026</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://vimark.art/Book%20Illustrations/20000%20leagues%20under%20the%20sea/__0005_il_5.jpg</loc>
+    <loc>https://vimark.art/project/art/the-sunken-city.html</loc>
     <image:image>
       <image:loc>https://vimark.art/Book%20Illustrations/20000%20leagues%20under%20the%20sea/__0005_il_5.jpg</image:loc>
       <image:title>The Sunken City</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://vimark.art/BookCover/2026/__0006_Damned_2026.jpg</loc>
+    <loc>https://vimark.art/project/art/pacifik.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/Book%20Illustrations/Creatures/__0006_pacifik.jpg</image:loc>
+      <image:title>Pacifik</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/project/art/7-io.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/Book%20Illustrations/Planetes/__0006_7_io.jpg</image:loc>
+      <image:title>7 io</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/project/art/damned.html</loc>
     <image:image>
       <image:loc>https://vimark.art/BookCover/2026/__0006_Damned_2026.jpg</image:loc>
       <image:title>Damned</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://vimark.art/BookCover/2025/__0006_BC25_3.jpg</loc>
+    <loc>https://vimark.art/project/art/raisinbread.html</loc>
     <image:image>
       <image:loc>https://vimark.art/BookCover/2025/__0006_BC25_3.jpg</image:loc>
       <image:title>Raisinbread</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://vimark.art/comic/Biological%20deviations/__0006_bio_7%20copy.jpg</loc>
+    <loc>https://vimark.art/project/art/forest-2025.html</loc>
     <image:image>
       <image:loc>https://vimark.art/comic/Biological%20deviations/__0006_bio_7%20copy.jpg</image:loc>
       <image:title>Forest, 2025</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://vimark.art/Book%20Illustrations/Endymion/__0006_E6_Bereg.jpg</loc>
+    <loc>https://vimark.art/project/art/on-the-shore.html</loc>
     <image:image>
       <image:loc>https://vimark.art/Book%20Illustrations/Endymion/__0006_E6_Bereg.jpg</image:loc>
       <image:title>On the shore</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://vimark.art/Book%20Illustrations/vegetation/__0006_7_bridge.jpg</loc>
+    <loc>https://vimark.art/project/art/storming-the-bridge.html</loc>
     <image:image>
       <image:loc>https://vimark.art/Book%20Illustrations/vegetation/__0006_7_bridge.jpg</image:loc>
       <image:title>Storming the bridge</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://vimark.art/Book%20Illustrations/Insmoot/__0006_in_8.jpg</loc>
+    <loc>https://vimark.art/project/art/the-beginning-of-the-invasion.html</loc>
     <image:image>
       <image:loc>https://vimark.art/Book%20Illustrations/Insmoot/__0006_in_8.jpg</image:loc>
       <image:title>The beginning of the invasion</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://vimark.art/comic/Winter/__0006_winter_infantery_7.jpg</loc>
+    <loc>https://vimark.art/project/art/the-inferno-2025.html</loc>
     <image:image>
       <image:loc>https://vimark.art/comic/Winter/__0006_winter_infantery_7.jpg</image:loc>
       <image:title>The inferno, 2025</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://vimark.art/comic/Geologyst/_0006_Geologyst_7.jpg</loc>
+    <loc>https://vimark.art/project/art/the-eighth-story-the-keepers-2026.html</loc>
     <image:image>
       <image:loc>https://vimark.art/comic/Geologyst/_0006_Geologyst_7.jpg</image:loc>
       <image:title>The eighth story. The Keepers, 2026</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://vimark.art/Book%20Illustrations/20000%20leagues%20under%20the%20sea/__0006_il_6.jpg</loc>
+    <loc>https://vimark.art/project/art/the-antarctic-ice.html</loc>
     <image:image>
       <image:loc>https://vimark.art/Book%20Illustrations/20000%20leagues%20under%20the%20sea/__0006_il_6.jpg</image:loc>
       <image:title>The Antarctic Ice</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://vimark.art/BookCover/2026/__0007_Sentient_2026.jpg</loc>
+    <loc>https://vimark.art/project/art/parasite.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/Book%20Illustrations/Creatures/__0007_parasite.jpg</image:loc>
+      <image:title>Parasite</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/project/art/8-black-hole.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/Book%20Illustrations/Planetes/__0007_8_Black_hole.jpg</image:loc>
+      <image:title>8 Black hole</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/project/art/sentient.html</loc>
     <image:image>
       <image:loc>https://vimark.art/BookCover/2026/__0007_Sentient_2026.jpg</image:loc>
       <image:title>Sentient</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://vimark.art/BookCover/2025/__0007_BC25_5.jpg</loc>
+    <loc>https://vimark.art/project/art/bleeding-mercury.html</loc>
     <image:image>
       <image:loc>https://vimark.art/BookCover/2025/__0007_BC25_5.jpg</image:loc>
       <image:title>Bleeding Mercury</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://vimark.art/Book%20Illustrations/Endymion/__0007_E7_Seaworld.jpg</loc>
+    <loc>https://vimark.art/project/art/night-in-the-sea-world.html</loc>
     <image:image>
       <image:loc>https://vimark.art/Book%20Illustrations/Endymion/__0007_E7_Seaworld.jpg</image:loc>
       <image:title>Night in the sea world</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://vimark.art/Book%20Illustrations/vegetation/__0007_8_batya.jpg</loc>
+    <loc>https://vimark.art/project/art/father.html</loc>
     <image:image>
       <image:loc>https://vimark.art/Book%20Illustrations/vegetation/__0007_8_batya.jpg</image:loc>
       <image:title>Father</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://vimark.art/Book%20Illustrations/Insmoot/__0007_in_9.jpg</loc>
+    <loc>https://vimark.art/project/art/the-secret-of-the-diadem.html</loc>
     <image:image>
       <image:loc>https://vimark.art/Book%20Illustrations/Insmoot/__0007_in_9.jpg</image:loc>
       <image:title>The Secret of the Diadem</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://vimark.art/comic/Geologyst/_0007_Geologyst_8.jpg</loc>
+    <loc>https://vimark.art/project/art/the-ninth-story-luna-park-2026.html</loc>
     <image:image>
       <image:loc>https://vimark.art/comic/Geologyst/_0007_Geologyst_8.jpg</image:loc>
       <image:title>The ninth story. Luna Park, 2026</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://vimark.art/Book%20Illustrations/20000%20leagues%20under%20the%20sea/__0007_il_7.jpg</loc>
+    <loc>https://vimark.art/project/art/the-giant-squid.html</loc>
     <image:image>
       <image:loc>https://vimark.art/Book%20Illustrations/20000%20leagues%20under%20the%20sea/__0007_il_7.jpg</image:loc>
       <image:title>The Giant Squid</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://vimark.art/BookCover/2026/__0008_Pandoras_Daugher.jpg</loc>
+    <loc>https://vimark.art/project/art/post.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/Book%20Illustrations/Creatures/__0008_post.jpg</image:loc>
+      <image:title>Post</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/project/art/9-desert-bazar.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/Book%20Illustrations/Planetes/__0008_9_desert_bazar.jpg</image:loc>
+      <image:title>9 desert bazar</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/project/art/pandoras-daugher.html</loc>
     <image:image>
       <image:loc>https://vimark.art/BookCover/2026/__0008_Pandoras_Daugher.jpg</image:loc>
       <image:title>Pandoras Daugher</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://vimark.art/BookCover/2025/__0008_BC25_7.jpg</loc>
+    <loc>https://vimark.art/project/art/cortex-malignus.html</loc>
     <image:image>
       <image:loc>https://vimark.art/BookCover/2025/__0008_BC25_7.jpg</image:loc>
       <image:title>Cortex Malignus</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://vimark.art/Book%20Illustrations/Endymion/__0008_E8_Sea.jpg</loc>
+    <loc>https://vimark.art/project/art/wounded-at-sea.html</loc>
     <image:image>
       <image:loc>https://vimark.art/Book%20Illustrations/Endymion/__0008_E8_Sea.jpg</image:loc>
       <image:title>Wounded at sea</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://vimark.art/Book%20Illustrations/vegetation/__0008_9_tree.jpg</loc>
+    <loc>https://vimark.art/project/art/the-right-tree.html</loc>
     <image:image>
       <image:loc>https://vimark.art/Book%20Illustrations/vegetation/__0008_9_tree.jpg</image:loc>
       <image:title>The right tree</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://vimark.art/BookCover/2026/__0009_SuperUnknown.jpg</loc>
+    <loc>https://vimark.art/project/art/rags.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/Book%20Illustrations/Creatures/__0009_Rags.jpg</image:loc>
+      <image:title>Rags</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/project/art/11-icy-fight.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/Book%20Illustrations/Planetes/__0009_11_icy_fight.jpg</image:loc>
+      <image:title>11 icy fight</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/project/art/creatures.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/BookCover/2025/__0009_Creatures.jpg</image:loc>
+      <image:title>Creatures</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/project/art/superunknown.html</loc>
     <image:image>
       <image:loc>https://vimark.art/BookCover/2026/__0009_SuperUnknown.jpg</image:loc>
       <image:title>SuperUnknown</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://vimark.art/BookCover/2024/__0009_BC24_1.jpg</loc>
+    <loc>https://vimark.art/project/art/collins.html</loc>
     <image:image>
       <image:loc>https://vimark.art/BookCover/2024/__0009_BC24_1.jpg</image:loc>
       <image:title>Collins</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://vimark.art/Book%20Illustrations/Endymion/__0009_E9_Ice.jpg</loc>
+    <loc>https://vimark.art/project/art/ice-world.html</loc>
     <image:image>
       <image:loc>https://vimark.art/Book%20Illustrations/Endymion/__0009_E9_Ice.jpg</image:loc>
       <image:title>Ice world</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://vimark.art/Book%20Illustrations/vegetation/__0009_10_salvation.jpg</loc>
+    <loc>https://vimark.art/project/art/salvation.html</loc>
     <image:image>
       <image:loc>https://vimark.art/Book%20Illustrations/vegetation/__0009_10_salvation.jpg</image:loc>
       <image:title>Salvation</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://vimark.art/BookCover/2026/__00010_Shards_of_Humanity.jpg</loc>
+    <loc>https://vimark.art/project/art/robot-ai.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/Book%20Illustrations/Creatures/__0010_robot_AI.jpg</image:loc>
+      <image:title>Robot AI</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/project/art/12-ocean-play.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/Book%20Illustrations/Planetes/__0010_12_ocean_play.jpg</image:loc>
+      <image:title>12 ocean play</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/project/art/shards-of-humanity.html</loc>
     <image:image>
       <image:loc>https://vimark.art/BookCover/2026/__00010_Shards_of_Humanity.jpg</image:loc>
       <image:title>Shards of Humanity</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://vimark.art/BookCover/2024/__0010_BC24_5.jpg</loc>
+    <loc>https://vimark.art/project/art/rise-of-the-wolf.html</loc>
     <image:image>
       <image:loc>https://vimark.art/BookCover/2024/__0010_BC24_5.jpg</image:loc>
       <image:title>Rise of the wolf</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://vimark.art/Book%20Illustrations/Endymion/__0010_E10_Ice_path.jpg</loc>
+    <loc>https://vimark.art/project/art/ice-path.html</loc>
     <image:image>
       <image:loc>https://vimark.art/Book%20Illustrations/Endymion/__0010_E10_Ice_path.jpg</image:loc>
       <image:title>Ice path</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://vimark.art/BookCover/2024/__0011_BC24_7.jpg</loc>
+    <loc>https://vimark.art/project/art/small-one.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/Book%20Illustrations/Creatures/__0011_small_one.jpg</image:loc>
+      <image:title>Small one</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/project/art/13-planet-city.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/Book%20Illustrations/Planetes/__0011_13_Planet_City.jpg</image:loc>
+      <image:title>13 Planet City</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/project/art/the-sideways-8.html</loc>
     <image:image>
       <image:loc>https://vimark.art/BookCover/2024/__0011_BC24_7.jpg</image:loc>
       <image:title>The Sideways 8</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://vimark.art/Book%20Illustrations/Endymion/__0011_E11_Ice_monk.jpg</loc>
+    <loc>https://vimark.art/project/art/ice-monk.html</loc>
     <image:image>
       <image:loc>https://vimark.art/Book%20Illustrations/Endymion/__0011_E11_Ice_monk.jpg</image:loc>
       <image:title>Ice monk</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://vimark.art/BookCover/2025/__0012_BC25_8.jpg</loc>
+    <loc>https://vimark.art/project/art/spectre.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/Book%20Illustrations/Creatures/__0012_spectre.jpg</image:loc>
+      <image:title>Spectre</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/project/art/14-tor.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/Book%20Illustrations/Planetes/__0012_14_TOR.jpg</image:loc>
+      <image:title>14 TOR</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/project/art/metal-flesh.html</loc>
     <image:image>
       <image:loc>https://vimark.art/BookCover/2025/__0012_BC25_8.jpg</image:loc>
       <image:title>Metal Flesh</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://vimark.art/Book%20Illustrations/Endymion/__0012_E12_Ice_murder.jpg</loc>
+    <loc>https://vimark.art/project/art/ice-murder.html</loc>
     <image:image>
       <image:loc>https://vimark.art/Book%20Illustrations/Endymion/__0012_E12_Ice_murder.jpg</image:loc>
       <image:title>Ice murder</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://vimark.art/BookCover/2024/__0013_BC24_3.jpg</loc>
+    <loc>https://vimark.art/project/art/warlike.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/Book%20Illustrations/Creatures/__0013_warlike.jpg</image:loc>
+      <image:title>Warlike</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/project/art/15-virtual.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/Book%20Illustrations/Planetes/__0013_15_virtual.jpg</image:loc>
+      <image:title>15 virtual</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/project/art/dead-skies.html</loc>
     <image:image>
       <image:loc>https://vimark.art/BookCover/2024/__0013_BC24_3.jpg</image:loc>
       <image:title>Dead skies</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://vimark.art/Book%20Illustrations/Endymion/__0013_E13_meshxed.jpg</loc>
+    <loc>https://vimark.art/project/art/meschede.html</loc>
     <image:image>
       <image:loc>https://vimark.art/Book%20Illustrations/Endymion/__0013_E13_meshxed.jpg</image:loc>
       <image:title>Meschede</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://vimark.art/Book%20Illustrations/Endymion/__0014_E14_rijad.jpg</loc>
+    <loc>https://vimark.art/project/art/rijad.html</loc>
     <image:image>
       <image:loc>https://vimark.art/Book%20Illustrations/Endymion/__0014_E14_rijad.jpg</image:loc>
       <image:title>Rijad</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://vimark.art/Living%20Illustrations/desert-spirit/Desert%20Spirit_full.png</loc>
+    <loc>https://vimark.art/project/art/creatures-spread.html</loc>
     <image:image>
-      <image:loc>https://vimark.art/Living%20Illustrations/desert-spirit/Desert%20Spirit_full.png</image:loc>
-      <image:title>Desert Spirit full</image:title>
+      <image:loc>https://vimark.art/images/case-study/creatures-spread.jpg</image:loc>
+      <image:title>Creatures spread</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://vimark.art/Personal/Professional%20Growth/Screenshot_23.jpg</loc>
+    <loc>https://vimark.art/project/art/creatures-cover.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/images/case-study/creatures-cover.jpg</image:loc>
+      <image:title>Creatures cover</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/project/art/planetes-interior.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/images/case-study/planetes-interior.jpg</image:loc>
+      <image:title>Planetes interior</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/project/art/planetes-spread.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/images/case-study/planetes-spread.jpg</image:loc>
+      <image:title>Planetes spread</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/project/art/planetes-cover.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/images/case-study/planetes-cover.jpg</image:loc>
+      <image:title>Planetes cover</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/project/art/prophets-2016.html</loc>
     <image:image>
       <image:loc>https://vimark.art/Personal/Professional%20Growth/Screenshot_23.jpg</image:loc>
       <image:title>Prophets, 2016</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://vimark.art/Personal/Early%20Work/Screenshot_22.jpg</loc>
+    <loc>https://vimark.art/project/art/time-is-gone-2008.html</loc>
     <image:image>
       <image:loc>https://vimark.art/Personal/Early%20Work/Screenshot_22.jpg</image:loc>
       <image:title>Time is gone, 2008</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://vimark.art/Personal/Recent%20Work/crush_by_vimark_dkkvjah-pre.jpg</loc>
+    <loc>https://vimark.art/project/art/crush-2025.html</loc>
     <image:image>
       <image:loc>https://vimark.art/Personal/Recent%20Work/crush_by_vimark_dkkvjah-pre.jpg</image:loc>
       <image:title>Crush, 2025</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://vimark.art/Personal/Recent%20Work/herdsmans_by_vimark_dld82eq-pre.jpg</loc>
+    <loc>https://vimark.art/project/art/herdsmans2026.html</loc>
     <image:image>
       <image:loc>https://vimark.art/Personal/Recent%20Work/herdsmans_by_vimark_dld82eq-pre.jpg</image:loc>
       <image:title>Herdsmans,2026</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://vimark.art/Personal/Recent%20Work/the_external_message_by_vimark_dhm6rep-pre.jpg</loc>
+    <loc>https://vimark.art/project/art/the-external-message-2024.html</loc>
     <image:image>
       <image:loc>https://vimark.art/Personal/Recent%20Work/the_external_message_by_vimark_dhm6rep-pre.jpg</image:loc>
       <image:title>The external message, 2024</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://vimark.art/Personal/Recent%20Work/harbinger_by_vimark_dhqwqma-pre.jpg</loc>
+    <loc>https://vimark.art/project/art/harbinger-2025.html</loc>
     <image:image>
       <image:loc>https://vimark.art/Personal/Recent%20Work/harbinger_by_vimark_dhqwqma-pre.jpg</image:loc>
       <image:title>Harbinger, 2025</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://vimark.art/Personal/Recent%20Work/Screenshot_21.jpg</loc>
+    <loc>https://vimark.art/project/art/three-peaks-2024.html</loc>
     <image:image>
       <image:loc>https://vimark.art/Personal/Recent%20Work/Screenshot_21.jpg</image:loc>
       <image:title>Three peaks, 2024</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://vimark.art/Personal/Recent%20Work/Screenshot_20.jpg</loc>
+    <loc>https://vimark.art/project/art/pilars2024.html</loc>
     <image:image>
       <image:loc>https://vimark.art/Personal/Recent%20Work/Screenshot_20.jpg</image:loc>
       <image:title>Pilars,2024</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://vimark.art/Personal/Recent%20Work/Screenshot_19.jpg</loc>
+    <loc>https://vimark.art/project/art/pilot-2024.html</loc>
     <image:image>
       <image:loc>https://vimark.art/Personal/Recent%20Work/Screenshot_19.jpg</image:loc>
       <image:title>Pilot, 2024</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://vimark.art/Personal/Recent%20Work/Screenshot_18.jpg</loc>
+    <loc>https://vimark.art/project/art/speeder-2024.html</loc>
     <image:image>
       <image:loc>https://vimark.art/Personal/Recent%20Work/Screenshot_18.jpg</image:loc>
       <image:title>Speeder, 2024</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://vimark.art/Personal/Recent%20Work/Screenshot_17.jpg</loc>
+    <loc>https://vimark.art/project/art/tower-of-blood-2023.html</loc>
     <image:image>
       <image:loc>https://vimark.art/Personal/Recent%20Work/Screenshot_17.jpg</image:loc>
       <image:title>Tower of Blood, 2023</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://vimark.art/Personal/Recent%20Work/Screenshot_16.jpg</loc>
+    <loc>https://vimark.art/project/art/book-death-2023.html</loc>
     <image:image>
       <image:loc>https://vimark.art/Personal/Recent%20Work/Screenshot_16.jpg</image:loc>
       <image:title>Book death, 2023</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://vimark.art/Personal/Recent%20Work/Screenshot_15.jpg</loc>
+    <loc>https://vimark.art/project/art/notice-2023.html</loc>
     <image:image>
       <image:loc>https://vimark.art/Personal/Recent%20Work/Screenshot_15.jpg</image:loc>
       <image:title>Notice, 2023</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://vimark.art/Personal/Recent%20Work/Screenshot_14.jpg</loc>
+    <loc>https://vimark.art/project/art/post-2023.html</loc>
     <image:image>
       <image:loc>https://vimark.art/Personal/Recent%20Work/Screenshot_14.jpg</image:loc>
       <image:title>Post, 2023</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://vimark.art/Personal/Recent%20Work/Screenshot_13.jpg</loc>
+    <loc>https://vimark.art/project/art/dead-valkyries-2023.html</loc>
     <image:image>
       <image:loc>https://vimark.art/Personal/Recent%20Work/Screenshot_13.jpg</image:loc>
       <image:title>Dead Valkyries, 2023</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://vimark.art/Personal/Professional%20Growth/Screenshot_12.jpg</loc>
+    <loc>https://vimark.art/project/art/workshop-2021.html</loc>
     <image:image>
       <image:loc>https://vimark.art/Personal/Professional%20Growth/Screenshot_12.jpg</image:loc>
       <image:title>Workshop, 2021</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://vimark.art/Personal/Professional%20Growth/Screenshot_11.jpg</loc>
+    <loc>https://vimark.art/project/art/cube-2021.html</loc>
     <image:image>
       <image:loc>https://vimark.art/Personal/Professional%20Growth/Screenshot_11.jpg</image:loc>
       <image:title>Cube, 2021</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://vimark.art/Personal/Professional%20Growth/Screenshot_10.jpg</loc>
+    <loc>https://vimark.art/project/art/covenant-2021.html</loc>
     <image:image>
       <image:loc>https://vimark.art/Personal/Professional%20Growth/Screenshot_10.jpg</image:loc>
       <image:title>Covenant, 2021</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://vimark.art/Personal/Professional%20Growth/wild_hunt_by_vimark_dds1zii-pre.jpg</loc>
+    <loc>https://vimark.art/project/art/wild-hunt-2020.html</loc>
     <image:image>
       <image:loc>https://vimark.art/Personal/Professional%20Growth/wild_hunt_by_vimark_dds1zii-pre.jpg</image:loc>
       <image:title>Wild hunt, 2020</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://vimark.art/Personal/Professional%20Growth/keepers_by_vimark_dccrko6-fullview.jpg</loc>
+    <loc>https://vimark.art/project/art/keepers-2018.html</loc>
     <image:image>
       <image:loc>https://vimark.art/Personal/Professional%20Growth/keepers_by_vimark_dccrko6-fullview.jpg</image:loc>
       <image:title>Keepers, 2018</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://vimark.art/Personal/Professional%20Growth/the_beginning_of_the_river_styx_by_vimark_d9gvpgc-fullview.jpg</loc>
+    <loc>https://vimark.art/project/art/the-beginning-of-the-river-styx-2015.html</loc>
     <image:image>
       <image:loc>https://vimark.art/Personal/Professional%20Growth/the_beginning_of_the_river_styx_by_vimark_d9gvpgc-fullview.jpg</image:loc>
       <image:title>The beginning of the river styx, 2015</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://vimark.art/Personal/Professional%20Growth/beyond_by_vimark_da0er8g-fullview.jpg</loc>
+    <loc>https://vimark.art/project/art/beyond-2016.html</loc>
     <image:image>
       <image:loc>https://vimark.art/Personal/Professional%20Growth/beyond_by_vimark_da0er8g-fullview.jpg</image:loc>
       <image:title>Beyond, 2016</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://vimark.art/Personal/Professional%20Growth/all_is_vanity_by_vimark_d85g8w5-fullview.jpg</loc>
+    <loc>https://vimark.art/project/art/all-is-vanity-2014.html</loc>
     <image:image>
       <image:loc>https://vimark.art/Personal/Professional%20Growth/all_is_vanity_by_vimark_d85g8w5-fullview.jpg</image:loc>
       <image:title>All is vanity, 2014</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://vimark.art/Personal/Professional%20Growth/Screenshot_9.jpg</loc>
+    <loc>https://vimark.art/project/art/mill-2013.html</loc>
     <image:image>
       <image:loc>https://vimark.art/Personal/Professional%20Growth/Screenshot_9.jpg</image:loc>
       <image:title>Mill, 2013</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://vimark.art/Personal/Professional%20Growth/Screenshot_8.jpg</loc>
+    <loc>https://vimark.art/project/art/draft-2013.html</loc>
     <image:image>
       <image:loc>https://vimark.art/Personal/Professional%20Growth/Screenshot_8.jpg</image:loc>
       <image:title>Draft, 2013</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://vimark.art/Personal/Professional%20Growth/Screenshot_7.jpg</loc>
+    <loc>https://vimark.art/project/art/apnea2013.html</loc>
     <image:image>
       <image:loc>https://vimark.art/Personal/Professional%20Growth/Screenshot_7.jpg</image:loc>
       <image:title>Apnea,2013</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://vimark.art/Personal/Professional%20Growth/Screenshot_6.jpg</loc>
+    <loc>https://vimark.art/project/art/falling-behind-the-horizon-2013.html</loc>
     <image:image>
       <image:loc>https://vimark.art/Personal/Professional%20Growth/Screenshot_6.jpg</image:loc>
       <image:title>Falling behind the horizon, 2013</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://vimark.art/Personal/Early%20Work/Screenshot_5.jpg</loc>
+    <loc>https://vimark.art/project/art/rubiks-time-2012.html</loc>
     <image:image>
       <image:loc>https://vimark.art/Personal/Early%20Work/Screenshot_5.jpg</image:loc>
       <image:title>Rubik&#x27;s time, 2012</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://vimark.art/Personal/Early%20Work/Screenshot_4.jpg</loc>
+    <loc>https://vimark.art/project/art/the-night-wind-2012.html</loc>
     <image:image>
       <image:loc>https://vimark.art/Personal/Early%20Work/Screenshot_4.jpg</image:loc>
       <image:title>The night wind, 2012</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://vimark.art/Personal/Early%20Work/Screenshot_3.jpg</loc>
+    <loc>https://vimark.art/project/art/the-magic-of-letters-2011.html</loc>
     <image:image>
       <image:loc>https://vimark.art/Personal/Early%20Work/Screenshot_3.jpg</image:loc>
       <image:title>The magic of letters, 2011</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://vimark.art/Personal/Early%20Work/scream_by_vimark_d3c1nzt-414w-2x.jpg</loc>
+    <loc>https://vimark.art/project/art/scream-2011.html</loc>
     <image:image>
       <image:loc>https://vimark.art/Personal/Early%20Work/scream_by_vimark_d3c1nzt-414w-2x.jpg</image:loc>
       <image:title>Scream, 2011</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://vimark.art/Personal/Early%20Work/Screenshot_2.jpg</loc>
+    <loc>https://vimark.art/project/art/the-lost-worlds-of-conan-doyle-2010.html</loc>
     <image:image>
       <image:loc>https://vimark.art/Personal/Early%20Work/Screenshot_2.jpg</image:loc>
       <image:title>The Lost Worlds of Conan Doyle, 2010</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://vimark.art/Personal/Early%20Work/Screenshot_1.jpg</loc>
+    <loc>https://vimark.art/project/art/creation-of-time-2010.html</loc>
     <image:image>
       <image:loc>https://vimark.art/Personal/Early%20Work/Screenshot_1.jpg</image:loc>
       <image:title>Creation of time, 2010</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://vimark.art/Personal/Early%20Work/stop_time_iv___warming_by_vimark_d1qqx6l-fullview.jpg</loc>
+    <loc>https://vimark.art/project/art/stop-time-warming-2008.html</loc>
     <image:image>
       <image:loc>https://vimark.art/Personal/Early%20Work/stop_time_iv___warming_by_vimark_d1qqx6l-fullview.jpg</image:loc>
       <image:title>Stop time - warming, 2008</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://vimark.art/Personal/Early%20Work/star_dust_by_vimark_d1c9c98.jpg</loc>
+    <loc>https://vimark.art/project/art/star-dust-2008.html</loc>
     <image:image>
       <image:loc>https://vimark.art/Personal/Early%20Work/star_dust_by_vimark_d1c9c98.jpg</image:loc>
       <image:title>Star dust, 2008</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://vimark.art/comic/Faceless/Faceless_0009_10.jpg</loc>
+    <loc>https://vimark.art/project/art/portal-2022.html</loc>
     <image:image>
       <image:loc>https://vimark.art/comic/Faceless/Faceless_0009_10.jpg</image:loc>
       <image:title>Portal, 2022</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://vimark.art/comic/Faceless/Faceless_0008_9.jpg</loc>
+    <loc>https://vimark.art/project/art/liberated-2022.html</loc>
     <image:image>
       <image:loc>https://vimark.art/comic/Faceless/Faceless_0008_9.jpg</image:loc>
       <image:title>Liberated, 2022</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://vimark.art/comic/Faceless/Faceless_0007_8.jpg</loc>
+    <loc>https://vimark.art/project/art/bas-relief-2022.html</loc>
     <image:image>
       <image:loc>https://vimark.art/comic/Faceless/Faceless_0007_8.jpg</image:loc>
       <image:title>Bas-relief, 2022</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://vimark.art/comic/Faceless/Faceless_0006_7.jpg</loc>
+    <loc>https://vimark.art/project/art/avatar-2022.html</loc>
     <image:image>
       <image:loc>https://vimark.art/comic/Faceless/Faceless_0006_7.jpg</image:loc>
       <image:title>Avatar, 2022</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://vimark.art/comic/Faceless/Faceless_0005_6.jpg</loc>
+    <loc>https://vimark.art/project/art/bridge-2022.html</loc>
     <image:image>
       <image:loc>https://vimark.art/comic/Faceless/Faceless_0005_6.jpg</image:loc>
       <image:title>Bridge, 2022</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://vimark.art/comic/Faceless/Faceless_0004_5.jpg</loc>
+    <loc>https://vimark.art/project/art/crossroads-2022.html</loc>
     <image:image>
       <image:loc>https://vimark.art/comic/Faceless/Faceless_0004_5.jpg</image:loc>
       <image:title>Crossroads, 2022</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://vimark.art/comic/Faceless/Faceless_0003_4.jpg</loc>
+    <loc>https://vimark.art/project/art/portal-of-the-chosen-ones-2022.html</loc>
     <image:image>
       <image:loc>https://vimark.art/comic/Faceless/Faceless_0003_4.jpg</image:loc>
       <image:title>Portal of the chosen ones, 2022</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://vimark.art/comic/Faceless/Faceless_0002_3.jpg</loc>
+    <loc>https://vimark.art/project/art/alley-of-the-faceless-2022.html</loc>
     <image:image>
       <image:loc>https://vimark.art/comic/Faceless/Faceless_0002_3.jpg</image:loc>
       <image:title>Alley of the Faceless, 2022</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://vimark.art/comic/Faceless/Faceless_0001_2.jpg</loc>
+    <loc>https://vimark.art/project/art/gates-2022.html</loc>
     <image:image>
       <image:loc>https://vimark.art/comic/Faceless/Faceless_0001_2.jpg</image:loc>
       <image:title>Gates, 2022</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://vimark.art/comic/Faceless/Faceless_0000_1.jpg</loc>
+    <loc>https://vimark.art/project/art/giant-2022.html</loc>
     <image:image>
       <image:loc>https://vimark.art/comic/Faceless/Faceless_0000_1.jpg</image:loc>
       <image:title>Giant, 2022</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://vimark.art/comic/Wanderer/Pepel7.jpg</loc>
+    <loc>https://vimark.art/project/art/portal-2026.html</loc>
     <image:image>
       <image:loc>https://vimark.art/comic/Wanderer/Pepel7.jpg</image:loc>
       <image:title>Portal, 2026</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://vimark.art/comic/Wanderer/Pepel6.jpg</loc>
+    <loc>https://vimark.art/project/art/corridor-of-masks-2026.html</loc>
     <image:image>
       <image:loc>https://vimark.art/comic/Wanderer/Pepel6.jpg</image:loc>
       <image:title>Corridor of masks, 2026</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://vimark.art/comic/Wanderer/Pepel5.jpg</loc>
+    <loc>https://vimark.art/project/art/guardians-2026.html</loc>
     <image:image>
       <image:loc>https://vimark.art/comic/Wanderer/Pepel5.jpg</image:loc>
       <image:title>Guardians, 2026</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://vimark.art/comic/Wanderer/Pepel4.jpg</loc>
+    <loc>https://vimark.art/project/art/to-the-main-temple-2026.html</loc>
     <image:image>
       <image:loc>https://vimark.art/comic/Wanderer/Pepel4.jpg</image:loc>
       <image:title>To the main temple, 2026</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://vimark.art/comic/Wanderer/Pepel3.jpg</loc>
+    <loc>https://vimark.art/project/art/crossing-2026.html</loc>
     <image:image>
       <image:loc>https://vimark.art/comic/Wanderer/Pepel3.jpg</image:loc>
       <image:title>Crossing, 2026</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://vimark.art/comic/Wanderer/Pepel2.jpg</loc>
+    <loc>https://vimark.art/project/art/totem-2026.html</loc>
     <image:image>
       <image:loc>https://vimark.art/comic/Wanderer/Pepel2.jpg</image:loc>
       <image:title>Totem, 2026</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://vimark.art/comic/Wanderer/Pepel1.jpg</loc>
+    <loc>https://vimark.art/project/art/towers-2026.html</loc>
     <image:image>
       <image:loc>https://vimark.art/comic/Wanderer/Pepel1.jpg</image:loc>
       <image:title>Towers, 2026</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/animals.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/Book%20Illustrations/Creatures/__0000_animals.jpg</image:loc>
+      <image:title>Animals (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/1-carib.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/Book%20Illustrations/Planetes/__0000_1_carib.jpg</image:loc>
+      <image:title>1 carib (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/cirris.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/Book%20Illustrations/Winter%E2%80%99s%20Twins/__0000_JM_Char1.jpg</image:loc>
+      <image:title>Cirris (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/moonstone.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/BookCover/2025/__0000_Layer%209.jpg</image:loc>
+      <image:title>Moonstone (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/abode-2025.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/comic/The%20Symbol%20of%20Faith/__0000_knight1.jpg</image:loc>
+      <image:title>Abode, 2025 (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/find-a-way-2025.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/comic/Biological%20deviations/__0000_bio_1.jpg</image:loc>
+      <image:title>Find a way, 2025 (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/capsule-2024.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/comic/Nemirum/__0000_capsule.0002.jpg</image:loc>
+      <image:title>Capsule, 2024 (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/martyn.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/Book%20Illustrations/Endymion/__0000_E1_Martyn.jpg</image:loc>
+      <image:title>Martyn (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/garage.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/Book%20Illustrations/vegetation/__0000_1_Garage.jpg</image:loc>
+      <image:title>Garage (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/night-at-the-ruins.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/Book%20Illustrations/Nameless%20City/__0000_Nam1.0001.jpg</image:loc>
+      <image:title>Night at the ruins (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/to-the-city.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/Book%20Illustrations/Insmoot/__0000_in_0.jpg</image:loc>
+      <image:title>To the city (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/hole-2025.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/comic/Winter/__0000_winter_infantery_1.jpg</image:loc>
+      <image:title>Hole, 2025 (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/the-first-story-master-2026.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/comic/Geologyst/_0000_Geologyst_1.jpg</image:loc>
+      <image:title>The first story. Master, 2026 (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/antrpo.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/Book%20Illustrations/Creatures/__0001_antrpo.jpg</image:loc>
+      <image:title>Antrpo (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/2-destroed-earth.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/Book%20Illustrations/Planetes/__0001_2_Destroed_earth.jpg</image:loc>
+      <image:title>2 Destroed earth (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/planetes.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/BookCover/planetes/__0001_Planetes.jpg</image:loc>
+      <image:title>Planetes (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/elenya.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/Book%20Illustrations/Winter%E2%80%99s%20Twins/__0001_JM_Char2.jpg</image:loc>
+      <image:title>Elenya (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/pallomand.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/BookCover/2025/__0001_Layer%209%20copy.jpg</image:loc>
+      <image:title>Pallomand (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/abode-of-darkness-2025.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/comic/The%20Symbol%20of%20Faith/__0001_knight2.jpg</image:loc>
+      <image:title>Abode of darkness, 2025 (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/last-embryo-2025.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/comic/Biological%20deviations/__0001_bio_2-last%20embryo.jpg</image:loc>
+      <image:title>Last embryo, 2025 (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/stella-2024.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/comic/Nemirum/__0001_koly.0001.jpg</image:loc>
+      <image:title>Stella, 2024 (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/cardinal.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/Book%20Illustrations/Endymion/__0001_E2_Cardinal.jpg</image:loc>
+      <image:title>Cardinal (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/morning.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/Book%20Illustrations/vegetation/__0001_2_morning.jpg</image:loc>
+      <image:title>Morning (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/vortex.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/Book%20Illustrations/Nameless%20City/__0001_Nam2.0001.jpg</image:loc>
+      <image:title>Vortex (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/legend.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/Book%20Illustrations/Insmoot/__0001_in_2.jpg</image:loc>
+      <image:title>Legend (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/entrance-to-the-tunnel-2025.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/comic/Winter/__0001_winter_infantery_2.jpg</image:loc>
+      <image:title>Entrance to the tunnel, 2025 (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/the-second-story-smoke-break-2026.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/comic/Geologyst/_0001_Geologyst_2.jpg</image:loc>
+      <image:title>The second story. Smoke break, 2026 (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/the-misty-approach.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/Book%20Illustrations/20000%20leagues%20under%20the%20sea/__0001_il_1.jpg</image:loc>
+      <image:title>The Misty Approach (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/big.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/Book%20Illustrations/Creatures/__0002_big.jpg</image:loc>
+      <image:title>Big (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/3-moon-city.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/Book%20Illustrations/Planetes/__0002_3_moon_city.jpg</image:loc>
+      <image:title>3 moon city (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/marek.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/Book%20Illustrations/Winter%E2%80%99s%20Twins/__0002_JM_Char3.jpg</image:loc>
+      <image:title>Marek (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/solton.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/BookCover/2025/__0002_Layer%209%20copy%202.jpg</image:loc>
+      <image:title>Solton (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/creatures-2025.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/comic/The%20Symbol%20of%20Faith/__0002_knight3.jpg</image:loc>
+      <image:title>Creatures, 2025 (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/get-inside-2025.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/comic/Biological%20deviations/__0002_bio_3-get%20inside.jpg</image:loc>
+      <image:title>Get inside, 2025 (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/monuments-2024.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/comic/Nemirum/__0002_Monuments.jpg</image:loc>
+      <image:title>Monuments, 2024 (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/entrance.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/Book%20Illustrations/Endymion/__0002_E3_vichod.jpg</image:loc>
+      <image:title>Entrance (3)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/plant.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/Book%20Illustrations/vegetation/__0002_3_plant.jpg</image:loc>
+      <image:title>Plant (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/entrance-to-the-dungeon.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/Book%20Illustrations/Nameless%20City/__0002_Nam3.0001.jpg</image:loc>
+      <image:title>Entrance to the dungeon (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/an-old-mans-story.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/Book%20Illustrations/Insmoot/__0002_in_3.jpg</image:loc>
+      <image:title>An old man&#x27;s story (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/corridor-system-2025.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/comic/Winter/__0002_winter_infantery_3.jpg</image:loc>
+      <image:title>Corridor system, 2025 (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/the-third-story-radar-station-2026.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/comic/Geologyst/_0002_Geologyst_3.jpg</image:loc>
+      <image:title>The third story. Radar station, 2026 (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/the-underwater-hunt.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/Book%20Illustrations/20000%20leagues%20under%20the%20sea/__0002_il_2.jpg</image:loc>
+      <image:title>The Underwater Hunt (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/gods.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/Book%20Illustrations/Creatures/__0003_gods.jpg</image:loc>
+      <image:title>Gods (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/4-mars-1.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/Book%20Illustrations/Planetes/__0003_4_mars_1.jpg</image:loc>
+      <image:title>4 mars 1 (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/aeolus.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/Book%20Illustrations/Winter%E2%80%99s%20Twins/__0003_JM_Char4.jpg</image:loc>
+      <image:title>Aeolus (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/arcusian.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/BookCover/2026/__0003_Layer%209%20copy%203.jpg</image:loc>
+      <image:title>Arcusian (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/up-2025.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/comic/The%20Symbol%20of%20Faith/__0003_knight4.jpg</image:loc>
+      <image:title>Up, 2025 (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/down-2025.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/comic/Biological%20deviations/__0003_bio_4.jpg</image:loc>
+      <image:title>Down, 2025 (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/planet-escape-2024.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/comic/Nemirum/__0003_planet.escape%20.jpg</image:loc>
+      <image:title>Planet escape, 2024 (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/entrance-2.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/Book%20Illustrations/Endymion/__0003_E3_vichod_1.jpg</image:loc>
+      <image:title>Entrance (4)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/dump-truck-attack.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/Book%20Illustrations/vegetation/__0003_4_smsvl.jpg</image:loc>
+      <image:title>Dump truck attack (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/empty-hall.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/Book%20Illustrations/Nameless%20City/__0003_Nam4.0001.jpg</image:loc>
+      <image:title>Empty hall (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/on-the-square.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/Book%20Illustrations/Insmoot/__0003_in_5.jpg</image:loc>
+      <image:title>On the square (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/transition-2025.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/comic/Winter/__0003_winter_infantery_4.jpg</image:loc>
+      <image:title>Transition, 2025 (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/the-fourth-story-the-chapel-2026.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/comic/Geologyst/_0003_Geologyst_4.jpg</image:loc>
+      <image:title>The fourth story. The chapel, 2026 (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/the-sunken-forest.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/Book%20Illustrations/20000%20leagues%20under%20the%20sea/__0003_il_3.jpg</image:loc>
+      <image:title>The Sunken Forest (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/human.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/Book%20Illustrations/Creatures/__0004_human.jpg</image:loc>
+      <image:title>Human (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/5-mars-terraformed.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/Book%20Illustrations/Planetes/__0004_5_Mars_Terraformed.jpg</image:loc>
+      <image:title>5 Mars Terraformed (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/first-contact.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/BookCover/2024/__0004_First_Contact.jpg</image:loc>
+      <image:title>First Contact (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/prizraki.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/BookCover/2026/__0004_Prizraki_2026.jpg</image:loc>
+      <image:title>Prizraki (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/twenty-thousand-leagues-under-the-sea.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/BookCover/2024/__0004_BC24_0.jpg</image:loc>
+      <image:title>Twenty Thousand Leagues Under the Sea (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/angels-2025.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/comic/The%20Symbol%20of%20Faith/__0004_knight5.jpg</image:loc>
+      <image:title>Angels, 2025 (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/cocoon-2025.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/comic/Biological%20deviations/__0004_bio_5.jpg</image:loc>
+      <image:title>Cocoon, 2025 (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/tree-planet-2024.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/comic/Nemirum/__0004_Tree_planet.jpg</image:loc>
+      <image:title>Tree planet, 2024 (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/renaissance-vector.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/Book%20Illustrations/Endymion/__0004_E4_vector.jpg</image:loc>
+      <image:title>Renaissance vector (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/attack.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/Book%20Illustrations/vegetation/__0004_5_poselok.jpg</image:loc>
+      <image:title>Attack (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/hall-of-sarcophagi.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/Book%20Illustrations/Nameless%20City/__0004_NNM5.0001.jpg</image:loc>
+      <image:title>Hall of sarcophagi (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/along-the-streets-of-innsmouth.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/Book%20Illustrations/Insmoot/__0004_in_6.jpg</image:loc>
+      <image:title>Along the streets of Innsmouth (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/to-the-center-2025.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/comic/Winter/__0004_winter_infantery_5.jpg</image:loc>
+      <image:title>To the center, 2025 (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/the-sixth-story-submarine-2026.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/comic/Geologyst/_0004_Geologyst_5.jpg</image:loc>
+      <image:title>The sixth story.  Submarine, 2026 (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/the-shipwreck.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/Book%20Illustrations/20000%20leagues%20under%20the%20sea/__0004_il_4.jpg</image:loc>
+      <image:title>The Shipwreck (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/inter-dimensionnal.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/Book%20Illustrations/Creatures/__0005_INTER-DIMENSIONNAL.jpg</image:loc>
+      <image:title>INTER DIMENSIONNAL (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/6-venera.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/Book%20Illustrations/Planetes/__0005_6_Venera.jpg</image:loc>
+      <image:title>6 Venera (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/ashes-of-the-wake.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/BookCover/2024/__0005_Ashes_of_the_Wake.jpg</image:loc>
+      <image:title>Ashes of the Wake (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/red-planet-2.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/BookCover/2026/__0005_Red_Planet_2_2026.jpg</image:loc>
+      <image:title>Red Planet 2 (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/trek.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/BookCover/2025/__0005_BC25_2.jpg</image:loc>
+      <image:title>Trek (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/lonely-2025.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/comic/Biological%20deviations/__0005_bio_6.jpg</image:loc>
+      <image:title>Lonely, 2025 (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/arc.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/Book%20Illustrations/Endymion/__0005_E5_arc.jpg</image:loc>
+      <image:title>Arc (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/changed.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/Book%20Illustrations/vegetation/__0005_6_forest.jpg</image:loc>
+      <image:title>Changed (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/hole.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/Book%20Illustrations/Nameless%20City/__0005_NNM6.0001.jpg</image:loc>
+      <image:title>Hole (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/escape.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/Book%20Illustrations/Insmoot/__0005_in_7.jpg</image:loc>
+      <image:title>Escape (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/last-climb-2025.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/comic/Winter/__0005_winter_infantery_6.jpg</image:loc>
+      <image:title>Last climb, 2025 (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/the-seventh-story-pyramid-2026.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/comic/Geologyst/_0005_Geologyst_6.jpg</image:loc>
+      <image:title>The seventh story. Pyramid, 2026 (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/the-sunken-city.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/Book%20Illustrations/20000%20leagues%20under%20the%20sea/__0005_il_5.jpg</image:loc>
+      <image:title>The Sunken City (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/pacifik.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/Book%20Illustrations/Creatures/__0006_pacifik.jpg</image:loc>
+      <image:title>Pacifik (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/7-io.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/Book%20Illustrations/Planetes/__0006_7_io.jpg</image:loc>
+      <image:title>7 io (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/damned.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/BookCover/2026/__0006_Damned_2026.jpg</image:loc>
+      <image:title>Damned (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/raisinbread.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/BookCover/2025/__0006_BC25_3.jpg</image:loc>
+      <image:title>Raisinbread (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/forest-2025.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/comic/Biological%20deviations/__0006_bio_7%20copy.jpg</image:loc>
+      <image:title>Forest, 2025 (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/on-the-shore.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/Book%20Illustrations/Endymion/__0006_E6_Bereg.jpg</image:loc>
+      <image:title>On the shore (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/storming-the-bridge.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/Book%20Illustrations/vegetation/__0006_7_bridge.jpg</image:loc>
+      <image:title>Storming the bridge (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/the-beginning-of-the-invasion.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/Book%20Illustrations/Insmoot/__0006_in_8.jpg</image:loc>
+      <image:title>The beginning of the invasion (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/the-inferno-2025.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/comic/Winter/__0006_winter_infantery_7.jpg</image:loc>
+      <image:title>The inferno, 2025 (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/the-eighth-story-the-keepers-2026.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/comic/Geologyst/_0006_Geologyst_7.jpg</image:loc>
+      <image:title>The eighth story. The Keepers, 2026 (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/the-antarctic-ice.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/Book%20Illustrations/20000%20leagues%20under%20the%20sea/__0006_il_6.jpg</image:loc>
+      <image:title>The Antarctic Ice (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/parasite.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/Book%20Illustrations/Creatures/__0007_parasite.jpg</image:loc>
+      <image:title>Parasite (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/8-black-hole.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/Book%20Illustrations/Planetes/__0007_8_Black_hole.jpg</image:loc>
+      <image:title>8 Black hole (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/sentient.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/BookCover/2026/__0007_Sentient_2026.jpg</image:loc>
+      <image:title>Sentient (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/bleeding-mercury.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/BookCover/2025/__0007_BC25_5.jpg</image:loc>
+      <image:title>Bleeding Mercury (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/night-in-the-sea-world.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/Book%20Illustrations/Endymion/__0007_E7_Seaworld.jpg</image:loc>
+      <image:title>Night in the sea world (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/father.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/Book%20Illustrations/vegetation/__0007_8_batya.jpg</image:loc>
+      <image:title>Father (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/the-secret-of-the-diadem.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/Book%20Illustrations/Insmoot/__0007_in_9.jpg</image:loc>
+      <image:title>The Secret of the Diadem (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/the-ninth-story-luna-park-2026.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/comic/Geologyst/_0007_Geologyst_8.jpg</image:loc>
+      <image:title>The ninth story. Luna Park, 2026 (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/the-giant-squid.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/Book%20Illustrations/20000%20leagues%20under%20the%20sea/__0007_il_7.jpg</image:loc>
+      <image:title>The Giant Squid (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/post.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/Book%20Illustrations/Creatures/__0008_post.jpg</image:loc>
+      <image:title>Post (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/9-desert-bazar.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/Book%20Illustrations/Planetes/__0008_9_desert_bazar.jpg</image:loc>
+      <image:title>9 desert bazar (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/pandoras-daugher.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/BookCover/2026/__0008_Pandoras_Daugher.jpg</image:loc>
+      <image:title>Pandoras Daugher (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/cortex-malignus.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/BookCover/2025/__0008_BC25_7.jpg</image:loc>
+      <image:title>Cortex Malignus (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/wounded-at-sea.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/Book%20Illustrations/Endymion/__0008_E8_Sea.jpg</image:loc>
+      <image:title>Wounded at sea (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/the-right-tree.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/Book%20Illustrations/vegetation/__0008_9_tree.jpg</image:loc>
+      <image:title>The right tree (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/rags.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/Book%20Illustrations/Creatures/__0009_Rags.jpg</image:loc>
+      <image:title>Rags (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/11-icy-fight.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/Book%20Illustrations/Planetes/__0009_11_icy_fight.jpg</image:loc>
+      <image:title>11 icy fight (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/creatures.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/BookCover/2025/__0009_Creatures.jpg</image:loc>
+      <image:title>Creatures (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/superunknown.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/BookCover/2026/__0009_SuperUnknown.jpg</image:loc>
+      <image:title>SuperUnknown (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/collins.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/BookCover/2024/__0009_BC24_1.jpg</image:loc>
+      <image:title>Collins (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/ice-world.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/Book%20Illustrations/Endymion/__0009_E9_Ice.jpg</image:loc>
+      <image:title>Ice world (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/salvation.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/Book%20Illustrations/vegetation/__0009_10_salvation.jpg</image:loc>
+      <image:title>Salvation (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/robot-ai.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/Book%20Illustrations/Creatures/__0010_robot_AI.jpg</image:loc>
+      <image:title>Robot AI (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/12-ocean-play.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/Book%20Illustrations/Planetes/__0010_12_ocean_play.jpg</image:loc>
+      <image:title>12 ocean play (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/shards-of-humanity.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/BookCover/2026/__00010_Shards_of_Humanity.jpg</image:loc>
+      <image:title>Shards of Humanity (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/rise-of-the-wolf.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/BookCover/2024/__0010_BC24_5.jpg</image:loc>
+      <image:title>Rise of the wolf (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/ice-path.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/Book%20Illustrations/Endymion/__0010_E10_Ice_path.jpg</image:loc>
+      <image:title>Ice path (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/small-one.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/Book%20Illustrations/Creatures/__0011_small_one.jpg</image:loc>
+      <image:title>Small one (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/13-planet-city.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/Book%20Illustrations/Planetes/__0011_13_Planet_City.jpg</image:loc>
+      <image:title>13 Planet City (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/the-sideways-8.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/BookCover/2024/__0011_BC24_7.jpg</image:loc>
+      <image:title>The Sideways 8 (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/ice-monk.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/Book%20Illustrations/Endymion/__0011_E11_Ice_monk.jpg</image:loc>
+      <image:title>Ice monk (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/spectre.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/Book%20Illustrations/Creatures/__0012_spectre.jpg</image:loc>
+      <image:title>Spectre (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/14-tor.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/Book%20Illustrations/Planetes/__0012_14_TOR.jpg</image:loc>
+      <image:title>14 TOR (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/metal-flesh.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/BookCover/2025/__0012_BC25_8.jpg</image:loc>
+      <image:title>Metal Flesh (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/ice-murder.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/Book%20Illustrations/Endymion/__0012_E12_Ice_murder.jpg</image:loc>
+      <image:title>Ice murder (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/warlike.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/Book%20Illustrations/Creatures/__0013_warlike.jpg</image:loc>
+      <image:title>Warlike (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/15-virtual.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/Book%20Illustrations/Planetes/__0013_15_virtual.jpg</image:loc>
+      <image:title>15 virtual (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/dead-skies.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/BookCover/2024/__0013_BC24_3.jpg</image:loc>
+      <image:title>Dead skies (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/meschede.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/Book%20Illustrations/Endymion/__0013_E13_meshxed.jpg</image:loc>
+      <image:title>Meschede (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/rijad.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/Book%20Illustrations/Endymion/__0014_E14_rijad.jpg</image:loc>
+      <image:title>Rijad (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/creatures-spread.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/images/case-study/creatures-spread.jpg</image:loc>
+      <image:title>Creatures spread (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/creatures-cover.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/images/case-study/creatures-cover.jpg</image:loc>
+      <image:title>Creatures cover (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/planetes-interior.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/images/case-study/planetes-interior.jpg</image:loc>
+      <image:title>Planetes interior (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/planetes-spread.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/images/case-study/planetes-spread.jpg</image:loc>
+      <image:title>Planetes spread (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/planetes-cover.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/images/case-study/planetes-cover.jpg</image:loc>
+      <image:title>Planetes cover (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/prophets-2016.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/Personal/Professional%20Growth/Screenshot_23.jpg</image:loc>
+      <image:title>Prophets, 2016 (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/time-is-gone-2008.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/Personal/Early%20Work/Screenshot_22.jpg</image:loc>
+      <image:title>Time is gone, 2008 (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/crush-2025.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/Personal/Recent%20Work/crush_by_vimark_dkkvjah-pre.jpg</image:loc>
+      <image:title>Crush, 2025 (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/herdsmans2026.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/Personal/Recent%20Work/herdsmans_by_vimark_dld82eq-pre.jpg</image:loc>
+      <image:title>Herdsmans,2026 (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/the-external-message-2024.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/Personal/Recent%20Work/the_external_message_by_vimark_dhm6rep-pre.jpg</image:loc>
+      <image:title>The external message, 2024 (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/harbinger-2025.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/Personal/Recent%20Work/harbinger_by_vimark_dhqwqma-pre.jpg</image:loc>
+      <image:title>Harbinger, 2025 (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/three-peaks-2024.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/Personal/Recent%20Work/Screenshot_21.jpg</image:loc>
+      <image:title>Three peaks, 2024 (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/pilars2024.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/Personal/Recent%20Work/Screenshot_20.jpg</image:loc>
+      <image:title>Pilars,2024 (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/pilot-2024.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/Personal/Recent%20Work/Screenshot_19.jpg</image:loc>
+      <image:title>Pilot, 2024 (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/speeder-2024.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/Personal/Recent%20Work/Screenshot_18.jpg</image:loc>
+      <image:title>Speeder, 2024 (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/tower-of-blood-2023.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/Personal/Recent%20Work/Screenshot_17.jpg</image:loc>
+      <image:title>Tower of Blood, 2023 (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/book-death-2023.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/Personal/Recent%20Work/Screenshot_16.jpg</image:loc>
+      <image:title>Book death, 2023 (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/notice-2023.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/Personal/Recent%20Work/Screenshot_15.jpg</image:loc>
+      <image:title>Notice, 2023 (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/post-2023.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/Personal/Recent%20Work/Screenshot_14.jpg</image:loc>
+      <image:title>Post, 2023 (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/dead-valkyries-2023.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/Personal/Recent%20Work/Screenshot_13.jpg</image:loc>
+      <image:title>Dead Valkyries, 2023 (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/workshop-2021.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/Personal/Professional%20Growth/Screenshot_12.jpg</image:loc>
+      <image:title>Workshop, 2021 (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/cube-2021.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/Personal/Professional%20Growth/Screenshot_11.jpg</image:loc>
+      <image:title>Cube, 2021 (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/covenant-2021.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/Personal/Professional%20Growth/Screenshot_10.jpg</image:loc>
+      <image:title>Covenant, 2021 (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/wild-hunt-2020.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/Personal/Professional%20Growth/wild_hunt_by_vimark_dds1zii-pre.jpg</image:loc>
+      <image:title>Wild hunt, 2020 (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/keepers-2018.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/Personal/Professional%20Growth/keepers_by_vimark_dccrko6-fullview.jpg</image:loc>
+      <image:title>Keepers, 2018 (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/the-beginning-of-the-river-styx-2015.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/Personal/Professional%20Growth/the_beginning_of_the_river_styx_by_vimark_d9gvpgc-fullview.jpg</image:loc>
+      <image:title>The beginning of the river styx, 2015 (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/beyond-2016.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/Personal/Professional%20Growth/beyond_by_vimark_da0er8g-fullview.jpg</image:loc>
+      <image:title>Beyond, 2016 (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/all-is-vanity-2014.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/Personal/Professional%20Growth/all_is_vanity_by_vimark_d85g8w5-fullview.jpg</image:loc>
+      <image:title>All is vanity, 2014 (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/mill-2013.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/Personal/Professional%20Growth/Screenshot_9.jpg</image:loc>
+      <image:title>Mill, 2013 (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/draft-2013.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/Personal/Professional%20Growth/Screenshot_8.jpg</image:loc>
+      <image:title>Draft, 2013 (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/apnea2013.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/Personal/Professional%20Growth/Screenshot_7.jpg</image:loc>
+      <image:title>Apnea,2013 (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/falling-behind-the-horizon-2013.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/Personal/Professional%20Growth/Screenshot_6.jpg</image:loc>
+      <image:title>Falling behind the horizon, 2013 (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/rubiks-time-2012.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/Personal/Early%20Work/Screenshot_5.jpg</image:loc>
+      <image:title>Rubik&#x27;s time, 2012 (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/the-night-wind-2012.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/Personal/Early%20Work/Screenshot_4.jpg</image:loc>
+      <image:title>The night wind, 2012 (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/the-magic-of-letters-2011.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/Personal/Early%20Work/Screenshot_3.jpg</image:loc>
+      <image:title>The magic of letters, 2011 (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/scream-2011.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/Personal/Early%20Work/scream_by_vimark_d3c1nzt-414w-2x.jpg</image:loc>
+      <image:title>Scream, 2011 (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/the-lost-worlds-of-conan-doyle-2010.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/Personal/Early%20Work/Screenshot_2.jpg</image:loc>
+      <image:title>The Lost Worlds of Conan Doyle, 2010 (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/creation-of-time-2010.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/Personal/Early%20Work/Screenshot_1.jpg</image:loc>
+      <image:title>Creation of time, 2010 (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/stop-time-warming-2008.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/Personal/Early%20Work/stop_time_iv___warming_by_vimark_d1qqx6l-fullview.jpg</image:loc>
+      <image:title>Stop time - warming, 2008 (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/star-dust-2008.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/Personal/Early%20Work/star_dust_by_vimark_d1c9c98.jpg</image:loc>
+      <image:title>Star dust, 2008 (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/portal-2022.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/comic/Faceless/Faceless_0009_10.jpg</image:loc>
+      <image:title>Portal, 2022 (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/liberated-2022.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/comic/Faceless/Faceless_0008_9.jpg</image:loc>
+      <image:title>Liberated, 2022 (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/bas-relief-2022.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/comic/Faceless/Faceless_0007_8.jpg</image:loc>
+      <image:title>Bas-relief, 2022 (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/avatar-2022.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/comic/Faceless/Faceless_0006_7.jpg</image:loc>
+      <image:title>Avatar, 2022 (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/bridge-2022.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/comic/Faceless/Faceless_0005_6.jpg</image:loc>
+      <image:title>Bridge, 2022 (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/crossroads-2022.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/comic/Faceless/Faceless_0004_5.jpg</image:loc>
+      <image:title>Crossroads, 2022 (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/portal-of-the-chosen-ones-2022.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/comic/Faceless/Faceless_0003_4.jpg</image:loc>
+      <image:title>Portal of the chosen ones, 2022 (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/alley-of-the-faceless-2022.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/comic/Faceless/Faceless_0002_3.jpg</image:loc>
+      <image:title>Alley of the Faceless, 2022 (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/gates-2022.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/comic/Faceless/Faceless_0001_2.jpg</image:loc>
+      <image:title>Gates, 2022 (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/giant-2022.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/comic/Faceless/Faceless_0000_1.jpg</image:loc>
+      <image:title>Giant, 2022 (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/portal-2026.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/comic/Wanderer/Pepel7.jpg</image:loc>
+      <image:title>Portal, 2026 (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/corridor-of-masks-2026.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/comic/Wanderer/Pepel6.jpg</image:loc>
+      <image:title>Corridor of masks, 2026 (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/guardians-2026.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/comic/Wanderer/Pepel5.jpg</image:loc>
+      <image:title>Guardians, 2026 (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/to-the-main-temple-2026.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/comic/Wanderer/Pepel4.jpg</image:loc>
+      <image:title>To the main temple, 2026 (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/crossing-2026.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/comic/Wanderer/Pepel3.jpg</image:loc>
+      <image:title>Crossing, 2026 (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/totem-2026.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/comic/Wanderer/Pepel2.jpg</image:loc>
+      <image:title>Totem, 2026 (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/towers-2026.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/comic/Wanderer/Pepel1.jpg</image:loc>
+      <image:title>Towers, 2026 (2)</image:title>
     </image:image>
   </url>
 </urlset>

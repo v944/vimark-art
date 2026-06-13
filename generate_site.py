@@ -13,6 +13,9 @@ import configparser
 import json
 from pathlib import Path
 
+# Global collection for combined image sitemap (populated across languages)
+IMAGE_SITEMAP_ENTRIES = []
+
 try:
     from PIL import Image
     HAS_PILLOW = True
@@ -628,6 +631,17 @@ def build_lang(lang='en', skip_landing_pages=True):
 
     all_items.sort(key=sort_key)
 
+    # Assign unique art slugs (deduplicate captions that produce identical slugs)
+    slug_counts = {}
+    for img in all_items:
+        base_slug = slugify(captions.get(img["src"], img["name"]))
+        if base_slug in slug_counts:
+            slug_counts[base_slug] += 1
+            img["art_slug"] = f"{base_slug}-{slug_counts[base_slug]}"
+        else:
+            slug_counts[base_slug] = 1
+            img["art_slug"] = base_slug
+
     # Re-sort category and subfolder images to match global order
     for cat_key, info in categories.items():
         info["images"].sort(key=sort_key)
@@ -860,7 +874,7 @@ def build_lang(lang='en', skip_landing_pages=True):
             w = img.get("width", "")
             h = img.get("height", "")
             dim_attr = f' width="{w}" height="{h}"' if w and h else ''
-            art_slug = slugify(captions.get(img["src"], img["name"]))
+            art_slug = img.get("art_slug", slugify(captions.get(img["src"], img["name"])))
             art_href = f"art/{art_slug}.html"
             lines.append(f'  <a href="{art_href}" class="gallery-item" itemscope itemtype="https://schema.org/VisualArtwork">')
             lines.append(f'    <img src="{thumb}" alt="{alt}" loading="lazy"{dim_attr} itemprop="image">')
@@ -1107,7 +1121,7 @@ def build_lang(lang='en', skip_landing_pages=True):
 
     def build_art_page(art, proj, review, wip_images, base="../../", prev_art=None, next_art=None):
         page_lang = 'ru' if lang == 'ru' else 'en'
-        art_slug = slugify(captions.get(art["src"], art["name"]))
+        art_slug = art.get("art_slug", slugify(captions.get(art["src"], art["name"])))
         art_name = html.escape(captions.get(art["src"], art["name"]))
         art_src = html.escape(base + art["src"], quote=True)
         hero_name = html.escape(t.get('hero_name', 'Max Mitenkov'))
@@ -1200,11 +1214,11 @@ def build_lang(lang='en', skip_landing_pages=True):
         prev_link = ""
         next_link = ""
         if prev_art:
-            prev_slug = slugify(captions.get(prev_art["src"], prev_art["name"]))
+            prev_slug = prev_art.get("art_slug", slugify(captions.get(prev_art["src"], prev_art["name"])))
             prev_name = html.escape(captions.get(prev_art["src"], prev_art["name"]))
             prev_link = f'<a href="{prev_slug}.html" class="art-nav-prev" aria-label="Previous: {prev_name}">‹</a>'
         if next_art:
-            next_slug = slugify(captions.get(next_art["src"], next_art["name"]))
+            next_slug = next_art.get("art_slug", slugify(captions.get(next_art["src"], next_art["name"])))
             next_name = html.escape(captions.get(next_art["src"], next_art["name"]))
             next_link = f'<a href="{next_slug}.html" class="art-nav-next" aria-label="Next: {next_name}">›</a>'
         lightbox_html = '''<div id="lightbox">
@@ -2043,7 +2057,7 @@ def build_lang(lang='en', skip_landing_pages=True):
         if proj_images:
             project_folder = os.path.dirname(proj_images[0]["src"])
         for i, img in enumerate(proj_images):
-            art_slug = slugify(captions.get(img["src"], img["name"]))
+            art_slug = img.get("art_slug", slugify(captions.get(img["src"], img["name"])))
             review = art_reviews.get(art_slug)
             wip_images = find_wip_images(art_slug, project_folder) if project_folder else []
             art_base = "../../../" if base_index else "../../"
@@ -2062,7 +2076,7 @@ def build_lang(lang='en', skip_landing_pages=True):
         proj = projects.get(cat_key, {"title": info["label"], "year": "", "client": "", "description": ""})
         project_folder = info["folder"] if info.get("folder") else ""
         for i, img in enumerate(cat_images):
-            art_slug = slugify(captions.get(img["src"], img["name"]))
+            art_slug = img.get("art_slug", slugify(captions.get(img["src"], img["name"])))
             review = art_reviews.get(art_slug)
             wip_images = find_wip_images(art_slug, project_folder) if project_folder else []
             art_base = "../../../" if base_index else "../../"
@@ -2086,63 +2100,85 @@ def build_lang(lang='en', skip_landing_pages=True):
         reviews_html = build_reviews_page(base=reviews_base)
         (out_dir / "reviews.html").write_text(reviews_html, encoding="utf-8")
         print(f"Generated {lang}/reviews.html")
+    else:
+        print(f"Skipped {lang}/category pages and reviews (static pages).")
 
-        # Generate sitemap.xml
-        today = datetime.date.today().isoformat()
-        root_url = "https://vimark.art/" if lang == 'en' else "https://vimark.art/ru/"
-        project_base = "https://vimark.art/project/" if lang == 'en' else "https://vimark.art/ru/project/"
-        urls = [
-            (root_url, "1.0"),
-            (f"{root_url}contact.html", "0.5"),
-            (f"{root_url}reviews.html", "0.7"),
-        ]
-        for sub_key in projects.keys():
-            urls.append((f"{project_base}{sub_key}.html", "0.9"))
-        for cat_key, info in categories.items():
-            if not info["subfolders"]:
-                urls.append((f"{project_base}{cat_key}.html", "0.9"))
-        # Category landing pages
-        for cat_key, info in categories.items():
-            urls.append((f"{root_url}{cat_key}.html", "0.8"))
-        url_entries = "\n".join(
-            f"  <url>\n    <loc>{loc}</loc>\n    <lastmod>{today}</lastmod>\n    <changefreq>weekly</changefreq>\n    <priority>{priority}</priority>\n  </url>"
-            for loc, priority in urls
-        )
-        sitemap_content = f"""<?xml version="1.0" encoding="UTF-8"?>
+    # Generate sitemap.xml (always, includes static landing pages + generated pages)
+    today = datetime.date.today().isoformat()
+    root_url = "https://vimark.art/" if lang == 'en' else "https://vimark.art/ru/"
+    project_base = "https://vimark.art/project/" if lang == 'en' else "https://vimark.art/ru/project/"
+    landing_pages = [
+        ("", "1.0"),
+        ("book-covers.html", "0.9"),
+        ("book-illustrations.html", "0.9"),
+        ("about.html", "0.9"),
+        ("case-studies/hoebeke-sci-fi-series.html", "0.9"),
+        ("visual-stories.html", "0.8"),
+        ("contact.html", "0.8"),
+        ("reviews.html", "0.8"),
+        ("faq.html", "0.8"),
+        ("living-illustrations.html", "0.7"),
+        ("personal.html", "0.7"),
+        ("comic.html", "0.7"),
+        ("bookcover.html", "0.7"),
+        ("privacy.html", "0.5"),
+        ("404.html", "0.3"),
+    ]
+    urls = [(f"{root_url}{path}", priority) for path, priority in landing_pages]
+    # Project pages
+    for sub_key in projects.keys():
+        urls.append((f"{project_base}{sub_key}.html", "0.8"))
+    # Standalone category pages (no subfolders)
+    for cat_key, info in categories.items():
+        if not info["subfolders"]:
+            urls.append((f"{project_base}{cat_key}.html", "0.8"))
+    # Artwork pages + collect image sitemap entries
+    for img in all_items:
+        art_slug = img.get("art_slug", slugify(captions.get(img["src"], img["name"])))
+        art_url = f"{project_base}art/{art_slug}.html"
+        urls.append((art_url, "0.6"))
+        img_src_quoted = urllib.parse.quote(img["src"], safe='/')
+        img_loc = f"https://vimark.art/{img_src_quoted}"
+        img_title = html.escape(captions.get(img["src"], img["name"]))
+        IMAGE_SITEMAP_ENTRIES.append((art_url, img_loc, img_title))
+    url_entries = "\n".join(
+        f"  <url>\n    <loc>{loc}</loc>\n    <lastmod>{today}</lastmod>\n    <changefreq>weekly</changefreq>\n    <priority>{priority}</priority>\n  </url>"
+        for loc, priority in urls
+    )
+    sitemap_content = f"""<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 {url_entries}
 </urlset>"""
-        (out_dir / "sitemap.xml").write_text(sitemap_content, encoding="utf-8")
-        print(f"Generated {lang}/sitemap.xml")
-    else:
-        print(f"Skipped {lang}/category pages, reviews and sitemap (static pages).")
+    (out_dir / "sitemap.xml").write_text(sitemap_content, encoding="utf-8")
+    print(f"Generated {lang}/sitemap.xml")
 
     if lang == 'en':
+        # Combined image sitemap is generated after all languages in __main__
+        print(f"Collected {len(all_items)} image sitemap entries for this language.")
+
+
+if __name__ == "__main__":
+    build_lang('en')
+    build_lang('ru')
+
+    # Generate combined image sitemap after both languages are processed
+    if IMAGE_SITEMAP_ENTRIES:
         image_urls = []
         title_counts = {}
-        for img in all_items:
-            src_quoted = urllib.parse.quote(img['src'], safe='/')
-            img_loc = f"https://vimark.art/{src_quoted}"
-            img_title = html.escape(captions.get(img['src'], img['name']))
+        for art_url, img_loc, img_title in IMAGE_SITEMAP_ENTRIES:
             # Make titles unique
             if img_title in title_counts:
                 title_counts[img_title] += 1
                 img_title = f"{img_title} ({title_counts[img_title]})"
             else:
                 title_counts[img_title] = 1
-            image_urls.append(f'  <url>\n    <loc>{img_loc}</loc>\n    <image:image>\n      <image:loc>{img_loc}</image:loc>\n      <image:title>{img_title}</image:title>\n    </image:image>\n  </url>')
+            image_urls.append(f'  <url>\n    <loc>{art_url}</loc>\n    <image:image>\n      <image:loc>{img_loc}</image:loc>\n      <image:title>{img_title}</image:title>\n    </image:image>\n  </url>')
         image_sitemap = f"""<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
 {chr(10).join(image_urls)}
 </urlset>"""
-        if not skip_landing_pages:
-            (WEBSITE / "image-sitemap.xml").write_text(image_sitemap, encoding="utf-8")
-            print(f"Generated image-sitemap.xml with {len(all_items)} images.")
-        else:
-            print("Skipped image-sitemap.xml (static sitemap).")
-
-
-if __name__ == "__main__":
-    build_lang('en')
-    build_lang('ru')
+        (WEBSITE / "image-sitemap.xml").write_text(image_sitemap, encoding="utf-8")
+        print(f"Generated image-sitemap.xml with {len(IMAGE_SITEMAP_ENTRIES)} images.")
+    else:
+        print("No image sitemap entries collected; skipping image-sitemap.xml.")
