@@ -2273,3 +2273,104 @@ body.first-visit.revealed #main {
 .genre-panel.active {
   display: block;
 }
+
+
+/* CTA button */
+.cta-button {
+  display: inline-block;
+  padding: 10px 20px;
+  background: #e8b86d;
+  color: #1a1a1a;
+  font-weight: 600;
+  border-radius: 4px;
+  text-decoration: none;
+  text-align: center;
+  transition: background 0.2s ease, transform 0.1s ease;
+}
+
+.cta-button:hover {
+  background: #f0c67d;
+  transform: translateY(-1px);
+}
+
+.sidebar-header .cta-button {
+  margin-top: 16px;
+  width: 100%;
+}
+
+/* Trust bar */
+.trust-bar {
+  text-align: center;
+  padding: 32px 20px;
+  border-bottom: 1px solid var(--border-mid, #333);
+}
+
+.trust-bar-label {
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  opacity: 0.7;
+  margin-bottom: 16px;
+}
+
+.trust-bar-logos {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 32px;
+}
+
+.trust-bar-logos img {
+  height: 40px;
+  width: auto;
+  opacity: 0.6;
+  filter: grayscale(100%);
+  transition: opacity 0.2s ease;
+}
+
+.trust-bar-logos a:hover img {
+  opacity: 1;
+}
+
+/* Mobile sticky CTA */
+.mobile-cta {
+  display: none;
+}
+
+@media (max-width: 800px) {
+  .trust-bar-logos {
+    gap: 20px;
+  }
+
+  .trust-bar-logos img {
+    height: 32px;
+  }
+
+  .mobile-cta {
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    justify-content: center;
+    padding: 12px 16px;
+    background: rgba(26, 26, 26, 0.95);
+    border-top: 1px solid var(--border-mid, #333);
+    z-index: 1000;
+  }
+
+  .mobile-cta .cta-button {
+    width: 100%;
+    max-width: 400px;
+  }
+
+  .sticky-contact {
+    bottom: 72px;
+    right: 20px;
+  }
+
+  #scrollTop {
+    bottom: 130px;
+  }
+}
