@@ -1612,6 +1612,11 @@ img {
     gap: 20px;
   }
 
+  .book-illustrations-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
   .filter-bar {
     gap: 8px;
   }
@@ -1626,6 +1631,11 @@ img {
   .projects-grid {
     grid-template-columns: 1fr;
     gap: 12px;
+  }
+
+  .book-illustrations-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
   }
 
   .hero-overlay h1 {
@@ -2145,6 +2155,13 @@ body.first-visit.revealed #main {
 .book-cover-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 24px;
+  align-items: start;
+}
+
+.book-illustrations-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   gap: 24px;
   align-items: start;
 }
