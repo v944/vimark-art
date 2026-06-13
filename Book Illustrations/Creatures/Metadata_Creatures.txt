@@ -1,0 +1,9 @@
+Client: Renaud Jesionek 
+Genre: Sci-fi
+Tittle(Eng):  Creatures
+Tittle(Ru):  Существа
+year: 2025
+
+description(Eng): Get to know the creatures that inhabit the greatest works of science fiction, and find out what they say about our attitude to the world and to otherness. Anthropomorphs, Martians, animals, gods, robots and many others... Always striving for exploration, Reno Jesionek, our captain of the Nexus VI, paints a portrait of unconventional characters intersecting in the lands of science fiction, which allow us, other people, to step aside to see our characters and character traits under the guise of another. Science fiction is the perfect journey.
+
+description(Ru): Познакомьтесь с существами, населяющими величайшие произведения научной фантастики, и узнайте, что они говорят о нашем отношении к миру и к инаковости. Антропоморфы, марсиане, животные, боги, роботы и многие другие... Всегда стремясь к исследованиям, Рено Йесионек - наш капитан Nexus VI-рисует портрет нетрадиционных персонажей, пересекающихся на землях научной фантастики, которые позволяют нам, другим людям, сделать шаг в сторону, чтобы увидеть наши характеры и черты характера под личиной другого. Научная фантастика-это идеальное путешествие.
