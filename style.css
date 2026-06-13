@@ -512,7 +512,7 @@ img {
 }
 
 .about-content h1 {
-  font-size: 1.1rem;
+  font-size: 24px;
   font-weight: 500;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -521,7 +521,7 @@ img {
 }
 
 .about-content h2 {
-  font-size: 0.85rem;
+  font-size: 18px;
   font-weight: 500;
   letter-spacing: 0.06em;
   text-transform: uppercase;
@@ -541,13 +541,13 @@ img {
 
 .about-content p,
 .about-content li {
-  font-size: 0.85rem;
+  font-size: 15px;
   color: #999;
   line-height: 1.7;
 }
 
 .about-intro {
-  font-size: 0.9rem !important;
+  font-size: 15px !important;
   color: #bbb !important;
   margin-bottom: 8px;
 }
@@ -559,7 +559,7 @@ img {
 }
 
 .about-tools {
-  font-size: 0.8rem !important;
+  font-size: 15px !important;
   color: #888 !important;
   margin-top: 12px;
 }
@@ -570,13 +570,13 @@ img {
 }
 
 .experience-list p {
-  font-size: 0.85rem;
+  font-size: 15px;
   color: #bbb;
   margin-bottom: 6px;
 }
 
 .about-contact p {
-  font-size: 0.85rem;
+  font-size: 15px;
   color: #bbb;
   margin-bottom: 6px;
 }
@@ -1011,7 +1011,7 @@ img {
 
 /* Pricing */
 .pricing-list p {
-  font-size: 0.9rem;
+  font-size: 15px;
   color: #bbb;
   margin-bottom: 8px;
   display: flex;
