@@ -2149,6 +2149,18 @@ body.first-visit.revealed #main {
   align-items: start;
 }
 
+.illustration-group {
+  margin-bottom: 48px;
+}
+
+.illustration-group h2 {
+  font-size: 22px;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  margin-bottom: 20px;
+  color: rgba(255, 255, 255, 0.85);
+}
+
 .book-cover-item {
   display: block;
   background: var(--card-bg, #1a1a1a);
