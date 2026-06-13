@@ -1,0 +1,8 @@
+Client: Renaud Jesionek 
+Genre: Sci-fi
+Tittle : Planetes
+year: 2024
+
+description(Eng): Explore the planets of the greatest works of science fiction and follow in the footsteps of your favorite characters in the vast expanses of space. Movies, literature, TV series, video games, anime: Reno Jesionek, aka Captain Nexus VI, deciphers ideas about new worlds of science fiction in all its forms. These worlds are an invitation to explore and discover the strange places of our physical universe and equally attest to universal human values and emotions. Science fiction is the perfect journey.
+
+description(Ru): Исследуйте планеты величайших произведений научной фантастики и идите по стопам своих любимых персонажей на бескрайних просторах космоса. Кино, литература, сериалы, видеоигры, аниме : Рено Йесионек, он же капитан Nexus VI, расшифровывает представления о новых мирах научной фантастики во всех ее формах. Эти миры являются приглашением к исследованию и открытию странных мест нашей физической Вселенной и в равной степени свидетельствуют об универсальных человеческих ценностях и эмоциях. Научная фантастика-это идеальное путешествие.
