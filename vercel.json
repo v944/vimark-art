@@ -1,5 +1,6 @@
 {
   "redirects": [
+    { "source": "/:path*", "has": [{ "type": "host", "value": "www.vimark.art" }], "destination": "https://vimark.art/:path*", "permanent": true },
     { "source": "/bookcover.html", "destination": "/book-covers.html", "permanent": true },
     { "source": "/ru/bookcover.html", "destination": "/ru/book-covers.html", "permanent": true },
     { "source": "/case-study-hoebeke.html", "destination": "/case-studies/hoebeke-sci-fi-series.html", "permanent": true },
@@ -7,7 +8,9 @@
     { "source": "/case-studies/", "destination": "/case-studies/hoebeke-sci-fi-series.html", "permanent": false },
     { "source": "/ru/case-studies/", "destination": "/ru/case-studies/hoebeke-sci-fi-series.html", "permanent": false },
     { "source": "/about_vimark_en.html", "destination": "/about.html", "permanent": true },
-    { "source": "/about_vimark_ru.html", "destination": "/ru/about.html", "permanent": true }
+    { "source": "/about_vimark_ru.html", "destination": "/ru/about.html", "permanent": true },
+    { "source": "/comic.html", "destination": "/visual-stories.html", "permanent": true },
+    { "source": "/ru/comic.html", "destination": "/ru/visual-stories.html", "permanent": true }
   ],
   "headers": [
     {

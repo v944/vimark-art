@@ -356,6 +356,22 @@ img {
   max-width: 80vw;
 }
 
+.footer-links {
+  display: none;
+}
+
+.illustration-group {
+  margin-bottom: 60px;
+}
+
+.illustration-group h2 {
+  font-size: 24px;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  margin-bottom: 30px;
+  color: rgba(255, 255, 255, 0.8);
+}
+
 /* Footer */
 .site-footer {
   position: fixed;
@@ -452,6 +468,12 @@ img {
     gap: 20px;
   }
 
+  .footer-links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
 }
 
 /* About & Contact Sections */
@@ -1137,6 +1159,13 @@ img {
   margin-bottom: 28px;
   padding-bottom: 12px;
   border-bottom: 1px solid #222;
+}
+
+.section-cta-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 24px;
 }
 
 /* Projects grid */
@@ -2082,4 +2111,139 @@ body.first-visit.revealed #main {
   .wip-slide {
     width: 260px;
   }
+}
+
+/* Case study page styles */
+.case-content {
+  max-width: 900px;
+}
+
+.case-content h1 {
+  margin-bottom: 16px;
+}
+
+.case-image {
+  margin: 24px 0;
+}
+
+.case-image img {
+  width: 100%;
+  display: block;
+  border-radius: 2px;
+}
+
+.case-image figcaption {
+  font-size: 0.8rem;
+  color: #888;
+  margin-top: 8px;
+  font-style: italic;
+  line-height: 1.5;
+}
+
+
+/* Book covers gallery */
+.book-cover-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 24px;
+  align-items: start;
+}
+
+.book-cover-item {
+  display: block;
+  background: var(--card-bg, #1a1a1a);
+  border-radius: 4px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.book-cover-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+}
+
+.book-cover-item img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.book-cover-caption {
+  padding: 12px;
+  text-align: center;
+}
+
+.book-cover-caption strong {
+  display: block;
+  color: var(--text-color, #eee);
+  font-size: 0.85rem;
+  font-weight: 500;
+  margin-bottom: 2px;
+}
+
+.book-cover-caption span {
+  display: block;
+  color: var(--muted, #888);
+  font-size: 0.75rem;
+}
+
+.portfolio-cta-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin: 20px 0 8px;
+}
+
+/* Sidebar nav label */
+.main-nav .nav-label {
+  display: block;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted, #888);
+  margin-top: 12px;
+  margin-bottom: 4px;
+  padding-left: 4px;
+}
+
+.main-nav li:first-child .nav-label {
+  margin-top: 0;
+}
+
+
+/* Visual Stories genre tabs */
+.genre-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 24px;
+}
+
+.genre-tab {
+  background: var(--card-bg);
+  border: 1px solid var(--border-mid);
+  color: var(--fg);
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.genre-tab:hover {
+  background: var(--card-bg-hover);
+}
+
+.genre-tab.active {
+  background: var(--fg);
+  color: var(--bg);
+  border-color: var(--fg);
+}
+
+.genre-panel {
+  display: none;
+}
+
+.genre-panel.active {
+  display: block;
 }

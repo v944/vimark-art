@@ -20,3 +20,15 @@ scenes/desert-giants/test-logs.json
 __pycache__/
 preview_*.png
 _scenes/
+
+# Internal planning docs
+vimark_geo_optimization.md
+about_vimark_en_updated.md
+about_vimark_ru_updated.md
+about_vimark_en_final.md
+about_vimark_ru_final.md
+case_study_hoebeke.md
+case_study_hoebeke_ru.md
+vimark_site_current_state.md
+vimark_site_map_v2.md
+visual_stories_genre_map.txt
