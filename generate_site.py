@@ -176,7 +176,7 @@ def clean_name(stem):
     # Remove view/size suffixes first (e.g. -fullview, -pre)
     s = re.sub(r'-(fullview|pre|414w-2x)$', '', s, flags=re.IGNORECASE)
     # Remove author suffixes like _by_vimark_d85g8w5
-    s = re.sub(r'_by_[a-z0-9_]+$', '', s)
+    s = re.sub(r'_by_[a-z0-9_]+$', '', s, flags=re.IGNORECASE)
     # Replace separators with spaces
     s = s.replace('_', ' ').replace('-', ' ')
     # Remove zero-padded numeric tokens (0001, 0002...)
