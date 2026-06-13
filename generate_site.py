@@ -943,6 +943,8 @@ def build_lang(lang='en', skip_landing_pages=True):
 
         social_html_project = social_html.replace('src="behance.png"', f'src="{base}behance.png"').replace('src="deviantart.png"', f'src="{base}deviantart.png"')
 
+        cta_href = '/ru/contact.html' if page_lang == 'ru' else '/contact.html'
+        cta_label = 'Обсудить проект' if page_lang == 'ru' else 'Get a Free Quote'
         project_nav = [
             '<nav class="main-nav">',
             '  <ul>',
@@ -958,6 +960,7 @@ def build_lang(lang='en', skip_landing_pages=True):
             f'    <li><a href="{base}faq.html">FAQ</a></li>',
             '  </ul>',
             '</nav>',
+            f'<a href="{cta_href}" class="cta-button">{cta_label}</a>',
         ])
         project_nav_html = "\n      ".join(project_nav)
 
@@ -983,9 +986,10 @@ def build_lang(lang='en', skip_landing_pages=True):
 
         cta_text = t.get('project_cta_text', 'Interested in something similar?')
         cta_btn = t.get('discuss_project', 'Discuss a project')
+        cta_href = '/ru/contact.html' if page_lang == 'ru' else '/contact.html'
         project_cta_html = f'''<div class="project-cta">
         <p>{cta_text}</p>
-        <a href="{base}index.html#contact" class="hero-cta">{cta_btn}</a>
+        <a href="{cta_href}" class="cta-button">{cta_btn}</a>
       </div>'''
 
         back_href = f"{base}index.html#{cat_key}" if cat_key else f"{base}index.html"
@@ -994,6 +998,7 @@ def build_lang(lang='en', skip_landing_pages=True):
 <html lang="{page_lang}">
 <head>
 <meta charset="UTF-8">
+<meta name="robots" content="index, follow">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>{title} · {hero_name}</title>
 <meta name="description" content="{title} — {description or 'Portfolio project by Max Mitenkov'}">
@@ -1111,7 +1116,7 @@ def build_lang(lang='en', skip_landing_pages=True):
         cat_key = art.get("category", "")
         cat_label = t.get(cat_key, human_label(cat_key))
         back_href = f"{base}{'ru/' if page_lang == 'ru' else ''}project/{art.get('subcategory', cat_key)}.html"
-        og_image = html.escape(base + art.get("thumb", art["src"]), quote=True)
+        og_image = html.escape(art.get("thumb", art["src"]).lstrip('/'), quote=True)
         og_image_width = html.escape(art.get("width", "600"), quote=True)
         og_image_height = html.escape(art.get("height", "600"), quote=True)
         page_canonical = f"https://vimark.art/ru/project/art/{art_slug}.html" if page_lang == 'ru' else f"https://vimark.art/project/art/{art_slug}.html"
@@ -1130,6 +1135,8 @@ def build_lang(lang='en', skip_landing_pages=True):
             ]
         }, ensure_ascii=False)
         social_html_project = social_html.replace('src="behance.png"', f'src="{base}behance.png"').replace('src="deviantart.png"', f'src="{base}deviantart.png"')
+        cta_href = '/ru/contact.html' if page_lang == 'ru' else '/contact.html'
+        cta_label = 'Обсудить проект' if page_lang == 'ru' else 'Get a Free Quote'
         project_nav = [
             '<nav class="main-nav">',
             '  <ul>',
@@ -1145,6 +1152,7 @@ def build_lang(lang='en', skip_landing_pages=True):
             f'    <li><a href="{base}faq.html">FAQ</a></li>',
             '  </ul>',
             '</nav>',
+            f'<a href="{cta_href}" class="cta-button">{cta_label}</a>',
         ])
         project_nav_html = "\n      ".join(project_nav)
         review_html = ""
@@ -1211,6 +1219,7 @@ def build_lang(lang='en', skip_landing_pages=True):
 <html lang="{page_lang}">
 <head>
 <meta charset="UTF-8">
+<meta name="robots" content="index, follow">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>{art_name} · {hero_name}</title>
 <meta name="description" content="{art_name} — {title} by {hero_name}">
@@ -1291,7 +1300,7 @@ def build_lang(lang='en', skip_landing_pages=True):
       {wip_html}
       <div class="project-cta">
         <p>{cta_text}</p>
-        <a href="{base}index.html#contact" class="hero-cta">{cta_btn}</a>
+        <a href="{'/ru/contact.html' if page_lang == 'ru' else '/contact.html'}" class="cta-button">{cta_btn}</a>
       </div>
     </main>
   </div>
@@ -1345,6 +1354,8 @@ def build_lang(lang='en', skip_landing_pages=True):
         cards_str = "\n".join(cards) if cards else ""
         meta_desc = f"{cat_label} — portfolio works by {hero_name}."
         # Category nav
+        cat_cta_href = '/ru/contact.html' if page_lang == 'ru' else '/contact.html'
+        cat_cta_label = 'Обсудить проект' if page_lang == 'ru' else 'Get a Free Quote'
         cat_nav_lines = [
             '<nav class="main-nav">',
             '  <ul>',
@@ -1360,6 +1371,7 @@ def build_lang(lang='en', skip_landing_pages=True):
             f'    <li><a href="{base}faq.html">FAQ</a></li>',
             '  </ul>',
             '</nav>',
+            f'<a href="{cat_cta_href}" class="cta-button">{cat_cta_label}</a>',
         ])
         cat_nav_html = "\n      ".join(cat_nav_lines)
         social_html_cat = social_html.replace('src="behance.png"', f'src="{base}behance.png"').replace('src="deviantart.png"', f'src="{base}deviantart.png"')
@@ -1368,6 +1380,7 @@ def build_lang(lang='en', skip_landing_pages=True):
 <html lang="{page_lang}">
 <head>
 <meta charset="UTF-8">
+<meta name="robots" content="index, follow">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>{cat_label} · {hero_name}</title>
 <meta name="description" content="{meta_desc}">
@@ -1498,6 +1511,8 @@ def build_lang(lang='en', skip_landing_pages=True):
             reviews_subtitle_text = "Rated 5/5 for professionalism, quality, value, and responsiveness"
 
         # Reviews nav (same as project nav but with Reviews link active)
+        reviews_cta_href = '/ru/contact.html' if page_lang == 'ru' else '/contact.html'
+        reviews_cta_label = 'Обсудить проект' if page_lang == 'ru' else 'Get a Free Quote'
         reviews_nav = [
             '<nav class="main-nav">',
             '  <ul>',
@@ -1513,6 +1528,7 @@ def build_lang(lang='en', skip_landing_pages=True):
             f'    <li><a href="{base}faq.html">FAQ</a></li>',
             '  </ul>',
             '</nav>',
+            f'<a href="{reviews_cta_href}" class="cta-button">{reviews_cta_label}</a>',
         ])
         reviews_nav_html = "\n      ".join(reviews_nav)
         social_html_reviews = social_html.replace('src="behance.png"', f'src="{base}behance.png"').replace('src="deviantart.png"', f'src="{base}deviantart.png"')
@@ -1551,6 +1567,7 @@ def build_lang(lang='en', skip_landing_pages=True):
 <html lang="{page_lang}">
 <head>
 <meta charset="UTF-8">
+<meta name="robots" content="index, follow">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>{reviews_title_text}</title>
 <meta name="description" content="{meta_desc}">
@@ -1816,6 +1833,8 @@ def build_lang(lang='en', skip_landing_pages=True):
     filter_bar = f'<div class="filter-bar">\n  {"\n  ".join(filter_buttons)}\n</div>'
 
     hero_name = html.escape(t.get('hero_name', 'Max Mitenkov'))
+    cta_href = '/ru/contact.html' if lang_attr == 'ru' else '/contact.html'
+    cta_label = 'Обсудить проект' if lang_attr == 'ru' else 'Get a Free Quote'
 
     html_content = f"""<!DOCTYPE html>
 <html lang="{lang_attr}">
@@ -1824,6 +1843,7 @@ def build_lang(lang='en', skip_landing_pages=True):
 <link rel="preconnect" href="https://mc.yandex.ru">
 <link rel="dns-prefetch" href="https://www.google-analytics.com">
 <meta charset="UTF-8">
+<meta name="robots" content="index, follow">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>{hero_name} · {t.get('job_title', 'Illustrator · Concept Artist')}</title>
 <meta name="description" content="{t.get('meta_description', 'Portfolio of Max Mitenkov, illustrator and concept artist with 12+ years of experience in games, books, and NFT projects.')}">
@@ -1914,6 +1934,7 @@ def build_lang(lang='en', skip_landing_pages=True):
       <header class="sidebar-header">
         <img src="{base_index}Max Mitenkov.png" alt="{hero_name}" class="sidebar-photo" style="width: 100%; margin-bottom: 24px; opacity: 0.9;">
         {"\n      ".join(nav_lines)}
+        <a href="{cta_href}" class="cta-button">{cta_label}</a>
       </header>
       {social_html.replace('src=\"behance.png\"', f'src=\"{base_index}behance.png\"').replace('src=\"deviantart.png\"', f'src=\"{base_index}deviantart.png\"')}
       {commissions_html}
