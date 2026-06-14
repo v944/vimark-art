@@ -499,4 +499,74 @@
       }
     });
   })();
+
+  // Yandex.Metrica / GA4 goal tracking
+  (function initGoalTracking() {
+    function reachGoal(name) {
+      if (typeof ym !== 'undefined' && typeof ym === 'function') {
+        ym(109279162, 'reachGoal', name);
+      }
+      if (typeof gtag !== 'undefined' && typeof gtag === 'function') {
+        gtag('event', name);
+      }
+    }
+
+    // CTA buttons (header, mobile sticky, project pages)
+    document.querySelectorAll('.cta-button').forEach(btn => {
+      btn.addEventListener('click', () => reachGoal('click_cta'));
+    });
+
+    // Email clicks
+    document.querySelectorAll('a[href^="mailto:"]').forEach(link => {
+      link.addEventListener('click', () => reachGoal('click_email'));
+    });
+
+    // Social / external profile links
+    document.querySelectorAll('.social-links a, .footer-links a').forEach(link => {
+      const href = (link.getAttribute('href') || '').toLowerCase();
+      let network = '';
+      if (href.indexOf('reedsy.com') !== -1) network = 'reedsy';
+      else if (href.indexOf('behance') !== -1) network = 'behance';
+      else if (href.indexOf('artstation') !== -1) network = 'artstation';
+      else if (href.indexOf('instagram') !== -1) network = 'instagram';
+      else if (href.indexOf('linkedin') !== -1) network = 'linkedin';
+      else if (href.indexOf('facebook') !== -1) network = 'facebook';
+      else if (href.indexOf('pinterest') !== -1) network = 'pinterest';
+      else if (href.indexOf('deviantart') !== -1) network = 'deviantart';
+      if (!network) return;
+      link.addEventListener('click', () => {
+        reachGoal(network === 'reedsy' ? 'click_reedsy' : 'click_social_' + network);
+      });
+    });
+
+    // Project / portfolio card clicks
+    document.querySelectorAll('.project-card, .book-cover-item').forEach(card => {
+      card.addEventListener('click', () => reachGoal('click_project_card'));
+    });
+
+    // Lightbox open
+    let lightboxGoalSent = false;
+    function trackLightboxOpen() {
+      if (lightboxGoalSent) return;
+      lightboxGoalSent = true;
+      reachGoal('open_lightbox');
+    }
+    document.querySelectorAll('.gallery-item, .art-hero').forEach(el => {
+      el.addEventListener('click', trackLightboxOpen);
+    });
+
+    // Scroll to contact section
+    const contactTargets = document.querySelectorAll('.contact-form, #contact, [id="contact"]');
+    if (contactTargets.length && 'IntersectionObserver' in window) {
+      const contactObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            reachGoal('scroll_contact');
+            contactObserver.disconnect();
+          }
+        });
+      }, { threshold: 0.3 });
+      contactTargets.forEach(el => contactObserver.observe(el));
+    }
+  })();
 })();
