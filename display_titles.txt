@@ -1,0 +1,7 @@
+[en]
+BookCover/2026/__0004_Prizraki_2026.jpg = The ghosts of the old cemetery
+BookCover/2025/__0002_Layer 9 copy 2.jpg = Soliton
+
+[ru]
+BookCover/2026/__0004_Prizraki_2026.jpg = Призраки старого кладбища
+BookCover/2025/__0002_Layer 9 copy 2.jpg = Soliton
