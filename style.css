@@ -2196,7 +2196,9 @@ body.first-visit.revealed #main {
   text-align: center;
 }
 
-.book-cover-caption strong {
+.book-cover-caption strong,
+.book-cover-caption h2,
+.book-cover-caption h3 {
   display: block;
   color: var(--text-color, #eee);
   font-size: 0.85rem;

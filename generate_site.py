@@ -146,6 +146,33 @@ def load_captions():
     return captions
 
 
+def load_display_titles():
+    """Load display titles that override captions for rendering without changing slugs.
+    Supports sections [en] and [ru]."""
+    titles = {"en": {}, "ru": {}}
+    display_file = WEBSITE / "display_titles.txt"
+    if not display_file.exists():
+        return titles
+    current_lang = "en"
+    for line in display_file.read_text(encoding="utf-8").splitlines():
+        line = line.strip()
+        if not line or line.startswith('#'):
+            continue
+        if line.startswith('[') and line.endswith(']'):
+            current_lang = line[1:-1].lower()
+            if current_lang not in titles:
+                titles[current_lang] = {}
+            continue
+        if '=' not in line:
+            continue
+        path_part, title = line.split('=', 1)
+        path_part = path_part.strip()
+        title = title.strip()
+        if path_part and title:
+            titles[current_lang][path_part] = title
+    return titles
+
+
 def ensure_captions_file(items):
     """Create captions.txt template if it doesn't exist yet."""
     if CAPTIONS_FILE.exists():
@@ -610,11 +637,15 @@ def build_lang(lang='en', skip_landing_pages=True):
 
     # Load or create captions file
     captions = load_captions()
+    display_titles = load_display_titles()
     ensure_captions_file(all_items)
+
+    def get_caption(src, default=None):
+        return display_titles[lang].get(src, captions.get(src, default))
 
     # Extract year and sort index for each image
     for img in all_items:
-        caption = captions.get(img["src"], img["name"])
+        caption = get_caption(img["src"], img["name"])
         img["year"] = extract_year(caption)
         img["sort_index"] = extract_sort_index(Path(img["path"]).stem)
 
@@ -756,7 +787,7 @@ def build_lang(lang='en', skip_landing_pages=True):
             return ""
         src = html.escape(base + hero["src"], quote=True)
         thumb = html.escape(base + hero.get("thumb", hero["src"]), quote=True)
-        alt = html.escape(captions.get(hero["src"], hero["name"]), quote=True)
+        alt = html.escape(get_caption(hero["src"], hero["name"]), quote=True)
         img_src = src if use_original else thumb
         # Build pool of all STRONG images for client-side random switching
         hero_pool = []
@@ -765,7 +796,7 @@ def build_lang(lang='en', skip_landing_pages=True):
             hero_pool.append({
                 "src": html.escape(base + img["src"], quote=True),
                 "full": html.escape(base + img["src"], quote=True),
-                "alt": html.escape(captions.get(img["src"], img["name"]), quote=True)
+                "alt": html.escape(get_caption(img["src"], img["name"]), quote=True)
             })
         pool_json = html.escape(json.dumps(hero_pool), quote=True)
         hero_title = t.get('hero_name', 'Max Mitenkov')
@@ -784,7 +815,7 @@ def build_lang(lang='en', skip_landing_pages=True):
   </div>
 </section>'''
 
-    def project_card_html(key, label, images, base="", thumbnail=""):
+    def project_card_html(key, label, images, base="", thumbnail="", heading_tag="h3"):
         if not images:
             return ""
         count = len(images)
@@ -796,13 +827,13 @@ def build_lang(lang='en', skip_landing_pages=True):
                     break
         main_thumb = html.escape(base + main.get("thumb", main["src"]), quote=True)
         main_src = html.escape(base + main["src"], quote=True)
-        main_alt = html.escape(captions.get(main["src"], main["name"]), quote=True)
+        main_alt = html.escape(get_caption(main["src"], main["name"]), quote=True)
         thumbs_html = ""
         transparent_gif = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
         thumbs = [img for img in images if img["src"] != main["src"]][:3]
         for img in thumbs:
             thumb = html.escape(base + img.get("thumb", img["src"]), quote=True)
-            alt = html.escape(captions.get(img["src"], img["name"]), quote=True)
+            alt = html.escape(get_caption(img["src"], img["name"]), quote=True)
             thumbs_html += f'<img src="{thumb}" alt="{alt}" loading="lazy">'
         for _ in range(3 - len(thumbs)):
             thumbs_html += f'<img src="{transparent_gif}" alt="" loading="lazy">'
@@ -817,7 +848,7 @@ def build_lang(lang='en', skip_landing_pages=True):
     </div>
   </div>
   <div class="project-card-info">
-    <h3>{html.escape(label)}</h3>
+    <{heading_tag}>{html.escape(label)}</{heading_tag}>
     <span>{count} {count_label}</span>
   </div>
 </a>'''
@@ -830,7 +861,7 @@ def build_lang(lang='en', skip_landing_pages=True):
                 for sub_key, sub_info in info["subfolders"].items():
                     proj_images = [img for img in all_items if img.get("subcategory") == sub_key]
                     proj = projects.get(sub_key, {})
-                    card = project_card_html(sub_key, sub_info["label"], proj_images, base, proj.get("thumbnail", ""))
+                    card = project_card_html(sub_key, sub_info["label"], proj_images, base, proj.get("thumbnail", ""), heading_tag="h2")
                     if card:
                         cards.append(card)
             else:
@@ -849,7 +880,7 @@ def build_lang(lang='en', skip_landing_pages=True):
         for img in items:
             src = html.escape(base + img["src"], quote=True)
             thumb = html.escape(base + img.get("thumb", img["src"]), quote=True)
-            alt = html.escape(captions.get(img["src"], img["name"]), quote=True)
+            alt = html.escape(get_caption(img["src"], img["name"]), quote=True)
             year = img.get("year", "")
             year_meta = f'<meta itemprop="dateCreated" content="{year}">' if year else ''
             w = img.get("width", "")
@@ -868,7 +899,7 @@ def build_lang(lang='en', skip_landing_pages=True):
         for img in items:
             src = html.escape(base + img["src"], quote=True)
             thumb = html.escape(base + img.get("thumb", img["src"]), quote=True)
-            alt = html.escape(captions.get(img["src"], img["name"]), quote=True)
+            alt = html.escape(get_caption(img["src"], img["name"]), quote=True)
             year = img.get("year", "")
             year_meta = f'<meta itemprop="dateCreated" content="{year}">' if year else ''
             w = img.get("width", "")
@@ -987,7 +1018,7 @@ def build_lang(lang='en', skip_landing_pages=True):
         if hero_img:
             hero_thumb = html.escape(base + hero_img.get("thumb", hero_img["src"]), quote=True)
             hero_src = html.escape(base + hero_img["src"], quote=True)
-            hero_alt = html.escape(captions.get(hero_img["src"], hero_img["name"]), quote=True)
+            hero_alt = html.escape(get_caption(hero_img["src"], hero_img["name"]), quote=True)
             hero_display = hero_src if use_original else hero_thumb
             bg_color = hero_img.get("bgcolor", "")
             bg_style = f' style="background-color: {bg_color}"' if bg_color else ""
@@ -1122,13 +1153,14 @@ def build_lang(lang='en', skip_landing_pages=True):
     def build_art_page(art, proj, review, wip_images, base="../../", prev_art=None, next_art=None):
         page_lang = 'ru' if lang == 'ru' else 'en'
         art_slug = art.get("art_slug", slugify(captions.get(art["src"], art["name"])))
-        art_name = html.escape(captions.get(art["src"], art["name"]))
+        art_name = html.escape(get_caption(art["src"], art["name"]))
         art_src = html.escape(base + art["src"], quote=True)
         hero_name = html.escape(t.get('hero_name', 'Max Mitenkov'))
         year = html.escape(proj.get("year", ""))
         title = html.escape(proj.get("title", ""))
         cat_key = art.get("category", "")
         cat_label = t.get(cat_key, human_label(cat_key))
+        art_meta_suffix = html.escape(t.get('art_meta_suffix', 'Digital painting and illustration for sci-fi, fantasy, horror and literary fiction publishing.'))
         back_href = f"{base}{'ru/' if page_lang == 'ru' else ''}project/{art.get('subcategory', cat_key)}.html"
         og_image = html.escape(art.get("thumb", art["src"]).lstrip('/'), quote=True)
         og_image_width = html.escape(art.get("width", "600"), quote=True)
@@ -1215,11 +1247,11 @@ def build_lang(lang='en', skip_landing_pages=True):
         next_link = ""
         if prev_art:
             prev_slug = prev_art.get("art_slug", slugify(captions.get(prev_art["src"], prev_art["name"])))
-            prev_name = html.escape(captions.get(prev_art["src"], prev_art["name"]))
+            prev_name = html.escape(get_caption(prev_art["src"], prev_art["name"]))
             prev_link = f'<a href="{prev_slug}.html" class="art-nav-prev" aria-label="Previous: {prev_name}">‹</a>'
         if next_art:
             next_slug = next_art.get("art_slug", slugify(captions.get(next_art["src"], next_art["name"])))
-            next_name = html.escape(captions.get(next_art["src"], next_art["name"]))
+            next_name = html.escape(get_caption(next_art["src"], next_art["name"]))
             next_link = f'<a href="{next_slug}.html" class="art-nav-next" aria-label="Next: {next_name}">›</a>'
         lightbox_html = '''<div id="lightbox">
     <button class="lightbox-close">×</button>
@@ -1235,8 +1267,8 @@ def build_lang(lang='en', skip_landing_pages=True):
 <meta charset="UTF-8">
 <meta name="robots" content="index, follow">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>{art_name} · {hero_name}</title>
-<meta name="description" content="{art_name} — {title} by {hero_name}">
+<title>{art_name} · {title} · {hero_name}</title>
+<meta name="description" content="{art_name} — {title} by {hero_name}. {cat_label} {art_meta_suffix}">
 <link rel="canonical" href="{page_canonical}">
 {page_hreflang}
 <link rel="preconnect" href="https://www.googletagmanager.com">
@@ -1247,8 +1279,8 @@ def build_lang(lang='en', skip_landing_pages=True):
 <!-- Open Graph -->
 <meta property="og:type" content="article">
 <meta property="og:url" content="{page_canonical}">
-<meta property="og:title" content="{art_name} · {hero_name}">
-<meta property="og:description" content="{art_name} — {title} by {hero_name}">
+<meta property="og:title" content="{art_name} · {title} · {hero_name}">
+<meta property="og:description" content="{art_name} — {title} by {hero_name}. {cat_label} {art_meta_suffix}">
 <meta property="og:image" content="https://vimark.art/{og_image}">
 <meta property="og:image:width" content="{og_image_width}">
 <meta property="og:image:height" content="{og_image_height}">
@@ -1256,8 +1288,8 @@ def build_lang(lang='en', skip_landing_pages=True):
 <!-- Twitter -->
 <meta property="twitter:card" content="summary_large_image">
 <meta property="twitter:url" content="{page_canonical}">
-<meta property="twitter:title" content="{art_name} · {hero_name}">
-<meta property="twitter:description" content="{art_name} — {title} by {hero_name}">
+<meta property="twitter:title" content="{art_name} · {title} · {hero_name}">
+<meta property="twitter:description" content="{art_name} — {title} by {hero_name}. {cat_label} {art_meta_suffix}">
 <meta property="twitter:image" content="https://vimark.art/{og_image}">
 <!-- Pinterest Rich Pins -->
 <meta name="pinterest-rich-pin" content="true">
@@ -1337,6 +1369,7 @@ def build_lang(lang='en', skip_landing_pages=True):
     def build_category_page(cat_key, info, base=""):
         page_lang = 'ru' if lang == 'ru' else 'en'
         cat_label = html.escape(info["label"])
+        robots_meta = "noindex, nofollow" if cat_key == "living-illustrations" else "index, follow"
         cat_canonical = f"https://vimark.art/{cat_key}.html" if page_lang == 'en' else f"https://vimark.art/ru/{cat_key}.html"
         page_hreflang = f'''<!-- hreflang -->
 <link rel="alternate" hreflang="en" href="https://vimark.art/{cat_key}.html" />
@@ -1362,7 +1395,7 @@ def build_lang(lang='en', skip_landing_pages=True):
         else:
             proj_images = [img for img in all_items if img["category"] == cat_key]
             proj = projects.get(cat_key, {})
-            card = project_card_html(cat_key, cat_label, proj_images, base, proj.get("thumbnail", ""))
+            card = project_card_html(cat_key, cat_label, proj_images, base, proj.get("thumbnail", ""), heading_tag="h2")
             if card:
                 cards.append(card)
         cards_str = "\n".join(cards) if cards else ""
@@ -1394,7 +1427,7 @@ def build_lang(lang='en', skip_landing_pages=True):
 <html lang="{page_lang}">
 <head>
 <meta charset="UTF-8">
-<meta name="robots" content="index, follow">
+<meta name="robots" content="{robots_meta}">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>{cat_label} · {hero_name}</title>
 <meta name="description" content="{meta_desc}">
@@ -1733,7 +1766,7 @@ def build_lang(lang='en', skip_landing_pages=True):
     for img in about_gallery_imgs:
         img_src = html.escape(base_index + img.get("thumb", img["src"]), quote=True)
         img_full = html.escape(base_index + img["src"], quote=True)
-        img_alt = html.escape(captions.get(img["src"], img["name"]), quote=True)
+        img_alt = html.escape(get_caption(img["src"], img["name"]), quote=True)
         about_gallery_items += f'<figure class="gallery-item"><img src="{img_src}" data-full="{img_full}" alt="{img_alt}" loading="lazy"><figcaption>{img_alt}</figcaption></figure>'
 
     about_gallery_html = f'''<div class="about-section about-gallery">
@@ -2117,12 +2150,8 @@ def build_lang(lang='en', skip_landing_pages=True):
         ("contact.html", "0.8"),
         ("reviews.html", "0.8"),
         ("faq.html", "0.8"),
-        ("living-illustrations.html", "0.7"),
-        ("personal.html", "0.7"),
-        ("comic.html", "0.7"),
-        ("bookcover.html", "0.7"),
+        ("personal.html", "0.5"),
         ("privacy.html", "0.5"),
-        ("404.html", "0.3"),
     ]
     urls = [(f"{root_url}{path}", priority) for path, priority in landing_pages]
     # Project pages
@@ -2139,7 +2168,7 @@ def build_lang(lang='en', skip_landing_pages=True):
         urls.append((art_url, "0.6"))
         img_src_quoted = urllib.parse.quote(img["src"], safe='/')
         img_loc = f"https://vimark.art/{img_src_quoted}"
-        img_title = html.escape(captions.get(img["src"], img["name"]))
+        img_title = html.escape(get_caption(img["src"], img["name"]))
         IMAGE_SITEMAP_ENTRIES.append((art_url, img_loc, img_title))
     url_entries = "\n".join(
         f"  <url>\n    <loc>{loc}</loc>\n    <lastmod>{today}</lastmod>\n    <changefreq>weekly</changefreq>\n    <priority>{priority}</priority>\n  </url>"
