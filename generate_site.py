@@ -1080,6 +1080,8 @@ def build_lang(lang='en', skip_landing_pages=True):
       </div>'''
 
         back_href = f"{base}index.html#{cat_key}" if cat_key else f"{base}index.html"
+        twitter_handle = html.escape(t.get('twitter_handle', '@vimark_art'))
+        modified_time = datetime.datetime.now(datetime.timezone.utc).replace(microsecond=0).isoformat()
 
         page_content = f"""<!DOCTYPE html>
 <html lang="{page_lang}">
@@ -1113,10 +1115,13 @@ def build_lang(lang='en', skip_landing_pages=True):
 <meta property="twitter:title" content="{title} · {hero_name}">
 <meta property="twitter:description" content="{description or 'Portfolio project by Max Mitenkov'}">
 <meta property="twitter:image" content="https://vimark.art/{og_image}">
+<meta property="twitter:site" content="{twitter_handle}">
+<meta property="twitter:creator" content="{twitter_handle}">
 
 <!-- Pinterest Rich Pins -->
 <meta name="pinterest-rich-pin" content="true">
 <meta property="article:published_time" content="{year or datetime.date.today().year}-01-01">
+<meta property="article:modified_time" content="{modified_time}">
 
 <!-- Google tag -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-6RBP7X7H88"></script>
@@ -1340,6 +1345,8 @@ def build_lang(lang='en', skip_landing_pages=True):
     <div class="lightbox-caption"></div>
     <div class="lightbox-counter"></div>
   </div>'''
+        twitter_handle = html.escape(t.get('twitter_handle', '@vimark_art'))
+        modified_time = datetime.datetime.now(datetime.timezone.utc).replace(microsecond=0).isoformat()
         return f"""<!DOCTYPE html>
 <html lang="{page_lang}">
 <head>
@@ -1370,9 +1377,12 @@ def build_lang(lang='en', skip_landing_pages=True):
 <meta property="twitter:title" content="{art_name} · {title} · {hero_name}">
 <meta property="twitter:description" content="{art_name} — {title} by {hero_name}. {cat_label} {art_meta_suffix}">
 <meta property="twitter:image" content="https://vimark.art/{og_image}">
+<meta property="twitter:site" content="{twitter_handle}">
+<meta property="twitter:creator" content="{twitter_handle}">
 <!-- Pinterest Rich Pins -->
 <meta name="pinterest-rich-pin" content="true">
 <meta property="article:published_time" content="{year or datetime.date.today().year}-01-01">
+<meta property="article:modified_time" content="{modified_time}">
 <!-- Google tag -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-6RBP7X7H88"></script>
 <script>
@@ -1515,6 +1525,7 @@ def build_lang(lang='en', skip_landing_pages=True):
         cat_nav_html = "\n      ".join(cat_nav_lines)
         social_html_cat = social_html.replace('src="behance.png"', f'src="{base}behance.png"').replace('src="deviantart.png"', f'src="{base}deviantart.png"')
         year_num = datetime.date.today().year
+        twitter_handle = html.escape(t.get('twitter_handle', '@vimark_art'))
         return f"""<!DOCTYPE html>
 <html lang="{page_lang}">
 <head>
@@ -1546,6 +1557,8 @@ def build_lang(lang='en', skip_landing_pages=True):
 <meta property="twitter:title" content="{cat_label} · {hero_name}">
 <meta property="twitter:description" content="{meta_desc}">
 <meta property="twitter:image" content="https://vimark.art/{og_strong_src}">
+<meta property="twitter:site" content="{twitter_handle}">
+<meta property="twitter:creator" content="{twitter_handle}">
 
 <!-- BreadcrumbList -->
 <script type="application/ld+json">
@@ -1701,6 +1714,7 @@ def build_lang(lang='en', skip_landing_pages=True):
 
         cards_str = "\n".join(review_cards)
         year_num = datetime.date.today().year
+        twitter_handle = html.escape(t.get('twitter_handle', '@vimark_art'))
 
         return f"""<!DOCTYPE html>
 <html lang="{page_lang}">
@@ -1733,6 +1747,8 @@ def build_lang(lang='en', skip_landing_pages=True):
 <meta property="twitter:title" content="{reviews_title_text}">
 <meta property="twitter:description" content="{meta_desc}">
 <meta property="twitter:image" content="https://vimark.art/{og_strong_src}">
+<meta property="twitter:site" content="{twitter_handle}">
+<meta property="twitter:creator" content="{twitter_handle}">
 
 <!-- BreadcrumbList -->
 <script type="application/ld+json">
@@ -1972,6 +1988,7 @@ def build_lang(lang='en', skip_landing_pages=True):
     filter_bar = f'<div class="filter-bar">\n  {"\n  ".join(filter_buttons)}\n</div>'
 
     hero_name = html.escape(t.get('hero_name', 'Max Mitenkov'))
+    twitter_handle = html.escape(t.get('twitter_handle', '@vimark_art'))
     cta_href = '/ru/contact.html' if lang_attr == 'ru' else '/contact.html'
     cta_label = 'Обсудить проект' if lang_attr == 'ru' else 'Get a Free Quote'
 
@@ -2008,6 +2025,8 @@ def build_lang(lang='en', skip_landing_pages=True):
 <meta property="twitter:title" content="{hero_name} · Illustrator · Concept Artist">
 <meta property="twitter:description" content="Gallery of illustrations, concept art, and book covers by Max Mitenkov.">
 <meta property="twitter:image" content="https://vimark.art/{og_strong_src}">
+<meta property="twitter:site" content="{twitter_handle}">
+<meta property="twitter:creator" content="{twitter_handle}">
 
 <!-- Schema.org -->
 <script type="application/ld+json">
