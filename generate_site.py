@@ -962,14 +962,41 @@ def build_lang(lang='en', skip_landing_pages=True):
                 cat_key = ck
                 cat_label = ci["label"]
                 break
+        category_url_map = {
+            "book-illustrations": "book-illustrations.html",
+            "bookcover": "book-covers.html",
+            "comic": "visual-stories.html",
+            "personal": "personal.html",
+        }
+        cat_page = category_url_map.get(cat_key, f"{cat_key}.html") if cat_key else ""
+        cat_canonical = f"https://vimark.art/{'ru/' if page_lang == 'ru' else ''}{cat_page}" if cat_key else "https://vimark.art/"
         breadcrumb_json = json.dumps({
             "@context": "https://schema.org",
             "@type": "BreadcrumbList",
             "itemListElement": [
                 {"@type": "ListItem", "position": 1, "name": "Portfolio", "item": "https://vimark.art/"},
-                {"@type": "ListItem", "position": 2, "name": cat_label, "item": f"https://vimark.art/#{cat_key}" if cat_key else "https://vimark.art/"},
+                {"@type": "ListItem", "position": 2, "name": cat_label, "item": cat_canonical},
                 {"@type": "ListItem", "position": 3, "name": title, "item": page_canonical}
             ]
+        }, ensure_ascii=False)
+        # Gallery schema: ItemList of VisualArtwork
+        gallery_items = []
+        for idx, img in enumerate(items, start=1):
+            art_slug = img.get("art_slug", slugify(captions.get(img["src"], img["name"])))
+            img_canonical = f"https://vimark.art/{'ru/' if page_lang == 'ru' else ''}project/art/{art_slug}.html"
+            gallery_items.append({
+                "@type": "VisualArtwork",
+                "position": idx,
+                "name": html.escape(get_caption(img["src"], img["name"])),
+                "image": f"https://vimark.art/{html.escape(img['src'].lstrip('/'), quote=True)}",
+                "url": img_canonical,
+                "artist": {"@type": "Person", "name": hero_name, "url": "https://vimark.art/" if page_lang == 'en' else "https://vimark.art/ru/"},
+                "isPartOf": {"@type": "CreativeWork", "name": title, "url": page_canonical}
+            })
+        gallery_schema_json = json.dumps({
+            "@context": "https://schema.org",
+            "@type": "ItemList",
+            "itemListElement": gallery_items
         }, ensure_ascii=False)
 
         meta_parts = [p for p in [year, client] if p]
@@ -1114,6 +1141,10 @@ def build_lang(lang='en', skip_landing_pages=True):
 <!-- BreadcrumbList -->
 <script type="application/ld+json">
 {breadcrumb_json}
+</script>
+<!-- Gallery VisualArtwork -->
+<script type="application/ld+json">
+{gallery_schema_json}
 </script>
 </head>
 <body>
