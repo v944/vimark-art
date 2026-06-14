@@ -42,6 +42,10 @@
   ],
   "headers": [
     {
+      "source": "/BingSiteAuth.xml",
+      "headers": [{ "key": "Content-Type", "value": "text/xml" }]
+    },
+    {
       "source": "/living-illustrations.html",
       "headers": [{ "key": "X-Robots-Tag", "value": "noindex" }]
     },
