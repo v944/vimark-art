@@ -34,6 +34,7 @@
 | Preconnect к внешним ресурсам | Готово | `www.googletagmanager.com`, `mc.yandex.ru`, `dns-prefetch` Google Analytics |
 | Lazy loading | Частично | Hero-изображения `eager`, галереи и карточки `lazy`. Нет разделения первых 4–6 галерейных изображений как `eager`. |
 | Исправлен баланс HTML-тегов на статичных hub-страницах | Готово | `book-illustrations.html`, `ru/book-illustrations.html` — закрыт незакрытый `<div class="about-container">` |
+| Код целей Яндекс.Метрики + GA4 | Готово | `script.js` и inline-обработчики: `click_telegram`, `click_whatsapp`, `submit_contact`, `download_cv`, `click_cta`, `click_email`, `click_social_*`, `click_reedsy`, `click_project_card`, `open_lightbox`, `gallery_view`, `scroll_contact` |
 | SEO_OPTIMIZATION.md | Готово | Полное руководство по текущему состоянию SEO и порядку обновления сайта |
 
 ---
