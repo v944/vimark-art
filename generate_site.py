@@ -647,14 +647,16 @@ def build_lang(lang='en', skip_landing_pages=True):
         caption = get_caption(img["src"], img["name"])
         cat = img.get("category", "")
         if cat == "bookcover":
-            suffix = f" — book cover design by {hero_name}"
+            suffix_key = "alt_suffix_bookcover"
         elif cat == "book-illustrations":
-            suffix = f" — book illustration by {hero_name}"
+            suffix_key = "alt_suffix_book_illustrations"
         elif cat == "comic":
-            suffix = f" — comic art by {hero_name}"
+            suffix_key = "alt_suffix_comic"
         else:
-            suffix = f" — artwork by {hero_name}"
-        return caption + suffix
+            suffix_key = "alt_suffix_artwork"
+        suffix_template = t.get(suffix_key, "artwork by {hero_name}")
+        suffix = suffix_template.format(hero_name=hero_name)
+        return f"{caption} — {suffix}"
 
     # Extract year and sort index for each image
     for img in all_items:
