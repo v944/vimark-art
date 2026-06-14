@@ -26,13 +26,21 @@
 | Исправлены URL в BreadcrumbList | Готово | С якорей `#category` на реальные страницы категорий (`/book-illustrations.html` и т.д.) |
 | Активный CTA «Get a Free Quote» / «Обсудить проект» | Готово | В шапке, мобильном меню, sticky mobile CTA на `index.html`, `about.html` и др. |
 | Бар доверия (Trust Bar) с логотипами издательств | Готово | `index.html`, `about.html`, `ru/index.html`, `ru/about.html` — логотипы HarperCollins, Hachette Livre, Reedsy |
+| FAQPage schema + расширенный FAQ | Готово | `/faq.html` и `/ru/faq.html` содержат 8 коммерческих вопросов и JSON-LD `FAQPage` |
+| Коммерческие Title/Description | Готово | `index.html`, `book-covers.html`, `book-illustrations.html`, `about.html`, кейс Hoëbeke — EN + RU |
+| Абсолютные `og:image` URL | Готово | Все `og:image` начинаются с `https://vimark.art/` (статичные страницы + шаблоны `generate_site.py`) |
+| `article:published_time` / `article:modified_time` | Готово | `published_time` — год проекта, `modified_time` — дата генерации сайта (UTC) |
+| `twitter:site` / `twitter:creator` | Готово | Добавлены на все статичные и генерируемые страницы (`@vimark_art`) |
+| Preconnect к внешним ресурсам | Готово | `www.googletagmanager.com`, `mc.yandex.ru`, `dns-prefetch` Google Analytics |
+| Lazy loading | Частично | Hero-изображения `eager`, галереи и карточки `lazy`. Нет разделения первых 4–6 галерейных изображений как `eager`. |
+| Исправлен баланс HTML-тегов на статичных hub-страницах | Готово | `book-illustrations.html`, `ru/book-illustrations.html` — закрыт незакрытый `<div class="about-container">` |
 | SEO_OPTIMIZATION.md | Готово | Полное руководство по текущему состоянию SEO и порядку обновления сайта |
 
 ---
 
 ## Фаза A: Технические доработки (Неделя 1)
 
-### A.1. Исправить `og:image` на абсолютные URL [P0]
+### A.1. Исправить `og:image` на абсолютные URL [P0] ✅ УЖЕ ЕСТЬ
 
 **Проблема:** Open Graph (`og:image`) и Twitter Cards могут не работать в Pinterest, Facebook, LinkedIn, если путь относительный.  
 **Файлы:** `generate_site.py` (шаблоны OG/Twitter), все статичные `.html`  
@@ -56,7 +64,7 @@
 
 ---
 
-### A.2. Добавить `article:published_time` и `article:modified_time` [P1]
+### A.2. Добавить `article:published_time` и `article:modified_time` [P1] ✅ УЖЕ ЕСТЬ
 
 **Файл:** `generate_site.py` — шаблоны проектов и артов  
 
@@ -72,7 +80,7 @@
 
 ---
 
-### A.3. Добавить `twitter:site` и `twitter:creator` [P2]
+### A.3. Добавить `twitter:site` и `twitter:creator` [P2] ✅ УЖЕ ЕСТЬ
 
 **Файлы:** Все `.html` (шаблоны в `generate_site.py` + статичные)  
 
@@ -116,7 +124,7 @@
 
 ---
 
-### A.5. Проверить `og:image` на абсолютность в статичных страницах [P1]
+### A.5. Проверить `og:image` на абсолютность в статичных страницах [P1] ✅ УЖЕ ЕСТЬ
 
 **Файлы:** `index.html`, `book-covers.html`, `book-illustrations.html`, `visual-stories.html`, `about.html`, `contact.html`, `reviews.html`, `faq.html`, `case-studies/hoebeke-sci-fi-series.html` + `ru/` версии  
 
@@ -236,7 +244,7 @@ grep -r 'og:image' *.html ru/*.html case-studies/*.html | grep -v 'https://vimar
 
 ## Фаза C: Schema и Rich Snippets (Неделя 2)
 
-### C.1. Добавить Schema.org `FAQPage` на `/faq.html` и `/ru/faq.html` [P0]
+### C.1. Добавить Schema.org `FAQPage` на `/faq.html` и `/ru/faq.html` [P0] ✅ УЖЕ ЕСТЬ
 
 **Проблема:** FAQ — высококонкурентный запрос. Без `FAQPage` schema нет шансов на rich snippet (раскрывающийся блок в Google).  
 **Файлы:** `faq.html`, `ru/faq.html`  
@@ -445,7 +453,7 @@ grep -r 'og:image' *.html ru/*.html case-studies/*.html | grep -v 'https://vimar
 
 ---
 
-### D.4. Расширить FAQ коммерческими вопросами [P1]
+### D.4. Расширить FAQ коммерческими вопросами [P1] ✅ УЖЕ ЕСТЬ
 
 **Файлы:** `faq.html`, `ru/faq.html`  
 
@@ -463,7 +471,7 @@ grep -r 'og:image' *.html ru/*.html case-studies/*.html | grep -v 'https://vimar
 
 ## Фаза E: Title / Description и ключевые слова (Неделя 1)
 
-### E.1. Обновить Title и Description на коммерческие [P0]
+### E.1. Обновить Title и Description на коммерческие [P0] ✅ УЖЕ ЕСТЬ
 
 **Проблема:** Сейчас Title брендовый («Book Covers · Max Mitenkov»). Нужны ключевые слова, по которым ищут заказчики.  
 **Файлы:** `index.html`, `book-covers.html`, `book-illustrations.html`, `about.html`, `ru/index.html`, `ru/book-covers.html`, `ru/book-illustrations.html`, `ru/about.html`  
@@ -574,7 +582,7 @@ Hachette Livre. Заказать обложку — vimark.art.
 
 ---
 
-### G.2. Preconnect к внешним ресурсам [P3]
+### G.2. Preconnect к внешним ресурсам [P3] ✅ УЖЕ ЕСТЬ
 
 **Файлы:** Все `.html` (добавить в `<head>`)  
 
@@ -585,7 +593,7 @@ Hachette Livre. Заказать обложку — vimark.art.
 
 ---
 
-### G.3. Lazy loading: первые 4–6 изображений eager, остальные lazy [P2]
+### G.3. Lazy loading: первые 4–6 изображений eager, остальные lazy [P2] ⚠️ ЧАСТИЧНО — hero eager, галереи lazy; нет eager для первых 4–6 изображений галереи
 
 **Файл:** `generate_site.py` — шаблоны галерей  
 
