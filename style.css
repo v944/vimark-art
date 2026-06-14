@@ -2373,3 +2373,33 @@ body.first-visit.revealed #main {
     bottom: 130px;
   }
 }
+
+/* Breadcrumb */
+.breadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.75rem;
+  color: var(--dim, #888);
+  margin-bottom: 16px;
+}
+
+.breadcrumb a {
+  color: var(--muted, #aaa);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.breadcrumb a:hover {
+  color: var(--fg, #eee);
+}
+
+.breadcrumb-sep {
+  color: var(--faint, #666);
+  font-size: 0.7rem;
+}
+
+.breadcrumb-current {
+  color: var(--fg, #eee);
+}
