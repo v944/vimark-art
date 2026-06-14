@@ -544,7 +544,7 @@ Hachette Livre. Заказать обложку — vimark.art.
 
 ---
 
-### F.3. Добавить сайт в Bing Webmaster Tools [P2]
+### F.3. Добавить сайт в Bing Webmaster Tools [P2] ✅ ФАЙЛ РАЗМЕЩЁН — осталось нажать «Verify» в кабинете Bing
 
 1. https://www.bing.com/webmasters
 2. Добавить `vimark.art`
