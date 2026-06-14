@@ -643,6 +643,19 @@ def build_lang(lang='en', skip_landing_pages=True):
     def get_caption(src, default=None):
         return display_titles[lang].get(src, captions.get(src, default))
 
+    def get_alt(img):
+        caption = get_caption(img["src"], img["name"])
+        cat = img.get("category", "")
+        if cat == "bookcover":
+            suffix = f" — book cover design by {hero_name}"
+        elif cat == "book-illustrations":
+            suffix = f" — book illustration by {hero_name}"
+        elif cat == "comic":
+            suffix = f" — comic art by {hero_name}"
+        else:
+            suffix = f" — artwork by {hero_name}"
+        return caption + suffix
+
     # Extract year and sort index for each image
     for img in all_items:
         caption = get_caption(img["src"], img["name"])
@@ -796,7 +809,7 @@ def build_lang(lang='en', skip_landing_pages=True):
             hero_pool.append({
                 "src": html.escape(base + img["src"], quote=True),
                 "full": html.escape(base + img["src"], quote=True),
-                "alt": html.escape(get_caption(img["src"], img["name"]), quote=True)
+                "alt": html.escape(get_alt(img), quote=True)
             })
         pool_json = html.escape(json.dumps(hero_pool), quote=True)
         hero_title = t.get('hero_name', 'Max Mitenkov')
@@ -827,13 +840,13 @@ def build_lang(lang='en', skip_landing_pages=True):
                     break
         main_thumb = html.escape(base + main.get("thumb", main["src"]), quote=True)
         main_src = html.escape(base + main["src"], quote=True)
-        main_alt = html.escape(get_caption(main["src"], main["name"]), quote=True)
+        main_alt = html.escape(get_alt(main), quote=True)
         thumbs_html = ""
         transparent_gif = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
         thumbs = [img for img in images if img["src"] != main["src"]][:3]
         for img in thumbs:
             thumb = html.escape(base + img.get("thumb", img["src"]), quote=True)
-            alt = html.escape(get_caption(img["src"], img["name"]), quote=True)
+            alt = html.escape(get_alt(img), quote=True)
             thumbs_html += f'<img src="{thumb}" alt="{alt}" loading="lazy">'
         for _ in range(3 - len(thumbs)):
             thumbs_html += f'<img src="{transparent_gif}" alt="" loading="lazy">'
@@ -880,7 +893,7 @@ def build_lang(lang='en', skip_landing_pages=True):
         for img in items:
             src = html.escape(base + img["src"], quote=True)
             thumb = html.escape(base + img.get("thumb", img["src"]), quote=True)
-            alt = html.escape(get_caption(img["src"], img["name"]), quote=True)
+            alt = html.escape(get_alt(img), quote=True)
             year = img.get("year", "")
             year_meta = f'<meta itemprop="dateCreated" content="{year}">' if year else ''
             w = img.get("width", "")
@@ -899,7 +912,7 @@ def build_lang(lang='en', skip_landing_pages=True):
         for img in items:
             src = html.escape(base + img["src"], quote=True)
             thumb = html.escape(base + img.get("thumb", img["src"]), quote=True)
-            alt = html.escape(get_caption(img["src"], img["name"]), quote=True)
+            alt = html.escape(get_alt(img), quote=True)
             year = img.get("year", "")
             year_meta = f'<meta itemprop="dateCreated" content="{year}">' if year else ''
             w = img.get("width", "")
@@ -1018,7 +1031,7 @@ def build_lang(lang='en', skip_landing_pages=True):
         if hero_img:
             hero_thumb = html.escape(base + hero_img.get("thumb", hero_img["src"]), quote=True)
             hero_src = html.escape(base + hero_img["src"], quote=True)
-            hero_alt = html.escape(get_caption(hero_img["src"], hero_img["name"]), quote=True)
+            hero_alt = html.escape(get_alt(hero_img), quote=True)
             hero_display = hero_src if use_original else hero_thumb
             bg_color = hero_img.get("bgcolor", "")
             bg_style = f' style="background-color: {bg_color}"' if bg_color else ""
@@ -1162,6 +1175,18 @@ def build_lang(lang='en', skip_landing_pages=True):
         cat_label = t.get(cat_key, human_label(cat_key))
         art_meta_suffix = html.escape(t.get('art_meta_suffix', 'Digital painting and illustration for sci-fi, fantasy, horror and literary fiction publishing.'))
         back_href = f"{base}{'ru/' if page_lang == 'ru' else ''}project/{art.get('subcategory', cat_key)}.html"
+        home_href = f"{base}{'ru/' if page_lang == 'ru' else ''}index.html"
+        # Map internal category keys to public hub URLs
+        category_url_map = {
+            "book-illustrations": "book-illustrations.html",
+            "bookcover": "book-covers.html",
+            "comic": "visual-stories.html",
+            "personal": "personal.html",
+        }
+        cat_page = category_url_map.get(cat_key, f"{cat_key}.html")
+        cat_href = f"{base}{'ru/' if page_lang == 'ru' else ''}{cat_page}"
+        cat_canonical = f"https://vimark.art/{'ru/' if page_lang == 'ru' else ''}{cat_page}"
+        project_canonical = back_href.replace(base, "https://vimark.art/")
         og_image = html.escape(art.get("thumb", art["src"]).lstrip('/'), quote=True)
         og_image_width = html.escape(art.get("width", "600"), quote=True)
         og_image_height = html.escape(art.get("height", "600"), quote=True)
@@ -1175,10 +1200,31 @@ def build_lang(lang='en', skip_landing_pages=True):
             "@type": "BreadcrumbList",
             "itemListElement": [
                 {"@type": "ListItem", "position": 1, "name": "Portfolio", "item": "https://vimark.art/"},
-                {"@type": "ListItem", "position": 2, "name": cat_label, "item": f"https://vimark.art/#{cat_key}"},
-                {"@type": "ListItem", "position": 3, "name": title, "item": back_href.replace(base, "https://vimark.art/")},
+                {"@type": "ListItem", "position": 2, "name": cat_label, "item": cat_canonical},
+                {"@type": "ListItem", "position": 3, "name": title, "item": project_canonical},
                 {"@type": "ListItem", "position": 4, "name": art_name, "item": page_canonical}
             ]
+        }, ensure_ascii=False)
+        visual_artwork_json = json.dumps({
+            "@context": "https://schema.org",
+            "@type": "VisualArtwork",
+            "name": art_name,
+            "image": f"https://vimark.art/{html.escape(art['src'].lstrip('/'), quote=True)}",
+            "url": page_canonical,
+            "artist": {
+                "@type": "Person",
+                "name": hero_name,
+                "url": "https://vimark.art/" if page_lang == 'en' else "https://vimark.art/ru/"
+            },
+            "dateCreated": year or datetime.date.today().year,
+            "artMedium": "Digital painting",
+            "artworkSurface": "Digital",
+            "genre": cat_label,
+            "isPartOf": {
+                "@type": "CreativeWork",
+                "name": title,
+                "url": project_canonical
+            }
         }, ensure_ascii=False)
         social_html_project = social_html.replace('src="behance.png"', f'src="{base}behance.png"').replace('src="deviantart.png"', f'src="{base}deviantart.png"')
         cta_href = '/ru/contact.html' if page_lang == 'ru' else '/contact.html'
@@ -1317,6 +1363,10 @@ def build_lang(lang='en', skip_landing_pages=True):
 <script type="application/ld+json">
 {breadcrumb_json}
 </script>
+<!-- VisualArtwork -->
+<script type="application/ld+json">
+{visual_artwork_json}
+</script>
 </head>
 <body>
   <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">☀</button>
@@ -1333,13 +1383,22 @@ def build_lang(lang='en', skip_landing_pages=True):
     <button class="mobile-toggle">{t.get('menu', 'Menu')}</button>
     <main id="main">
       <div class="art-header">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <a href="{home_href}">{t.get('portfolio', 'Portfolio')}</a>
+          <span class="breadcrumb-sep">›</span>
+          <a href="{cat_href}">{cat_label}</a>
+          <span class="breadcrumb-sep">›</span>
+          <a href="{back_href}">{title}</a>
+          <span class="breadcrumb-sep">›</span>
+          <span class="breadcrumb-current" aria-current="page">{art_name}</span>
+        </nav>
         <a href="{back_href}" class="back-link">← Back to project</a>
         <h1>{art_name}</h1>
         <p class="art-meta">{title}{' · ' + year if year else ''}</p>
       </div>
       <section class="art-hero">
         {prev_link}
-        <img src="{art_src}" alt="{art_name}" loading="eager" fetchpriority="high" data-full="{art_src}">
+        <img src="{art_src}" alt="{html.escape(get_alt(art), quote=True)}" loading="eager" fetchpriority="high" data-full="{art_src}">
         {next_link}
       </section>
       {review_html}
@@ -1766,7 +1825,7 @@ def build_lang(lang='en', skip_landing_pages=True):
     for img in about_gallery_imgs:
         img_src = html.escape(base_index + img.get("thumb", img["src"]), quote=True)
         img_full = html.escape(base_index + img["src"], quote=True)
-        img_alt = html.escape(get_caption(img["src"], img["name"]), quote=True)
+        img_alt = html.escape(get_alt(img), quote=True)
         about_gallery_items += f'<figure class="gallery-item"><img src="{img_src}" data-full="{img_full}" alt="{img_alt}" loading="lazy"><figcaption>{img_alt}</figcaption></figure>'
 
     about_gallery_html = f'''<div class="about-section about-gallery">
