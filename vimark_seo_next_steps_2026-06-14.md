@@ -24,6 +24,8 @@
 | Schema.org: Person + Service + AggregateRating | Готово | `reviews.html`, главная |
 | Визуальные хлебные крошки | Готово | `/project/art/*.html` |
 | Исправлены URL в BreadcrumbList | Готово | С якорей `#category` на реальные страницы категорий (`/book-illustrations.html` и т.д.) |
+| Активный CTA «Get a Free Quote» / «Обсудить проект» | Готово | В шапке, мобильном меню, sticky mobile CTA на `index.html`, `about.html` и др. |
+| Бар доверия (Trust Bar) с логотипами издательств | Готово | `index.html`, `about.html`, `ru/index.html`, `ru/about.html` — логотипы HarperCollins, Hachette Livre, Reedsy |
 | SEO_OPTIMIZATION.md | Готово | Полное руководство по текущему состоянию SEO и порядку обновления сайта |
 
 ---
@@ -129,7 +131,7 @@ grep -r 'og:image' *.html ru/*.html case-studies/*.html | grep -v 'https://vimar
 
 ## Фаза B: Конверсия и UX (Неделя 1–2)
 
-### B.1. Добавить активный CTA «Get a Free Quote» / «Обсудить проект» [P0]
+### B.1. Добавить активный CTA «Get a Free Quote» / «Обсудить проект» [P0] ✅ УЖЕ ЕСТЬ НА САЙТЕ
 
 **Проблема:** «Contact» в меню слишком пассивно. Активный CTA повышает CTR.  
 **Файлы:** Все статичные `.html` (шапка), шаблоны в `generate_site.py`  
@@ -167,7 +169,7 @@ grep -r 'og:image' *.html ru/*.html case-studies/*.html | grep -v 'https://vimar
 
 ---
 
-### B.2. Добавить «бар доверия» (Trust Bar) на главную и About [P0]
+### B.2. Добавить «бар доверия» (Trust Bar) на главную и About [P0] ✅ УЖЕ ЕСТЬ НА САЙТЕ
 
 **Проблема:** Заказчики не видят социального доказательства сразу.  
 **Файлы:** `index.html`, `ru/index.html`, `about.html`, `ru/about.html`  
@@ -599,8 +601,8 @@ Hachette Livre. Заказать обложку — vimark.art.
 ### Неделя 1 (быстрый выигрыш)
 1. [ ] Исправить `og:image` на абсолютные URL (A.1 + A.5)
 2. [ ] Обновить Title и Description на коммерческие (E.1)
-3. [ ] Добавить активный CTA «Get a Free Quote» (B.1)
-4. [ ] Добавить «бар доверия» с логотипами (B.2)
+3. [x] Добавить активный CTA «Get a Free Quote» (B.1) — уже реализовано
+4. [x] Добавить «бар доверия» с логотипами (B.2) — уже реализовано
 5. [ ] Добавить `FAQPage` schema на `/faq.html` (C.1)
 6. [ ] Расширить FAQ коммерческими вопросами (D.4)
 
