@@ -612,14 +612,14 @@ Hachette Livre. Заказать обложку — vimark.art.
 2. [ ] Обновить Title и Description на коммерческие (E.1)
 3. [x] Добавить активный CTA «Get a Free Quote» (B.1) — уже реализовано
 4. [x] Добавить «бар доверия» с логотипами (B.2) — уже реализовано
-5. [ ] Добавить `FAQPage` schema на `/faq.html` (C.1)
-6. [ ] Расширить FAQ коммерческими вопросами (D.4)
+5. [x] Добавить `FAQPage` schema на `/faq.html` (C.1)
+6. [x] Расширить FAQ коммерческими вопросами (D.4)
 
 ### Неделя 2 (структура и rich snippets)
 7. [x] Добавить `ImageObject` schema на art-страницы (A.4)
-8. [ ] Добавить `article:published_time` / `modified_time` (A.2)
-9. [ ] Добавить `twitter:site` / `twitter:creator` (A.3)
-10. [ ] Добавить блок «Related Works» на art-страницы (B.3)
+8. [x] Добавить `article:published_time` / `modified_time` (A.2)
+9. [x] Добавить `twitter:site` / `twitter:creator` (A.3)
+10. [x] Добавить блок «Related Works» на art-страницы (B.3)
 11. [x] Расширить `Person` → `ProfessionalService` + `makesOffer` (C.2)
 12. [x] Создать `/services.html` и `/ru/services.html` (D.1)
 
@@ -666,5 +666,5 @@ Hachette Livre. Заказать обложку — vimark.art.
 
 ---
 
-> **Последнее обновление:** 2026-06-14  
+> **Последнее обновление:** 2026-06-15  
 > **Следующий review:** после завершения Фазы A (ориентировочно 2026-06-21)
