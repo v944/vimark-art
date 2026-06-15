@@ -1264,6 +1264,26 @@ def build_lang(lang='en', skip_landing_pages=True):
                 "url": project_canonical
             }
         }, ensure_ascii=False)
+        img_full_url = f"https://vimark.art/{html.escape(art['src'].lstrip('/'), quote=True)}"
+        thumb_url = f"https://vimark.art/{art['thumb'].lstrip('/')}" if art.get('thumb') else img_full_url
+        image_object_json = json.dumps({
+            "@context": "https://schema.org",
+            "@type": "ImageObject",
+            "name": art_name,
+            "author": {
+                "@type": "Person",
+                "name": hero_name,
+                "url": "https://vimark.art/" if page_lang == 'en' else "https://vimark.art/ru/"
+            },
+            "description": get_alt(art),
+            "contentUrl": img_full_url,
+            "thumbnailUrl": thumb_url,
+            "datePublished": str(year or datetime.date.today().year),
+            "license": "https://vimark.art/privacy.html",
+            "acquireLicensePage": "https://vimark.art/contact.html",
+            "creditText": f"\u00a9 {hero_name}",
+            "copyrightNotice": f"\u00a9 {year or datetime.date.today().year} {hero_name}. All rights reserved."
+        }, ensure_ascii=False)
         social_html_project = social_html.replace('src="behance.png"', f'src="{base}behance.png"').replace('src="deviantart.png"', f'src="{base}deviantart.png"')
         cta_href = '/ru/contact.html' if page_lang == 'ru' else '/contact.html'
         cta_label = 'Обсудить проект' if page_lang == 'ru' else 'Get a Free Quote'
@@ -1409,6 +1429,10 @@ def build_lang(lang='en', skip_landing_pages=True):
 <!-- VisualArtwork -->
 <script type="application/ld+json">
 {visual_artwork_json}
+</script>
+<!-- ImageObject -->
+<script type="application/ld+json">
+{image_object_json}
 </script>
 </head>
 <body>
@@ -2032,19 +2056,53 @@ def build_lang(lang='en', skip_landing_pages=True):
 <script type="application/ld+json">
 {{
   "@context": "https://schema.org",
-  "@type": "Person",
+  "@type": ["Person", "ProfessionalService"],
   "name": "{hero_name}",
-  "jobTitle": "Illustrator and Concept Artist",
+  "alternateName": "vimark",
+  "jobTitle": "Book Cover Illustrator & Designer",
   "url": "https://vimark.art/",
   "image": "https://vimark.art/{og_strong_src}",
   "sameAs": [
+    "https://www.reedsy.com/vimark",
     "https://www.behance.net/vimark",
-    "https://www.linkedin.com/in/maxim-mitenkov-06192940/",
+    "https://www.artstation.com/vimark",
     "https://www.instagram.com/vimark_art/",
     "https://www.deviantart.com/vimark",
     "https://www.facebook.com/maks.vimark/"
   ],
-  "description": "Illustrator and concept designer with over 12 years of professional experience. Worked on projects for studios in Belarus, the USA, and the UAE."
+  "knowsAbout": ["Book Cover Design", "Digital Illustration", "Sci-Fi Art", "Fantasy Art", "Horror Illustration", "Publishing"],
+  "areaServed": {{ "@type": "Place", "name": "Worldwide" }},
+  "hasOfferCatalog": {{
+    "@type": "OfferCatalog",
+    "name": "Book Cover Services",
+    "itemListElement": [
+      {{
+        "@type": "Offer",
+        "itemOffered": {{
+          "@type": "Service",
+          "name": "Custom Book Cover Design",
+          "description": "Original cover design for fiction and non-fiction books"
+        }}
+      }},
+      {{
+        "@type": "Offer",
+        "itemOffered": {{
+          "@type": "Service",
+          "name": "Book Interior Illustration",
+          "description": "Interior illustrations and chapter headers for published works"
+        }}
+      }},
+      {{
+        "@type": "Offer",
+        "itemOffered": {{
+          "@type": "Service",
+          "name": "Series Cover Design",
+          "description": "Consistent cover design for book series and trilogies"
+        }}
+      }}
+    ]
+  }},
+  "description": "Book cover illustrator and designer with 12+ years of experience. Published covers for HarperCollins and Hachette Livre. 71 verified Reedsy reviews."
 }}
 </script>
 

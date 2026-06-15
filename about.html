@@ -40,7 +40,7 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Person",
+  "@type": ["Person", "ProfessionalService"],
   "@id": "https://vimark.art/about.html#person",
   "name": "Max Mitenkov",
   "alternateName": ["vimark", "Максим Митенков"],
@@ -57,6 +57,7 @@
     "Digital Painting",
     "Concept Art"
   ],
+  "areaServed": { "@type": "Place", "name": "Worldwide" },
   "sameAs": [
     "https://www.reedsy.com/vimark",
     "https://www.behance.net/vimark",
@@ -65,13 +66,27 @@
     "https://vimark.deviantart.com",
     "https://www.artstation.com/vimark"
   ],
-  "makesOffer": {
-    "@type": "Offer",
-    "itemOffered": {
-      "@type": "Service",
-      "name": "Book Cover Illustration",
-      "description": "Custom book cover design and illustration for authors and publishers in sci-fi, fantasy, horror, and literary fiction genres."
-    }
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Book Cover Services",
+    "itemListElement": [
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Book Cover Illustration",
+          "description": "Custom book cover design and illustration for authors and publishers in sci-fi, fantasy, horror, and literary fiction genres."
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Book Interior Illustration",
+          "description": "Full-color interior illustrations, chapter headers, and spot art for published books."
+        }
+      }
+    ]
   },
   "workExample": [
     {
