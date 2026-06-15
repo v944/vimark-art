@@ -2256,6 +2256,7 @@ def build_lang(lang='en', skip_landing_pages=True):
         ("book-covers.html", "0.9"),
         ("book-illustrations.html", "0.9"),
         ("about.html", "0.9"),
+        ("services.html", "0.9"),
         ("case-studies/hoebeke-sci-fi-series.html", "0.9"),
         ("visual-stories.html", "0.8"),
         ("contact.html", "0.8"),
