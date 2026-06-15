@@ -443,19 +443,26 @@ Sitemap обновляется автоматически при запуске 
 
 1. **Коммерческий контент:**
    - [x] Создать `/services.html` и `/ru/services.html` с перечнем услуг, ценами и этапами работы.
-   - [ ] Расширить FAQ коммерческими вопросами.
+   - [x] Расширить FAQ коммерческими вопросами.
 2. **Микроразметка:**
    - [x] Добавить `ImageObject` JSON-LD на art-страницы (A.4).
    - [x] Расширить `Person` → `["Person", "ProfessionalService"]` на главной и about (C.2).
    - [x] Добавить `article:published_time` / `modified_time` на art-страницы (A.2).
    - [x] Добавить `twitter:site` / `twitter:creator` на art-страницы (A.3).
    - [x] Добавить блок «Related Works» на art-страницы (B.3).
-3. **Контент страниц проектов:**
-   - [ ] Добавить в `projects.ini` более подробные описания задачи, процесса, результата.
+   - [~] Отложено: создать `/series-cover-design.html` (D.3).
+3. **Техническое SEO:**
+   - [x] `og:image` — абсолютные URL (A.1 + A.5)
+   - [x] Title/Description — коммерческие (E.1)
+   - [x] Preconnect к внешним ресурсам (G.2)
+   - [~] Lazy loading — частично: hero eager, галереи lazy (G.3)
+   - [ ] `srcset` + `sizes` для thumbnails (G.1)
 4. **Внешние ссылки:**
-   - [ ] Убедиться, что профили Reedsy, Behance, ArtStation, Instagram ссылаются на `vimark.art`.
+   - [x] Убедиться, что профили Reedsy, Behance, ArtStation, Instagram ссылаются на `vimark.art`.
+   - [x] Bing Webmaster Tools — msvalidate + BingSiteAuth.xml
    - [ ] Получить упоминания в русскоязычных блогах/интервью.
 5. **Яндекс.Вебмастер:**
+   - [x] Цели в Метрике настроены (F.1)
    - [ ] После обработки sitemap проверить «Индексирование → Страницы в поиске».
    - [ ] Исправить ошибки, если появятся.
 6. **Аналитика:**
