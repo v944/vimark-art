@@ -2,6 +2,23 @@
 
 ## Website Changes
 
+### Phase A: ImageObject + ProfessionalService schema (generate_site.py, index.html, about.html)
+- A.4: Add `ImageObject` JSON-LD after `VisualArtwork` on all art pages (192 en + 192 ru)
+- C.2: Expand `Person` → `["Person", "ProfessionalService"]` with `hasOfferCatalog`, `areaServed`, `knowsAbout`
+- Files: `generate_site.py`, `index.html`, `about.html`, all `project/art/*.html`, `ru/project/art/*.html`
+
+### Services pages (services.html, ru/services.html)
+- Created EN/RU services pages with Service schema (BreadcrumbList + Service + hasOfferCatalog + HowTo + FAQPage)
+- Added Full-Color Interior Art block ($500+)
+- Updated all static page navigation, footer, hreflang JS mapping
+- Added to `generate_site.py` landing_pages, sitemap.xml
+- Payment FAQ: bank transfer, MoneyGram, crypto (USDT, BTC, ETH)
+- CSS: `.service-card`, `.process-step`, `.pricing-table`, `.faq-item`; CTA black color, no underline
+
+---
+
+## Website Changes
+
 ### Pricing Update (index.html, ru/index.html)
 Updated the Pricing block in the About section:
 

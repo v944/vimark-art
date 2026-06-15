@@ -1201,7 +1201,7 @@ def build_lang(lang='en', skip_landing_pages=True):
 """
         return page_content
 
-    def build_art_page(art, proj, review, wip_images, base="../../", prev_art=None, next_art=None):
+    def build_art_page(art, proj, review, wip_images, base="../../", prev_art=None, next_art=None, related_images=None):
         page_lang = 'ru' if lang == 'ru' else 'en'
         art_slug = art.get("art_slug", slugify(captions.get(art["src"], art["name"])))
         art_name = html.escape(get_caption(art["src"], art["name"]))
@@ -1344,6 +1344,20 @@ def build_lang(lang='en', skip_landing_pages=True):
 {wip_slides}
       </div>
     </div>'''
+        related_html = ""
+        if related_images and len(related_images) > 1:
+            related_items = []
+            for ri in related_images:
+                if ri.get("art_slug", "") == art.get("art_slug", ""):
+                    continue
+                ri_slug = ri.get("art_slug", slugify(captions.get(ri["src"], ri["name"])))
+                ri_name = html.escape(get_caption(ri["src"], ri["name"]))
+                ri_thumb = html.escape(base + ri.get("thumb", ri["src"]), quote=True)
+                related_items.append(f'<a href="{ri_slug}.html" class="related-item"><img src="{ri_thumb}" alt="{ri_name}" loading="lazy"><span class="related-name">{ri_name}</span></a>')
+                if len(related_items) >= 6:
+                    break
+            if related_items:
+                related_html = f'<div class="related-works"><h3>Related Works</h3><div class="related-grid">{"".join(related_items)}</div></div>'
         cta_text = t.get('project_cta_text', 'Interested in something similar?')
         cta_btn = t.get('discuss_project', 'Discuss a project')
         # Navigation arrows
@@ -1470,6 +1484,7 @@ def build_lang(lang='en', skip_landing_pages=True):
       </section>
       {review_html}
       {wip_html}
+      {related_html}
       <div class="project-cta">
         <p>{cta_text}</p>
         <a href="{'/ru/contact.html' if page_lang == 'ru' else '/contact.html'}" class="cta-button">{cta_btn}</a>
@@ -2265,7 +2280,7 @@ def build_lang(lang='en', skip_landing_pages=True):
             art_base = "../../../" if base_index else "../../"
             prev_img = proj_images[i-1] if i > 0 else None
             next_img = proj_images[i+1] if i < len(proj_images) - 1 else None
-            page_html = build_art_page(img, proj, review, wip_images, base=art_base, prev_art=prev_img, next_art=next_img)
+            page_html = build_art_page(img, proj, review, wip_images, base=art_base, prev_art=prev_img, next_art=next_img, related_images=proj_images)
             (art_dir / f"{art_slug}.html").write_text(page_html, encoding="utf-8")
             generated_arts += 1
     # Also generate art pages for standalone categories
@@ -2284,7 +2299,7 @@ def build_lang(lang='en', skip_landing_pages=True):
             art_base = "../../../" if base_index else "../../"
             prev_img = cat_images[i-1] if i > 0 else None
             next_img = cat_images[i+1] if i < len(cat_images) - 1 else None
-            page_html = build_art_page(img, proj, review, wip_images, base=art_base, prev_art=prev_img, next_art=next_img)
+            page_html = build_art_page(img, proj, review, wip_images, base=art_base, prev_art=prev_img, next_art=next_img, related_images=cat_images)
             (art_dir / f"{art_slug}.html").write_text(page_html, encoding="utf-8")
             generated_arts += 1
     print(f"Generated {generated_arts} {lang}/project/art pages.")

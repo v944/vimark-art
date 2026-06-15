@@ -289,14 +289,53 @@ BookCover/2026/__0004_Prizraki_2026.jpg = Призраки старого кла
 
 **Зачем:** помогает поисковикам понимать, что страница — это произведение искусства/иллюстрация, с автором, годом, жанром. Улучшает шансы на попадание в «Картинки» и расширенные сниппеты.
 
-#### 4.10.3. Другая микроразметка
+#### 4.10.3. `ImageObject`
+
+Добавлен JSON-LD `ImageObject` на каждую art-страницу (после `VisualArtwork`):
+
+```json
+{
+  "@type": "ImageObject",
+  "name": "1 carib",
+  "author": {"@type": "Person", "name": "Max Mitenkov"},
+  "description": "1 carib — book illustration by Max Mitenkov",
+  "contentUrl": "https://vimark.art/Book Illustrations/Planetes/__0000_1_carib.jpg",
+  "thumbnailUrl": "https://vimark.art/thumbnails/Book Illustrations/Planetes/__0000_1_carib.webp",
+  "datePublished": "2024",
+  "license": "https://vimark.art/privacy.html",
+  "acquireLicensePage": "https://vimark.art/contact.html"
+}
+```
+
+**Зачем:** Специфичный тип для Google Images / Pinterest. contentUrl + thumbnailUrl улучшают показ в поиске по картинкам.
+
+#### 4.10.4. `ProfessionalService`
+
+- `Person` → `["Person", "ProfessionalService"]` — на главной (`index.html`) и `about.html`.
+- Добавлен `hasOfferCatalog` с перечнем услуг (Book Cover, Interior Illustration).
+- Добавлены `areaServed: Worldwide` и расширенный `knowsAbout`.
+
+#### 4.10.5. Другая микроразметка
 
 - `Person` — на главной и в артах (artist).
 - `Service` + `AggregateRating` — на странице отзывов (`/reviews.html`).
 - `CollectionPage` — на `/book-covers.html` и `/visual-stories.html`.
 - `Article` + `CreativeWork` — на кейс-странице.
+- `Service` + `hasOfferCatalog` + `HowTo` + `FAQPage` — на `/services.html`.
 
-### 4.11. Визуальные хлебные крошки
+### 4.11. Дополнительные meta-теги на art-страницах
+
+- `article:published_time` — год создания работы (`YYYY-01-01`)
+- `article:modified_time` — дата последней генерации страницы (ISO 8601)
+- `twitter:site` / `twitter:creator` — `@vimark_art`
+
+### 4.12. Блок «Related Works» на art-страницах
+
+После секции WIP (Process) и перед CTA добавлена сетка до 6 похожих работ из того же проекта. Каждая — thumbnail + название, ссылка на `/project/art/{slug}.html`.
+
+CSS классы: `.related-works`, `.related-grid`, `.related-item`, `.related-name`.
+
+### 4.13. Визуальные хлебные крошки
 
 **Что сделано:** на art-страницах добавлена визуальная навигация:
 ```
@@ -394,7 +433,9 @@ Sitemap обновляется автоматически при запуске 
 ### 6.1. Что уже работает
 
 - Техническое SEO: sitemap, robots, canonical, hreflang, meta robots, headings.
-- Микроразметка: BreadcrumbList, VisualArtwork, Person, Service, AggregateRating.
+- Микроразметка: BreadcrumbList, VisualArtwork, ImageObject, ProfessionalService, Person, Service, AggregateRating, HowTo, FAQPage.
+- Meta-теги: article:published_time, article:modified_time, twitter:site, twitter:creator, Open Graph, Pinterest Rich Pins.
+- Блок «Related Works» на art-страницах (до 6 похожих работ из того же проекта).
 - Контент страниц артов: title, description, alt, хлебные крошки.
 - Sitemap отправлен в Яндекс.Вебмастер, находится в очереди на обработку (1–2 недели).
 
@@ -402,17 +443,23 @@ Sitemap обновляется автоматически при запуске 
 
 1. **Коммерческий контент:**
    - [x] Создать `/services.html` и `/ru/services.html` с перечнем услуг, ценами и этапами работы.
-   - Расширить FAQ коммерческими вопросами.
-2. **Контент страниц проектов:**
-   - Добавить в `projects.ini` более подробные описания задачи, процесса, результата.
-3. **Внешние ссылки:**
-   - Убедиться, что профили Reedsy, Behance, ArtStation, Instagram ссылаются на `vimark.art`.
-   - Получить упоминания в русскоязычных блогах/интервью.
-4. **Яндекс.Вебмастер:**
-   - После обработки sitemap проверить «Индексирование → Страницы в поиске».
-   - Исправить ошибки, если появятся.
-5. **Аналитика:**
-   - Следить за поведенческими факторами (время, глубина, отказы) и конверсиями по настроенным целям.
+   - [ ] Расширить FAQ коммерческими вопросами.
+2. **Микроразметка:**
+   - [x] Добавить `ImageObject` JSON-LD на art-страницы (A.4).
+   - [x] Расширить `Person` → `["Person", "ProfessionalService"]` на главной и about (C.2).
+   - [x] Добавить `article:published_time` / `modified_time` на art-страницы (A.2).
+   - [x] Добавить `twitter:site` / `twitter:creator` на art-страницы (A.3).
+   - [x] Добавить блок «Related Works» на art-страницы (B.3).
+3. **Контент страниц проектов:**
+   - [ ] Добавить в `projects.ini` более подробные описания задачи, процесса, результата.
+4. **Внешние ссылки:**
+   - [ ] Убедиться, что профили Reedsy, Behance, ArtStation, Instagram ссылаются на `vimark.art`.
+   - [ ] Получить упоминания в русскоязычных блогах/интервью.
+5. **Яндекс.Вебмастер:**
+   - [ ] После обработки sitemap проверить «Индексирование → Страницы в поиске».
+   - [ ] Исправить ошибки, если появятся.
+6. **Аналитика:**
+   - [ ] Следить за поведенческими факторами (время, глубина, отказы) и конверсиями по настроенным целям.
 
 ---
 
@@ -437,4 +484,4 @@ git push origin master
 
 ---
 
-*Документ актуален на 2026-06-14. При внесении изменений в SEO-логику необходимо обновлять этот файл.*
+*Документ актуален на 2026-06-15. При внесении изменений в SEO-логику необходимо обновлять этот файл.*
