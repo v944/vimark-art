@@ -614,7 +614,9 @@ def build_lang(lang='en', skip_landing_pages=True):
 
         # Discover subfolders
         subfolders = {}
-        for sub in sorted(entry.iterdir()):
+        # Custom sort order for book-illustrations: Planetes, Creatures, Endymion first
+        book_illustrations_order = {"planetes": 0, "creatures": 1, "endymion": 2}
+        for sub in sorted(entry.iterdir(), key=lambda s: (0 if entry.name == "Book Illustrations" and s.name.lower() in book_illustrations_order else 1, book_illustrations_order.get(s.name.lower(), 999), s.name.lower())):
             if sub.is_dir():
                 sub_imgs = collect_images_from_path(os.path.join(entry.name, sub.name))
                 if sub_imgs:
