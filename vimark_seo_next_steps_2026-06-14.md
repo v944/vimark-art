@@ -616,11 +616,11 @@ Hachette Livre. Заказать обложку — vimark.art.
 6. [ ] Расширить FAQ коммерческими вопросами (D.4)
 
 ### Неделя 2 (структура и rich snippets)
-7. [ ] Добавить `ImageObject` schema на art-страницы (A.4)
+7. [x] Добавить `ImageObject` schema на art-страницы (A.4)
 8. [ ] Добавить `article:published_time` / `modified_time` (A.2)
 9. [ ] Добавить `twitter:site` / `twitter:creator` (A.3)
 10. [ ] Добавить блок «Related Works» на art-страницы (B.3)
-11. [ ] Расширить `Person` → `ProfessionalService` + `makesOffer` (C.2)
+11. [x] Расширить `Person` → `ProfessionalService` + `makesOffer` (C.2)
 12. [x] Создать `/services.html` и `/ru/services.html` (D.1)
 
 ### Неделя 3 (контент и аналитика)

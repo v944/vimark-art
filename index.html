@@ -42,7 +42,7 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Person",
+  "@type": ["Person", "ProfessionalService"],
   "name": "Max Mitenkov",
   "alternateName": "vimark",
   "url": "https://vimark.art/",
@@ -58,6 +58,7 @@
     "Digital Painting",
     "Concept Art"
   ],
+  "areaServed": { "@type": "Place", "name": "Worldwide" },
   "sameAs": [
     "https://reedsy.com/freelancers/maxim-m",
     "https://www.behance.net/vimark",
@@ -65,13 +66,27 @@
     "https://www.deviantart.com/vimark",
     "https://www.artstation.com/vimark"
   ],
-  "makesOffer": {
-    "@type": "Offer",
-    "itemOffered": {
-      "@type": "Service",
-      "name": "Book Cover Illustration",
-      "description": "Custom book cover design and illustration for authors and publishers in sci-fi, dark fantasy, fantasy, horror, and literary fiction genres."
-    }
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Book Cover Services",
+    "itemListElement": [
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Book Cover Illustration",
+          "description": "Custom book cover design and illustration for authors and publishers in sci-fi, dark fantasy, fantasy, horror, and literary fiction genres."
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Book Interior Illustration",
+          "description": "Full-color interior illustrations and spot art for published books."
+        }
+      }
+    ]
   }
 }
 </script>
