@@ -608,8 +608,8 @@ Hachette Livre. Заказать обложку — vimark.art.
 ## Roadmap: порядок выполнения
 
 ### Неделя 1 (быстрый выигрыш)
-1. [ ] Исправить `og:image` на абсолютные URL (A.1 + A.5)
-2. [ ] Обновить Title и Description на коммерческие (E.1)
+1. [x] Исправить `og:image` на абсолютные URL (A.1 + A.5) — уже абсолютные
+2. [x] Обновить Title и Description на коммерческие (E.1) — уже коммерческие
 3. [x] Добавить активный CTA «Get a Free Quote» (B.1) — уже реализовано
 4. [x] Добавить «бар доверия» с логотипами (B.2) — уже реализовано
 5. [x] Добавить `FAQPage` schema на `/faq.html` (C.1)
@@ -624,16 +624,16 @@ Hachette Livre. Заказать обложку — vimark.art.
 12. [x] Создать `/services.html` и `/ru/services.html` (D.1)
 
 ### Неделя 3 (контент и аналитика)
-13. [ ] Создать `/process.html` или секцию на services (D.2)
-14. [ ] Создать `/series-cover-design.html` (D.3)
-15. [ ] Настроить цели в Яндекс.Метрике (F.1)
-16. [ ] Проверить внешние ссылки (F.2)
-17. [ ] Добавить сайт в Bing Webmaster Tools (F.3)
+13. [x] Создать `/process.html` или секцию на services (D.2) — секция есть на services.html
+14. [~] Отложено: `/series-cover-design.html` (D.3)
+15. [x] Настроить цели в Яндекс.Метрике (F.1) — reachGoal в script.js и на страницах
+16. [x] Проверить внешние ссылки (F.2) — Reedsy, Behance, ArtStation, Instagram в сайдбаре
+17. [x] Добавить сайт в Bing Webmaster Tools (F.3) — msvalidate + BingSiteAuth.xml
 
 ### Месяц 2 (производительность)
-18. [ ] Добавить `srcset` + `sizes` для thumbnails (G.1)
-19. [ ] Preconnect к внешним ресурсам (G.2)
-20. [ ] Оптимизировать lazy loading (G.3)
+18. [ ] Добавить `srcset` + `sizes` для thumbnails (G.1) — ❌ не сделано
+19. [x] Preconnect к внешним ресурсам (G.2) — ✅ уже есть
+20. [~] Оптимизировать lazy loading (G.3) — ⚠️ частично: hero eager, галереи lazy, нет eager для первых 4–6
 
 ---
 
@@ -666,5 +666,5 @@ Hachette Livre. Заказать обложку — vimark.art.
 
 ---
 
-> **Последнее обновление:** 2026-06-15  
+> **Последнее обновление:** 2026-06-15 (все пункты проверены)  
 > **Следующий review:** после завершения Фазы A (ориентировочно 2026-06-21)
