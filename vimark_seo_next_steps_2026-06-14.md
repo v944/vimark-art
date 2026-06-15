@@ -621,7 +621,7 @@ Hachette Livre. Заказать обложку — vimark.art.
 9. [ ] Добавить `twitter:site` / `twitter:creator` (A.3)
 10. [ ] Добавить блок «Related Works» на art-страницы (B.3)
 11. [ ] Расширить `Person` → `ProfessionalService` + `makesOffer` (C.2)
-12. [ ] Создать `/services.html` и `/ru/services.html` (D.1)
+12. [x] Создать `/services.html` и `/ru/services.html` (D.1)
 
 ### Неделя 3 (контент и аналитика)
 13. [ ] Создать `/process.html` или секцию на services (D.2)
