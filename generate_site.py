@@ -57,6 +57,7 @@ WEBSITE = ROOT
 CAPTIONS_FILE = WEBSITE / "captions.txt"
 THUMBS_DIR = WEBSITE / "thumbnails"
 THUMB_SIZE = (600, 600)
+THUMB_SMALL = (400, 400)
 THUMB_QUALITY = 85
 PROJECTS_DIR = WEBSITE / "project"
 PINTEREST_DIR = WEBSITE / "pinterest"
@@ -238,39 +239,54 @@ def extract_sort_index(stem):
 
 
 def ensure_thumbnail(original_path):
-    """Generate a WebP thumbnail if it doesn't exist or is outdated."""
+    """Generate WebP thumbnails (600x600 and 400x400) if they don't exist or are outdated."""
     rel = os.path.relpath(original_path, WEBSITE).replace("\\", "/")
-    # Use .webp extension for thumbnails regardless of source format
     thumb_path = (THUMBS_DIR / rel).with_suffix('.webp')
+    thumb_sm_path = (THUMBS_DIR / rel).with_suffix('.sm.webp')
     thumb_rel = os.path.relpath(thumb_path, WEBSITE).replace("\\", "/")
+    thumb_sm_rel = os.path.relpath(thumb_sm_path, WEBSITE).replace("\\", "/")
     if not HAS_PILLOW:
-        return thumb_rel, "", ""
+        return thumb_rel, thumb_sm_rel, "", ""
 
     thumb_path.parent.mkdir(parents=True, exist_ok=True)
 
-    # If thumbnail exists and is newer than original, reuse it
+    # Regenerate only if originals are outdated or missing
+    need_large = True
+    need_small = True
     if thumb_path.exists() and thumb_path.stat().st_mtime >= original_path.stat().st_mtime:
+        need_large = False
+    if thumb_sm_path.exists() and thumb_sm_path.stat().st_mtime >= original_path.stat().st_mtime:
+        need_small = False
+    if not need_large and not need_small:
         try:
             with Image.open(thumb_path) as im:
                 w, h = im.size
-            return thumb_rel, str(w), str(h)
+            return thumb_rel, thumb_sm_rel, str(w), str(h)
         except Exception:
-            pass  # regenerate if corrupted
+            pass
 
     try:
         with Image.open(original_path) as im:
-            # Convert palette/RGBA to RGB for WebP
             if im.mode in ('RGBA', 'P'):
                 im_rgb = im.convert('RGB')
             else:
                 im_rgb = im
-            im_rgb.thumbnail(THUMB_SIZE, Image.LANCZOS)
-            im_rgb.save(thumb_path, "WEBP", quality=THUMB_QUALITY, method=6)
-            w, h = im_rgb.size
-        return thumb_rel, str(w), str(h)
+            if need_large:
+                im_large = im_rgb.copy()
+                im_large.thumbnail(THUMB_SIZE, Image.LANCZOS)
+                im_large.save(thumb_path, "WEBP", quality=THUMB_QUALITY, method=6)
+                w, h = im_large.size
+            else:
+                with Image.open(thumb_path) as im_existing:
+                    w, h = im_existing.size
+            if need_small:
+                im_small = im_rgb.copy()
+                im_small.thumbnail(THUMB_SMALL, Image.LANCZOS)
+                im_small.save(thumb_sm_path, "WEBP", quality=THUMB_QUALITY, method=6)
+        return thumb_rel, thumb_sm_rel, str(w), str(h)
     except Exception as e:
         print(f"  Warning: could not thumbnail {rel}: {e}")
-        return thumb_rel, "", ""
+        return thumb_rel, thumb_sm_rel, "", ""
 
 
 def ensure_pinterest_image(original_path, project_id):
@@ -766,8 +782,9 @@ def build_lang(lang='en', skip_landing_pages=True):
         print(f"Found {len(strong_images)} STRONG image(s) for social preview.")
         if HAS_PILLOW:
             for img in strong_images:
-                thumb_rel, w, h = ensure_thumbnail(img["path"])
+                thumb_rel, thumb_sm_rel, w, h = ensure_thumbnail(img["path"])
                 img["thumb"] = thumb_rel
+                img["thumb_sm"] = thumb_sm_rel
                 img["width"] = w
                 img["height"] = h
     og_strong = random.choice(strong_images) if strong_images else None
@@ -780,8 +797,9 @@ def build_lang(lang='en', skip_landing_pages=True):
         print("Generating thumbnails...")
         THUMBS_DIR.mkdir(exist_ok=True)
         for img in all_items:
-            thumb_rel, w, h = ensure_thumbnail(img["path"])
+            thumb_rel, thumb_sm_rel, w, h = ensure_thumbnail(img["path"])
             img["thumb"] = thumb_rel
+            img["thumb_sm"] = thumb_sm_rel
             img["width"] = w
             img["height"] = h
         print("Thumbnails done.")
@@ -841,6 +859,7 @@ def build_lang(lang='en', skip_landing_pages=True):
                     main = img
                     break
         main_thumb = html.escape(base + main.get("thumb", main["src"]), quote=True)
+        main_thumb_sm = html.escape(base + main.get("thumb_sm", main.get("thumb", main["src"])), quote=True)
         main_src = html.escape(base + main["src"], quote=True)
         main_alt = html.escape(get_alt(main), quote=True)
         thumbs_html = ""
@@ -855,7 +874,7 @@ def build_lang(lang='en', skip_landing_pages=True):
         count_label = t.get("artworks", "artworks")
         return f'''<a href="{base}project/{key}.html" class="project-card">
   <div class="project-card-preview">
-    <img src="{main_thumb}" data-full="{main_src}" alt="{main_alt}" class="project-card-main" loading="lazy">
+    <img src="{main_thumb}" srcset="{main_thumb_sm} 400w, {main_thumb} 600w" sizes="(max-width: 600px) 50vw, 300px" data-full="{main_src}" alt="{main_alt}" class="project-card-main" loading="lazy">
     <div class="project-card-thumbs">{thumbs_html}</div>
     <div class="project-card-overlay">
       <span class="overlay-title">{html.escape(label)}</span>
@@ -895,6 +914,7 @@ def build_lang(lang='en', skip_landing_pages=True):
         for img in items:
             src = html.escape(base + img["src"], quote=True)
             thumb = html.escape(base + img.get("thumb", img["src"]), quote=True)
+            thumb_sm = html.escape(base + img.get("thumb_sm", img.get("thumb", img["src"])), quote=True)
             alt = html.escape(get_alt(img), quote=True)
             year = img.get("year", "")
             year_meta = f'<meta itemprop="dateCreated" content="{year}">' if year else ''
@@ -902,7 +922,7 @@ def build_lang(lang='en', skip_landing_pages=True):
             h = img.get("height", "")
             dim_attr = f' width="{w}" height="{h}"' if w and h else ''
             lines.append(f'  <figure class="gallery-item" itemscope itemtype="https://schema.org/VisualArtwork">')
-            lines.append(f'    <img src="{thumb}" data-full="{src}" alt="{alt}" loading="lazy"{dim_attr} itemprop="image">')
+            lines.append(f'    <img src="{thumb}" srcset="{thumb_sm} 400w, {thumb} 600w" sizes="(max-width: 600px) 90vw, 300px" data-full="{src}" alt="{alt}" loading="lazy"{dim_attr} itemprop="image">')
             lines.append(f'    {year_meta}')
             lines.append(f'    <figcaption itemprop="name">{alt}</figcaption>')
             lines.append('  </figure>')
@@ -914,6 +934,7 @@ def build_lang(lang='en', skip_landing_pages=True):
         for img in items:
             src = html.escape(base + img["src"], quote=True)
             thumb = html.escape(base + img.get("thumb", img["src"]), quote=True)
+            thumb_sm = html.escape(base + img.get("thumb_sm", img.get("thumb", img["src"])), quote=True)
             alt = html.escape(get_alt(img), quote=True)
             year = img.get("year", "")
             year_meta = f'<meta itemprop="dateCreated" content="{year}">' if year else ''
@@ -923,7 +944,7 @@ def build_lang(lang='en', skip_landing_pages=True):
             art_slug = img.get("art_slug", slugify(captions.get(img["src"], img["name"])))
             art_href = f"art/{art_slug}.html"
             lines.append(f'  <a href="{art_href}" class="gallery-item" itemscope itemtype="https://schema.org/VisualArtwork">')
-            lines.append(f'    <img src="{thumb}" alt="{alt}" loading="lazy"{dim_attr} itemprop="image">')
+            lines.append(f'    <img src="{thumb}" srcset="{thumb_sm} 400w, {thumb} 600w" sizes="(max-width: 600px) 90vw, 300px" alt="{alt}" loading="lazy"{dim_attr} itemprop="image">')
             lines.append(f'    {year_meta}')
             lines.append(f'    <figcaption itemprop="name">{alt}</figcaption>')
             lines.append('  </a>')
@@ -1206,6 +1227,8 @@ def build_lang(lang='en', skip_landing_pages=True):
         art_slug = art.get("art_slug", slugify(captions.get(art["src"], art["name"])))
         art_name = html.escape(get_caption(art["src"], art["name"]))
         art_src = html.escape(base + art["src"], quote=True)
+        art_thumb = html.escape(base + art.get("thumb", art["src"]), quote=True)
+        art_thumb_sm = html.escape(base + art.get("thumb_sm", art.get("thumb", art["src"])), quote=True)
         hero_name = html.escape(t.get('hero_name', 'Max Mitenkov'))
         year = html.escape(proj.get("year", ""))
         title = html.escape(proj.get("title", ""))
@@ -1353,7 +1376,8 @@ def build_lang(lang='en', skip_landing_pages=True):
                 ri_slug = ri.get("art_slug", slugify(captions.get(ri["src"], ri["name"])))
                 ri_name = html.escape(get_caption(ri["src"], ri["name"]))
                 ri_thumb = html.escape(base + ri.get("thumb", ri["src"]), quote=True)
-                related_items.append(f'<a href="{ri_slug}.html" class="related-item"><img src="{ri_thumb}" alt="{ri_name}" loading="lazy"><span class="related-name">{ri_name}</span></a>')
+                ri_thumb_sm = html.escape(base + ri.get("thumb_sm", ri.get("thumb", ri["src"])), quote=True)
+                related_items.append(f'<a href="{ri_slug}.html" class="related-item"><img src="{ri_thumb}" srcset="{ri_thumb_sm} 400w, {ri_thumb} 600w" sizes="140px" alt="{ri_name}" loading="lazy"><span class="related-name">{ri_name}</span></a>')
                 if len(related_items) >= 6:
                     break
             if related_items:
@@ -1479,7 +1503,7 @@ def build_lang(lang='en', skip_landing_pages=True):
       </div>
       <section class="art-hero">
         {prev_link}
-        <img src="{art_src}" alt="{html.escape(get_alt(art), quote=True)}" loading="eager" fetchpriority="high" data-full="{art_src}">
+        <img src="{art_thumb}" srcset="{art_thumb_sm} 400w, {art_thumb} 600w" sizes="(max-width: 600px) 100vw, 600px" alt="{html.escape(get_alt(art), quote=True)}" loading="eager" fetchpriority="high" data-full="{art_src}">
         {next_link}
       </section>
       {review_html}
@@ -1912,9 +1936,10 @@ def build_lang(lang='en', skip_landing_pages=True):
     about_gallery_items = ""
     for img in about_gallery_imgs:
         img_src = html.escape(base_index + img.get("thumb", img["src"]), quote=True)
+        img_sm = html.escape(base_index + img.get("thumb_sm", img.get("thumb", img["src"])), quote=True)
         img_full = html.escape(base_index + img["src"], quote=True)
         img_alt = html.escape(get_alt(img), quote=True)
-        about_gallery_items += f'<figure class="gallery-item"><img src="{img_src}" data-full="{img_full}" alt="{img_alt}" loading="lazy"><figcaption>{img_alt}</figcaption></figure>'
+        about_gallery_items += f'<figure class="gallery-item"><img src="{img_src}" srcset="{img_sm} 400w, {img_src} 600w" sizes="(max-width: 600px) 90vw, 300px" data-full="{img_full}" alt="{img_alt}" loading="lazy"><figcaption>{img_alt}</figcaption></figure>'
 
     about_gallery_html = f'''<div class="about-section about-gallery">
               <h2>{t.get('portfolio', 'Portfolio')}</h2>

@@ -456,7 +456,7 @@ Sitemap обновляется автоматически при запуске 
    - [x] Title/Description — коммерческие (E.1)
    - [x] Preconnect к внешним ресурсам (G.2)
    - [~] Lazy loading — частично: hero eager, галереи lazy (G.3)
-   - [ ] `srcset` + `sizes` для thumbnails (G.1)
+   - [x] `srcset` + `sizes` для thumbnails (G.1) — 400w + 600w, .sm.webp
 4. **Внешние ссылки:**
    - [x] Убедиться, что профили Reedsy, Behance, ArtStation, Instagram ссылаются на `vimark.art`.
    - [x] Bing Webmaster Tools — msvalidate + BingSiteAuth.xml
