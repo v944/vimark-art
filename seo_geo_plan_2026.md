@@ -50,8 +50,8 @@
 |---|--------|--------|----------|
 | 14 | **Regional hreflang** | ⬜ | `en-us`, `en-gb`, `ru-ru` или явная цель в GSC |
 | 15 | **Локальные ключевые в RU** | ⬜ | Добавить в Title/Description RU-страниц: «Иллюстратор обложек удаленно» |
-| 16 | **Security headers (vercel.json)** | ❌ | CSP, HSTS, X-Frame-Options, X-Content-Type-Options, Referrer-Policy |
-| 17 | **PWA manifest.json** | ❌ | `manifest.json` + `<link rel="manifest">` |
+| 16 | **Security headers (vercel.json)** | ✅ | X-Content-Type-Options, X-Frame-Options, Referrer-Policy, HSTS, Permissions-Policy |
+| 17 | **PWA manifest.json** | ✅ | `manifest.json`, icon-192.png, icon-512.png, `<link rel="manifest">` на всех страницах |
 
 ---
 
@@ -102,8 +102,8 @@
 - [ ] 13. Доп. кейсы (HarperCollins, self-pub, horror)
 - [ ] 14. Regional hreflang (или цель в GSC)
 - [ ] 15. Локальные ключевые в RU Title/Description
-- [ ] 16. Security headers в vercel.json
-- [ ] 17. PWA manifest.json
+- [x] 16. Security headers в vercel.json
+- [x] 17. PWA manifest.json
 
 ### P2 — Параллельно
 
