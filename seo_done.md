@@ -53,6 +53,7 @@
 | `Referrer-Policy: strict-origin-when-cross-origin` | Все ответы (vercel.json) | ✅ |
 | `Strict-Transport-Security: max-age=63072000; includeSubDomains; preload` | Все ответы (vercel.json) | ✅ |
 | `Permissions-Policy` (camera=(), microphone=(), geolocation=(), interest-cohort=()) | Все ответы (vercel.json) | ✅ |
+| `Content-Security-Policy` (default-src, script-src, style-src, img-src, connect-src, form-action, font-src, frame-src, object-src, base-uri) | Все ответы (vercel.json) | ✅ |
 | `X-Robots-Tag: noindex` (living-illustrations) | vercel.json | ✅ |
 
 ---
