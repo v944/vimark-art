@@ -50,7 +50,7 @@
 |---|--------|--------|----------|
 | 14 | **Regional hreflang** | ⬜ | `en-us`, `en-gb`, `ru-ru` или явная цель в GSC |
 | 15 | **Локальные ключевые в RU** | ⬜ | Добавить в Title/Description RU-страниц: «Иллюстратор обложек удаленно» |
-| 16 | **Security headers (vercel.json)** | ✅ | X-Content-Type-Options, X-Frame-Options, Referrer-Policy, HSTS, Permissions-Policy |
+| 16 | **Security headers (vercel.json)** | ✅ | X-Content-Type-Options, X-Frame-Options, Referrer-Policy, HSTS, Permissions-Policy, CSP |
 | 17 | **PWA manifest.json** | ✅ | `manifest.json`, icon-192.png, icon-512.png, `<link rel="manifest">` на всех страницах |
 
 ---
