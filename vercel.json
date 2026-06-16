@@ -38,7 +38,9 @@
     { "source": "/ru/project/art/planet-city.html", "destination": "/ru/project/art/13-planet-city.html", "permanent": true },
     { "source": "/ru/project/art/tor.html", "destination": "/ru/project/art/14-tor.html", "permanent": true },
     { "source": "/ru/project/art/venera.html", "destination": "/ru/project/art/6-venera.html", "permanent": true },
-    { "source": "/ru/project/art/virtual.html", "destination": "/ru/project/art/15-virtual.html", "permanent": true }
+    { "source": "/ru/project/art/virtual.html", "destination": "/ru/project/art/15-virtual.html", "permanent": true },
+    { "source": "/Blog/:path*", "destination": "/blog/:path*", "permanent": true },
+    { "source": "/ru/Blog/:path*", "destination": "/ru/blog/:path*", "permanent": true }
   ],
   "headers": [
     {
