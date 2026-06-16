@@ -326,7 +326,7 @@ def build_index_html(lang, articles, base):
     """Build blog index page listing all articles."""
     is_ru = lang == 'ru'
     title = 'Blog' if not is_ru else 'Блог'
-    desc = 'Articles about book cover design, illustration process, and tips for authors' if not is_ru else 'Статьи о дизайне обложек, процессе иллюстрации и советы авторам'
+    desc = 'Articles about book cover design, illustration process, and tips for authors' if not is_ru else 'Статьи иллюстратора о дизайне обложек книг, процессе создания и советы авторам фэнтези и sci-fi'
     
     page_url = f"{SITE_URL}/{lang}/blog/" if is_ru else f"{SITE_URL}/blog/"
     hreflang_en = f"{SITE_URL}/blog/"

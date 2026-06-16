@@ -121,6 +121,7 @@
 | «Comic» → «Visual Stories» | ✅ |
 | «Living Illustrations» скрыт с главной (noindex) | ✅ |
 | Навигация EN + RU: Book Covers, Book Illustrations, Case Studies, Services, Visual Stories, About, Contact, Reviews, FAQ, **Blog** | ✅ |
+| RU Title/Description с локальными ключевыми («иллюстратор обложек», «художник обложек на заказ», «заказать обложку книги») | ru/index, about, services, contact | ✅ |
 | Пользовательская сортировка подпапок book-illustrations (Planetes → Creatures → Endymion → ...) | ✅ |
 | `display_titles.txt` для правки названий без смены URL | ✅ |
 
