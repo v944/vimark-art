@@ -1123,6 +1123,7 @@ def build_lang(lang='en', skip_landing_pages=True):
 <link rel="stylesheet" href="{base}style.css">
 <link rel="stylesheet" href="{base}vimark_typography_system.css">
 <link rel="icon" type="image/png" href="{base}vimark_logo.png">
+<link rel="manifest" href="{base}manifest.json">
 
 <!-- Open Graph -->
 <meta property="og:type" content="website">
@@ -1430,6 +1431,7 @@ def build_lang(lang='en', skip_landing_pages=True):
 <link rel="stylesheet" href="{base}style.css">
 <link rel="stylesheet" href="{base}vimark_typography_system.css">
 <link rel="icon" type="image/png" href="{base}vimark_logo.png">
+<link rel="manifest" href="{base}manifest.json">
 <!-- Open Graph -->
 <meta property="og:type" content="article">
 <meta property="og:url" content="{page_canonical}">
@@ -1614,6 +1616,7 @@ def build_lang(lang='en', skip_landing_pages=True):
 <link rel="stylesheet" href="{base}style.css">
 <link rel="stylesheet" href="{base}vimark_typography_system.css">
 <link rel="icon" type="image/png" href="{base}vimark_logo.png">
+<link rel="manifest" href="{base}manifest.json">
 
 <!-- Open Graph -->
 <meta property="og:type" content="website">
@@ -1804,6 +1807,7 @@ def build_lang(lang='en', skip_landing_pages=True):
 <link rel="stylesheet" href="{base}style.css">
 <link rel="stylesheet" href="{base}vimark_typography_system.css">
 <link rel="icon" type="image/png" href="{base}vimark_logo.png">
+<link rel="manifest" href="{base}manifest.json">
 
 <!-- Open Graph -->
 <meta property="og:type" content="website">
@@ -2082,6 +2086,7 @@ def build_lang(lang='en', skip_landing_pages=True):
 <link rel="stylesheet" href="{base_index}style.css">
 <link rel="stylesheet" href="{base_index}vimark_typography_system.css">
 <link rel="icon" type="image/png" href="{base_index}vimark_logo.png">
+<link rel="manifest" href="{base}manifest.json">
 
 <!-- Open Graph / Facebook -->
 <meta property="og:type" content="website">
