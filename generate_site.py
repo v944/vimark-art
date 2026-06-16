@@ -913,7 +913,7 @@ def build_lang(lang='en', skip_landing_pages=True):
 
     def gallery_html(items, base=""):
         lines = ['<div class="gallery-grid">']
-        for img in items:
+        for idx, img in enumerate(items):
             src = html.escape(base + img["src"], quote=True)
             thumb = html.escape(base + img.get("thumb", img["src"]), quote=True)
             thumb_sm = html.escape(base + img.get("thumb_sm", img.get("thumb", img["src"])), quote=True)
@@ -924,7 +924,8 @@ def build_lang(lang='en', skip_landing_pages=True):
             h = img.get("height", "")
             dim_attr = f' width="{w}" height="{h}"' if w and h else ''
             lines.append(f'  <figure class="gallery-item" itemscope itemtype="https://schema.org/VisualArtwork">')
-            lines.append(f'    <img src="{thumb}" srcset="{thumb_sm} 400w, {thumb} 600w" sizes="(max-width: 600px) 90vw, 300px" data-full="{src}" alt="{alt}" loading="lazy"{dim_attr} itemprop="image">')
+            loading = "eager" if idx < 4 else "lazy"
+            lines.append(f'    <img src="{thumb}" srcset="{thumb_sm} 400w, {thumb} 600w" sizes="(max-width: 600px) 90vw, 300px" data-full="{src}" alt="{alt}" loading="{loading}"{dim_attr} itemprop="image">')
             lines.append(f'    {year_meta}')
             lines.append(f'    <figcaption itemprop="name">{alt}</figcaption>')
             lines.append('  </figure>')
@@ -933,7 +934,7 @@ def build_lang(lang='en', skip_landing_pages=True):
 
     def project_gallery_html(items, base=""):
         lines = ['<div class="gallery-grid">']
-        for img in items:
+        for idx, img in enumerate(items):
             src = html.escape(base + img["src"], quote=True)
             thumb = html.escape(base + img.get("thumb", img["src"]), quote=True)
             thumb_sm = html.escape(base + img.get("thumb_sm", img.get("thumb", img["src"])), quote=True)
@@ -946,7 +947,8 @@ def build_lang(lang='en', skip_landing_pages=True):
             art_slug = img.get("art_slug", slugify(captions.get(img["src"], img["name"])))
             art_href = f"art/{art_slug}.html"
             lines.append(f'  <a href="{art_href}" class="gallery-item" itemscope itemtype="https://schema.org/VisualArtwork">')
-            lines.append(f'    <img src="{thumb}" srcset="{thumb_sm} 400w, {thumb} 600w" sizes="(max-width: 600px) 90vw, 300px" alt="{alt}" loading="lazy"{dim_attr} itemprop="image">')
+            loading = "eager" if idx < 4 else "lazy"
+            lines.append(f'    <img src="{thumb}" srcset="{thumb_sm} 400w, {thumb} 600w" sizes="(max-width: 600px) 90vw, 300px" alt="{alt}" loading="{loading}"{dim_attr} itemprop="image">')
             lines.append(f'    {year_meta}')
             lines.append(f'    <figcaption itemprop="name">{alt}</figcaption>')
             lines.append('  </a>')
@@ -1291,7 +1293,9 @@ def build_lang(lang='en', skip_landing_pages=True):
         }, ensure_ascii=False)
         img_full_url = f"https://vimark.art/{html.escape(art['src'].lstrip('/'), quote=True)}"
         thumb_url = f"https://vimark.art/{art['thumb'].lstrip('/')}" if art.get('thumb') else img_full_url
-        image_object_json = json.dumps({
+        img_w = art.get("width")
+        img_h = art.get("height")
+        image_object = {
             "@context": "https://schema.org",
             "@type": "ImageObject",
             "name": art_name,
@@ -1308,7 +1312,11 @@ def build_lang(lang='en', skip_landing_pages=True):
             "acquireLicensePage": "https://vimark.art/contact.html",
             "creditText": f"\u00a9 {hero_name}",
             "copyrightNotice": f"\u00a9 {year or datetime.date.today().year} {hero_name}. All rights reserved."
-        }, ensure_ascii=False)
+        }
+        if img_w and img_h:
+            image_object["width"] = {"@type": "QuantitativeValue", "value": int(img_w)}
+            image_object["height"] = {"@type": "QuantitativeValue", "value": int(img_h)}
+        image_object_json = json.dumps(image_object, ensure_ascii=False)
         social_html_project = social_html.replace('src="behance.png"', f'src="{base}behance.png"').replace('src="deviantart.png"', f'src="{base}deviantart.png"')
         cta_href = '/ru/contact.html' if page_lang == 'ru' else '/contact.html'
         cta_label = 'Обсудить проект' if page_lang == 'ru' else 'Get a Free Quote'
@@ -2094,7 +2102,49 @@ def build_lang(lang='en', skip_landing_pages=True):
 <meta property="twitter:site" content="{twitter_handle}">
 <meta property="twitter:creator" content="{twitter_handle}">
 
-<!-- Schema.org -->
+<!-- Schema.org WebSite -->
+<script type="application/ld+json">
+{{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "vimark — Max Mitenkov",
+  "url": "https://vimark.art",
+  "potentialAction": {{
+    "@type": "SearchAction",
+    "target": {{
+      "@type": "EntryPoint",
+      "urlTemplate": "https://vimark.art/?search={{search_term_string}}"
+    }},
+    "query-input": "required name=search_term_string"
+  }}
+}}
+</script>
+
+<!-- Schema.org Organization -->
+<script type="application/ld+json">
+{{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "vimark",
+  "url": "https://vimark.art",
+  "logo": "https://vimark.art/vimark_logo.png",
+  "sameAs": [
+    "https://www.reedsy.com/vimark",
+    "https://www.behance.net/vimark",
+    "https://www.artstation.com/vimark",
+    "https://www.instagram.com/vimark_art/",
+    "https://www.deviantart.com/vimark",
+    "https://www.facebook.com/maks.vimark/"
+  ],
+  "founder": {{
+    "@type": "Person",
+    "name": "{hero_name}",
+    "url": "https://vimark.art/about.html"
+  }}
+}}
+</script>
+
+<!-- Schema.org Person + ProfessionalService -->
 <script type="application/ld+json">
 {{
   "@context": "https://schema.org",
@@ -2113,7 +2163,15 @@ def build_lang(lang='en', skip_landing_pages=True):
     "https://www.facebook.com/maks.vimark/"
   ],
   "knowsAbout": ["Book Cover Design", "Digital Illustration", "Sci-Fi Art", "Fantasy Art", "Horror Illustration", "Publishing"],
-  "areaServed": {{ "@type": "Place", "name": "Worldwide" }},
+  "areaServed": [
+    {{ "@type": "Country", "name": "United States" }},
+    {{ "@type": "Country", "name": "United Kingdom" }},
+    {{ "@type": "Country", "name": "Canada" }},
+    {{ "@type": "Country", "name": "Australia" }},
+    {{ "@type": "Country", "name": "Russia" }},
+    {{ "@type": "Country", "name": "Germany" }},
+    {{ "@type": "Country", "name": "France" }}
+  ],
   "hasOfferCatalog": {{
     "@type": "OfferCatalog",
     "name": "Book Cover Services",

@@ -8,11 +8,11 @@
 
 | # | Задача | Статус | Описание |
 |---|--------|--------|----------|
-| 1 | **WebSite + SearchAction schema** | ❌ | Добавить в `<head>` index.html (EN + RU) и generate_site.py |
-| 2 | **Organization schema** | ⬜ | Отдельная `Organization` на index.html, about.html (сейчас есть только на case-studies) |
-| 3 | **ImageObject width/height** | ❌ | Добавить `width`/`height` в ImageObject JSON-LD (generate_site.py:1294) |
-| 4 | **areaServed: Worldwide → список стран** | ❌ | Заменить `"Worldwide"` на массив `Country` (US, UK, CA, AU, RU, DE, FR) |
-| 5 | **Eager loading: первые 4–6 галереи** | ⬜ | Сейчас все thumbs `loading="lazy"`. Нужен счётчик: первые 4 `eager`, остальные `lazy` |
+| 1 | **WebSite + SearchAction schema** | ✅ | index.html, about.html, ru/about.html, generate_site.py |
+| 2 | **Organization schema** | ✅ | Отдельная `Organization` на index.html, about.html, ru/about.html, generate_site.py |
+| 3 | **ImageObject width/height** | ✅ | `QuantitativeValue` в ImageObject JSON-LD (generate_site.py) |
+| 4 | **areaServed: Worldwide → список стран** | ✅ | 7 стран (US, UK, CA, AU, RU, DE, FR) |
+| 5 | **Eager loading: первые 4 галереи** | ✅ | Счётчик в gallery_html + project_gallery_html; первые 4 `eager`, остальные `lazy` |
 
 ✅ **Уже реализовано:** hero-изображения (`eager` + `fetchpriority="high"`), srcset/sizes на всех thumbnails, Related Works, lazy loading на всех не-hero.
 
@@ -80,11 +80,11 @@
 
 ### P0 — Сделать сейчас
 
-- [ ] 1. WebSite + SearchAction schema (index.html, about.html, generate_site.py)
-- [ ] 2. Organization schema (index.html, about.html)
-- [ ] 3. ImageObject width/height (generate_site.py)
-- [ ] 4. areaServed: Worldwide → [US, UK, CA, AU, RU, DE, FR]
-- [ ] 5. Eager loading: первые 4 изображения галереи, остальные lazy
+- [x] 1. WebSite + SearchAction schema (index.html, about.html, generate_site.py)
+- [x] 2. Organization schema (index.html, about.html)
+- [x] 3. ImageObject width/height (generate_site.py)
+- [x] 4. areaServed: Worldwide → [US, UK, CA, AU, RU, DE, FR]
+- [x] 5. Eager loading: первые 4 изображения галереи, остальные lazy
 - [ ] 6. Структура `/blog/` и `/ru/blog/`
 - [ ] 7. 5 статей EN + 5 RU (первая партия)
 - [ ] 8. Детализировать кейс Hoëbeke

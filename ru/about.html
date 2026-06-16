@@ -35,11 +35,53 @@
 <meta property="twitter:site" content="@vimark_art">
 <meta property="twitter:creator" content="@vimark_art">
 
-<!-- Schema.org Person -->
+<!-- Schema.org WebSite -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Person",
+  "@type": "WebSite",
+  "name": "vimark — Max Mitenkov",
+  "url": "https://vimark.art",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": {
+      "@type": "EntryPoint",
+      "urlTemplate": "https://vimark.art/?search={search_term_string}"
+    },
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+
+<!-- Schema.org Organization -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "vimark",
+  "url": "https://vimark.art",
+  "logo": "https://vimark.art/vimark_logo.png",
+  "sameAs": [
+    "https://www.reedsy.com/vimark",
+    "https://www.behance.net/vimark",
+    "https://www.instagram.com/vimark_art",
+    "https://www.pinterest.com/vimark",
+    "https://vimark.deviantart.com",
+    "https://www.artstation.com/vimark"
+  ],
+  "founder": {
+    "@type": "Person",
+    "name": "Max Mitenkov",
+    "url": "https://vimark.art/about.html"
+  }
+}
+</script>
+
+<!-- Schema.org Person + ProfessionalService -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": ["Person", "ProfessionalService"],
   "@id": "https://vimark.art/ru/about.html#person",
   "name": "Максим Митенков",
   "alternateName": ["vimark", "Max Mitenkov"],
@@ -56,6 +98,15 @@
     "Цифровая живопись",
     "Концепт-арт"
   ],
+  "areaServed": [
+    { "@type": "Country", "name": "United States" },
+    { "@type": "Country", "name": "United Kingdom" },
+    { "@type": "Country", "name": "Canada" },
+    { "@type": "Country", "name": "Australia" },
+    { "@type": "Country", "name": "Russia" },
+    { "@type": "Country", "name": "Germany" },
+    { "@type": "Country", "name": "France" }
+  ],
   "sameAs": [
     "https://www.reedsy.com/vimark",
     "https://www.behance.net/vimark",
@@ -64,12 +115,35 @@
     "https://vimark.deviantart.com",
     "https://www.artstation.com/vimark"
   ],
-  "makesOffer": {
-    "@type": "Offer",
-    "itemOffered": {
-      "@type": "Service",
-      "name": "Иллюстрация книжных обложек",
-      "description": "Индивидуальный дизайн и иллюстрация обложек для авторов и издательств в жанрах sci-fi, фэнтези, хоррор и литературная проза."
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Услуги по оформлению обложек",
+    "itemListElement": [
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Иллюстрация книжных обложек",
+          "description": "Индивидуальный дизайн и иллюстрация обложек для авторов и издательств в жанрах sci-fi, фэнтези, хоррор и литературная проза."
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Интерьерные иллюстрации",
+          "description": "Полноцветные внутренние иллюстрации, заголовки глав и элементы оформления для издаваемых книг."
+        }
+      }
+    ]
+  },
+  "workExample": [
+    {
+      "@type": "CreativeWork",
+      "name": "Pulse",
+      "author": { "@type": "Person", "name": "Патрик Карман" },
+      "publisher": { "@type": "Organization", "name": "HarperCollins" },
+      "description": "Обложка для трилогии YA научной фантастики"
     }
   },
   "workExample": [
