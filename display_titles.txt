@@ -1,7 +1,35 @@
 [en]
 BookCover/2026/__0004_Prizraki_2026.jpg = The ghosts of the old cemetery
 BookCover/2025/__0002_Layer 9 copy 2.jpg = Soliton
+Book Illustrations/Planetes/__0000_1_carib.jpg = Caribbean islands
+Book Illustrations/Planetes/__0001_2_Destroed_earth.jpg = Destroed earth
+Book Illustrations/Planetes/__0002_3_moon_city.jpg = Moon city
+Book Illustrations/Planetes/__0003_4_mars_1.jpg = Exploration of Mars
+Book Illustrations/Planetes/__0004_5_Mars_Terraformed.jpg = Mars Terraformed
+Book Illustrations/Planetes/__0005_6_Venera.jpg = Venus
+Book Illustrations/Planetes/__0006_7_io.jpg = Mining on IO
+Book Illustrations/Planetes/__0007_8_Black_hole.jpg = Black hole
+Book Illustrations/Planetes/__0008_9_desert_bazar.jpg = The deserted bazaar
+Book Illustrations/Planetes/__0009_11_icy_fight.jpg = The ice fight
+Book Illustrations/Planetes/__0010_12_ocean_play.jpg = An ocean game
+Book Illustrations/Planetes/__0011_13_Planet_City.jpg = Planet City
+Book Illustrations/Planetes/__0012_14_TOR.jpg = Toroid
+Book Illustrations/Planetes/__0013_15_virtual.jpg = Virtual
 
 [ru]
 BookCover/2026/__0004_Prizraki_2026.jpg = Призраки старого кладбища
 BookCover/2025/__0002_Layer 9 copy 2.jpg = Soliton
+Book Illustrations/Planetes/__0000_1_carib.jpg = Карибы
+Book Illustrations/Planetes/__0001_2_Destroed_earth.jpg = Разрушенная земля
+Book Illustrations/Planetes/__0002_3_moon_city.jpg = Лунный город
+Book Illustrations/Planetes/__0003_4_mars_1.jpg = Исследование Марса
+Book Illustrations/Planetes/__0004_5_Mars_Terraformed.jpg = Терраформированный Марс
+Book Illustrations/Planetes/__0005_6_Venera.jpg = Венера
+Book Illustrations/Planetes/__0006_7_io.jpg = Добыча на ИО
+Book Illustrations/Planetes/__0007_8_Black_hole.jpg = Черная дыра
+Book Illustrations/Planetes/__0008_9_desert_bazar.jpg = Пустынный базар
+Book Illustrations/Planetes/__0009_11_icy_fight.jpg = Ледовое побоище
+Book Illustrations/Planetes/__0010_12_ocean_play.jpg = Океанская игра
+Book Illustrations/Planetes/__0011_13_Planet_City.jpg = Планета-Город
+Book Illustrations/Planetes/__0012_14_TOR.jpg = База Тороид
+Book Illustrations/Planetes/__0013_15_virtual.jpg = Виртуальное измерение
