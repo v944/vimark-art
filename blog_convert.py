@@ -505,7 +505,7 @@ def build_index_html(lang, articles, base):
 
 
 def main():
-    blog_dir = 'D:/Concept_work/Vimark_art/Blog'
+    blog_dir = 'D:/Concept_work/Vimark_art/blog'
     out_en = 'D:/Concept_work/Vimark_art/blog'
     out_ru = 'D:/Concept_work/Vimark_art/ru/blog'
     
