@@ -38,7 +38,48 @@
 <meta property="twitter:site" content="@vimark_art">
 <meta property="twitter:creator" content="@vimark_art">
 
-<!-- Schema.org -->
+<!-- Schema.org WebSite -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "vimark — Max Mitenkov",
+  "url": "https://vimark.art",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": {
+      "@type": "EntryPoint",
+      "urlTemplate": "https://vimark.art/?search={search_term_string}"
+    },
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+
+<!-- Schema.org Organization -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "vimark",
+  "url": "https://vimark.art",
+  "logo": "https://vimark.art/vimark_logo.png",
+  "sameAs": [
+    "https://reedsy.com/freelancers/maxim-m",
+    "https://www.behance.net/vimark",
+    "https://www.instagram.com/vimark_art/",
+    "https://www.deviantart.com/vimark",
+    "https://www.artstation.com/vimark"
+  ],
+  "founder": {
+    "@type": "Person",
+    "name": "Max Mitenkov",
+    "url": "https://vimark.art/about.html"
+  }
+}
+</script>
+
+<!-- Schema.org Person + ProfessionalService -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -58,7 +99,15 @@
     "Digital Painting",
     "Concept Art"
   ],
-  "areaServed": { "@type": "Place", "name": "Worldwide" },
+  "areaServed": [
+    { "@type": "Country", "name": "United States" },
+    { "@type": "Country", "name": "United Kingdom" },
+    { "@type": "Country", "name": "Canada" },
+    { "@type": "Country", "name": "Australia" },
+    { "@type": "Country", "name": "Russia" },
+    { "@type": "Country", "name": "Germany" },
+    { "@type": "Country", "name": "France" }
+  ],
   "sameAs": [
     "https://reedsy.com/freelancers/maxim-m",
     "https://www.behance.net/vimark",

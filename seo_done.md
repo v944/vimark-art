@@ -9,14 +9,16 @@
 | Что | Где | Статус |
 |-----|-----|--------|
 | `["Person", "ProfessionalService"]` | index.html, about.html, services.html, generate_site.py (все project/art) | ✅ |
-| `hasOfferCatalog` (2 услуги) | index.html, about.html, generate_site.py | ✅ |
-| `knowsAbout` (7 тем) | index.html, about.html, generate_site.py | ✅ |
-| `sameAs` (Behance, Instagram, DeviantArt, ArtStation, Reedsy) | index.html, about.html, generate_site.py | ✅ |
-| `ImageObject` (name, author, description, contentUrl, thumbnailUrl, datePublished, license, acquireLicensePage, creditText, copyrightNotice) | Все art-страницы (192 en + 192 ru) | ✅ |
+| `WebSite` + `SearchAction` | index.html, about.html, ru/about.html, generate_site.py (все art-страницы) | ✅ |
+| `Organization` (отдельная, с founder) | index.html, about.html, ru/about.html, generate_site.py (все art-страницы) | ✅ |
+| `hasOfferCatalog` (2–3 услуги) | index.html, about.html, ru/about.html, generate_site.py | ✅ |
+| `knowsAbout` (6–7 тем) | index.html, about.html, ru/about.html, generate_site.py | ✅ |
+| `sameAs` (Behance, Instagram, DeviantArt, ArtStation, Reedsy, Pinterest) | index.html, about.html, ru/about.html, generate_site.py | ✅ |
+| `ImageObject` (name, author, description, contentUrl, thumbnailUrl, datePublished, license, acquireLicensePage, creditText, copyrightNotice, **width, height**) | Все art-страницы (192 en + 192 ru) | ✅ |
 | `BreadcrumbList` | Все страницы | ✅ |
 | `FAQPage` | faq.html, ru/faq.html | ✅ |
 | `Article` | about.html, case-studies/hoebeke-sci-fi-series.html | ✅ |
-| `Organization` | case-studies/hoebeke-sci-fi-series.html | ✅ (только там) |
+| `areaServed: Country[]` (US, UK, CA, AU, RU, DE, FR) | index.html, about.html, ru/about.html, generate_site.py | ✅ |
 
 ---
 
@@ -54,6 +56,7 @@
 | Что | Статус |
 |-----|--------|
 | `loading="eager"` + `fetchpriority="high"` на hero-изображениях | ✅ |
+| `loading="eager"` на первых 4 изображениях галерей, `loading="lazy"` на остальных | ✅ |
 | `loading="lazy"` на всех не-hero изображениях | ✅ |
 | `srcset` + `sizes` (400w, 600w) на thumbnails: hero, галереи, related works, about-галерея | ✅ |
 | `.sm.webp` (400×400) для мобильных | ✅ |
