@@ -4,6 +4,7 @@ import re
 import json
 import html as html_mod
 from datetime import datetime
+from site_frame import site_frame
 
 SITE_URL = "https://vimark.art"
 HERO_NAME = "Max Mitenkov"
@@ -267,28 +268,14 @@ def build_article_html(md_text, lang, meta, base):
     if is_ru:
         author_line = f'<a href="{base}about.html">{hero}</a>'
     
-    # Footer
-    footer_close = '</div></main></div>'
-    
-    nav_link = f'<a href="{base}blog/">Blog</a>' if not is_ru else f'<a href="{base}blog/">Блог</a>'
-    blog_index = f'{base}blog/' if not is_ru else f'{base}blog/'
-    
-    return f'''<!DOCTYPE html>
-<html lang="{'ru' if is_ru else 'en'}">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="robots" content="index, follow">
-<title>{html_mod.escape(title)} | Max Mitenkov</title>
+    lang_switch_js = f'''(function(){{var p=location.pathname.replace(/\\\\/g,"/");var h=location.hash;if(p==="/"||p==="")p="/index.html";var i=p.indexOf("/ru/")!==-1;var e=document.getElementById("lang-en");var r=document.getElementById("lang-ru");var m={{{blog_map_entries}}};if(i){{e.href=(m[p]||p.replace("/ru/","/"))+h;r.href=p+h;}}else{{r.href=(m[p]||p.replace("/blog/","/ru/blog/"))+h;e.href=p+h;}}if(i){{r.classList.add("active");}}else{{e.classList.add("active");}}}})();'''
+
+    head_html = f'''<title>{html_mod.escape(title)} | Max Mitenkov</title>
 <meta name="description" content="{html_mod.escape(desc)}">
 <link rel="canonical" href="{page_url}">
 <link rel="alternate" hreflang="en" href="{hreflang_en}" />
 <link rel="alternate" hreflang="ru" href="{hreflang_ru}" />
 <link rel="alternate" hreflang="x-default" href="{hreflang_en}" />
-<link rel="stylesheet" href="{base}style.css">
-<link rel="stylesheet" href="{base}vimark_typography_system.css">
-<link rel="stylesheet" href="{base}blog.css">
-<link rel="icon" type="image/png" href="{base}vimark_logo.png">
 
 <meta property="og:type" content="article">
 <meta property="og:url" content="{page_url}">
@@ -309,27 +296,9 @@ def build_article_html(md_text, lang, meta, base):
 
 <script type="application/ld+json">
 {article_schema}
-</script>
-</head>
-<body>
-<div class="page-wrapper">
-  <nav class="main-nav">
-    <ul>
-      <li><a href="{base}book-covers.html">{'Book Covers' if not is_ru else 'Обложки книг'}</a></li>
-      <li><a href="{base}book-illustrations.html">{'Book Illustrations' if not is_ru else 'Иллюстрации к книгам'}</a></li>
-      <li><a href="{base}case-studies/hoebeke-sci-fi-series.html">{'Case Studies' if not is_ru else 'Кейсы'}</a></li>
-      <li><a href="{base}services.html">{'Services' if not is_ru else 'Услуги'}</a></li>
-      <li><a href="{base}visual-stories.html">{'Visual Stories' if not is_ru else 'Визуальные истории'}</a></li>
-      <li><a href="{base}about.html">{'About' if not is_ru else 'Об авторе'}</a></li>
-      <li><a href="{base}contact.html">{'Contact' if not is_ru else 'Контакты'}</a></li>
-      <li><a href="{base}reviews.html">{'Reviews' if not is_ru else 'Отзывы'}</a></li>
-      <li><a href="{base}faq.html">FAQ</a></li>
-      <li><a href="{blog_index}" class="active">{'Blog' if not is_ru else 'Блог'}</a></li>
-    </ul>
-  </nav>
+</script>'''
 
-  <main class="content-area">
-    <article class="blog-article">
+    main_html = f'''    <article class="blog-article">
       <header class="blog-header">
         <p class="blog-meta">{date_pub} · {reading} min read</p>
         <h1>{html_mod.escape(title)}</h1>
@@ -346,50 +315,11 @@ def build_article_html(md_text, lang, meta, base):
         <a href="{base}contact.html" class="cta-button">{'Get a Free Quote' if not is_ru else 'Обсудить проект'}</a>
         <p class="blog-updated">{'Last updated' if not is_ru else 'Последнее обновление'}: {date_pub}</p>
       </footer>
-    </article>
-  </main>
-</div>
+    </article>'''
 
-<footer class="site-footer">
-  <span><b>©</b> Max Mitenkov, 2026.</span>
-  <div class="footer-links">
-    <p>
-      <a href="{base}book-covers.html">{'Book Covers' if not is_ru else 'Обложки книг'}</a> ·
-      <a href="{base}book-illustrations.html">{'Book Illustrations' if not is_ru else 'Иллюстрации к книгам'}</a> ·
-      <a href="{base}case-studies/hoebeke-sci-fi-series.html">{'Case Studies' if not is_ru else 'Кейсы'}</a> ·
-      <a href="{base}services.html">{'Services' if not is_ru else 'Услуги'}</a> ·
-      <a href="{base}visual-stories.html">{'Visual Stories' if not is_ru else 'Визуальные истории'}</a> ·
-      <a href="{base}about.html">{'About' if not is_ru else 'Об авторе'}</a> ·
-      <a href="{base}contact.html">{'Contact' if not is_ru else 'Контакты'}</a> ·
-      <a href="{base}reviews.html">{'Reviews' if not is_ru else 'Отзывы'}</a> ·
-      <a href="{base}faq.html">FAQ</a> ·
-      <a href="{blog_index}">{'Blog' if not is_ru else 'Блог'}</a>
-    </p>
-    <p>
-      <a href="https://reedsy.com/freelancers/maxim-m" target="_blank" rel="noopener">Reedsy</a> ·
-      <a href="https://www.behance.net/vimark" target="_blank" rel="noopener">Behance</a> ·
-      <a href="https://www.artstation.com/vimark" target="_blank" rel="noopener">ArtStation</a> ·
-      <a href="https://www.instagram.com/vimark_art/" target="_blank" rel="noopener">Instagram</a> ·
-      <a href="https://www.pinterest.com/vimark" target="_blank" rel="noopener">Pinterest</a> ·
-      <a href="https://www.deviantart.com/vimark" target="_blank" rel="noopener">DeviantArt</a>
-    </p>
-  </div>
-  <div class="lang-switch">
-    <a href="#" id="lang-en" title="English"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 30" width="24" height="12"><path fill="#012169" d="M0,0 h60 v30 h-60 z"/><path stroke="#fff" stroke-width="6" d="M0,0 L60,30 M60,0 L0,30"/><path stroke="#C8102E" stroke-width="4" d="M0,0 L60,30 M60,0 L0,30"/><path stroke="#fff" stroke-width="10" d="M30,0 v30 M0,15 h60"/><path stroke="#C8102E" stroke-width="6" d="M30,0 v30 M0,15 h60"/></svg></a>
-    <a href="#" id="lang-ru" title="Русский"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 30" width="24" height="12"><rect width="60" height="10" fill="#fff"/><rect y="10" width="60" height="10" fill="#0039A6"/><rect y="20" width="60" height="10" fill="#D52B1E"/></svg></a>
-  </div>
-  <script>(function(){{var p=location.pathname.replace(/\\\\/g,"/");var h=location.hash;if(p==="/"||p==="")p="/index.html";var i=p.indexOf("/ru/")!==-1;var e=document.getElementById("lang-en");var r=document.getElementById("lang-ru");var m={{{blog_map_entries}}};if(i){{e.href=(m[p]||p.replace("/ru/","/"))+h;r.href=p+h;}}else{{r.href=(m[p]||p.replace("/blog/","/ru/blog/"))+h;e.href=p+h;}}if(i){{r.classList.add("active");}}else{{e.classList.add("active");}}}})();</script>
-</footer>
-
-<div class="sticky-contact">
-    <a href="https://t.me/MaxMitenkov" target="_blank" rel="noopener" aria-label="Telegram" onclick="if(typeof gtag!=='undefined')gtag('event','click_telegram');if(typeof ym!=='undefined')ym(109279162,'reachGoal','click_telegram');"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.198 2.433a2.242 2.242 0 0 0-1.022.215l-16.031 6.26a2.27 2.27 0 0 0-.093 4.07l3.827 1.558 1.56 4.44a1.5 1.5 0 0 0 2.663.52l2.33-3.14 3.75 2.83a2.27 2.27 0 0 0 3.58-1.74L22.34 3.89a2.24 2.24 0 0 0-1.142-1.457z"/></svg></a>
-    <a href="https://wa.me/375296534382" target="_blank" rel="noopener" aria-label="WhatsApp" onclick="if(typeof gtag!=='undefined')gtag('event','click_whatsapp');if(typeof ym!=='undefined')ym(109279162,'reachGoal','click_whatsapp');"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></a>
-  </div>
-<button id="scrollTop" onclick="window.scrollTo({{top:0,behavior:'smooth'}})" aria-label="Back to top">↑</button>
-<script src="{base}script.js"></script>
-<div class="mobile-cta"><a href="{base}contact.html" class="cta-button">{'Get a Free Quote' if not is_ru else 'Обсудить проект'}</a></div>
-</body>
-</html>'''
+    return site_frame(base, is_ru,
+        {'head': head_html, 'main': main_html},
+        lang_switch_js)
 
 
 def build_index_html(lang, articles, base):
@@ -415,93 +345,26 @@ def build_index_html(lang, articles, base):
     
     items_html = '\n'.join(items)
     
-    blog_index_url = f'{base}blog/'
-    
-    return f'''<!DOCTYPE html>
-<html lang="{'ru' if is_ru else 'en'}">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="robots" content="index, follow">
-<title>{title} | Max Mitenkov</title>
+    lang_switch_js = f'''(function(){{var p=location.pathname.replace(/\\\\/g,"/");var h=location.hash;if(p==="/"||p==="")p="/index.html";var i=p.indexOf("/ru/")!==-1;var e=document.getElementById("lang-en");var r=document.getElementById("lang-ru");var m={{"{base}blog/":"{base}ru/blog/","{base}ru/blog/":"{base}blog/"}};if(i){{e.href=(m[p]||p.replace("/ru/","/"))+h;r.href=p+h;}}else{{r.href=(m[p]||p.replace("/blog/","/ru/blog/"))+h;e.href=p+h;}}if(i){{r.classList.add("active");}}else{{e.classList.add("active");}}}})();'''
+
+    head_html = f'''<title>{title} | Max Mitenkov</title>
 <meta name="description" content="{desc}">
 <link rel="canonical" href="{page_url}">
 <link rel="alternate" hreflang="en" href="{hreflang_en}" />
 <link rel="alternate" hreflang="ru" href="{hreflang_ru}" />
-<link rel="alternate" hreflang="x-default" href="{hreflang_en}" />
-<link rel="stylesheet" href="{base}style.css">
-<link rel="stylesheet" href="{base}vimark_typography_system.css">
-<link rel="stylesheet" href="{base}blog.css">
-<link rel="icon" type="image/png" href="{base}vimark_logo.png">
-</head>
-<body>
-<div class="page-wrapper">
-  <nav class="main-nav">
-    <ul>
-      <li><a href="{base}book-covers.html">{'Book Covers' if not is_ru else 'Обложки книг'}</a></li>
-      <li><a href="{base}book-illustrations.html">{'Book Illustrations' if not is_ru else 'Иллюстрации к книгам'}</a></li>
-      <li><a href="{base}case-studies/hoebeke-sci-fi-series.html">{'Case Studies' if not is_ru else 'Кейсы'}</a></li>
-      <li><a href="{base}services.html">{'Services' if not is_ru else 'Услуги'}</a></li>
-      <li><a href="{base}visual-stories.html">{'Visual Stories' if not is_ru else 'Визуальные истории'}</a></li>
-      <li><a href="{base}about.html">{'About' if not is_ru else 'Об авторе'}</a></li>
-      <li><a href="{base}contact.html">{'Contact' if not is_ru else 'Контакты'}</a></li>
-      <li><a href="{base}reviews.html">{'Reviews' if not is_ru else 'Отзывы'}</a></li>
-      <li><a href="{base}faq.html">FAQ</a></li>
-      <li><a href="{blog_index_url}" class="active">{'Blog' if not is_ru else 'Блог'}</a></li>
-    </ul>
-  </nav>
+<link rel="alternate" hreflang="x-default" href="{hreflang_en}" />'''
 
-  <main class="content-area">
-    <section class="blog-index">
+    main_html = f'''    <section class="blog-index">
       <h1>{title}</h1>
       <p class="blog-index-desc">{desc}</p>
       <div class="blog-list">
 {items_html}
       </div>
-    </section>
-  </main>
-</div>
+    </section>'''
 
-<footer class="site-footer">
-  <span><b>©</b> Max Mitenkov, 2026.</span>
-  <div class="footer-links">
-    <p>
-      <a href="{base}book-covers.html">{'Book Covers' if not is_ru else 'Обложки книг'}</a> ·
-      <a href="{base}book-illustrations.html">{'Book Illustrations' if not is_ru else 'Иллюстрации к книгам'}</a> ·
-      <a href="{base}case-studies/hoebeke-sci-fi-series.html">{'Case Studies' if not is_ru else 'Кейсы'}</a> ·
-      <a href="{base}services.html">{'Services' if not is_ru else 'Услуги'}</a> ·
-      <a href="{base}visual-stories.html">{'Visual Stories' if not is_ru else 'Визуальные истории'}</a> ·
-      <a href="{base}about.html">{'About' if not is_ru else 'Об авторе'}</a> ·
-      <a href="{base}contact.html">{'Contact' if not is_ru else 'Контакты'}</a> ·
-      <a href="{base}reviews.html">{'Reviews' if not is_ru else 'Отзывы'}</a> ·
-      <a href="{base}faq.html">FAQ</a> ·
-      <a href="{blog_index_url}">{'Blog' if not is_ru else 'Блог'}</a>
-    </p>
-    <p>
-      <a href="https://reedsy.com/freelancers/maxim-m" target="_blank" rel="noopener">Reedsy</a> ·
-      <a href="https://www.behance.net/vimark" target="_blank" rel="noopener">Behance</a> ·
-      <a href="https://www.artstation.com/vimark" target="_blank" rel="noopener">ArtStation</a> ·
-      <a href="https://www.instagram.com/vimark_art/" target="_blank" rel="noopener">Instagram</a> ·
-      <a href="https://www.pinterest.com/vimark" target="_blank" rel="noopener">Pinterest</a> ·
-      <a href="https://www.deviantart.com/vimark" target="_blank" rel="noopener">DeviantArt</a>
-    </p>
-  </div>
-  <div class="lang-switch">
-    <a href="#" id="lang-en" title="English"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 30" width="24" height="12"><path fill="#012169" d="M0,0 h60 v30 h-60 z"/><path stroke="#fff" stroke-width="6" d="M0,0 L60,30 M60,0 L0,30"/><path stroke="#C8102E" stroke-width="4" d="M0,0 L60,30 M60,0 L0,30"/><path stroke="#fff" stroke-width="10" d="M30,0 v30 M0,15 h60"/><path stroke="#C8102E" stroke-width="6" d="M30,0 v30 M0,15 h60"/></svg></a>
-    <a href="#" id="lang-ru" title="Русский"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 30" width="24" height="12"><rect width="60" height="10" fill="#fff"/><rect y="10" width="60" height="10" fill="#0039A6"/><rect y="20" width="60" height="10" fill="#D52B1E"/></svg></a>
-  </div>
-  <script>(function(){{var p=location.pathname.replace(/\\\\/g,"/");var h=location.hash;if(p==="/"||p==="")p="/index.html";var i=p.indexOf("/ru/")!==-1;var e=document.getElementById("lang-en");var r=document.getElementById("lang-ru");var m={{"{base}blog/":"{base}ru/blog/","{base}ru/blog/":"{base}blog/"}};if(i){{e.href=(m[p]||p.replace("/ru/","/"))+h;r.href=p+h;}}else{{r.href=(m[p]||p.replace("/blog/","/ru/blog/"))+h;e.href=p+h;}}if(i){{r.classList.add("active");}}else{{e.classList.add("active");}}}})();</script>
-</footer>
-
-<div class="sticky-contact">
-    <a href="https://t.me/MaxMitenkov" target="_blank" rel="noopener" aria-label="Telegram" onclick="if(typeof gtag!=='undefined')gtag('event','click_telegram');if(typeof ym!=='undefined')ym(109279162,'reachGoal','click_telegram');"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.198 2.433a2.242 2.242 0 0 0-1.022.215l-16.031 6.26a2.27 2.27 0 0 0-.093 4.07l3.827 1.558 1.56 4.44a1.5 1.5 0 0 0 2.663.52l2.33-3.14 3.75 2.83a2.27 2.27 0 0 0 3.58-1.74L22.34 3.89a2.24 2.24 0 0 0-1.142-1.457z"/></svg></a>
-    <a href="https://wa.me/375296534382" target="_blank" rel="noopener" aria-label="WhatsApp" onclick="if(typeof gtag!=='undefined')gtag('event','click_whatsapp');if(typeof ym!=='undefined')ym(109279162,'reachGoal','click_whatsapp');"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></a>
-  </div>
-<button id="scrollTop" onclick="window.scrollTo({{top:0,behavior:'smooth'}})" aria-label="Back to top">↑</button>
-<script src="{base}script.js"></script>
-<div class="mobile-cta"><a href="{base}contact.html" class="cta-button">{'Get a Free Quote' if not is_ru else 'Обсудить проект'}</a></div>
-</body>
-</html>'''
+    return site_frame(base, is_ru,
+        {'head': head_html, 'main': main_html},
+        lang_switch_js)
 
 
 def main():
