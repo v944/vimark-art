@@ -113,9 +113,27 @@
 |-----|--------|
 | «Comic» → «Visual Stories» | ✅ |
 | «Living Illustrations» скрыт с главной (noindex) | ✅ |
-| Навигация EN + RU: Book Covers, Book Illustrations, Case Studies, Services, Visual Stories, About, Contact, Reviews, FAQ | ✅ |
+| Навигация EN + RU: Book Covers, Book Illustrations, Case Studies, Services, Visual Stories, About, Contact, Reviews, FAQ, **Blog** | ✅ |
 | Пользовательская сортировка подпапок book-illustrations (Planetes → Creatures → Endymion → ...) | ✅ |
 | `display_titles.txt` для правки названий без смены URL | ✅ |
+
+---
+
+## Блог
+
+| Что | Где | Статус |
+|-----|-----|--------|
+| Структура `/blog/` и `/ru/blog/` | blog/index.html, ru/blog/index.html | ✅ |
+| 5 статей EN + 5 RU | blog/*.html, ru/blog/*.html | ✅ |
+| Article JSON-LD schema | Все статьи | ✅ |
+| Open Graph / Twitter Cards | Все статьи | ✅ |
+| hreflang (en, ru, x-default) | Все статьи | ✅ |
+| hreflang JS (полный маппинг всех страниц) | Все страницы блога и статические страницы | ✅ |
+| blog.css (стили статей, карточек, списка) | blog.css | ✅ |
+| Единый сайт-фрейм (sidebar, footer, social, sticky-contact, scrollTop) | site_frame.py | ✅ |
+| Blog в боковом меню (sidebar) | Все страницы (через site_frame.py + статические) | ✅ |
+| Blog в футере | Все страницы | ✅ |
+| Blog → blog redirect (case-sensitive для Vercel/Linux) | vercel.json | ✅ |
 
 ---
 
@@ -127,5 +145,7 @@
 | `display_titles.txt` | Переопределение названий (не сбрасывается при генерации) |
 | `projects.ini` | Конфиг проектов (описания, обложки) |
 | `pinterest_publish.py` | Публикация пинов через API |
+| `blog_convert.py` | Генератор HTML-страниц блога из MD |
+| `site_frame.py` | Единый шаблон sidebar+footer для blog-страниц |
 | `vercel.json` | Редиректы, заголовки, хостинг |
 | `seo_geo_plan_2026.md` | План дальнейших улучшений |
