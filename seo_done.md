@@ -46,7 +46,13 @@
 | `meta name="robots" content="index, follow"` | Все страницы | ✅ |
 | `meta name="msvalidate.01"` (Bing) | Все страницы | ✅ |
 | `link rel="image_src"` | Все страницы | ✅ |
-| `301 redirects` (www, старые URL) | vercel.json | ✅ |
+| `link rel="manifest"` + `manifest.json` | Все страницы | ✅ |
+| `301 redirects` (www, старые URL, Blog→blog) | vercel.json | ✅ |
+| `X-Content-Type-Options: nosniff` | Все ответы (vercel.json) | ✅ |
+| `X-Frame-Options: DENY` | Все ответы (vercel.json) | ✅ |
+| `Referrer-Policy: strict-origin-when-cross-origin` | Все ответы (vercel.json) | ✅ |
+| `Strict-Transport-Security: max-age=63072000; includeSubDomains; preload` | Все ответы (vercel.json) | ✅ |
+| `Permissions-Policy` (camera=(), microphone=(), geolocation=(), interest-cohort=()) | Все ответы (vercel.json) | ✅ |
 | `X-Robots-Tag: noindex` (living-illustrations) | vercel.json | ✅ |
 
 ---
@@ -147,5 +153,5 @@
 | `pinterest_publish.py` | Публикация пинов через API |
 | `blog_convert.py` | Генератор HTML-страниц блога из MD |
 | `site_frame.py` | Единый шаблон sidebar+footer для blog-страниц |
-| `vercel.json` | Редиректы, заголовки, хостинг |
+| `vercel.json` | Редиректы, security-заголовки, хостинг |
 | `seo_geo_plan_2026.md` | План дальнейших улучшений |
