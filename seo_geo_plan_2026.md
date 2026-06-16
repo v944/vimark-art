@@ -48,8 +48,8 @@
 
 | # | Задача | Статус | Описание |
 |---|--------|--------|----------|
-| 14 | **Regional hreflang** | ⬜ | `en-us`, `en-gb`, `ru-ru` или явная цель в GSC |
-| 15 | **Локальные ключевые в RU** | ⬜ | Добавить в Title/Description RU-страниц: «Иллюстратор обложек удаленно» |
+| 14 | **Regional hreflang** | ✅ | Решено оставить `en`/`ru` (международный сайт) |
+| 15 | **Локальные ключевые в RU** | ✅ | Title/Description обновлены: «иллюстратор книжных обложек», «художник обложек на заказ», «заказать обложку книги» |
 | 16 | **Security headers (vercel.json)** | ✅ | X-Content-Type-Options, X-Frame-Options, Referrer-Policy, HSTS, Permissions-Policy, CSP |
 | 17 | **PWA manifest.json** | ✅ | `manifest.json`, icon-192.png, icon-512.png, `<link rel="manifest">` на всех страницах |
 
@@ -100,8 +100,8 @@
 - [ ] 11. Профили: Kwork, YouDo, Яндекс.Бизнес
 - [ ] 12. Лендинги: cost, fantasy, sci-fi, horror (EN + RU)
 - [ ] 13. Доп. кейсы (HarperCollins, self-pub, horror)
-- [ ] 14. Regional hreflang (или цель в GSC)
-- [ ] 15. Локальные ключевые в RU Title/Description
+- [x] 14. Regional hreflang (оставлено en/ru)
+- [x] 15. Локальные ключевые в RU Title/Description
 - [x] 16. Security headers в vercel.json
 - [x] 17. PWA manifest.json
 
