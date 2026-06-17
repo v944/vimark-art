@@ -36,8 +36,8 @@
 .blog-footer { margin-top: 48px; }
 .blog-footer hr { border: none; border-top: 1px solid var(--border, #222); margin-bottom: 24px; }
 .blog-cta { font-size: 1.1em; margin-bottom: 12px; text-align: center; color: var(--fg, #eee); }
-.blog-footer .cta-button { display: inline-block; padding: 12px 28px; background: var(--fg, #eee); color: var(--bg, #111); text-decoration: none; border-radius: 6px; font-weight: 600; margin-bottom: 16px; transition: opacity .2s; text-align: center; }
-.blog-footer .cta-button:hover { opacity: 0.85; }
+.blog-footer .cta-button { display: block; width: fit-content; margin: 0 auto 16px; padding: 12px 28px; background: #e8b86d; color: #000 !important; text-decoration: none; border-radius: 6px; font-weight: 600; transition: background .2s; text-align: center; }
+.blog-footer .cta-button:hover { background: #f0c67d; }
 .blog-updated { font-size: 0.85em; color: var(--faint, #666); text-align: center; }
 .checklist { margin: 16px 0; padding: 16px 20px; background: var(--card-bg, #1a1a1a); border-radius: 6px; border: 1px solid var(--border, #222); }
 .checklist-item { display: block; padding: 6px 0; color: var(--muted, #aaa); cursor: pointer; }
