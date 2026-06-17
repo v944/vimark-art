@@ -205,12 +205,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://vimark.art/project/toupdate.html</loc>
-    <lastmod>2026-06-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://vimark.art/project/art/animals.html</loc>
     <lastmod>2026-06-17</lastmod>
     <changefreq>weekly</changefreq>
@@ -1364,12 +1358,6 @@
   </url>
   <url>
     <loc>https://vimark.art/project/art/on-the-edge-2025.html</loc>
-    <lastmod>2026-06-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://vimark.art/project/art/on-the-edge.html</loc>
     <lastmod>2026-06-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
