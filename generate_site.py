@@ -1122,7 +1122,10 @@ def build_lang(lang='en', skip_landing_pages=True):
 <link rel="preconnect" href="https://mc.yandex.ru">
 <link rel="stylesheet" href="{base}style.css">
 <link rel="stylesheet" href="{base}vimark_typography_system.css">
-<link rel="icon" type="image/png" href="{base}vimark_logo.png">
+<link rel="icon" type="image/x-icon" href="{base}favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="{base}favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="{base}favicon-16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="{base}icon-192.png">
 <link rel="manifest" href="{base}manifest.json">
 
 <!-- Open Graph -->
@@ -1430,7 +1433,10 @@ def build_lang(lang='en', skip_landing_pages=True):
 <link rel="preconnect" href="https://mc.yandex.ru">
 <link rel="stylesheet" href="{base}style.css">
 <link rel="stylesheet" href="{base}vimark_typography_system.css">
-<link rel="icon" type="image/png" href="{base}vimark_logo.png">
+<link rel="icon" type="image/x-icon" href="{base}favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="{base}favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="{base}favicon-16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="{base}icon-192.png">
 <link rel="manifest" href="{base}manifest.json">
 <!-- Open Graph -->
 <meta property="og:type" content="article">
@@ -1615,7 +1621,10 @@ def build_lang(lang='en', skip_landing_pages=True):
 <link rel="preconnect" href="https://mc.yandex.ru">
 <link rel="stylesheet" href="{base}style.css">
 <link rel="stylesheet" href="{base}vimark_typography_system.css">
-<link rel="icon" type="image/png" href="{base}vimark_logo.png">
+<link rel="icon" type="image/x-icon" href="{base}favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="{base}favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="{base}favicon-16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="{base}icon-192.png">
 <link rel="manifest" href="{base}manifest.json">
 
 <!-- Open Graph -->
@@ -1806,7 +1815,10 @@ def build_lang(lang='en', skip_landing_pages=True):
 <link rel="preconnect" href="https://mc.yandex.ru">
 <link rel="stylesheet" href="{base}style.css">
 <link rel="stylesheet" href="{base}vimark_typography_system.css">
-<link rel="icon" type="image/png" href="{base}vimark_logo.png">
+<link rel="icon" type="image/x-icon" href="{base}favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="{base}favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="{base}favicon-16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="{base}icon-192.png">
 <link rel="manifest" href="{base}manifest.json">
 
 <!-- Open Graph -->
