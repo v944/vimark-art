@@ -1,7 +1,7 @@
 # От брифа до финального арта: мой процесс / From Brief to Final Art: My Process
 
 > **Автор / Author:** Максим Митенков (vimark) · Max Mitenkov  
-> **Дата / Date:** 2026-06-16  
+> **Дата / Date:** 2026-06-18  
 > **Чтение / Reading time:** 10 мин / 10 min
 
 ---
@@ -465,4 +465,4 @@ If you're planning a book and want to discuss a cover — reach out. Even if the
 ---
 
 *Статья подготовлена Максимом Митенковым (vimark). / Article by Max Mitenkov (vimark).  
-Последнее обновление / Last updated: 2026-06-16.*
+Последнее обновление / Last updated: 2026-06-18.*

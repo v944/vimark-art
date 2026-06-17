@@ -2,7 +2,7 @@
 ## Cover Design Trends 2026
 
 > **Автор / Author:** Максим Митенков (vimark) · Max Mitenkov  
-> **Дата / Date:** 2026-06-16  
+> **Дата / Date:** 2026-06-14  
 > **Чтение / Reading time:** 8 мин / 8 min
 
 ---
@@ -128,4 +128,4 @@ If you're planning a sci-fi, fantasy, or horror book and want a cover that follo
 ---
 
 *Статья подготовлена Максимом Митенковым (vimark). / Article by Max Mitenkov (vimark).  
-Последнее обновление / Last updated: 2026-06-16.*
+Последнее обновление / Last updated: 2026-06-14.*

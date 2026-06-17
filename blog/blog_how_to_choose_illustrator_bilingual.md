@@ -1,7 +1,7 @@
 # Как выбрать иллюстратора для обложки книги / How to Choose a Book Cover Illustrator
 
 > **Автор / Author:** Максим Митенков (vimark) · Max Mitenkov  
-> **Дата / Date:** 2026-06-16  
+> **Дата / Date:** 2026-06-12  
 > **Чтение / Reading time:** 12 мин / 12 min
 
 ---
@@ -385,4 +385,4 @@ If you're looking for an illustrator for sci-fi, fantasy, or horror covers — I
 ---
 
 *Статья подготовлена Максимом Митенковым (vimark). / Article by Max Mitenkov (vimark).  
-Последнее обновление / Last updated: 2026-06-16.*
+Последнее обновление / Last updated: 2026-06-12.*
