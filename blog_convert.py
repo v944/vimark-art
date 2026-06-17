@@ -19,7 +19,7 @@ article_meta = {
         "desc_en": "Real mistakes authors make when commissioning book cover art, with real cases and practical advice from a professional illustrator with 71 Reedsy reviews.",
         "desc_ru": "Реальные ошибки авторов при заказе обложек: реальные случаи из практики иллюстратора с 71 отзывом на Reedsy.",
         "reading_min": 10,
-        "date": "2026-06-16"
+        "date": "2026-06-10"
     },
     "blog_from_brief_to_final_bilingual": {
         "slug": "from-brief-to-final-art-process",
@@ -29,7 +29,7 @@ article_meta = {
         "desc_en": "A complete walkthrough of my professional book cover design process, from first contact and brief to file handover. No surprises, only transparency.",
         "desc_ru": "Полная карта процесса работы над обложкой от первого сообщения до готовых файлов. Прозрачно, понятно, без сюрпризов.",
         "reading_min": 10,
-        "date": "2026-06-16"
+        "date": "2026-06-18"
     },
     "blog_how_to_choose_illustrator_bilingual": {
         "slug": "how-to-choose-book-cover-illustrator",
@@ -39,7 +39,7 @@ article_meta = {
         "desc_en": "A step-by-step guide to choosing the right book cover illustrator, with portfolio checks, red flags, pricing breakdown, and a 10-point checklist.",
         "desc_ru": "Пошаговое руководство по выбору иллюстратора обложки: как проверять портфолио, красные флаги, разбор цен и чек-лист на 10 пунктов.",
         "reading_min": 12,
-        "date": "2026-06-16"
+        "date": "2026-06-12"
     },
     "Cover Design Trends 2026": {
         "slug": "book-cover-design-trends-2026",
@@ -49,7 +49,7 @@ article_meta = {
         "desc_en": "Explore the top book cover design trends of 2026: naive design, tactility, bold minimalism, retro-futurism, cinematic covers, AR, and sustainability.",
         "desc_ru": "Главные тренды дизайна обложек 2026: наивный дизайн, тактильность, смелый минимализм, ретро-футуризм, кинематографичность, AR и экологичность.",
         "reading_min": 8,
-        "date": "2026-06-16"
+        "date": "2026-06-14"
     },
     "How Much Does a Book Cover Cost": {
         "slug": "how-much-does-a-book-cover-cost",

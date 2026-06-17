@@ -1,7 +1,7 @@
 # Частые ошибки авторов при выборе иллюстратора обложки / Common Mistakes Authors Make When Hiring a Book Cover Illustrator
 
 > **Автор / Author:** Максим Митенков (vimark) · Max Mitenkov  
-> **Дата / Date:** 2026-06-16  
+> **Дата / Date:** 2026-06-10  
 > **Чтение / Reading time:** 10 мин / 10 min
 
 ---
@@ -411,4 +411,4 @@ If you're planning a book in sci-fi, fantasy, or horror — I'd be happy to help
 ---
 
 *Статья подготовлена Максимом Митенковым (vimark). / Article by Max Mitenkov (vimark).  
-Последнее обновление / Last updated: 2026-06-16.*
+Последнее обновление / Last updated: 2026-06-10.*

@@ -1,7 +1,7 @@
 # How Much Does a Book Cover Cost? / Сколько стоит обложка книги?
 
 > **Автор / Author:** Максим Митенков (vimark) · Max Mitenkov  
-> **Дата / Date:** 2026-06-16  
+> **Дата / Date:** 2026-06-14  
 > **Чтение / Reading time:** 8 мин / 8 min
 
 ---
@@ -221,7 +221,7 @@ If you're planning a book in sci-fi, fantasy, or horror and want a professional 
 ---
 
 *Статья подготовлена Максимом Митенковым (vimark). / Article by Max Mitenkov (vimark).  
-Последнее обновление / Last updated: 2026-06-16.*
+Последнее обновление / Last updated: 2026-06-14.*
 
 ***
 
