@@ -1,5 +1,37 @@
 # Work Log
 
+## Humanizer: AI Pattern Removal (Blog + Case Study)
+
+Applied `blader/humanizer` skill (v2.8.0, 33 patterns) to all blog articles and the Hoëbeke case study.
+
+### Changes made to .md sources (blog/*.md, case_study_hoebeke.md):
+- **Em dashes (—) removed:** ~350 instances across 5 blog articles + case study
+  - Replaced with colons, commas, periods, or restructured sentences
+- **En dashes (–) in ranges:** all replaced with regular hyphens (3-5, $100-300)
+- **AI vocabulary removed:**
+  - `ключевой` → `главный` / dropped
+  - `key` → dropped (e.g. "key research" → "research")
+  - `critical` → dropped ("critical requirement" → "requirement")
+  - `great` → `classic` ("great sci-fi illustration" → "classic sci-fi illustration")
+  - `flagship` → dropped
+  - `demonstrates` → `shows`
+  - `carries expectations` → `comes with expectations`
+- **-ing fake depth:** simplified to active voice
+- **Generic positive conclusions:** replaced with factual statements
+- **Signposting removed:** "Let's dive in", "В этом кейсе", "Почему это работает?"
+- **Rule of three:** trimmed where forced
+- **Boldface overuse:** reduced
+- **Curly quotes:** replaced with straight quotes
+- **"not just...but..." constructions:** rephrased
+
+### Files changed: 18 files, 712 insertions, 738 deletions
+- 5 blog .md files (with .bak.md originals preserved, gitignored)
+- 5 EN blog .html + 5 RU blog .html (regenerated via blog_convert.py)
+- 2 case study .html (EN + RU, hand-edited text)
+- .gitignore (added *.bak.md, *.humanized.md)
+
+---
+
 ## Website Changes
 
 ### Phase A: ImageObject + ProfessionalService schema (generate_site.py, index.html, about.html)
