@@ -113,6 +113,7 @@ comic/Winter/__0005_winter_infantery_6.jpg = Last climb, 2025
 comic/Winter/__0006_winter_infantery_7.jpg = The inferno, 2025
 Personal/Professional Growth/all_is_vanity_by_vimark_d85g8w5-fullview.jpg = All is vanity, 2014
 Personal/Professional Growth/beyond_by_vimark_da0er8g-fullview.jpg = Beyond, 2016
+Personal/Recent Work/on_the_edge.jpg = On the Edge, 2025
 Personal/Recent Work/crush_by_vimark_dkkvjah-pre.jpg = Crush, 2025
 Personal/Recent Work/harbinger_by_vimark_dhqwqma-pre.jpg = Harbinger, 2025
 Personal/Recent Work/herdsmans_by_vimark_dld82eq-pre.jpg = Herdsmans,2026

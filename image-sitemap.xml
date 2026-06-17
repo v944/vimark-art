@@ -1346,6 +1346,20 @@
     </image:image>
   </url>
   <url>
+    <loc>https://vimark.art/project/art/on-the-edge-2025.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/Personal/Recent%20Work/on_the_edge.jpg</image:loc>
+      <image:title>On the Edge, 2025</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/project/art/on-the-edge.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/To_update/on_the_edge.jpg</image:loc>
+      <image:title>On the edge</image:title>
+    </image:image>
+  </url>
+  <url>
     <loc>https://vimark.art/ru/project/art/animals.html</loc>
     <image:image>
       <image:loc>https://vimark.art/Book%20Illustrations/Creatures/__0000_animals.jpg</image:loc>
@@ -2687,6 +2701,20 @@
     <image:image>
       <image:loc>https://vimark.art/comic/Wanderer/Pepel1.jpg</image:loc>
       <image:title>Towers, 2026 (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/on-the-edge-2025.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/Personal/Recent%20Work/on_the_edge.jpg</image:loc>
+      <image:title>On the Edge, 2025 (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/on-the-edge.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/To_update/on_the_edge.jpg</image:loc>
+      <image:title>On the edge (2)</image:title>
     </image:image>
   </url>
 </urlset>

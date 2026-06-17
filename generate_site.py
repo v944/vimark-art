@@ -607,7 +607,7 @@ def build_lang(lang='en', skip_landing_pages=True):
             continue
         if entry.name.startswith(".") or entry.name.startswith("_"):
             continue
-        if entry.name.lower() in ("website", "thumbnails", "project", "hero", "hero2", "strong", "reedsy", "pinterest", "living-illustration", "living-illustrations"):
+        if entry.name.lower() in ("website", "thumbnails", "project", "hero", "hero2", "strong", "reedsy", "pinterest", "living-illustration", "living-illustrations", "to_update"):
             continue
 
         cat_key = slugify(entry.name)
@@ -2098,7 +2098,7 @@ def build_lang(lang='en', skip_landing_pages=True):
 <link rel="stylesheet" href="{base_index}style.css">
 <link rel="stylesheet" href="{base_index}vimark_typography_system.css">
 <link rel="icon" type="image/png" href="{base_index}vimark_logo.png">
-<link rel="manifest" href="{base}manifest.json">
+<link rel="manifest" href="{base_index}manifest.json">
 
 <!-- Open Graph / Facebook -->
 <meta property="og:type" content="website">
