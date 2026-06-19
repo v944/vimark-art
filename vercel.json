@@ -57,7 +57,10 @@
     },
     {
       "source": "/living-illustrations/:path*",
-      "headers": [{ "key": "X-Robots-Tag", "value": "noindex" }]
+      "headers": [
+        { "key": "X-Robots-Tag", "value": "noindex" },
+        { "key": "Access-Control-Allow-Origin", "value": "*" }
+      ]
     },
     {
       "source": "/(.*)",
@@ -67,7 +70,7 @@
         { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
         { "key": "Strict-Transport-Security", "value": "max-age=63072000; includeSubDomains; preload" },
         { "key": "Permissions-Policy", "value": "camera=(), microphone=(), geolocation=(), interest-cohort=()" },
-        { "key": "Content-Security-Policy", "value": "default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://mc.yandex.ru https://api.web3forms.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://mc.yandex.ru; connect-src 'self' https://mc.yandex.ru https://www.google-analytics.com https://api.web3forms.com; form-action 'self' https://api.web3forms.com; font-src 'self'; frame-src 'none'; object-src 'none'; base-uri 'self'" }
+        { "key": "Content-Security-Policy", "value": "default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://mc.yandex.ru https://api.web3forms.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https://mc.yandex.ru; connect-src 'self' https://mc.yandex.ru https://www.google-analytics.com https://api.web3forms.com; form-action 'self' https://api.web3forms.com; font-src 'self'; frame-src 'none'; object-src 'none'; base-uri 'self'; worker-src 'self' blob:" }
       ]
     }
   ]
