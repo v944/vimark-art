@@ -955,6 +955,23 @@ def build_lang(lang='en', skip_landing_pages=True):
         lines.append('</div>')
         return "\n".join(lines)
 
+    def nav_html(base, page_lang, t):
+        is_ru = page_lang == 'ru'
+        nav_base = base + 'ru/' if is_ru else base
+        items = [
+            ('/#work', t.get('nav_work', 'Work')),
+            ('services.html', t.get('services', 'Services')),
+            ('about.html', t.get('about', 'About')),
+            ('blog/', t.get('blog', 'Blog')),
+            ('contact.html', t.get('contact', 'Contact')),
+        ]
+        lines = ['<nav class="main-nav">', '  <ul>']
+        for href, label in items:
+            full_href = href if href.startswith('/') else nav_base + href
+            lines.append(f'    <li><a href="{full_href}">{label}</a></li>')
+        lines.extend(['  </ul>', '</nav>'])
+        return "\n      ".join(lines)
+
     def build_project_page(sub_key, proj, items, base="../"):
         page_lang = 'ru' if lang == 'ru' else 'en'
         page_canonical = f"https://vimark.art/ru/project/{sub_key}.html" if page_lang == 'ru' else f"https://vimark.art/project/{sub_key}.html"
@@ -1057,25 +1074,9 @@ def build_lang(lang='en', skip_landing_pages=True):
 
         cta_href = '/ru/contact.html' if page_lang == 'ru' else '/contact.html'
         cta_label = 'Обсудить проект' if page_lang == 'ru' else 'Get a Free Quote'
-        project_nav = [
-            '<nav class="main-nav">',
-            '  <ul>',
-        ]
-        project_nav.extend([
-            f'    <li><a href="{base}book-covers.html">Book Covers</a></li>',
-            f'    <li><a href="{base}book-illustrations.html">Book Illustrations</a></li>',
-            f'    <li><a href="{base}case-studies/hoebeke-sci-fi-series.html">Case Studies</a></li>',
-            f'    <li><a href="{base}services.html">Services</a></li>',
-            f'    <li><a href="{base}visual-stories.html">Visual Stories</a></li>',
-            f'    <li><a href="{base}about.html">{t.get("about", "About")}</a></li>',
-            f'    <li><a href="{base}contact.html">{t.get("contact", "Contact")}</a></li>',
-            f'    <li><a href="{base}reviews.html">{t.get("reviews", "Reviews")}</a></li>',
-            f'    <li><a href="{base}faq.html">FAQ</a></li>',
-            f'    <li><a href="{base}blog/">Blog</a></li>',
-            '  </ul>',
-            '</nav>',
+        project_nav = [nav_html(base, page_lang, t),
             f'<a href="{cta_href}" class="cta-button">{cta_label}</a>',
-        ])
+        ]
         project_nav_html = "\n      ".join(project_nav)
 
         if hero_images:
@@ -1326,25 +1327,9 @@ def build_lang(lang='en', skip_landing_pages=True):
         social_html_project = social_html.replace('src="behance.png"', f'src="{base}behance.png"').replace('src="deviantart.png"', f'src="{base}deviantart.png"')
         cta_href = '/ru/contact.html' if page_lang == 'ru' else '/contact.html'
         cta_label = 'Обсудить проект' if page_lang == 'ru' else 'Get a Free Quote'
-        project_nav = [
-            '<nav class="main-nav">',
-            '  <ul>',
-        ]
-        project_nav.extend([
-            f'    <li><a href="{base}book-covers.html">Book Covers</a></li>',
-            f'    <li><a href="{base}book-illustrations.html">Book Illustrations</a></li>',
-            f'    <li><a href="{base}case-studies/hoebeke-sci-fi-series.html">Case Studies</a></li>',
-            f'    <li><a href="{base}services.html">Services</a></li>',
-            f'    <li><a href="{base}visual-stories.html">Visual Stories</a></li>',
-            f'    <li><a href="{base}about.html">{t.get("about", "About")}</a></li>',
-            f'    <li><a href="{base}contact.html">{t.get("contact", "Contact")}</a></li>',
-            f'    <li><a href="{base}reviews.html">{t.get("reviews", "Reviews")}</a></li>',
-            f'    <li><a href="{base}faq.html">FAQ</a></li>',
-            f'    <li><a href="{base}blog/">Blog</a></li>',
-            '  </ul>',
-            '</nav>',
+        project_nav = [nav_html(base, page_lang, t),
             f'<a href="{cta_href}" class="cta-button">{cta_label}</a>',
-        ])
+        ]
         project_nav_html = "\n      ".join(project_nav)
         review_html = ""
         if review:
@@ -1590,25 +1575,9 @@ def build_lang(lang='en', skip_landing_pages=True):
         # Category nav
         cat_cta_href = '/ru/contact.html' if page_lang == 'ru' else '/contact.html'
         cat_cta_label = 'Обсудить проект' if page_lang == 'ru' else 'Get a Free Quote'
-        cat_nav_lines = [
-            '<nav class="main-nav">',
-            '  <ul>',
-        ]
-        cat_nav_lines.extend([
-            f'    <li><a href="{base}book-covers.html">Book Covers</a></li>',
-            f'    <li><a href="{base}book-illustrations.html">Book Illustrations</a></li>',
-            f'    <li><a href="{base}case-studies/hoebeke-sci-fi-series.html">Case Studies</a></li>',
-            f'    <li><a href="{base}services.html">Services</a></li>',
-            f'    <li><a href="{base}visual-stories.html">Visual Stories</a></li>',
-            f'    <li><a href="{base}about.html">{t.get("about", "About")}</a></li>',
-            f'    <li><a href="{base}contact.html">{t.get("contact", "Contact")}</a></li>',
-            f'    <li><a href="{base}reviews.html">{t.get("reviews", "Reviews")}</a></li>',
-            f'    <li><a href="{base}faq.html">FAQ</a></li>',
-            f'    <li><a href="{base}blog/">Blog</a></li>',
-            '  </ul>',
-            '</nav>',
+        cat_nav_lines = [nav_html(base, page_lang, t),
             f'<a href="{cat_cta_href}" class="cta-button">{cat_cta_label}</a>',
-        ])
+        ]
         cat_nav_html = "\n      ".join(cat_nav_lines)
         social_html_cat = social_html.replace('src="behance.png"', f'src="{base}behance.png"').replace('src="deviantart.png"', f'src="{base}deviantart.png"')
         year_num = datetime.date.today().year
@@ -1756,25 +1725,9 @@ def build_lang(lang='en', skip_landing_pages=True):
         # Reviews nav (same as project nav but with Reviews link active)
         reviews_cta_href = '/ru/contact.html' if page_lang == 'ru' else '/contact.html'
         reviews_cta_label = 'Обсудить проект' if page_lang == 'ru' else 'Get a Free Quote'
-        reviews_nav = [
-            '<nav class="main-nav">',
-            '  <ul>',
-        ]
-        reviews_nav.extend([
-            f'    <li><a href="{base}book-covers.html">Book Covers</a></li>',
-            f'    <li><a href="{base}book-illustrations.html">Book Illustrations</a></li>',
-            f'    <li><a href="{base}case-studies/hoebeke-sci-fi-series.html">Case Studies</a></li>',
-            f'    <li><a href="{base}services.html">Services</a></li>',
-            f'    <li><a href="{base}visual-stories.html">Visual Stories</a></li>',
-            f'    <li><a href="{base}about.html">{t.get("about", "About")}</a></li>',
-            f'    <li><a href="{base}contact.html">{t.get("contact", "Contact")}</a></li>',
-            f'    <li><a href="{base}reviews.html">{t.get("reviews", "Reviews")}</a></li>',
-            f'    <li><a href="{base}faq.html">FAQ</a></li>',
-            f'    <li><a href="{base}blog/">Blog</a></li>',
-            '  </ul>',
-            '</nav>',
+        reviews_nav = [nav_html(base, page_lang, t),
             f'<a href="{reviews_cta_href}" class="cta-button">{reviews_cta_label}</a>',
-        ])
+        ]
         reviews_nav_html = "\n      ".join(reviews_nav)
         social_html_reviews = social_html.replace('src="behance.png"', f'src="{base}behance.png"').replace('src="deviantart.png"', f'src="{base}deviantart.png"')
 
@@ -1931,24 +1884,8 @@ def build_lang(lang='en', skip_landing_pages=True):
 """
 
     # Build nav with category anchors + About + Contact
-    nav_lines = [
-        '<nav class="main-nav">',
-        '  <ul>',
-    ]
-    nav_lines.extend([
-        f'    <li><a href="{base_index}book-covers.html">Book Covers</a></li>',
-        f'    <li><a href="{base_index}book-illustrations.html">Book Illustrations</a></li>',
-        f'    <li><a href="{base_index}case-studies/hoebeke-sci-fi-series.html">Case Studies</a></li>',
-        f'    <li><a href="{base_index}services.html">Services</a></li>',
-        f'    <li><a href="{base_index}visual-stories.html">Visual Stories</a></li>',
-        f'    <li><a href="{base_index}about.html">{t.get("about", "About")}</a></li>',
-        f'    <li><a href="{base_index}contact.html">{t.get("contact", "Contact")}</a></li>',
-        f'    <li><a href="{base_index}reviews.html">{t.get("reviews", "Reviews")}</a></li>',
-        f'    <li><a href="{base_index}faq.html">FAQ</a></li>',
-        f'    <li><a href="{base_index}blog/">Blog</a></li>',
-        '  </ul>',
-        '</nav>',
-    ])
+    page_lang_nav = 'ru' if lang == 'ru' else 'en'
+    nav_lines = nav_html(base_index, page_lang_nav, t)
 
     commissions_status = t.get('commissions_open', 'Open for commissions')
     commissions_html = f'<div class="commissions-status"><span class="status-dot"></span><span>{commissions_status}</span></div>'
@@ -2276,7 +2213,7 @@ def build_lang(lang='en', skip_landing_pages=True):
     <aside id="sidebar">
       <header class="sidebar-header">
         <img src="{base_index}Max Mitenkov.png" alt="{hero_name}" class="sidebar-photo" style="width: 100%; margin-bottom: 24px; opacity: 0.9;">
-        {"\n      ".join(nav_lines)}
+        {nav_lines}
         <a href="{cta_href}" class="cta-button">{cta_label}</a>
       </header>
       {social_html.replace('src=\"behance.png\"', f'src=\"{base_index}behance.png\"').replace('src=\"deviantart.png\"', f'src=\"{base_index}deviantart.png\"')}
@@ -2438,6 +2375,7 @@ def build_lang(lang='en', skip_landing_pages=True):
     project_base = "https://vimark.art/project/" if lang == 'en' else "https://vimark.art/ru/project/"
     landing_pages = [
         ("", "1.0"),
+        ("case-studies.html", "0.9"),
         ("book-covers.html", "0.9"),
         ("book-illustrations.html", "0.9"),
         ("about.html", "0.9"),
