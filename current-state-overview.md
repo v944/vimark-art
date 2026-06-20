@@ -1,7 +1,8 @@
 # vimark.art — Текущее состояние сайта
 
 > Документ описывает актуальную структуру, процессы и выполненные работы по SEO и GEO.
-> Дата: 20 июня 2026
+> Дата: 20 июня 2026  
+> Последний push: `50b3d6d` — синхронизация 493 файлов, включая обновления страницы контактов.
 
 ---
 
@@ -34,8 +35,9 @@
 | `book-illustrations.html` | Галерея иллюстраций к книгам |
 | `bookcover.html` | Альтернативная страница обложек (редиректится на book-covers.html) |
 | `case-studies/hoebeke-sci-fi-series.html` | Кейс: научно-фантастическая серия Hoebeke |
+| `case-studies.html` | Обзор кейсов / список case studies |
 | `comic.html` | Страница комиксов (редиректится на visual-stories.html) |
-| `contact.html` | Контакты (форма Web3Forms) |
+| `contact.html` | Контакты: форма Web3Forms, блок FAQ, разделитель под формой, стилизованная ссылка «View all FAQ» |
 | `faq.html` | Часто задаваемые вопросы |
 | `living-illustrations.html` | «Живые иллюстрации» — **noindex** |
 | `personal.html` | Персональные работы |
@@ -111,6 +113,7 @@
 | `display_titles.txt` | TXT | Переопределение отображаемых названий (`[en]` / `[ru]`) |
 | `Reedsy/reviews.json` | JSON | 23 отзыва с Reedsy (имя, дата, фото, текст, рейтинг) |
 | `pinterest/pins.json` | JSON | Реестр пинов для Pinterest (статус: ready/published) |
+| `scripts/` | Python | Вспомогательные скрипты для массовых правок HTML (футеры, навигация, языковой переключатель, пути) |
 | `vercel.json` | JSON | 44 редиректа + security headers (CSP, HSTS, X-Frame-Options и др.) |
 | `manifest.json` | JSON | PWA-манифест |
 | `BingSiteAuth.xml` | XML | Верификация Bing Webmaster Tools |
@@ -190,9 +193,9 @@ GitHub Actions workflow `.github/workflows/pinterest.yml.disabled`:
 | Элемент | Статус | Детали |
 |---------|--------|--------|
 | robots.txt | ✅ | Разрешено всё, кроме /admin, /.env, /cgi-bin, /wp-config |
-| Sitemap.xml | ✅ | **1365 URL**, changefreq weekly, lastmod 2026-06-17 |
-| Sitemap RU | ✅ | Полное зеркало для русской версии |
-| Image Sitemap | ✅ | **1350+ изображений** с `image:loc` и `image:title` |
+| Sitemap.xml | ✅ | **228 URL**, changefreq weekly, lastmod 2026-06-20 |
+| Sitemap RU | ✅ | **228 URL** — полное зеркало для русской версии |
+| Image Sitemap | ✅ | **386 изображений** с `image:loc` и `image:title` |
 | Canonical URLs | ✅ | На каждой странице — `rel="canonical"` |
 | Мета-описания | ✅ | Главная, категории, проекты, арты, блог |
 | Alt-тексты | ✅ | `caption + alt_suffix` из `locale.ini` (4 суффикса: bookcover, book-illustrations, comic, artwork) |
@@ -341,11 +344,13 @@ GitHub Actions workflow `.github/workflows/pinterest.yml.disabled`:
 
 ## 7. Ключевые метрики
 
-- **1365** URL в английской sitemap
-- **~150+** HTML-страниц всего
+- **228** URL в английской sitemap
+- **228** URL в русской sitemap
+- **489** HTML-страниц всего
+- **386** изображений в `image-sitemap.xml`
 - **200+** исходных изображений
 - **26** проектов в `projects.ini`
-- **71** отзыв на Reedsy (рейтинг 5.0)
+- **71** отзыв на странице отзывов (рейтинг 5.0)
 - **2** языка (EN, RU)
 - **3** sitemap (основная EN, основная RU, image)
 - **44** URL-редиректа
@@ -353,7 +358,13 @@ GitHub Actions workflow `.github/workflows/pinterest.yml.disabled`:
 
 ---
 
-## 8. Что ещё не реализовано / на паузе
+## 8. Последние изменения
+
+| Дата | Коммит | Что изменено |
+|------|--------|--------------|
+| 20 июня 2026 | `50b3d6d` | Синхронизированы 493 файла; добавлены `case-studies.html` / `ru/case-studies.html`; добавлен каталог `scripts/` с вспомогательными скриптами; обновлена страница `contact.html` / `ru/contact.html` (отступ от Submit, разделительная линия под формой, стиль ссылки «View all FAQ» как у `.cv-link` на главной). |
+
+## 9. Что ещё не реализовано / на паузе
 
 | Задача | Статус |
 |--------|--------|
