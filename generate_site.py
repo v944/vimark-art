@@ -2387,6 +2387,7 @@ def build_lang(lang='en', skip_landing_pages=True):
         ("faq.html", "0.8"),
         ("personal.html", "0.5"),
         ("privacy.html", "0.5"),
+        ("links.html", "0.8"),
     ]
     urls = [(f"{root_url}{path}", priority) for path, priority in landing_pages]
     # Project pages

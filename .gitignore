@@ -37,6 +37,12 @@ vimark_menu_restructure_task_2026-06-20.md
 # Drop folder for new images
 To_update/
 
+# OpenCode skills (local agent config)
+.agents/
+skills-lock.json
+
 # Backup files from humanizer
+*.bak.md
+*.humanized.md
 *.bak.md
 *.humanized.md
