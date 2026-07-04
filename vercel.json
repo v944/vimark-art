@@ -42,7 +42,9 @@
     { "source": "/Blog/:path*", "destination": "/blog/:path*", "permanent": true },
     { "source": "/ru/Blog/:path*", "destination": "/ru/blog/:path*", "permanent": true },
     { "source": "/links", "destination": "/links.html", "permanent": true },
-    { "source": "/ru/links", "destination": "/ru/links.html", "permanent": true }
+    { "source": "/ru/links", "destination": "/ru/links.html", "permanent": true },
+    { "source": "/work.html", "destination": "/#work", "permanent": true },
+    { "source": "/ru/work.html", "destination": "/ru/#work", "permanent": true }
   ],
   "headers": [
     {
@@ -50,17 +52,8 @@
       "headers": [{ "key": "Content-Type", "value": "text/xml" }]
     },
     {
-      "source": "/living-illustrations.html",
-      "headers": [{ "key": "X-Robots-Tag", "value": "noindex" }]
-    },
-    {
-      "source": "/ru/living-illustrations.html",
-      "headers": [{ "key": "X-Robots-Tag", "value": "noindex" }]
-    },
-    {
       "source": "/living-illustrations/:path*",
       "headers": [
-        { "key": "X-Robots-Tag", "value": "noindex" },
         { "key": "Access-Control-Allow-Origin", "value": "*" }
       ]
     },
