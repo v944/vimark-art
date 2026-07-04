@@ -44,7 +44,8 @@
     { "source": "/links", "destination": "/links.html", "permanent": true },
     { "source": "/ru/links", "destination": "/ru/links.html", "permanent": true },
     { "source": "/work.html", "destination": "/#work", "permanent": true },
-    { "source": "/ru/work.html", "destination": "/ru/#work", "permanent": true }
+    { "source": "/ru/work.html", "destination": "/ru/#work", "permanent": true },
+    { "source": "/404.html", "destination": "/", "permanent": true }
   ],
   "headers": [
     {
