@@ -1,5 +1,30 @@
 # Work Log
 
+## Homepage Card Randomization + Khton Cover Update
+
+### Homepage randomization (`index.html`, `ru/index.html`, `script.js`)
+- Added hidden card pools (`.projects-grid-pool`) for **Book Illustrations** and **Visual Stories → Series**.
+- `script.js` now randomly selects **3 cards** from the full pool on every page load:
+  - Book Illustrations: 8 cards total (all from `book-illustrations.html`)
+  - Visual Stories: 8 Series cards total (all from `visual-stories.html#series`)
+- Non-Series Visual Stories cards remain excluded from rotation.
+
+### Khton za okolitsey / Хтонь за околицей cover
+- File `BookCover/2026/__0004_01_Khton_2026.jpg` was already in the 2026 collection.
+- Added localized display titles:
+  - EN: `Khton za okolitsey`
+  - RU: `Хтонь за околицей`
+- Regenerated thumbnails, project art pages, and sitemaps.
+- Removed earlier mistaken `Book Illustrations/MIF/` additions and related config entries.
+
+### Files changed
+- `index.html`, `ru/index.html`
+- `script.js`
+- `captions.txt`, `display_titles.txt`
+- `generate_site.py` outputs: `project/`, `ru/project/`, `thumbnails/`, `sitemap.xml`, `image-sitemap.xml`, `pinterest/pins.json`
+
+---
+
 ## Humanizer: AI Pattern Removal (Blog + Case Study)
 
 Applied `blader/humanizer` skill (v2.8.0, 33 patterns) to all blog articles and the Hoëbeke case study.
@@ -114,4 +139,4 @@ Files modified:
 
 ---
 
-*Last updated: 2026-05-24*
+*Last updated: 2026-07-10*
