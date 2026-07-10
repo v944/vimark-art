@@ -394,6 +394,13 @@
     </image:image>
   </url>
   <url>
+    <loc>https://vimark.art/project/art/khton-za-okolitsey.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/BookCover/2026/__0004_01_Khton_2026.jpg</image:loc>
+      <image:title>Khton za okolitsey</image:title>
+    </image:image>
+  </url>
+  <url>
     <loc>https://vimark.art/project/art/human.html</loc>
     <image:image>
       <image:loc>https://vimark.art/Book%20Illustrations/Creatures/__0004_human.jpg</image:loc>
@@ -1742,6 +1749,13 @@
     <image:image>
       <image:loc>https://vimark.art/Book%20Illustrations/20000%20leagues%20under%20the%20sea/__0003_il_3.jpg</image:loc>
       <image:title>The Sunken Forest (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/khton-za-okolitsey.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/BookCover/2026/__0004_01_Khton_2026.jpg</image:loc>
+      <image:title>Хтонь за околицей</image:title>
     </image:image>
   </url>
   <url>
