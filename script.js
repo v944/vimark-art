@@ -1,6 +1,54 @@
 (function() {
   'use strict';
 
+  // Shuffle / randomize project cards on the home page for Book Illustrations and Visual Stories.
+  // The visible grid shows 3 random cards from the full pool (visible grid + hidden pool).
+  (function shuffleHomeProjectCards() {
+    if (!document.body.classList.contains('home')) return;
+
+    function shuffleArray(arr) {
+      const result = arr.slice();
+      for (let i = result.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        const temp = result[i];
+        result[i] = result[j];
+        result[j] = temp;
+      }
+      return result;
+    }
+
+    function randomizeSection(sectionId, cardSelector, maxVisible) {
+      const section = document.getElementById(sectionId);
+      if (!section) return;
+
+      const grid = section.querySelector('.projects-grid');
+      const pool = section.querySelector('.projects-grid-pool');
+      if (!grid) return;
+
+      const visibleCards = Array.from(grid.querySelectorAll(cardSelector || '.project-card'));
+      const poolCards = pool ? Array.from(pool.querySelectorAll(cardSelector || '.project-card')) : [];
+      const allCards = visibleCards.concat(poolCards);
+
+      if (allCards.length <= maxVisible) {
+        // Not enough cards to randomly select; just shuffle and append.
+        shuffleArray(allCards).forEach(function(card) {
+          grid.appendChild(card);
+        });
+        return;
+      }
+
+      const selected = shuffleArray(allCards).slice(0, maxVisible);
+      grid.innerHTML = '';
+      selected.forEach(function(card) {
+        grid.appendChild(card);
+      });
+    }
+
+    randomizeSection('book-illustrations', '.project-card', 3);
+    // Visual Stories: only cards explicitly marked as part of Series participate
+    randomizeSection('comic', '.project-card.series-card', 3);
+  })();
+
   // First-visit fullscreen hero effect (desktop only)
   (function initFirstVisitHero() {
     if (!document.body.classList.contains('home')) return;
