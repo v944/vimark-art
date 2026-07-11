@@ -1,5 +1,29 @@
 # Work Log
 
+## Book Cover Year Card Randomization
+
+Randomized the displayed covers for each year card in the Book Covers section on the homepage.
+
+### Behavior
+- Each year card (2026, 2025, 2024) now shows a random main cover + 3 random thumbnails from that year's pool on every page load.
+- All 4 images per card are distinct and selected independently per year.
+- Static fallback content remains intact for no-JS browsers.
+
+### Implementation
+- Added `data-cover-pool` JSON attribute to each year card in `index.html` and `ru/index.html` listing all covers for that year.
+- Added `randomizeBookCoverYearCards()` to `script.js` (runs only on the homepage):
+  - Parses each card's cover pool.
+  - Shuffles the pool and picks the first 4 entries.
+  - Updates `.project-card-main` `src`, `data-full`, and `alt`.
+  - Updates the 3 `.project-card-thumbs img` elements' `src` and `alt`.
+
+### Files changed
+- `index.html`
+- `ru/index.html`
+- `script.js`
+
+---
+
 ## Homepage Card Randomization + Khton Cover Update
 
 ### Homepage randomization (`index.html`, `ru/index.html`, `script.js`)
@@ -139,4 +163,4 @@ Files modified:
 
 ---
 
-*Last updated: 2026-07-10*
+*Last updated: 2026-07-11*
