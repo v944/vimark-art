@@ -49,9 +49,11 @@
     randomizeSection('comic', '.project-card.series-card', 3);
   })();
 
-  // Randomize the displayed covers on Book Cover year cards on the home page.
-  // Each year card picks a random main cover + 3 random thumbnails from its pool.
-  (function randomizeBookCoverYearCards() {
+  // Randomize the displayed artwork on project cards that declare a cover pool.
+  // Used on the home page for Book Cover year cards, Book Illustration cards,
+  // and Visual Stories cards. Each card picks a random main image + 3 random
+  // thumbnails from its data-cover-pool.
+  (function randomizeProjectCardCovers() {
     if (!document.body.classList.contains('home')) return;
 
     function shuffleArray(arr) {
