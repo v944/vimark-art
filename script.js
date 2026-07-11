@@ -49,6 +49,49 @@
     randomizeSection('comic', '.project-card.series-card', 3);
   })();
 
+  // Randomize the displayed covers on Book Cover year cards on the home page.
+  // Each year card picks a random main cover + 3 random thumbnails from its pool.
+  (function randomizeBookCoverYearCards() {
+    if (!document.body.classList.contains('home')) return;
+
+    function shuffleArray(arr) {
+      const result = arr.slice();
+      for (let i = result.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        const temp = result[i];
+        result[i] = result[j];
+        result[j] = temp;
+      }
+      return result;
+    }
+
+    document.querySelectorAll('.project-card[data-cover-pool]').forEach(function(card) {
+      let pool;
+      try {
+        pool = JSON.parse(card.dataset.coverPool);
+      } catch (e) {
+        return;
+      }
+      if (!Array.isArray(pool) || pool.length === 0) return;
+
+      const selected = shuffleArray(pool).slice(0, 4);
+      const mainImg = card.querySelector('.project-card-main');
+      const thumbs = card.querySelectorAll('.project-card-thumbs img');
+
+      if (mainImg && selected[0]) {
+        mainImg.src = selected[0].thumb;
+        mainImg.setAttribute('data-full', selected[0].full);
+        mainImg.alt = selected[0].alt;
+      }
+
+      for (let i = 0; i < thumbs.length && i + 1 < selected.length; i++) {
+        const cover = selected[i + 1];
+        thumbs[i].src = cover.thumb;
+        thumbs[i].alt = cover.alt;
+      }
+    });
+  })();
+
   // First-visit fullscreen hero effect (desktop only)
   (function initFirstVisitHero() {
     if (!document.body.classList.contains('home')) return;
