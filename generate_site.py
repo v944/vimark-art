@@ -913,6 +913,7 @@ def build_lang(lang='en', skip_landing_pages=True):
 
     def gallery_html(items, base=""):
         lines = ['<div class="gallery-grid">']
+        creator_name = html.escape(t.get('hero_name', 'Max Mitenkov'))
         for idx, img in enumerate(items):
             src = html.escape(base + img["src"], quote=True)
             thumb = html.escape(base + img.get("thumb", img["src"]), quote=True)
@@ -927,6 +928,7 @@ def build_lang(lang='en', skip_landing_pages=True):
             loading = "eager" if idx < 4 else "lazy"
             lines.append(f'    <img src="{thumb}" srcset="{thumb_sm} 400w, {thumb} 600w" sizes="(max-width: 600px) 90vw, 300px" data-full="{src}" alt="{alt}" loading="{loading}"{dim_attr} itemprop="image">')
             lines.append(f'    {year_meta}')
+            lines.append(f'    <meta itemprop="creator" content="{creator_name}">')
             lines.append(f'    <figcaption itemprop="name">{alt}</figcaption>')
             lines.append('  </figure>')
         lines.append('</div>')
@@ -934,6 +936,7 @@ def build_lang(lang='en', skip_landing_pages=True):
 
     def project_gallery_html(items, base=""):
         lines = ['<div class="gallery-grid">']
+        creator_name = html.escape(t.get('hero_name', 'Max Mitenkov'))
         for idx, img in enumerate(items):
             src = html.escape(base + img["src"], quote=True)
             thumb = html.escape(base + img.get("thumb", img["src"]), quote=True)
@@ -950,6 +953,7 @@ def build_lang(lang='en', skip_landing_pages=True):
             loading = "eager" if idx < 4 else "lazy"
             lines.append(f'    <img src="{thumb}" srcset="{thumb_sm} 400w, {thumb} 600w" sizes="(max-width: 600px) 90vw, 300px" alt="{alt}" loading="{loading}"{dim_attr} itemprop="image">')
             lines.append(f'    {year_meta}')
+            lines.append(f'    <meta itemprop="creator" content="{creator_name}">')
             lines.append(f'    <figcaption itemprop="name">{alt}</figcaption>')
             lines.append('  </a>')
         lines.append('</div>')
@@ -1033,6 +1037,7 @@ def build_lang(lang='en', skip_landing_pages=True):
                 "image": f"https://vimark.art/{html.escape(img['src'].lstrip('/'), quote=True)}",
                 "url": img_canonical,
                 "artist": {"@type": "Person", "name": hero_name, "url": "https://vimark.art/" if page_lang == 'en' else "https://vimark.art/ru/"},
+                "creator": {"@type": "Person", "name": hero_name, "url": "https://vimark.art/" if page_lang == 'en' else "https://vimark.art/ru/"},
                 "isPartOf": {"@type": "CreativeWork", "name": title, "url": page_canonical}
             })
         gallery_schema_json = json.dumps({
@@ -1288,6 +1293,11 @@ def build_lang(lang='en', skip_landing_pages=True):
                 "name": hero_name,
                 "url": "https://vimark.art/" if page_lang == 'en' else "https://vimark.art/ru/"
             },
+            "creator": {
+                "@type": "Person",
+                "name": hero_name,
+                "url": "https://vimark.art/" if page_lang == 'en' else "https://vimark.art/ru/"
+            },
             "dateCreated": year or datetime.date.today().year,
             "artMedium": "Digital painting",
             "artworkSurface": "Digital",
@@ -1307,6 +1317,11 @@ def build_lang(lang='en', skip_landing_pages=True):
             "@type": "ImageObject",
             "name": art_name,
             "author": {
+                "@type": "Person",
+                "name": hero_name,
+                "url": "https://vimark.art/" if page_lang == 'en' else "https://vimark.art/ru/"
+            },
+            "creator": {
                 "@type": "Person",
                 "name": hero_name,
                 "url": "https://vimark.art/" if page_lang == 'en' else "https://vimark.art/ru/"
