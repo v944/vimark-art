@@ -401,6 +401,13 @@
     </image:image>
   </url>
   <url>
+    <loc>https://vimark.art/project/art/necropolis.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/BookCover/2026/__0001_01_Necropolis _2026.jpg</image:loc>
+      <image:title>Necropolis</image:title>
+    </image:image>
+  </url>
+  <url>
     <loc>https://vimark.art/project/art/human.html</loc>
     <image:image>
       <image:loc>https://vimark.art/Book%20Illustrations/Creatures/__0004_human.jpg</image:loc>
@@ -1756,6 +1763,13 @@
     <image:image>
       <image:loc>https://vimark.art/BookCover/2026/__0004_01_Khton_2026.jpg</image:loc>
       <image:title>Хтонь за околицей</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/necropolis.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/BookCover/2026/__0001_01_Necropolis _2026.jpg</image:loc>
+      <image:title>Некрополь</image:title>
     </image:image>
   </url>
   <url>
