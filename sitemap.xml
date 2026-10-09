@@ -50,7 +50,7 @@
   </url>
   <url>
     <loc>https://vimark.art/visual-stories.html</loc>
-    <lastmod>2026-07-13</lastmod>
+    <lastmod>2026-10-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -176,7 +176,7 @@
   </url>
   <url>
     <loc>https://vimark.art/project/comic-wanderer.html</loc>
-    <lastmod>2026-07-13</lastmod>
+    <lastmod>2026-10-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -501,6 +501,12 @@
   <url>
     <loc>https://vimark.art/project/art/necropolis.html</loc>
     <lastmod>2026-08-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://vimark.art/project/art/desperate-times.html</loc>
+    <lastmod>2026-10-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -1395,6 +1401,12 @@
   <url>
     <loc>https://vimark.art/project/art/towers-2026.html</loc>
     <lastmod>2026-07-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://vimark.art/project/art/in-the-dark-2026.html</loc>
+    <lastmod>2026-10-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>

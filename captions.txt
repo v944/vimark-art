@@ -161,3 +161,4 @@ Book Illustrations/20000 leagues under the sea/__0004_il_4.jpg = The Shipwreck
 Book Illustrations/20000 leagues under the sea/__0005_il_5.jpg = The Sunken City
 Book Illustrations/20000 leagues under the sea/__0006_il_6.jpg = The Antarctic Ice
 Book Illustrations/20000 leagues under the sea/__0007_il_7.jpg = The Giant Squid
+comic/Wanderer/Pepel8.jpg = In the dark, 2026
