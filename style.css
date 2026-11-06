@@ -1618,8 +1618,21 @@ img {
 [data-theme="light"] #canvasWrapper .project-card-thumbs img,
 [data-theme="light"] #canvasWrapper .gallery-item img,
 [data-theme="light"] #canvasWrapper .about-gallery-grid img,
-[data-theme="light"] #canvasWrapper .error-random img {
+[data-theme="light"] #canvasWrapper .error-random img,
+[data-theme="light"] #canvasWrapper .behance-ribbon,
+[data-theme="light"] #canvasWrapper .behance-ribbon::after,
+[data-theme="light"] #canvasWrapper .behance-ribbon-lines,
+[data-theme="light"] #canvasWrapper .behance-ribbon-lines::before,
+[data-theme="light"] #canvasWrapper .behance-ribbon-label,
+[data-theme="light"] #canvasWrapper .behance-ribbon-tools,
+[data-theme="light"] #canvasWrapper .behance-ribbon-tools::after,
+[data-theme="light"] #canvasWrapper .behance-ribbon-tools span {
   filter: invert(1) hue-rotate(180deg);
+}
+
+[data-theme="light"] #canvasWrapper .behance-ribbon:hover,
+[data-theme="light"] #canvasWrapper .behance-ribbon-tools:hover {
+  filter: invert(1) hue-rotate(180deg) brightness(1.1);
 }
 
 [data-theme="light"] #canvasWrapper .sidebar-photo {
