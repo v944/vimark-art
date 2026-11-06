@@ -1632,6 +1632,27 @@ img {
   background: rgba(255, 255, 255, 0.75);
 }
 
+/* Under the invert filter, variable-based light values render dark.
+   Force these content surfaces back to the dark palette so they stay
+   light and readable in the light theme. */
+[data-theme="light"] #canvasWrapper .review-card,
+[data-theme="light"] #canvasWrapper .reviews-bar,
+[data-theme="light"] #canvasWrapper .art-hero,
+[data-theme="light"] #canvasWrapper .art-review,
+[data-theme="light"] #canvasWrapper .genre-tab {
+  background: #1a1a1a;
+  border-color: #333;
+}
+
+[data-theme="light"] #canvasWrapper .review-card-text,
+[data-theme="light"] #canvasWrapper .art-review blockquote,
+[data-theme="light"] #canvasWrapper .art-review cite strong,
+[data-theme="light"] #canvasWrapper .genre-tab,
+[data-theme="light"] #canvasWrapper .art-nav-prev,
+[data-theme="light"] #canvasWrapper .art-nav-next {
+  color: rgba(255, 255, 255, 0.85);
+}
+
 /* Extra breakpoints */
 @media (max-width: 1024px) {
   #main {
