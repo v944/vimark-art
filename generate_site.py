@@ -844,6 +844,11 @@ def build_lang(lang='en', skip_landing_pages=True):
             img["thumb_sm"] = thumb_sm_rel
             img["width"] = w
             img["height"] = h
+            try:
+                with Image.open(img["path"]) as im_orig:
+                    img["orig_width"], img["orig_height"] = im_orig.size
+            except Exception:
+                img["orig_width"] = img["orig_height"] = ""
         print("Thumbnails done.")
 
     # No "Select" section — show all by default
@@ -992,7 +997,18 @@ def build_lang(lang='en', skip_landing_pages=True):
             wide_cls = " gallery-item--wide" if wide else ''
             lines.append(f'  <a href="{art_href}" class="gallery-item{wide_cls}" itemscope itemtype="https://schema.org/VisualArtwork">')
             loading = "eager" if idx < 4 else "lazy"
-            lines.append(f'    <img src="{thumb}" srcset="{thumb_sm} 400w, {thumb} 600w" sizes="(max-width: 600px) 90vw, 300px" alt="{alt}" loading="{loading}"{dim_attr} itemprop="image">')
+            if wide:
+                ow = img.get("orig_width", "")
+                oh = img.get("orig_height", "")
+                extra = f", {src} {ow}w" if ow else ""
+                srcset = f"{thumb_sm} 400w, {thumb} 600w{extra}"
+                sizes = "(max-width: 600px) 90vw, 1200px"
+                dim = f' width="{ow}" height="{oh}"' if ow and oh else dim_attr
+            else:
+                srcset = f"{thumb_sm} 400w, {thumb} 600w"
+                sizes = "(max-width: 600px) 90vw, 300px"
+                dim = dim_attr
+            lines.append(f'    <img src="{thumb}" srcset="{srcset}" sizes="{sizes}" alt="{alt}" loading="{loading}"{dim} itemprop="image">')
             lines.append(f'    {year_meta}')
             lines.append(f'    <meta itemprop="creator" content="{creator_name}">')
             lines.append(f'    <figcaption itemprop="name">{alt}</figcaption>')
