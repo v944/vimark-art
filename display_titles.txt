@@ -20,6 +20,9 @@ Book Illustrations/Planetes/__0013_15_virtual.jpg = Virtual
 
 [ru]
 BookCover/2026/__0001_01_Necropolis _2026.jpg = Некрополь
+BookCover/2026/__0001_02_Blood_Ruby _2026.jpg = Кровавый рубин
+BookCover/2026/__0001_03_Angel_of_Ace_2026.jpg = Ангел Туза
+BookCover/2026/__0001_04_Desperate_Times_2026.jpg = Отчаянные времена
 BookCover/2026/__0004_01_Khton_2026.jpg = Хтонь за околицей
 BookCover/2026/__0004_Prizraki_2026.jpg = Призраки старого кладбища
 BookCover/2025/__0002_Layer 9 copy 2.jpg = Soliton

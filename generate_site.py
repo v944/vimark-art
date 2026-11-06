@@ -574,6 +574,31 @@ def load_art_reviews():
     return reviews
 
 
+def load_art_meta():
+    """Load per-artwork metadata overrides from art_meta.ini.
+
+    Sections are image paths; keys are description_en, description_ru,
+    art_meta_en, art_meta_ru. Overrides replace the generic template
+    description and the art-meta line on artwork pages."""
+    meta = {}
+    ini_path = WEBSITE / "art_meta.ini"
+    if not ini_path.exists():
+        return meta
+    cfg = configparser.ConfigParser(interpolation=None)
+    cfg.read(ini_path, encoding="utf-8")
+    for section in cfg.sections():
+        meta[section] = {
+            "description_en": cfg.get(section, "description_en", fallback=""),
+            "description_ru": cfg.get(section, "description_ru", fallback=""),
+            "art_meta_en": cfg.get(section, "art_meta_en", fallback=""),
+            "art_meta_ru": cfg.get(section, "art_meta_ru", fallback=""),
+        }
+    return meta
+
+
+ART_META = load_art_meta()
+
+
 def find_wip_images(art_slug, project_folder):
     """Find WIP images for a specific artwork in the project/wip folder."""
     wip_dir = ROOT / project_folder / "wip"
@@ -1251,6 +1276,11 @@ def build_lang(lang='en', skip_landing_pages=True):
         cat_key = art.get("category", "")
         cat_label = t.get(cat_key, human_label(cat_key))
         art_meta_suffix = html.escape(t.get('art_meta_suffix', 'Digital painting and illustration for sci-fi, fantasy, horror and literary fiction publishing.'))
+        meta_ov = ART_META.get(art["src"], {})
+        desc_override = meta_ov.get(f"description_{page_lang}", "")
+        art_meta_override = meta_ov.get(f"art_meta_{page_lang}", "")
+        page_desc = html.escape(desc_override) if desc_override else f"{art_name} — {title} by {hero_name}. {cat_label} {art_meta_suffix}"
+        art_meta_line = html.escape(art_meta_override) if art_meta_override else f"{title}{' · ' + year if year else ''}"
         back_href = f"{base}{'ru/' if page_lang == 'ru' else ''}project/{art.get('subcategory', cat_key)}.html"
         home_href = f"{base}{'ru/' if page_lang == 'ru' else ''}index.html"
         # Map internal category keys to public hub URLs
@@ -1430,7 +1460,7 @@ def build_lang(lang='en', skip_landing_pages=True):
 <meta name="robots" content="index, follow">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>{art_name} · {title} · {hero_name}</title>
-<meta name="description" content="{art_name} — {title} by {hero_name}. {cat_label} {art_meta_suffix}">
+<meta name="description" content="{page_desc}">
 <link rel="canonical" href="{page_canonical}">
 {page_hreflang}
 <link rel="preconnect" href="https://www.googletagmanager.com">
@@ -1446,7 +1476,7 @@ def build_lang(lang='en', skip_landing_pages=True):
 <meta property="og:type" content="article">
 <meta property="og:url" content="{page_canonical}">
 <meta property="og:title" content="{art_name} · {title} · {hero_name}">
-<meta property="og:description" content="{art_name} — {title} by {hero_name}. {cat_label} {art_meta_suffix}">
+<meta property="og:description" content="{page_desc}">
 <meta property="og:image" content="https://vimark.art/{og_image}">
 <meta property="og:image:width" content="{og_image_width}">
 <meta property="og:image:height" content="{og_image_height}">
@@ -1455,7 +1485,7 @@ def build_lang(lang='en', skip_landing_pages=True):
 <meta property="twitter:card" content="summary_large_image">
 <meta property="twitter:url" content="{page_canonical}">
 <meta property="twitter:title" content="{art_name} · {title} · {hero_name}">
-<meta property="twitter:description" content="{art_name} — {title} by {hero_name}. {cat_label} {art_meta_suffix}">
+<meta property="twitter:description" content="{page_desc}">
 <meta property="twitter:image" content="https://vimark.art/{og_image}">
 <meta property="twitter:site" content="{twitter_handle}">
 <meta property="twitter:creator" content="{twitter_handle}">
@@ -1521,7 +1551,7 @@ def build_lang(lang='en', skip_landing_pages=True):
         </nav>
         <a href="{back_href}" class="back-link">← Back to project</a>
         <h1>{art_name}</h1>
-        <p class="art-meta">{title}{' · ' + year if year else ''}</p>
+        <p class="art-meta">{art_meta_line}</p>
       </div>
       <section class="art-hero">
         {prev_link}
@@ -2396,6 +2426,7 @@ def build_lang(lang='en', skip_landing_pages=True):
         ("about.html", "0.9"),
         ("services.html", "0.9"),
         ("case-studies/hoebeke-sci-fi-series.html", "0.9"),
+        ("case-studies/timeline27-field-guide-immortality.html", "0.9"),
         ("visual-stories.html", "0.8"),
         ("contact.html", "0.8"),
         ("reviews.html", "0.8"),

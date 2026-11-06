@@ -93,6 +93,34 @@
     </image:image>
   </url>
   <url>
+    <loc>https://vimark.art/project/art/desperate-times.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/BookCover/2026/__0001_04_Desperate_Times_2026.jpg</image:loc>
+      <image:title>Desperate Times</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/project/art/angel-of-ace.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/BookCover/2026/__0001_03_Angel_of_Ace_2026.jpg</image:loc>
+      <image:title>Angel of Ace</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/project/art/blood-ruby.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/BookCover/2026/__0001_02_Blood_Ruby%20_2026.jpg</image:loc>
+      <image:title>Blood Ruby</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/project/art/necropolis.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/BookCover/2026/__0001_01_Necropolis%20_2026.jpg</image:loc>
+      <image:title>Necropolis</image:title>
+    </image:image>
+  </url>
+  <url>
     <loc>https://vimark.art/project/art/antrpo.html</loc>
     <image:image>
       <image:loc>https://vimark.art/Book%20Illustrations/Creatures/__0001_antrpo.jpg</image:loc>
@@ -394,17 +422,17 @@
     </image:image>
   </url>
   <url>
+    <loc>https://vimark.art/project/art/cardiff-beras-dammerung.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/Book%20Illustrations/Winter%E2%80%99s%20Twins/__0004_Cardiff_Beras_Dammerung.jpg</image:loc>
+      <image:title>Cardiff Beras Dammerung</image:title>
+    </image:image>
+  </url>
+  <url>
     <loc>https://vimark.art/project/art/khton-za-okolitsey.html</loc>
     <image:image>
       <image:loc>https://vimark.art/BookCover/2026/__0004_01_Khton_2026.jpg</image:loc>
       <image:title>Khton za okolitsey</image:title>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://vimark.art/project/art/necropolis.html</loc>
-    <image:image>
-      <image:loc>https://vimark.art/BookCover/2026/__0001_01_Necropolis _2026.jpg</image:loc>
-      <image:title>Necropolis</image:title>
     </image:image>
   </url>
   <url>
@@ -510,6 +538,13 @@
     <image:image>
       <image:loc>https://vimark.art/Book%20Illustrations/20000%20leagues%20under%20the%20sea/__0004_il_4.jpg</image:loc>
       <image:title>The Shipwreck</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/project/art/strix-at-the-fall-of-caladrin.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/Book%20Illustrations/Winter%E2%80%99s%20Twins/__0005_Strix_at_the_Fall_of_Caladrin.jpg</image:loc>
+      <image:title>Strix at the Fall of Caladrin</image:title>
     </image:image>
   </url>
   <url>
@@ -958,6 +993,13 @@
     <image:image>
       <image:loc>https://vimark.art/Book%20Illustrations/Endymion/__0014_E14_rijad.jpg</image:loc>
       <image:title>Rijad</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/project/art/in-the-dark-2026.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/comic/Wanderer/Pepel8.jpg</image:loc>
+      <image:title>In the dark, 2026</image:title>
     </image:image>
   </url>
   <url>
@@ -1458,6 +1500,34 @@
     </image:image>
   </url>
   <url>
+    <loc>https://vimark.art/ru/project/art/desperate-times.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/BookCover/2026/__0001_04_Desperate_Times_2026.jpg</image:loc>
+      <image:title>Отчаянные времена</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/angel-of-ace.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/BookCover/2026/__0001_03_Angel_of_Ace_2026.jpg</image:loc>
+      <image:title>Ангел Туза</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/blood-ruby.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/BookCover/2026/__0001_02_Blood_Ruby%20_2026.jpg</image:loc>
+      <image:title>Кровавый рубин</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/necropolis.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/BookCover/2026/__0001_01_Necropolis%20_2026.jpg</image:loc>
+      <image:title>Некрополь</image:title>
+    </image:image>
+  </url>
+  <url>
     <loc>https://vimark.art/ru/project/art/antrpo.html</loc>
     <image:image>
       <image:loc>https://vimark.art/Book%20Illustrations/Creatures/__0001_antrpo.jpg</image:loc>
@@ -1759,17 +1829,17 @@
     </image:image>
   </url>
   <url>
+    <loc>https://vimark.art/ru/project/art/cardiff-beras-dammerung.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/Book%20Illustrations/Winter%E2%80%99s%20Twins/__0004_Cardiff_Beras_Dammerung.jpg</image:loc>
+      <image:title>Cardiff Beras Dammerung (2)</image:title>
+    </image:image>
+  </url>
+  <url>
     <loc>https://vimark.art/ru/project/art/khton-za-okolitsey.html</loc>
     <image:image>
       <image:loc>https://vimark.art/BookCover/2026/__0004_01_Khton_2026.jpg</image:loc>
       <image:title>Хтонь за околицей</image:title>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://vimark.art/ru/project/art/necropolis.html</loc>
-    <image:image>
-      <image:loc>https://vimark.art/BookCover/2026/__0001_01_Necropolis _2026.jpg</image:loc>
-      <image:title>Некрополь</image:title>
     </image:image>
   </url>
   <url>
@@ -1875,6 +1945,13 @@
     <image:image>
       <image:loc>https://vimark.art/Book%20Illustrations/20000%20leagues%20under%20the%20sea/__0004_il_4.jpg</image:loc>
       <image:title>The Shipwreck (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/strix-at-the-fall-of-caladrin.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/Book%20Illustrations/Winter%E2%80%99s%20Twins/__0005_Strix_at_the_Fall_of_Caladrin.jpg</image:loc>
+      <image:title>Strix at the Fall of Caladrin (2)</image:title>
     </image:image>
   </url>
   <url>
@@ -2323,6 +2400,13 @@
     <image:image>
       <image:loc>https://vimark.art/Book%20Illustrations/Endymion/__0014_E14_rijad.jpg</image:loc>
       <image:title>Rijad (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/in-the-dark-2026.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/comic/Wanderer/Pepel8.jpg</image:loc>
+      <image:title>In the dark, 2026 (2)</image:title>
     </image:image>
   </url>
   <url>
