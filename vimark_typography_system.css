@@ -57,7 +57,7 @@ body {
   line-height: var(--lh-relaxed);
   letter-spacing: var(--ls-body);
   color: var(--color-text-secondary);
-  background-color: var(--color-bg);
+  background-color: var(--bg, var(--color-bg));
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
