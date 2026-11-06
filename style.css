@@ -1620,13 +1620,7 @@ img {
 [data-theme="light"] #canvasWrapper .about-gallery-grid img,
 [data-theme="light"] #canvasWrapper .error-random img,
 [data-theme="light"] #canvasWrapper .behance-ribbon,
-[data-theme="light"] #canvasWrapper .behance-ribbon::after,
-[data-theme="light"] #canvasWrapper .behance-ribbon-lines,
-[data-theme="light"] #canvasWrapper .behance-ribbon-lines::before,
-[data-theme="light"] #canvasWrapper .behance-ribbon-label,
-[data-theme="light"] #canvasWrapper .behance-ribbon-tools,
-[data-theme="light"] #canvasWrapper .behance-ribbon-tools::after,
-[data-theme="light"] #canvasWrapper .behance-ribbon-tools span {
+[data-theme="light"] #canvasWrapper .behance-ribbon-tools {
   filter: invert(1) hue-rotate(180deg);
 }
 
