@@ -179,7 +179,12 @@
   if (!overlay) {
     overlay = document.createElement('div');
     overlay.className = 'sidebar-overlay';
-    document.body.appendChild(overlay);
+    const canvasWrapper = document.getElementById('canvasWrapper');
+    if (canvasWrapper) {
+      canvasWrapper.appendChild(overlay);
+    } else {
+      document.body.appendChild(overlay);
+    }
   }
 
   if (overlay) {

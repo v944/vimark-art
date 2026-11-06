@@ -78,9 +78,10 @@ img {
 
 /* Sidebar */
 #sidebar {
-  position: fixed;
+  position: sticky;
   top: 0;
   left: 0;
+  align-self: flex-start;
   width: 240px;
   height: 100vh;
   background: #111;
@@ -155,8 +156,8 @@ img {
 
 /* Main Content */
 #main {
-  margin-left: 240px;
-  width: calc(100% - 240px);
+  flex: 1;
+  min-width: 0;
   min-height: 100vh;
   padding: 45px;
 }
@@ -1605,24 +1606,30 @@ img {
   background: var(--card-bg-hover);
 }
 
-[data-theme="light"] body {
+[data-theme="light"] #canvasWrapper {
   filter: invert(1) hue-rotate(180deg);
 }
 
-[data-theme="light"] img,
-[data-theme="light"] svg,
-[data-theme="light"] .hero img,
-[data-theme="light"] .project-hero img,
-[data-theme="light"] .project-card-main,
-[data-theme="light"] .project-card-thumbs img,
-[data-theme="light"] .gallery-item img,
-[data-theme="light"] .about-gallery-grid img,
-[data-theme="light"] .error-random img {
+[data-theme="light"] #canvasWrapper img,
+[data-theme="light"] #canvasWrapper svg,
+[data-theme="light"] #canvasWrapper .hero img,
+[data-theme="light"] #canvasWrapper .project-hero img,
+[data-theme="light"] #canvasWrapper .project-card-main,
+[data-theme="light"] #canvasWrapper .project-card-thumbs img,
+[data-theme="light"] #canvasWrapper .gallery-item img,
+[data-theme="light"] #canvasWrapper .about-gallery-grid img,
+[data-theme="light"] #canvasWrapper .error-random img {
   filter: invert(1) hue-rotate(180deg);
 }
 
-[data-theme="light"] .sidebar-photo {
+[data-theme="light"] #canvasWrapper .sidebar-photo {
   filter: none !important;
+}
+
+/* The overlay lives inside the filtered wrapper; pre-invert its color so
+   it dims correctly after the ancestor's invert filter is applied. */
+[data-theme="light"] .sidebar-overlay {
+  background: rgba(255, 255, 255, 0.75);
 }
 
 /* Extra breakpoints */
