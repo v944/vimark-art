@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
+    <loc>https://vimark.art/project/art/the-last-warmth-2026.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/comic/Deepwish/__0000_deepwish_01.jpg</image:loc>
+      <image:title>The last warmth, 2026</image:title>
+    </image:image>
+  </url>
+  <url>
     <loc>https://vimark.art/project/art/animals.html</loc>
     <image:image>
       <image:loc>https://vimark.art/Book%20Illustrations/Creatures/__0000_animals.jpg</image:loc>
@@ -90,6 +97,13 @@
     <image:image>
       <image:loc>https://vimark.art/comic/Geologyst/_0000_Geologyst_1.jpg</image:loc>
       <image:title>The first story. Master, 2026</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/project/art/the-descent-2026.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/comic/Deepwish/__0001_deepwish_02.jpg</image:loc>
+      <image:title>The descent, 2026</image:title>
     </image:image>
   </url>
   <url>
@@ -226,6 +240,13 @@
     </image:image>
   </url>
   <url>
+    <loc>https://vimark.art/project/art/halls-of-the-old-world-2026.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/comic/Deepwish/__0002_deepwish_03.jpg</image:loc>
+      <image:title>Halls of the old world, 2026</image:title>
+    </image:image>
+  </url>
+  <url>
     <loc>https://vimark.art/project/art/big.html</loc>
     <image:image>
       <image:loc>https://vimark.art/Book%20Illustrations/Creatures/__0002_big.jpg</image:loc>
@@ -324,6 +345,13 @@
     </image:image>
   </url>
   <url>
+    <loc>https://vimark.art/project/art/graveyard-of-titans-2026.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/comic/Deepwish/__0003_deepwish_04.jpg</image:loc>
+      <image:title>Graveyard of titans, 2026</image:title>
+    </image:image>
+  </url>
+  <url>
     <loc>https://vimark.art/project/art/gods.html</loc>
     <image:image>
       <image:loc>https://vimark.art/Book%20Illustrations/Creatures/__0003_gods.jpg</image:loc>
@@ -419,6 +447,13 @@
     <image:image>
       <image:loc>https://vimark.art/Book%20Illustrations/20000%20leagues%20under%20the%20sea/__0003_il_3.jpg</image:loc>
       <image:title>The Sunken Forest</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/project/art/the-lord-of-electricity-2026.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/comic/Deepwish/__0004_deepwish_05.jpg</image:loc>
+      <image:title>The Lord of Electricity, 2026</image:title>
     </image:image>
   </url>
   <url>
@@ -541,6 +576,13 @@
     </image:image>
   </url>
   <url>
+    <loc>https://vimark.art/project/art/the-chamber-of-fulfillment-2026.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/comic/Deepwish/__0005_deepwish_06.jpg</image:loc>
+      <image:title>The Chamber of Fulfillment, 2026</image:title>
+    </image:image>
+  </url>
+  <url>
     <loc>https://vimark.art/project/art/strix-at-the-fall-of-caladrin.html</loc>
     <image:image>
       <image:loc>https://vimark.art/Book%20Illustrations/Winter%E2%80%99s%20Twins/__0005_Strix_at_the_Fall_of_Caladrin.jpg</image:loc>
@@ -636,6 +678,13 @@
     <image:image>
       <image:loc>https://vimark.art/Book%20Illustrations/20000%20leagues%20under%20the%20sea/__0005_il_5.jpg</image:loc>
       <image:title>The Sunken City</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/project/art/the-greatest-wish-2026.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/comic/Deepwish/__0006_deepwish_07.jpg</image:loc>
+      <image:title>The greatest wish, 2026</image:title>
     </image:image>
   </url>
   <url>
@@ -1409,6 +1458,13 @@
     </image:image>
   </url>
   <url>
+    <loc>https://vimark.art/ru/project/art/the-last-warmth-2026.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/comic/Deepwish/__0000_deepwish_01.jpg</image:loc>
+      <image:title>Последнее тепло</image:title>
+    </image:image>
+  </url>
+  <url>
     <loc>https://vimark.art/ru/project/art/animals.html</loc>
     <image:image>
       <image:loc>https://vimark.art/Book%20Illustrations/Creatures/__0000_animals.jpg</image:loc>
@@ -1497,6 +1553,13 @@
     <image:image>
       <image:loc>https://vimark.art/comic/Geologyst/_0000_Geologyst_1.jpg</image:loc>
       <image:title>The first story. Master, 2026 (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/the-descent-2026.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/comic/Deepwish/__0001_deepwish_02.jpg</image:loc>
+      <image:title>Спуск</image:title>
     </image:image>
   </url>
   <url>
@@ -1633,6 +1696,13 @@
     </image:image>
   </url>
   <url>
+    <loc>https://vimark.art/ru/project/art/halls-of-the-old-world-2026.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/comic/Deepwish/__0002_deepwish_03.jpg</image:loc>
+      <image:title>Залы старого мира</image:title>
+    </image:image>
+  </url>
+  <url>
     <loc>https://vimark.art/ru/project/art/big.html</loc>
     <image:image>
       <image:loc>https://vimark.art/Book%20Illustrations/Creatures/__0002_big.jpg</image:loc>
@@ -1731,6 +1801,13 @@
     </image:image>
   </url>
   <url>
+    <loc>https://vimark.art/ru/project/art/graveyard-of-titans-2026.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/comic/Deepwish/__0003_deepwish_04.jpg</image:loc>
+      <image:title>Кладбище титанов</image:title>
+    </image:image>
+  </url>
+  <url>
     <loc>https://vimark.art/ru/project/art/gods.html</loc>
     <image:image>
       <image:loc>https://vimark.art/Book%20Illustrations/Creatures/__0003_gods.jpg</image:loc>
@@ -1826,6 +1903,13 @@
     <image:image>
       <image:loc>https://vimark.art/Book%20Illustrations/20000%20leagues%20under%20the%20sea/__0003_il_3.jpg</image:loc>
       <image:title>The Sunken Forest (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/the-lord-of-electricity-2026.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/comic/Deepwish/__0004_deepwish_05.jpg</image:loc>
+      <image:title>Повелитель Электричества</image:title>
     </image:image>
   </url>
   <url>
@@ -1948,6 +2032,13 @@
     </image:image>
   </url>
   <url>
+    <loc>https://vimark.art/ru/project/art/the-chamber-of-fulfillment-2026.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/comic/Deepwish/__0005_deepwish_06.jpg</image:loc>
+      <image:title>Палата Исполнения Желаний</image:title>
+    </image:image>
+  </url>
+  <url>
     <loc>https://vimark.art/ru/project/art/strix-at-the-fall-of-caladrin.html</loc>
     <image:image>
       <image:loc>https://vimark.art/Book%20Illustrations/Winter%E2%80%99s%20Twins/__0005_Strix_at_the_Fall_of_Caladrin.jpg</image:loc>
@@ -2043,6 +2134,13 @@
     <image:image>
       <image:loc>https://vimark.art/Book%20Illustrations/20000%20leagues%20under%20the%20sea/__0005_il_5.jpg</image:loc>
       <image:title>The Sunken City (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/the-greatest-wish-2026.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/comic/Deepwish/__0006_deepwish_07.jpg</image:loc>
+      <image:title>Величайшее желание</image:title>
     </image:image>
   </url>
   <url>

@@ -30,6 +30,7 @@ CARD_TO_PROJECT = {
     "project/comic-biological-deviations.html": "comic-biological-deviations.html",
     "project/comic-the-symbol-of-faith.html": "comic-the-symbol-of-faith.html",
     "project/comic-wanderer.html": "comic-wanderer.html",
+    "project/comic-deepwish.html": "comic-deepwish.html",
     "project/comic-winter.html": "comic-winter.html",
 }
 

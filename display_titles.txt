@@ -19,6 +19,13 @@ Book Illustrations/Planetes/__0012_14_TOR.jpg = Toroid
 Book Illustrations/Planetes/__0013_15_virtual.jpg = Virtual
 
 [ru]
+comic/Deepwish/__0000_deepwish_01.jpg = Последнее тепло
+comic/Deepwish/__0001_deepwish_02.jpg = Спуск
+comic/Deepwish/__0002_deepwish_03.jpg = Залы старого мира
+comic/Deepwish/__0003_deepwish_04.jpg = Кладбище титанов
+comic/Deepwish/__0004_deepwish_05.jpg = Повелитель Электричества
+comic/Deepwish/__0005_deepwish_06.jpg = Палата Исполнения Желаний
+comic/Deepwish/__0006_deepwish_07.jpg = Величайшее желание
 BookCover/2026/__0001_01_Necropolis _2026.jpg = Некрополь
 BookCover/2026/__0001_02_Blood_Ruby _2026.jpg = Кровавый рубин
 BookCover/2026/__0001_03_Angel_of_Ace_2026.jpg = Ангел Туза

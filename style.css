@@ -209,6 +209,28 @@ img {
   opacity: 1;
 }
 
+.gallery-item--wide {
+  grid-column: 1 / -1;
+}
+
+.story-text {
+  grid-column: 1 / -1;
+  max-width: 720px;
+  width: 100%;
+  margin: 12px auto;
+  line-height: 1.75;
+  opacity: 0.85;
+  font-size: 1.05rem;
+}
+
+.story-text p {
+  margin-bottom: 1em;
+}
+
+.story-text p:last-child {
+  margin-bottom: 0;
+}
+
 .gallery-item-media {
   position: relative;
   display: block;

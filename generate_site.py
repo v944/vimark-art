@@ -83,6 +83,12 @@ PINTEREST_CATEGORY_TAGS = {
 }
 
 
+def read_story_blocks(path):
+    """Read a story text file into blocks separated by blank lines."""
+    text = path.read_text(encoding="utf-8")
+    return [b.strip() for b in re.split(r"\n\s*\n", text) if b.strip()]
+
+
 def collect_images_from_path(rel_path):
     """Collect image files from a relative path recursively, sorted."""
     exts = {".jpg", ".jpeg", ".png", ".webp", ".gif"}
@@ -405,6 +411,7 @@ def load_projects():
             "client": cfg.get(section, "client", fallback=""),
             "description": cfg.get(section, "description", fallback=""),
             "thumbnail": cfg.get(section, "thumbnail", fallback=""),
+            "wide": cfg.get(section, "wide", fallback=""),
         }
     return projects
 
@@ -451,6 +458,7 @@ PROJECT_BEHANCE = {
     "comic-nemirum": '<a href="https://www.behance.net/gallery/200133687/A-week-on-Nemirum" class="behance-ribbon" target="_blank" rel="noopener" aria-label="View on Behance"><span class="behance-ribbon-label">3D</span></a>\n        <a href="https://www.behance.net/gallery/200133687/A-week-on-Nemirum" class="behance-ribbon-tools" target="_blank" rel="noopener" aria-label="Adobe Photoshop" title="Adobe Photoshop"><span>Ps</span></a>',
     "comic-the-symbol-of-faith": '<a href="https://www.behance.net/gallery/224137257/The-Symbol-of-Faith" class="behance-ribbon" target="_blank" rel="noopener" aria-label="View on Behance"><span class="behance-ribbon-lines"></span></a>\n        <a href="https://www.behance.net/gallery/224137257/The-Symbol-of-Faith" class="behance-ribbon-tools" target="_blank" rel="noopener" aria-label="Adobe Photoshop" title="Adobe Photoshop"><span>Ps</span></a>',
     "comic-wanderer": '<a href="https://www.behance.net/gallery/248097067/wanderer" class="behance-ribbon" target="_blank" rel="noopener" aria-label="View on Behance"><span class="behance-ribbon-lines"></span></a>',
+    "comic-deepwish": '<a href="https://www.behance.net/gallery/255576067/Deepwish" class="behance-ribbon" target="_blank" rel="noopener" aria-label="View on Behance"><span class="behance-ribbon-lines"></span></a>\n        <a href="https://www.behance.net/gallery/255576067/Deepwish" class="behance-ribbon-tools" target="_blank" rel="noopener" aria-label="Adobe Photoshop" title="Adobe Photoshop"><span>Ps</span></a>',
     "personal-professional-growth": '<div class="behance-ribbons">\n          <a href="https://www.behance.net/vimark" class="behance-ribbon" target="_blank" rel="noopener" aria-label="Adobe Photoshop"><span class="behance-ribbon-label">Ph</span></a>\n          <a href="https://www.behance.net/vimark" class="behance-ribbon" target="_blank" rel="noopener" aria-label="View on Behance"><span class="behance-ribbon-lines"></span></a>\n          <a href="https://www.behance.net/vimark" class="behance-ribbon" target="_blank" rel="noopener" aria-label="3D"><span class="behance-ribbon-label">3D</span></a>\n          <a href="https://www.behance.net/vimark" class="behance-ribbon-tools" target="_blank" rel="noopener" aria-label="Adobe Photoshop" title="Adobe Photoshop"><span>Ps</span></a>\n        </div>',
     "personal-recent-work": '<div class="behance-ribbons">\n          <a href="https://www.behance.net/vimark" class="behance-ribbon" target="_blank" rel="noopener" aria-label="Adobe Photoshop"><span class="behance-ribbon-label">Ph</span></a>\n          <a href="https://www.behance.net/vimark" class="behance-ribbon" target="_blank" rel="noopener" aria-label="View on Behance"><span class="behance-ribbon-lines"></span></a>\n          <a href="https://www.behance.net/vimark" class="behance-ribbon" target="_blank" rel="noopener" aria-label="3D"><span class="behance-ribbon-label">3D</span></a>\n          <a href="https://www.behance.net/vimark" class="behance-ribbon-tools" target="_blank" rel="noopener" aria-label="Adobe Photoshop" title="Adobe Photoshop"><span>Ps</span></a>\n        </div>',
 }
@@ -651,6 +659,13 @@ def build_lang(lang='en', skip_landing_pages=True):
                         "label": t.get(sub_slug, human_label(sub.name)),
                         "images": sub_imgs,
                     }
+                    story = {}
+                    for slang in ("en", "ru"):
+                        sp = sub / f"story_{slang}.txt"
+                        if sp.exists():
+                            story[slang] = read_story_blocks(sp)
+                    if story:
+                        subfolders[sub_key]["story"] = story
 
         # Collect all images in category (including root files and all subfolders)
         all_cat_images = collect_images_from_path(entry.name)
@@ -959,7 +974,7 @@ def build_lang(lang='en', skip_landing_pages=True):
         lines.append('</div>')
         return "\n".join(lines)
 
-    def project_gallery_html(items, base=""):
+    def project_gallery_html(items, base="", story_blocks=None, wide=False):
         lines = ['<div class="gallery-grid">']
         creator_name = html.escape(t.get('hero_name', 'Max Mitenkov'))
         for idx, img in enumerate(items):
@@ -974,13 +989,17 @@ def build_lang(lang='en', skip_landing_pages=True):
             dim_attr = f' width="{w}" height="{h}"' if w and h else ''
             art_slug = img.get("art_slug", slugify(captions.get(img["src"], img["name"])))
             art_href = f"art/{art_slug}.html"
-            lines.append(f'  <a href="{art_href}" class="gallery-item" itemscope itemtype="https://schema.org/VisualArtwork">')
+            wide_cls = " gallery-item--wide" if wide else ''
+            lines.append(f'  <a href="{art_href}" class="gallery-item{wide_cls}" itemscope itemtype="https://schema.org/VisualArtwork">')
             loading = "eager" if idx < 4 else "lazy"
             lines.append(f'    <img src="{thumb}" srcset="{thumb_sm} 400w, {thumb} 600w" sizes="(max-width: 600px) 90vw, 300px" alt="{alt}" loading="{loading}"{dim_attr} itemprop="image">')
             lines.append(f'    {year_meta}')
             lines.append(f'    <meta itemprop="creator" content="{creator_name}">')
             lines.append(f'    <figcaption itemprop="name">{alt}</figcaption>')
             lines.append('  </a>')
+            if story_blocks and idx < len(story_blocks):
+                paras = "\n".join(f"<p>{html.escape(p.strip())}</p>" for p in story_blocks[idx].splitlines() if p.strip())
+                lines.append(f'  <div class="story-text">{paras}</div>')
         lines.append('</div>')
         return "\n".join(lines)
 
@@ -1001,7 +1020,7 @@ def build_lang(lang='en', skip_landing_pages=True):
         lines.extend(['  </ul>', '</nav>'])
         return "\n      ".join(lines)
 
-    def build_project_page(sub_key, proj, items, base="../"):
+    def build_project_page(sub_key, proj, items, base="../", story=None):
         page_lang = 'ru' if lang == 'ru' else 'en'
         page_canonical = f"https://vimark.art/ru/project/{sub_key}.html" if page_lang == 'ru' else f"https://vimark.art/project/{sub_key}.html"
         page_hreflang = f'''<!-- hreflang -->
@@ -1074,6 +1093,15 @@ def build_lang(lang='en', skip_landing_pages=True):
         meta_parts = [p for p in [year, client] if p]
         meta_html = f'<p class="project-meta">{" · ".join(meta_parts)}</p>' if meta_parts else ''
         desc_html = f'<p class="project-desc">{description}</p>' if description else ''
+        wide = str(proj.get("wide", "")).strip().lower() in ("1", "true", "yes")
+        story_intro_html = ""
+        story_blocks = []
+        if story:
+            lang_blocks = story.get(page_lang) or story.get("en") or []
+            if lang_blocks:
+                paras = "\n".join(f"<p>{html.escape(p.strip())}</p>" for p in lang_blocks[0].splitlines() if p.strip())
+                story_intro_html = f'<div class="story-text story-intro">{paras}</div>'
+                story_blocks = lang_blocks[1:]
 
         # Behance ribbons
         behance_snippet = PROJECT_BEHANCE.get(sub_key, "")
@@ -1240,7 +1268,8 @@ def build_lang(lang='en', skip_landing_pages=True):
         {desc_html}
         {ribbons_html}
       </div>
-      {project_gallery_html(items, base)}
+      {story_intro_html}
+      {project_gallery_html(items, base, story_blocks=story_blocks, wide=wide)}
       {reviews_html}
       {project_cta_html}
     </main>
@@ -2328,7 +2357,7 @@ def build_lang(lang='en', skip_landing_pages=True):
             "description": "",
         })
         proj_base = "../../" if base_index else "../"
-        page_html = build_project_page(sub_key, proj, proj_images, base=proj_base)
+        page_html = build_project_page(sub_key, proj, proj_images, base=proj_base, story=sub_info.get("story"))
         (proj_dir / f"{sub_key}.html").write_text(page_html, encoding="utf-8")
         generated_projects += 1
     # Standalone categories (no subfolders)
