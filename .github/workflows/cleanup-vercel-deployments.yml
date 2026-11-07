@@ -1,0 +1,34 @@
+name: Cleanup old Vercel deployments
+
+# Free Deployment Storage (10 GB per team) fills up because every push
+# keeps a full copy of the site (~1.1 GB each). This deletes old
+# deployments weekly, keeping the 3 newest per project plus production.
+
+on:
+  schedule:
+    - cron: "23 6 * * 0" # Sunday 06:23 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  cleanup:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Delete old deployments (vimark-art)
+        run: python scripts/cleanup_vercel_deployments.py --project vimark-art --apply
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+      - name: Delete old deployments (image-pipeline)
+        run: python scripts/cleanup_vercel_deployments.py --project image-pipeline --apply
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+      - name: Delete old deployments (brush-lab)
+        run: python scripts/cleanup_vercel_deployments.py --project brush-lab --apply
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
