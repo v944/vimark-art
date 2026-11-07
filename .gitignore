@@ -11,6 +11,8 @@ Thumbs.db
 
 # Desert Giants WIP (development branch only)
 __UE_web/
+# Legacy hero originals (site uses HERO2/, these are unreferenced)
+HERO/
 scenes/desert-giants/node_modules/
 scenes/desert-giants/package-lock.json
 scenes/desert-giants/*.log
