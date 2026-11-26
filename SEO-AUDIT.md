@@ -106,7 +106,7 @@ JavaScript в футере динамически строит ссылки EN �
 | visual-stories.html | `CollectionPage` (с `hasPart` для 8 серий) + `BreadcrumbList` |
 | about.html | `Person` (с `@id`, offers, workExample — 10 книг с ISBN) + `BreadcrumbList` |
 | contact.html | `Person` + `BreadcrumbList` |
-| reviews.html | `BreadcrumbList` + `Service` + `AggregateRating` (71 review, 5.0) |
+| reviews.html | `BreadcrumbList` + `Service` + `AggregateRating` (101 review, 5.0) |
 | case-studies/*.html | `Article` + `BreadcrumbList` + `CreativeWork` |
 | project/*.html | `BreadcrumbList` |
 

@@ -304,7 +304,7 @@ grep -r 'og:image' *.html ru/*.html case-studies/*.html | grep -v 'https://vimar
   "name": "Max Mitenkov",
   "alternateName": "Максим Митенков",
   "jobTitle": "Book Cover Illustrator & Designer",
-  "description": "Professional illustrator and designer specializing in custom book covers for sci-fi, fantasy, and horror genres. 71 verified reviews on Reedsy.",
+  "description": "Professional illustrator and designer specializing in custom book covers for sci-fi, fantasy, and horror genres. 101 verified reviews on Reedsy.",
   "url": "https://vimark.art",
   "sameAs": [
     "https://www.reedsy.com/maxim-mitenkov",
@@ -375,7 +375,7 @@ grep -r 'og:image' *.html ru/*.html case-studies/*.html | grep -v 'https://vimar
 6. **Schema:** `Service` + `HowTo` + `BreadcrumbList` + `FAQPage` (внизу)
 
 **Title:** `Book Cover Design Services · Sci-Fi, Fantasy & Horror · Max Mitenkov`  
-**Description:** `Professional book cover design and illustration services for authors and publishers. Custom covers for sci-fi, fantasy, and horror. 71 verified reviews. Get a quote.`
+**Description:** `Professional book cover design and illustration services for authors and publishers. Custom covers for sci-fi, fantasy, and horror. 101 verified reviews. Get a quote.`
 
 **Добавить в меню:** «Services» / «Услуги» (после «Case Studies» или перед «Contact»).
 
@@ -488,14 +488,14 @@ grep -r 'og:image' *.html ru/*.html case-studies/*.html | grep -v 'https://vimar
 **Description (главная EN):**
 ```
 Professional book cover illustrator and designer specializing in sci-fi, fantasy, and horror. 
-71 verified Reedsy reviews. Published covers for HarperCollins, Hachette Livre. 
+101 verified Reedsy reviews. Published covers for HarperCollins, Hachette Livre. 
 Commission a custom cover at vimark.art.
 ```
 
 **Description (главная RU):**
 ```
 Профессиональный иллюстратор и дизайнер обложек книг. Специализация: научная фантастика, 
-фэнтези, хоррор. 71 проверенный отзыв на Reedsy. Изданные обложки для HarperCollins, 
+фэнтези, хоррор. 101 проверенный отзыв на Reedsy. Изданные обложки для HarperCollins, 
 Hachette Livre. Заказать обложку — vimark.art.
 ```
 

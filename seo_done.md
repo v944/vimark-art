@@ -99,7 +99,7 @@
 | FAQ с коммерческими вопросами («Сколько стоит?», «Сроки?») | ✅ |
 | Related Works (до 6 работ из того же проекта) на art-страницах | ✅ |
 | CTA на всех страницах («Get a Free Quote» / «Обсудить проект») | ✅ |
-| Бар доверия (Reedsy 71 review, HarperCollins, Hachette и т.д.) | ✅ |
+| Бар доверия (Reedsy 101 review, HarperCollins, Hachette и т.д.) | ✅ |
 
 ---
 

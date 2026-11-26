@@ -128,7 +128,7 @@
 
 ### 4.4 Социальное доказательство
 
-- `reviews.html` — 71 verified review с Reedsy.
+- `reviews.html` — 101 verified review с Reedsy.
 - `case-studies/hoebeke-sci-fi-series.html` — детальный кейс для издательства Hoëbeke / Hachette Livre.
 - На главной и в проектах есть призывы к действию (CTA).
 
@@ -178,7 +178,7 @@
 
 - **Person** — на главной: имя, alternateName, jobTitle, description, knowsAbout, sameAs (соцсети), makesOffer.
 - **BreadcrumbList** — на страницах проектов и артворков.
-- **AggregateRating** — на `reviews.html` (ratingValue 5.0, reviewCount 71).
+- **AggregateRating** — на `reviews.html` (ratingValue 5.0, reviewCount 101).
 - **CollectionPage** — ранее использовался на страницах проектов.
 
 ### 5.5 Карты сайта
@@ -257,7 +257,7 @@ Sitemap: https://vimark.art/sitemap.xml
 | `/case-studies/hoebeke-sci-fi-series.html` | Case Study: Hoëbeke Sci-Fi Covers · Max Mitenkov | Кейс издательства |
 | `/about.html` | About vimark · Book Cover Illustrator & Designer | О художнике |
 | `/contact.html` | Contact · Max Mitenkov | Форма связи |
-| `/reviews.html` | 71 Verified Reedsy Reviews · Max Mitenkov | Отзывы |
+| `/reviews.html` | 101 Verified Reedsy Reviews · Max Mitenkov | Отзывы |
 | `/faq.html` | FAQ — Commissioning a Book Cover · Max Mitenkov | Частые вопросы |
 | `/privacy.html` | Privacy Policy · vimark.art | Политика конфиденциальности |
 | `/thanks.html` | Thank You · Max Mitenkov | Страница благодарности |
@@ -274,7 +274,7 @@ Sitemap: https://vimark.art/sitemap.xml
 | `/ru/case-studies/hoebeke-sci-fi-series.html` | Кейс: обложки Hoëbeke · Максим Митенков |
 | `/ru/about.html` | О vimark · Иллюстратор и дизайнер книжных обложек |
 | `/ru/contact.html` | Контакты · Максим Митенков |
-| `/ru/reviews.html` | 71 проверенных отзыва на Reedsy · Максим Митенков |
+| `/ru/reviews.html` | 101 проверенный отзыв на Reedsy · Максим Митенков |
 | `/ru/faq.html` | FAQ — Заказ обложки для книги · Максим Митенков |
 
 ### 6.3 Страницы проектов
@@ -329,7 +329,7 @@ Sitemap: https://vimark.art/sitemap.xml
 
 1. **Sitemap статичен.** После добавления новых проектов стоит обновить `sitemap.xml` и `image-sitemap.xml` вручную или временно включить их генерацию в `generate_site.py`.
 2. **Pinterest workflow отключён.** Файл `.github/workflows/pinterest.yml.disabled` не публикует пины автоматически. Для автопубликации нужно переименовать в `.yml` и добавить секреты Pinterest.
-3. **Количество отзывов.** На сайте заявлено 71 отзыв, в `Reedsy/reviews.json` меньше. Нужно либо импортировать недостающие, либо скорректировать цифру.
+3. **Количество отзывов.** На сайте заявлено 101 отзыв, в `Reedsy/reviews.json` меньше. Нужно либо импортировать недостающие, либо скорректировать цифру.
 4. **Адаптивные изображения.** Пока нет `<picture>` / `srcset` / AVIF. Это средний приоритет для Core Web Vitals.
 5. ** robots meta на generated-страницах.** В сгенерированных `project/` страницах отсутствует `<meta name="robots" content="index, follow">`. Поисковики по умолчанию индексируют, но для явности можно добавить в шаблон генератора.
 6. **H1-H2 иерархия.** Последняя типографика задаёт размеры 24px / 18px / 15px, но `font-weight` и цвета разделов стоит сверить визуально, чтобы H1 всегда читался как главный.

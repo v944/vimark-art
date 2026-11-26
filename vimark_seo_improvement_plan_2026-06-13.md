@@ -118,14 +118,14 @@
 **Description (пример для главной EN):**
 ```
 Professional book cover illustrator and designer specializing in sci-fi, fantasy, and horror. 
-71 verified Reedsy reviews. Published covers for HarperCollins, Hachette Livre. 
+101 verified Reedsy reviews. Published covers for HarperCollins, Hachette Livre. 
 Commission a custom cover at vimark.art.
 ```
 
 **Description (пример для главной RU):**
 ```
 Профессиональный иллюстратор и дизайнер обложек книг. Специализация: научная фантастика, 
-фэнтези, хоррор. 71 проверенный отзыв на Reedsy. Изданные обложки для HarperCollins, 
+фэнтези, хоррор. 101 проверенный отзыв на Reedsy. Изданные обложки для HarperCollins, 
 Hachette Livre. Заказать обложку — vimark.art.
 ```
 
@@ -455,7 +455,7 @@ endymion-portrait.jpg | Sci-fi character portrait of Endymion from Dan Simmons' 
   "name": "Max Mitenkov",
   "alternateName": "Максим Митенков",
   "jobTitle": "Book Cover Illustrator & Designer",
-  "description": "Professional illustrator and designer specializing in custom book covers for sci-fi, fantasy, and horror genres. 71 verified reviews on Reedsy.",
+  "description": "Professional illustrator and designer specializing in custom book covers for sci-fi, fantasy, and horror genres. 101 verified reviews on Reedsy.",
   "url": "https://vimark.art",
   "sameAs": [
     "https://www.reedsy.com/maxim-mitenkov",

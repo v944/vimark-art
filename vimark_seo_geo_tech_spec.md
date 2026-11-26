@@ -408,7 +408,7 @@
   "alternateName": "vimark",
   "url": "https://www.vimark.art",
   "jobTitle": "Book Cover Illustrator and Designer",
-  "description": "Professional book cover illustrator specializing in science fiction, dark fantasy, fantasy, horror, and literary fiction. 71 reviews on Reedsy.",
+  "description": "Professional book cover illustrator specializing in science fiction, dark fantasy, fantasy, horror, and literary fiction. 101 reviews on Reedsy.",
   "knowsAbout": [
     "Science Fiction Book Cover Design",
     "Dark Fantasy Book Cover Illustration",
@@ -447,7 +447,7 @@
   "aggregateRating": {
     "@type": "AggregateRating",
     "ratingValue": "5.0",
-    "reviewCount": "71",
+    "reviewCount": "101",
     "bestRating": "5",
     "worstRating": "1"
   }
