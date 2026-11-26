@@ -174,3 +174,7 @@ comic/Deepwish/__0003_deepwish_04.webp = Graveyard of titans, 2026
 comic/Deepwish/__0004_deepwish_05.webp = The Lord of Electricity, 2026
 comic/Deepwish/__0005_deepwish_06.webp = The Chamber of Fulfillment, 2026
 comic/Deepwish/__0006_deepwish_07.webp = The greatest wish, 2026
+BookCover/2026/__0004_Monstry_s_minskoy_propiskoy_2026.webp = Monstry s minskoy propiskoy
+BookCover/2026/__0011_Hellscrapper_2026.webp = Hellscrapper
+BookCover/2026/__0012_The_age_of_collapse_2026.webp = The age of collapse
+BookCover/2026/__0013_The_pale_man_2026.webp = The pale man

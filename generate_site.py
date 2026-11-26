@@ -359,7 +359,7 @@ def build_pinterest_pin(project_id, sub_info_or_label, proj, images, pinterest_r
     image_url = (
         f"https://vimark.art/{pinterest_rel}"
         if pinterest_rel
-        else (f"https://vimark.art/{images[0]['src']}" if images else "https://vimark.art/Mitenkov600.jpg")
+        else (f"https://vimark.art/{images[0]['src']}" if images else "https://vimark.art/Mitenkov600.webp")
     )
     link = f"https://www.vimark.art/project/{project_id}.html"
 
@@ -830,7 +830,7 @@ def build_lang(lang='en', skip_landing_pages=True):
                 img["width"] = w
                 img["height"] = h
     og_strong = random.choice(strong_images) if strong_images else None
-    og_strong_src = html.escape(og_strong.get("thumb", og_strong["src"]) if og_strong else "Mitenkov600.jpg", quote=True)
+    og_strong_src = html.escape(og_strong.get("thumb", og_strong["src"]) if og_strong else "Mitenkov600.webp", quote=True)
     og_strong_width = html.escape(og_strong.get("width", "600"), quote=True) if og_strong else "600"
     og_strong_height = html.escape(og_strong.get("height", "600"), quote=True) if og_strong else "600"
 
@@ -1056,7 +1056,7 @@ def build_lang(lang='en', skip_landing_pages=True):
                 if item["src"] == thumbnail_path or item["src"].endswith("/" + thumbnail_path):
                     first_item = item
                     break
-        og_image = html.escape(first_item.get("thumb", first_item["src"]), quote=True) if first_item else "Mitenkov600.jpg"
+        og_image = html.escape(first_item.get("thumb", first_item["src"]), quote=True) if first_item else "Mitenkov600.webp"
         og_image_width = html.escape(first_item.get("width", "600"), quote=True) if first_item else "600"
         og_image_height = html.escape(first_item.get("height", "600"), quote=True) if first_item else "600"
 
@@ -1268,7 +1268,7 @@ def build_lang(lang='en', skip_landing_pages=True):
       </header>
       {social_html_project}
       {commissions_html}
-      <a href="{base}index.html" class="logo-link"><img src="{base}vimark_logo.png" alt="Logo" style="width: 60px;"></a>
+      <a href="{base}index.html" class="logo-link"><img src="{base}vimark_logo.webp" alt="Logo" style="width: 60px;"></a>
     </aside>
 
     <button class="mobile-toggle">{t.get('menu', 'Menu')}</button>
@@ -1580,7 +1580,7 @@ def build_lang(lang='en', skip_landing_pages=True):
       </header>
       {social_html_project}
       {commissions_html}
-      <a href="{base}index.html" class="logo-link"><img src="{base}vimark_logo.png" alt="Logo" style="width: 60px;"></a>
+      <a href="{base}index.html" class="logo-link"><img src="{base}vimark_logo.webp" alt="Logo" style="width: 60px;"></a>
     </aside>
     <button class="mobile-toggle">{t.get('menu', 'Menu')}</button>
     <main id="main">
@@ -1746,7 +1746,7 @@ def build_lang(lang='en', skip_landing_pages=True):
       </header>
       {social_html_cat}
       {commissions_html}
-      <a href="{base}index.html" class="logo-link"><img src="{base}vimark_logo.png" alt="Logo" style="width: 60px;"></a>
+      <a href="{base}index.html" class="logo-link"><img src="{base}vimark_logo.webp" alt="Logo" style="width: 60px;"></a>
     </aside>
 
     <button class="mobile-toggle">{t.get('menu', 'Menu')}</button>
@@ -1931,7 +1931,7 @@ def build_lang(lang='en', skip_landing_pages=True):
       </header>
       {social_html_reviews}
       {commissions_html}
-      <a href="{base}index.html" class="logo-link"><img src="{base}vimark_logo.png" alt="Logo" style="width: 60px;"></a>
+      <a href="{base}index.html" class="logo-link"><img src="{base}vimark_logo.webp" alt="Logo" style="width: 60px;"></a>
     </aside>
 
     <button class="mobile-toggle">{t.get('menu', 'Menu')}</button>
@@ -2015,7 +2015,7 @@ def build_lang(lang='en', skip_landing_pages=True):
     about_html = f'''      <section id="about" class="hidden">
         <div class="about-container">
           <div class="about-photo">
-            <img src="{base_index}Mitenkov600.jpg" alt="{hero_name}" loading="lazy">
+            <img src="{base_index}Mitenkov600.webp" alt="{hero_name}" loading="lazy">
           </div>
           <div class="about-content">
             <h1>{t.get('about', 'About')}</h1>
@@ -2134,7 +2134,7 @@ def build_lang(lang='en', skip_landing_pages=True):
 {hreflang_block}
 <link rel="stylesheet" href="{base_index}style.css">
 <link rel="stylesheet" href="{base_index}vimark_typography_system.css">
-<link rel="icon" type="image/png" href="{base_index}vimark_logo.png">
+<link rel="icon" type="image/png" href="{base_index}vimark_logo.webp">
 <link rel="manifest" href="{base_index}manifest.json">
 
 <!-- Open Graph / Facebook -->
@@ -2181,7 +2181,7 @@ def build_lang(lang='en', skip_landing_pages=True):
   "@type": "Organization",
   "name": "vimark",
   "url": "https://vimark.art",
-  "logo": "https://vimark.art/vimark_logo.png",
+  "logo": "https://vimark.art/vimark_logo.webp",
   "sameAs": [
     "https://www.reedsy.com/vimark",
     "https://www.behance.net/vimark",
@@ -2308,7 +2308,7 @@ def build_lang(lang='en', skip_landing_pages=True):
       </header>
       {social_html.replace('src=\"behance.png\"', f'src=\"{base_index}behance.png\"').replace('src=\"deviantart.png\"', f'src=\"{base_index}deviantart.png\"')}
       {commissions_html}
-      <a href="{base_index}index.html" class="logo-link"><img src="{base_index}vimark_logo.png" alt="Logo" style="width: 60px;"></a>
+      <a href="{base_index}index.html" class="logo-link"><img src="{base_index}vimark_logo.webp" alt="Logo" style="width: 60px;"></a>
     </aside>
 
     <button class="mobile-toggle">Menu</button>
