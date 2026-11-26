@@ -15,6 +15,7 @@ PROJECT_DIR = ROOT / "project"
 # Mapping: homepage card href -> project page file name
 CARD_TO_PROJECT = {
     # Book Illustrations
+    "project/book-illustrations-civilisations.html": "book-illustrations-civilisations.html",
     "project/book-illustrations-endymion.html": "book-illustrations-endymion.html",
     "project/book-illustrations-insmoot.html": "book-illustrations-insmoot.html",
     "project/book-illustrations-nameless-city.html": "book-illustrations-nameless-city.html",
@@ -52,8 +53,8 @@ def extract_pool(project_file: Path) -> list[dict]:
             full_src = thumb_src.replace("thumbnails/", "", 1)
         else:
             full_src = thumb_src
-        # Replace .webp with .jpg for the full-size image
-        full_src = re.sub(r"\.webp$", ".jpg", full_src, flags=re.IGNORECASE)
+        # Full-size images are WebP since the site-wide conversion; the
+        # thumbnail path with the prefix stripped already points at them.
         alt = img.get("alt", "")
         pool.append({"thumb": thumb_src, "full": full_src, "alt": alt})
     return pool

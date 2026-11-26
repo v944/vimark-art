@@ -229,6 +229,18 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://vimark.art/ru/project/book-illustrations-civilisations.html</loc>
+    <lastmod>2026-11-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/civilisations-cover.html</loc>
+    <lastmod>2026-11-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://vimark.art/ru/project/art/civilisations.html</loc>
     <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
@@ -314,6 +326,12 @@
   </url>
   <url>
     <loc>https://vimark.art/ru/project/art/animals.html</loc>
+    <lastmod>2026-11-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/art.html</loc>
     <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
@@ -439,6 +457,12 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://vimark.art/ru/project/art/economy.html</loc>
+    <lastmod>2026-11-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://vimark.art/ru/project/art/corridor-system-2025.html</loc>
     <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
@@ -529,6 +553,12 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://vimark.art/ru/project/art/education.html</loc>
+    <lastmod>2026-11-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://vimark.art/ru/project/art/transition-2025.html</loc>
     <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
@@ -614,6 +644,12 @@
   </url>
   <url>
     <loc>https://vimark.art/ru/project/art/the-sunken-forest.html</loc>
+    <lastmod>2026-11-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/food.html</loc>
     <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
@@ -733,6 +769,12 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://vimark.art/ru/project/art/health.html</loc>
+    <lastmod>2026-11-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://vimark.art/ru/project/art/last-climb-2025.html</loc>
     <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
@@ -823,6 +865,12 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://vimark.art/ru/project/art/institutions.html</loc>
+    <lastmod>2026-11-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://vimark.art/ru/project/art/the-inferno-2025.html</loc>
     <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
@@ -895,6 +943,12 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://vimark.art/ru/project/art/languages.html</loc>
+    <lastmod>2026-11-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://vimark.art/ru/project/art/the-ninth-story-luna-park-2026.html</loc>
     <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
@@ -949,6 +1003,12 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://vimark.art/ru/project/art/leisure.html</loc>
+    <lastmod>2026-11-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://vimark.art/ru/project/art/pandoras-daugher.html</loc>
     <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
@@ -980,6 +1040,12 @@
   </url>
   <url>
     <loc>https://vimark.art/ru/project/art/post.html</loc>
+    <lastmod>2026-11-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/love.html</loc>
     <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
@@ -1027,6 +1093,12 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://vimark.art/ru/project/art/media.html</loc>
+    <lastmod>2026-11-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://vimark.art/ru/project/art/shards-of-humanity.html</loc>
     <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
@@ -1052,6 +1124,12 @@
   </url>
   <url>
     <loc>https://vimark.art/ru/project/art/robot-ai.html</loc>
+    <lastmod>2026-11-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/religion.html</loc>
     <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
@@ -1087,6 +1165,12 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://vimark.art/ru/project/art/science.html</loc>
+    <lastmod>2026-11-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://vimark.art/ru/project/art/the-age-of-collapse.html</loc>
     <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
@@ -1112,6 +1196,12 @@
   </url>
   <url>
     <loc>https://vimark.art/ru/project/art/spectre.html</loc>
+    <lastmod>2026-11-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/transportation.html</loc>
     <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
@@ -1147,7 +1237,19 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://vimark.art/ru/project/art/urban-planning.html</loc>
+    <lastmod>2026-11-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://vimark.art/ru/project/art/rijad.html</loc>
+    <lastmod>2026-11-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/work.html</loc>
     <lastmod>2026-11-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>

@@ -1,0 +1,9 @@
+Client: Renaud Jesionek
+Genre: Sci-fi
+Title(Eng): Civilisations
+Title(Ru): Цивилизации
+year: 2026
+
+description(Eng): Discover the foundations of human civilization through the greatest works of science fiction: art, economy, education, food, health, institutions, languages, leisure, love, media, religion, science, transportation, urban planning and work. How do imaginary worlds organize life, power and culture — and what do they reveal about our own society? Always striving for exploration, Renaud Jesionek, aka Captain Nexus VI, deciphers the blueprints of fictional civilizations in all their forms. Science fiction is the perfect journey.
+
+description(Ru): Откройте для себя основы человеческой цивилизации через величайшие произведения научной фантастики: искусство, экономика, образование, еда, здоровье, институты, языки, досуг, любовь, медиа, религия, наука, транспорт, градостроительство и труд. Как воображаемые миры устраивают жизнь, власть и культуру — и что они раскрывают о нашем собственном обществе? Неустанно исследуя новое, Рено Жесионек, он же капитан Nexus VI, расшифровывает устройство вымышленных цивилизаций во всех их формах. Научная фантастика — это идеальное путешествие.

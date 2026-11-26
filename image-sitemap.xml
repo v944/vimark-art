@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
+    <loc>https://vimark.art/project/art/civilisations-cover.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/Book%20Illustrations/Civilisations/__0000_cover_2026.webp</image:loc>
+      <image:title>Cover</image:title>
+    </image:image>
+  </url>
+  <url>
     <loc>https://vimark.art/project/art/civilisations.html</loc>
     <image:image>
       <image:loc>https://vimark.art/BookCover/2026/__0000_Civilisations_2026.webp</image:loc>
@@ -104,6 +111,13 @@
     <image:image>
       <image:loc>https://vimark.art/Book%20Illustrations/Creatures/__0000_animals.webp</image:loc>
       <image:title>Animals</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/project/art/art.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/Book%20Illustrations/Civilisations/__0001_art.webp</image:loc>
+      <image:title>Art</image:title>
     </image:image>
   </url>
   <url>
@@ -247,6 +261,13 @@
     </image:image>
   </url>
   <url>
+    <loc>https://vimark.art/project/art/economy.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/Book%20Illustrations/Civilisations/__0002_economy.webp</image:loc>
+      <image:title>Economy</image:title>
+    </image:image>
+  </url>
+  <url>
     <loc>https://vimark.art/project/art/corridor-system-2025.html</loc>
     <image:image>
       <image:loc>https://vimark.art/comic/Winter/__0002_winter_infantery_3.webp</image:loc>
@@ -352,6 +373,13 @@
     </image:image>
   </url>
   <url>
+    <loc>https://vimark.art/project/art/education.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/Book%20Illustrations/Civilisations/__0003_education.webp</image:loc>
+      <image:title>Education</image:title>
+    </image:image>
+  </url>
+  <url>
     <loc>https://vimark.art/project/art/transition-2025.html</loc>
     <image:image>
       <image:loc>https://vimark.art/comic/Winter/__0003_winter_infantery_4.webp</image:loc>
@@ -454,6 +482,13 @@
     <image:image>
       <image:loc>https://vimark.art/Book%20Illustrations/20000%20leagues%20under%20the%20sea/__0003_il_3.webp</image:loc>
       <image:title>The Sunken Forest</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/project/art/food.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/Book%20Illustrations/Civilisations/__0004_food.webp</image:loc>
+      <image:title>Food</image:title>
     </image:image>
   </url>
   <url>
@@ -590,6 +625,13 @@
     </image:image>
   </url>
   <url>
+    <loc>https://vimark.art/project/art/health.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/Book%20Illustrations/Civilisations/__0005_health.webp</image:loc>
+      <image:title>Health</image:title>
+    </image:image>
+  </url>
+  <url>
     <loc>https://vimark.art/project/art/last-climb-2025.html</loc>
     <image:image>
       <image:loc>https://vimark.art/comic/Winter/__0005_winter_infantery_6.webp</image:loc>
@@ -695,6 +737,13 @@
     </image:image>
   </url>
   <url>
+    <loc>https://vimark.art/project/art/institutions.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/Book%20Illustrations/Civilisations/__0006_institutions.webp</image:loc>
+      <image:title>Institutions</image:title>
+    </image:image>
+  </url>
+  <url>
     <loc>https://vimark.art/project/art/the-inferno-2025.html</loc>
     <image:image>
       <image:loc>https://vimark.art/comic/Winter/__0006_winter_infantery_7.webp</image:loc>
@@ -779,6 +828,13 @@
     </image:image>
   </url>
   <url>
+    <loc>https://vimark.art/project/art/languages.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/Book%20Illustrations/Civilisations/__0007_languages.webp</image:loc>
+      <image:title>Languages</image:title>
+    </image:image>
+  </url>
+  <url>
     <loc>https://vimark.art/project/art/the-ninth-story-luna-park-2026.html</loc>
     <image:image>
       <image:loc>https://vimark.art/comic/Geologyst/_0007_Geologyst_8.webp</image:loc>
@@ -842,6 +898,13 @@
     </image:image>
   </url>
   <url>
+    <loc>https://vimark.art/project/art/leisure.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/Book%20Illustrations/Civilisations/__0008_leisure.webp</image:loc>
+      <image:title>Leisure</image:title>
+    </image:image>
+  </url>
+  <url>
     <loc>https://vimark.art/project/art/pandoras-daugher.html</loc>
     <image:image>
       <image:loc>https://vimark.art/BookCover/2026/__0008_Pandoras_Daugher.webp</image:loc>
@@ -881,6 +944,13 @@
     <image:image>
       <image:loc>https://vimark.art/Book%20Illustrations/Creatures/__0008_post.webp</image:loc>
       <image:title>Post</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/project/art/love.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/Book%20Illustrations/Civilisations/__0009_love.webp</image:loc>
+      <image:title>Love</image:title>
     </image:image>
   </url>
   <url>
@@ -933,6 +1003,13 @@
     </image:image>
   </url>
   <url>
+    <loc>https://vimark.art/project/art/media.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/Book%20Illustrations/Civilisations/__0010_media.webp</image:loc>
+      <image:title>Media</image:title>
+    </image:image>
+  </url>
+  <url>
     <loc>https://vimark.art/project/art/shards-of-humanity.html</loc>
     <image:image>
       <image:loc>https://vimark.art/BookCover/2026/__00010_Shards_of_Humanity.webp</image:loc>
@@ -965,6 +1042,13 @@
     <image:image>
       <image:loc>https://vimark.art/Book%20Illustrations/Creatures/__0010_robot_AI.webp</image:loc>
       <image:title>Robot AI</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/project/art/religion.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/Book%20Illustrations/Civilisations/__0011_religion.webp</image:loc>
+      <image:title>Religion</image:title>
     </image:image>
   </url>
   <url>
@@ -1003,6 +1087,13 @@
     </image:image>
   </url>
   <url>
+    <loc>https://vimark.art/project/art/science.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/Book%20Illustrations/Civilisations/__0012_science.webp</image:loc>
+      <image:title>Science</image:title>
+    </image:image>
+  </url>
+  <url>
     <loc>https://vimark.art/project/art/the-age-of-collapse.html</loc>
     <image:image>
       <image:loc>https://vimark.art/BookCover/2026/__0012_The_age_of_collapse_2026.webp</image:loc>
@@ -1035,6 +1126,13 @@
     <image:image>
       <image:loc>https://vimark.art/Book%20Illustrations/Creatures/__0012_spectre.webp</image:loc>
       <image:title>Spectre</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/project/art/transportation.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/Book%20Illustrations/Civilisations/__0013_transportation.webp</image:loc>
+      <image:title>Transportation</image:title>
     </image:image>
   </url>
   <url>
@@ -1073,10 +1171,24 @@
     </image:image>
   </url>
   <url>
+    <loc>https://vimark.art/project/art/urban-planning.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/Book%20Illustrations/Civilisations/__0014_urban_planning.webp</image:loc>
+      <image:title>Urban Planning</image:title>
+    </image:image>
+  </url>
+  <url>
     <loc>https://vimark.art/project/art/rijad.html</loc>
     <image:image>
       <image:loc>https://vimark.art/Book%20Illustrations/Endymion/__0014_E14_rijad.webp</image:loc>
       <image:title>Rijad</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/project/art/work.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/Book%20Illustrations/Civilisations/__0015_work.webp</image:loc>
+      <image:title>Work</image:title>
     </image:image>
   </url>
   <url>
@@ -1556,6 +1668,13 @@
     </image:image>
   </url>
   <url>
+    <loc>https://vimark.art/ru/project/art/civilisations-cover.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/Book%20Illustrations/Civilisations/__0000_cover_2026.webp</image:loc>
+      <image:title>Обложка</image:title>
+    </image:image>
+  </url>
+  <url>
     <loc>https://vimark.art/ru/project/art/civilisations.html</loc>
     <image:image>
       <image:loc>https://vimark.art/BookCover/2026/__0000_Civilisations_2026.webp</image:loc>
@@ -1658,6 +1777,13 @@
     <image:image>
       <image:loc>https://vimark.art/Book%20Illustrations/Creatures/__0000_animals.webp</image:loc>
       <image:title>Animals (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/art.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/Book%20Illustrations/Civilisations/__0001_art.webp</image:loc>
+      <image:title>Искусство</image:title>
     </image:image>
   </url>
   <url>
@@ -1801,6 +1927,13 @@
     </image:image>
   </url>
   <url>
+    <loc>https://vimark.art/ru/project/art/economy.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/Book%20Illustrations/Civilisations/__0002_economy.webp</image:loc>
+      <image:title>Экономика</image:title>
+    </image:image>
+  </url>
+  <url>
     <loc>https://vimark.art/ru/project/art/corridor-system-2025.html</loc>
     <image:image>
       <image:loc>https://vimark.art/comic/Winter/__0002_winter_infantery_3.webp</image:loc>
@@ -1906,6 +2039,13 @@
     </image:image>
   </url>
   <url>
+    <loc>https://vimark.art/ru/project/art/education.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/Book%20Illustrations/Civilisations/__0003_education.webp</image:loc>
+      <image:title>Образование</image:title>
+    </image:image>
+  </url>
+  <url>
     <loc>https://vimark.art/ru/project/art/transition-2025.html</loc>
     <image:image>
       <image:loc>https://vimark.art/comic/Winter/__0003_winter_infantery_4.webp</image:loc>
@@ -2008,6 +2148,13 @@
     <image:image>
       <image:loc>https://vimark.art/Book%20Illustrations/20000%20leagues%20under%20the%20sea/__0003_il_3.webp</image:loc>
       <image:title>The Sunken Forest (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/food.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/Book%20Illustrations/Civilisations/__0004_food.webp</image:loc>
+      <image:title>Еда</image:title>
     </image:image>
   </url>
   <url>
@@ -2144,6 +2291,13 @@
     </image:image>
   </url>
   <url>
+    <loc>https://vimark.art/ru/project/art/health.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/Book%20Illustrations/Civilisations/__0005_health.webp</image:loc>
+      <image:title>Здоровье</image:title>
+    </image:image>
+  </url>
+  <url>
     <loc>https://vimark.art/ru/project/art/last-climb-2025.html</loc>
     <image:image>
       <image:loc>https://vimark.art/comic/Winter/__0005_winter_infantery_6.webp</image:loc>
@@ -2249,6 +2403,13 @@
     </image:image>
   </url>
   <url>
+    <loc>https://vimark.art/ru/project/art/institutions.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/Book%20Illustrations/Civilisations/__0006_institutions.webp</image:loc>
+      <image:title>Институты</image:title>
+    </image:image>
+  </url>
+  <url>
     <loc>https://vimark.art/ru/project/art/the-inferno-2025.html</loc>
     <image:image>
       <image:loc>https://vimark.art/comic/Winter/__0006_winter_infantery_7.webp</image:loc>
@@ -2333,6 +2494,13 @@
     </image:image>
   </url>
   <url>
+    <loc>https://vimark.art/ru/project/art/languages.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/Book%20Illustrations/Civilisations/__0007_languages.webp</image:loc>
+      <image:title>Языки</image:title>
+    </image:image>
+  </url>
+  <url>
     <loc>https://vimark.art/ru/project/art/the-ninth-story-luna-park-2026.html</loc>
     <image:image>
       <image:loc>https://vimark.art/comic/Geologyst/_0007_Geologyst_8.webp</image:loc>
@@ -2396,6 +2564,13 @@
     </image:image>
   </url>
   <url>
+    <loc>https://vimark.art/ru/project/art/leisure.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/Book%20Illustrations/Civilisations/__0008_leisure.webp</image:loc>
+      <image:title>Досуг</image:title>
+    </image:image>
+  </url>
+  <url>
     <loc>https://vimark.art/ru/project/art/pandoras-daugher.html</loc>
     <image:image>
       <image:loc>https://vimark.art/BookCover/2026/__0008_Pandoras_Daugher.webp</image:loc>
@@ -2435,6 +2610,13 @@
     <image:image>
       <image:loc>https://vimark.art/Book%20Illustrations/Creatures/__0008_post.webp</image:loc>
       <image:title>Post (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/love.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/Book%20Illustrations/Civilisations/__0009_love.webp</image:loc>
+      <image:title>Любовь</image:title>
     </image:image>
   </url>
   <url>
@@ -2487,6 +2669,13 @@
     </image:image>
   </url>
   <url>
+    <loc>https://vimark.art/ru/project/art/media.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/Book%20Illustrations/Civilisations/__0010_media.webp</image:loc>
+      <image:title>СМИ</image:title>
+    </image:image>
+  </url>
+  <url>
     <loc>https://vimark.art/ru/project/art/shards-of-humanity.html</loc>
     <image:image>
       <image:loc>https://vimark.art/BookCover/2026/__00010_Shards_of_Humanity.webp</image:loc>
@@ -2519,6 +2708,13 @@
     <image:image>
       <image:loc>https://vimark.art/Book%20Illustrations/Creatures/__0010_robot_AI.webp</image:loc>
       <image:title>Robot AI (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/religion.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/Book%20Illustrations/Civilisations/__0011_religion.webp</image:loc>
+      <image:title>Религия</image:title>
     </image:image>
   </url>
   <url>
@@ -2557,6 +2753,13 @@
     </image:image>
   </url>
   <url>
+    <loc>https://vimark.art/ru/project/art/science.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/Book%20Illustrations/Civilisations/__0012_science.webp</image:loc>
+      <image:title>Наука</image:title>
+    </image:image>
+  </url>
+  <url>
     <loc>https://vimark.art/ru/project/art/the-age-of-collapse.html</loc>
     <image:image>
       <image:loc>https://vimark.art/BookCover/2026/__0012_The_age_of_collapse_2026.webp</image:loc>
@@ -2589,6 +2792,13 @@
     <image:image>
       <image:loc>https://vimark.art/Book%20Illustrations/Creatures/__0012_spectre.webp</image:loc>
       <image:title>Spectre (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/transportation.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/Book%20Illustrations/Civilisations/__0013_transportation.webp</image:loc>
+      <image:title>Транспорт</image:title>
     </image:image>
   </url>
   <url>
@@ -2627,10 +2837,24 @@
     </image:image>
   </url>
   <url>
+    <loc>https://vimark.art/ru/project/art/urban-planning.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/Book%20Illustrations/Civilisations/__0014_urban_planning.webp</image:loc>
+      <image:title>Городское планирование</image:title>
+    </image:image>
+  </url>
+  <url>
     <loc>https://vimark.art/ru/project/art/rijad.html</loc>
     <image:image>
       <image:loc>https://vimark.art/Book%20Illustrations/Endymion/__0014_E14_rijad.webp</image:loc>
       <image:title>Rijad (2)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/work.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/Book%20Illustrations/Civilisations/__0015_work.webp</image:loc>
+      <image:title>Работа</image:title>
     </image:image>
   </url>
   <url>
