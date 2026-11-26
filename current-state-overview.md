@@ -42,7 +42,7 @@
 | `living-illustrations.html` | «Живые иллюстрации» — **noindex** |
 | `personal.html` | Персональные работы |
 | `privacy.html` | Политика конфиденциальности |
-| `reviews.html` | 71 отзыв с Reedsy, AggregateRating JSON-LD |
+| `reviews.html` | 101 отзыв с Reedsy, AggregateRating JSON-LD |
 | `services.html` | Услуги и цены |
 | `thanks.html` | Спасибо после отправки формы |
 | `visual-stories.html` | Визуальные истории (комиксы) |
@@ -214,7 +214,7 @@ GitHub Actions workflow `.github/workflows/pinterest.yml.disabled`:
 | `ImageObject` | Каждый арт |
 | `ItemList` | Категории и проекты (все изображения) |
 | `Article` | Блог |
-| `AggregateRating` | Страница отзывов (5.0, 71 отзыв) |
+| `AggregateRating` | Страница отзывов (5.0, 101 отзыв) |
 | `SearchAction` | Главная (поиск по сайту) |
 
 ### 4.3 Open Graph / Twitter Cards
@@ -350,7 +350,7 @@ GitHub Actions workflow `.github/workflows/pinterest.yml.disabled`:
 - **386** изображений в `image-sitemap.xml`
 - **200+** исходных изображений
 - **26** проектов в `projects.ini`
-- **71** отзыв на странице отзывов (рейтинг 5.0)
+- **101** отзыв на странице отзывов (рейтинг 5.0)
 - **2** языка (EN, RU)
 - **3** sitemap (основная EN, основная RU, image)
 - **44** URL-редиректа

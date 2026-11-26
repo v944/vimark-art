@@ -16,8 +16,8 @@ article_meta = {
         "slug_ru": "chastye-oshibki-pri-vybore-illyustratora",
         "title_en": "10 Common Mistakes Authors Make When Hiring a Book Cover Illustrator",
         "title_ru": "10 частых ошибок авторов при выборе иллюстратора обложки",
-        "desc_en": "Real mistakes authors make when commissioning book cover art, with real cases and practical advice from a professional illustrator with 71 Reedsy reviews.",
-        "desc_ru": "Реальные ошибки авторов при заказе обложек: реальные случаи из практики иллюстратора с 71 отзывом на Reedsy.",
+        "desc_en": "Real mistakes authors make when commissioning book cover art, with real cases and practical advice from a professional illustrator with 101 Reedsy reviews.",
+        "desc_ru": "Реальные ошибки авторов при заказе обложек: реальные случаи из практики иллюстратора со 101 отзывом на Reedsy.",
         "reading_min": 10,
         "date": "2026-06-10"
     },

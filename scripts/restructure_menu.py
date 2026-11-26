@@ -84,13 +84,13 @@ NEW_FOOTER_CASE_RU = NEW_FOOTER_LINKS_RU.replace('href="', 'href="../')
 REVIEWS_SECTION_EN = """      <hr class="about-divider">
 
       <h2>Reviews</h2>
-      <p><strong>71 verified reviews</strong> on <a href="https://www.reedsy.com/vimark" target="_blank" rel="noopener">Reedsy</a> · 5.0 rating</p>
+      <p><strong>101 verified reviews</strong> on <a href="https://www.reedsy.com/vimark" target="_blank" rel="noopener">Reedsy</a> · 5.0 rating</p>
       <p><a href="reviews.html">View all reviews &rarr;</a></p>"""
 
 REVIEWS_SECTION_RU = """      <hr class="about-divider">
 
       <h2>Отзывы</h2>
-      <p><strong>71 проверенных отзыва</strong> на <a href="https://www.reedsy.com/vimark" target="_blank" rel="noopener">Reedsy</a> · Рейтинг 5.0</p>
+      <p><strong>101 проверенный отзыв</strong> на <a href="https://www.reedsy.com/vimark" target="_blank" rel="noopener">Reedsy</a> · Рейтинг 5.0</p>
       <p><a href="reviews.html">Смотреть все отзывы &rarr;</a></p>"""
 
 FAQ_SECTION_EN = """      <hr class="contact-divider">

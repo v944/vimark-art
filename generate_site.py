@@ -528,7 +528,7 @@ def render_reviews_bar(base, t):
         reviews_bar_cats_html += f'<div class="reviews-bar-category"><div class="reviews-gauge"><img src="{base}thumbnails/reviews/{cat_img}" alt="{html.escape(cat_label)}" class="reviews-gauge-img"></div></div>'
     return f'''<section class="reviews-bar">
       <div class="reviews-bar-summary">
-        <a href="{base}reviews.html" class="reviews-bar-count-link"><span class="reviews-bar-count">71 {t.get('reviews', 'Reviews').lower()}</span></a>
+        <a href="{base}reviews.html" class="reviews-bar-count-link"><span class="reviews-bar-count">101 {t.get('reviews_short', 'reviews')}</span></a>
         <span class="reviews-bar-on">on <a href="https://reedsy.com/freelancers/maxim-m" target="_blank" rel="noopener">{REEDSY_LOGO}</a></span>
         <div class="reviews-bar-stars">{reviews_bar_stars}</div>
       </div>
@@ -547,7 +547,7 @@ def render_reviews_hero(base, t):
     return f'''<div class="hero-reviews">
   <div class="hero-reviews-gauges">{gauge_imgs}</div>
   <div class="hero-reviews-summary">
-    <a href="{base}reviews.html" class="hero-reviews-count-link"><span class="hero-reviews-count">71 {t.get('reviews', 'Reviews').lower()}</span></a>
+    <a href="{base}reviews.html" class="hero-reviews-count-link"><span class="hero-reviews-count">101 {t.get('reviews_short', 'reviews')}</span></a>
     <span class="hero-reviews-on">on <a href="https://reedsy.com/freelancers/maxim-m" target="_blank" rel="noopener">{REEDSY_LOGO}</a></span>
     <div class="hero-reviews-stars">{reviews_bar_stars}</div>
   </div>
@@ -1802,13 +1802,13 @@ def build_lang(lang='en', skip_landing_pages=True):
             ]
         }, ensure_ascii=False)
         if page_lang == 'ru':
-            reviews_title_text = f"71 проверенных отзыва на Reedsy · {hero_name} · Иллюстратор и концепт-художник"
-            meta_desc = f"Читайте 71 проверенный отзыв с 5 звёздами от клиентов Reedsy, которые нанимали {hero_name}. Оценка 5/5 за профессионализм, качество, ценность и отзывчивость."
+            reviews_title_text = f"101 проверенный отзыв на Reedsy · {hero_name} · Иллюстратор и концепт-художник"
+            meta_desc = f"Читайте 101 проверенный отзыв с 5 звёздами от клиентов Reedsy, которые нанимали {hero_name}. Оценка 5/5 за профессионализм, качество, ценность и отзывчивость."
             reviews_h1_text = "Featured reviews"
             reviews_subtitle_text = "Оценка 5/5 за профессионализм, качество, ценность и отзывчивость"
         else:
-            reviews_title_text = f"71 Verified Reedsy Reviews · {hero_name} · Illustrator & Concept Artist"
-            meta_desc = f"Read 71 verified 5-star reviews from Reedsy clients who hired {hero_name} for book covers, illustrations, and concept art. Rated 5/5 for professionalism, quality, value, and responsiveness."
+            reviews_title_text = f"101 Verified Reedsy Reviews · {hero_name} · Illustrator & Concept Artist"
+            meta_desc = f"Read 101 verified 5-star reviews from Reedsy clients who hired {hero_name} for book covers, illustrations, and concept art. Rated 5/5 for professionalism, quality, value, and responsiveness."
             reviews_h1_text = "Featured reviews"
             reviews_subtitle_text = "Rated 5/5 for professionalism, quality, value, and responsiveness"
 
@@ -1897,7 +1897,7 @@ def build_lang(lang='en', skip_landing_pages=True):
 
 <!-- AggregateRating -->
 <script type="application/ld+json">
-{{"@context": "https://schema.org", "@type": "Service", "name": "Illustration & Concept Art by {hero_name}", "provider": {{"@type": "Person", "name": "{hero_name}", "url": "{reviews_canonical.replace('/reviews.html', '/')}"}}, "aggregateRating": {{"@type": "AggregateRating", "ratingValue": "5", "reviewCount": "71", "bestRating": "5", "worstRating": "1"}}}}
+{{"@context": "https://schema.org", "@type": "Service", "name": "Illustration & Concept Art by {hero_name}", "provider": {{"@type": "Person", "name": "{hero_name}", "url": "{reviews_canonical.replace('/reviews.html', '/')}"}}, "aggregateRating": {{"@type": "AggregateRating", "ratingValue": "5", "reviewCount": "101", "bestRating": "5", "worstRating": "1"}}}}
 </script>
 
 <!-- Google tag -->
@@ -2256,7 +2256,7 @@ def build_lang(lang='en', skip_landing_pages=True):
       }}
     ]
   }},
-  "description": "Book cover illustrator and designer with 12+ years of experience. Published covers for HarperCollins and Hachette Livre. 71 verified Reedsy reviews."
+  "description": "Book cover illustrator and designer with 12+ years of experience. Published covers for HarperCollins and Hachette Livre. 101 verified Reedsy reviews."
 }}
 </script>
 

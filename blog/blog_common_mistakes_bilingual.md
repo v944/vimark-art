@@ -12,7 +12,7 @@
 
 Каждый месяц я получаю сообщения от авторов, которые уже потратили время и деньги на обложку, но результат их разочаровал. История повторяется: выбрали художника по низкой цене, не прописали права, не согласовали эскизы. В итоге получили обложку, которую стыдно показать, или вовсе пришлось переделывать с нуля.
 
-Эта статья не теория. Это конкретные ошибки, которые я вижу в своей практике как иллюстратор с 71 проверенным отзывом на Reedsy и обложками для HarperCollins, Hachette Livre и Hoëbeke. Каждая ошибка сопровождается реальным примером и способом её избежать.
+Эта статья не теория. Это конкретные ошибки, которые я вижу в своей практике как иллюстратор со 101 проверенным отзывом на Reedsy и обложками для HarperCollins, Hachette Livre и Hoëbeke. Каждая ошибка сопровождается реальным примером и способом её избежать.
 
 ---
 
@@ -214,7 +214,7 @@
 
 Every month I receive messages from authors who have already spent time and money on a cover, only to be disappointed. The story repeats: they chose an artist based on a low price, didn't specify rights, skipped sketch approval. They ended up with a cover they were ashamed to show, or had to redo from scratch.
 
-This article is not theory. These are concrete mistakes I see in my practice as an illustrator with 71 verified reviews on Reedsy and covers for HarperCollins, Hachette Livre, and Hoëbeke. Each mistake comes with a real example and a way to avoid it.
+This article is not theory. These are concrete mistakes I see in my practice as an illustrator with 101 verified reviews on Reedsy and covers for HarperCollins, Hachette Livre, and Hoëbeke. Each mistake comes with a real example and a way to avoid it.
 
 ---
 
