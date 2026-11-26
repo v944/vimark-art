@@ -33,6 +33,7 @@ BookCover/2026/__0001_04_Desperate_Times_2026.webp = Отчаянные врем
 BookCover/2026/__0004_01_Khton_2026.webp = Хтонь за околицей
 BookCover/2026/__0004_Prizraki_2026.webp = Призраки старого кладбища
 BookCover/2025/__0002_Layer 9 copy 2.webp = Soliton
+BookCover/2026/__0000_Civilisations_2026.webp = Цивилизации
 BookCover/2026/__0004_Monstry_s_minskoy_propiskoy_2026.webp = Монстры с минской пропиской
 BookCover/2026/__0011_Hellscrapper_2026.webp = Хеллскраппер
 BookCover/2026/__0012_The_age_of_collapse_2026.webp = Эпоха краха

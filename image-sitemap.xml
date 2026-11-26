@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
+    <loc>https://vimark.art/project/art/civilisations.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/BookCover/2026/__0000_Civilisations_2026.webp</image:loc>
+      <image:title>Civilisations</image:title>
+    </image:image>
+  </url>
+  <url>
     <loc>https://vimark.art/project/art/hole-2025.html</loc>
     <image:image>
       <image:loc>https://vimark.art/comic/Winter/__0000_winter_infantery_1.webp</image:loc>
@@ -1546,6 +1553,13 @@
     <image:image>
       <image:loc>https://vimark.art/Personal/Early%20Work/Screenshot_2.jpg</image:loc>
       <image:title>The Lost Worlds of Conan Doyle, 2010</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://vimark.art/ru/project/art/civilisations.html</loc>
+    <image:image>
+      <image:loc>https://vimark.art/BookCover/2026/__0000_Civilisations_2026.webp</image:loc>
+      <image:title>Цивилизации</image:title>
     </image:image>
   </url>
   <url>

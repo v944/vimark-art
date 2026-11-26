@@ -178,3 +178,4 @@ BookCover/2026/__0004_Monstry_s_minskoy_propiskoy_2026.webp = Monstry s minskoy 
 BookCover/2026/__0011_Hellscrapper_2026.webp = Hellscrapper
 BookCover/2026/__0012_The_age_of_collapse_2026.webp = The age of collapse
 BookCover/2026/__0013_The_pale_man_2026.webp = The pale man
+BookCover/2026/__0000_Civilisations_2026.webp = Civilisations
